@@ -1,0 +1,22 @@
+name: Deployment
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  run:
+    env:
+      CI: true
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+          check-latest: true
+      - run: npm ci
+      - run: pm2 delete main.js || true
+      - run: pm2 start main.js
