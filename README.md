@@ -1,6 +1,9 @@
 # SVBot
 
-Python bot for setting up the ranked gauntlet
+Python bot for setting up the ranked gauntlet.
+
+Add to server via this link:
+[https://discord.com/oauth2/authorize?client_id=785912791739269130&scope=bot&permissions=8]
 
 ## Running
 
