@@ -39,17 +39,20 @@ db.signups = [
     // damageRank: 'Master',
     // supportRank: 'Diamond',
     screenshot:
-      'https://media.discordapp.net/attachments/786309976795906062/787805376611221524/unknown.png',
+      'https://static-cdn.jtvnw.net/jtv_user_pictures/993e376e-e844-44c3-a201-f0991149eb75-profile_image-70x70.png',
   }),
 ];
 // ========================================================
 
 // ========================================================
 // Settings
-const prefix = '.';
-const btagRegex = /.{3,}#[0-9]{4,}/;
-const regionRegex = /^(EU|NA)$/gim;
-const rankRegex = /^(Bronze|Silver|Gold|Platinum|Diamond|Master|Grandmaster)$/gim;
+const prefix = '.'; // No spaces allowed
+const btagRegex = new RegExp(/.{3,}#[0-9]{4,}/);
+const regionRegex = new RegExp(/^(EU|NA)$/, 'i');
+const rankRegex = new RegExp(
+  /^(Bronze|Silver|Gold|Platinum|Diamond|Master|Grandmaster)$/,
+  'i',
+);
 // ========================================================
 
 client.on('message', async msg => {
@@ -60,13 +63,31 @@ client.on('message', async msg => {
     if (!args[0] === prefix || msg.author.bot) return;
 
     switch (args[0].replace(prefix, '')) {
+      case 'test':
+        msg.channel.send(
+          `Latency to bot: ${Date.now() - msg.createdTimestamp}ms`,
+        );
+        break;
+
       case 'purge':
         msg.channel.bulkDelete(100);
         break;
 
       case 'log':
+        if (args.length > 1) {
+          let found = db.signups.find(item => item.signupMsgId === args[1]);
+          if (!found) throw new Error('Signup not found');
+
+          Object.keys(found).forEach(async key => {
+            await msg.channel.send(key + ': ' + found[key]);
+          });
+        } else {
+          Object.keys(db.signups[0]).forEach(async key => {
+            await msg.channel.send(key + ': ' + db.signups[0][key]);
+          });
+        }
+
         console.log(db.signups);
-        msg.channel.send(JSON.stringify(db.signups));
         break;
 
       case 'signup':
@@ -90,38 +111,26 @@ client.on('message', async msg => {
         let existingSignup = db.signups.findIndex(
           item => item.discordId === msg.author.id,
         );
+        if (existingSignup >= 0)
+          throw new Error(
+            'You already have signed up. If you would like to update your rank, discord or battle tag, please dm a mod.',
+          );
 
-        msg.attachments.forEach(async item => {
-          if (existingSignup >= 0) {
-            db.signups[existingSignup] = new Player({
-              discordId: msg.author.id,
-              battleTag: args[1],
-              region: args[2].toUpperCase(),
-              screenshot: item.proxyURL,
-              signupMsgId: msg.id,
-              signedUpOn: msg.createdTimestamp,
-            });
+        const attachment = msg.attachments.values().next().value;
+        db.signups.push(
+          new Player({
+            discordId: msg.author.id,
+            battleTag: args[1],
+            region: args[2].toUpperCase(),
+            screenshot: attachment.proxyURL,
+            signupMsgId: msg.id,
+            signedUpOn: msg.createdTimestamp,
+          }),
+        );
 
-            await msg.channel.send(
-              'Your existing signup was overwritten and the new is to be checked again by an event moderator',
-            );
-          } else {
-            db.signups.push(
-              new Player({
-                discordId: msg.author.id,
-                battleTag: args[1],
-                region: args[2].toUpperCase(),
-                screenshot: item.proxyURL,
-                signupMsgId: msg.id,
-                signedUpOn: msg.createdTimestamp,
-              }),
-            );
-
-            await msg.channel.send(
-              'Signup has been recieved and will be checked by an event moderator',
-            );
-          }
-        });
+        await msg.channel.send(
+          'Signup has been recieved and will be checked by an event moderator',
+        );
 
         break;
 
@@ -145,7 +154,7 @@ client.on('message', async msg => {
         );
         console.log('roleByName', roleByName);
         const pingMsg = await playerPingsChannel.send(
-          `${args[3]} has chosen ${args[2]} for their lobby on the <@&${roleByName.id}> servers. Please react with 👍`,
+          `${args[3]} has chosen <@&${roleByName.id}> for their lobby on the ${args[2]} servers. Please react with 👍`,
         );
         // Place reacting players into matchmaker
         const filter = (reaction, user) => user.id === msg.author.id;
@@ -183,16 +192,16 @@ client.on('message', async msg => {
         );
         if (!foundSignupByMsgId) throw new Error('MsgId was not found in DB');
 
-        if (!args[2] || !rankRegex.test(args[2]))
-          throw new Error('Tank rank is invalid');
-        if (!args[3] || !rankRegex.test(args[3]))
-          throw new Error('DPS rank is invalid');
-        if (!args[4] || !rankRegex.test(args[4]))
+        if (!rankRegex.test(args[2])) throw new Error('Tank rank is invalid');
+
+        if (!rankRegex.test(args[3])) throw new Error('Damage rank is invalid');
+
+        if (!rankRegex.test(args[4]))
           throw new Error('Support rank is invalid');
 
-        foundSignupByMsgId.tankRank = args[2];
-        foundSignupByMsgId.damageRank = args[3];
-        foundSignupByMsgId.supportRank = args[4];
+        foundSignupByMsgId.tankRank = args[2].toUpperCase();
+        foundSignupByMsgId.damageRank = args[3].toUpperCase();
+        foundSignupByMsgId.supportRank = args[4].toUpperCase();
         foundSignupByMsgId.confirmedBy = msg.author.id;
         foundSignupByMsgId.confirmedOn = msg.createdTimestamp;
 
@@ -229,15 +238,16 @@ client.on('message', async msg => {
       case 'clear':
         let role = msg.guild.roles.cache.find(role => role.name === 'Ingame');
         let ingamePlayers = msg.guild.roles.cache.get(role.id).members;
-        ingamePlayers.forEach((value, key) => {
-          value.roles.remove(role).catch(console.error);
+        ingamePlayers.forEach(value => {
+          value.voice.setChannel(null);
+          value.roles.remove(role);
         });
         msg.channel.send('Ingame role cleared');
         break;
     }
   } catch (e) {
     await msg.channel.send(
-      `\`\`\`diff\n- Error: ${e.message.substring(0, 40)}\n\`\`\``,
+      `\`\`\`diff\n- Error: ${e.message.substring(0, 120)}\n\`\`\``,
     );
   }
 });

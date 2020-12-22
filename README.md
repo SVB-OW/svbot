@@ -25,3 +25,9 @@ npm start
 ```bash
 npm run watch
 ```
+
+## ToDo
+
+- Status (banned, left, allowed)
+- Update command in the future
+- Dogers makes matchmaker
