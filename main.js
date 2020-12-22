@@ -46,7 +46,7 @@ db.signups = [
 
 // ========================================================
 // Settings
-const prefix = '.'; // No spaces allowed
+const prefix = process.env.NODE_ENV === 'production' ? '.' : ','; // No spaces allowed
 const btagRegex = new RegExp(/.{3,}#[0-9]{4,}/);
 const regionRegex = new RegExp(/^(EU|NA)$/, 'i');
 const rankRegex = new RegExp(
@@ -63,6 +63,10 @@ client.on('message', async msg => {
     if (!args[0] === prefix || msg.author.bot) return;
 
     switch (args[0].replace(prefix, '')) {
+      case 'env':
+        await msg.channel.send(process.env.NODE_ENV);
+        break;
+
       case 'test':
         msg.channel.send(
           `Latency to bot: ${Date.now() - msg.createdTimestamp}ms`,
