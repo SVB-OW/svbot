@@ -31,6 +31,8 @@ npm run watch
 
 ## ToDo
 
+- Help command. Optional command parameter for more detailed info to one
+  specific command: .help \<command?>
 - Status (banned, left, allowed)
-- Update command in the future
+- Update command in the future: .update <@DiscordTag> \<property> \<value>
 - Dogers makes matchmaker
