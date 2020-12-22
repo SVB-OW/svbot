@@ -10,7 +10,7 @@ jobs:
   run:
     env:
       CI: true
-      NODE_ENV: production
+#       NODE_ENV: production
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
