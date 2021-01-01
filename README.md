@@ -1,6 +1,6 @@
 # SVBot
 
-Python bot for setting up the ranked gauntlet.
+Discord bot for setting up the ranked gauntlet.
 
 Add to server via this link:
 [https://discord.com/oauth2/authorize?client_id=785912791739269130&scope=bot&permissions=8]
@@ -33,6 +33,20 @@ npm run watch
 
 - Help command. Optional command parameter for more detailed info to one
   specific command: .help \<command?>
-- Status (banned, left, allowed)
-- Update command in the future: .update <@DiscordTag> \<property> \<value>
-- Dogers makes matchmaker
+- Translate matchmaking function
+- Status (banned, left, allowed) // check if still on server before sending
+  announcement
+- Allow per channel/role which commands are allowed
+- DB connection to mongo db
+
+### Low priority
+
+- command confirmedBy: shows who and when a message was confirmed
+- Update command: .update <@DiscordTag> \<property> \<value>
+- anotherOne: outputs the next player from the matchmaking pool for a certain
+  role
+
+### Streamer section
+
+- leaderboard: shows streamers points
+- countup / -down: adds points to streamers
