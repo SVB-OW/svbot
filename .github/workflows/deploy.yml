@@ -20,4 +20,4 @@ jobs:
           check-latest: true
       - run: npm ci
       - run: pm2 delete main.js || true
-      - run: pm2 start main.js
+      - run: pm2 start main.js --name "svbot"
