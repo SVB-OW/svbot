@@ -5,46 +5,20 @@ Discord bot for setting up the ranked gauntlet.
 Add to server via this link:
 [https://discord.com/oauth2/authorize?client_id=785912791739269130&scope=bot&permissions=8]
 
-## Running
-
-### Requirements
-
-- Node.js: [https://nodejs.org/en/]
-
-### Setup
-
-- npm install
-
-### Start
-
-#### Normal run
-
-```bash
-npm start
-```
-
-#### Run with watch on save
-
-```bash
-npm run watch
-```
-
 ## ToDo
 
-- Help command. Optional command parameter for more detailed info to one
-  specific command: .help \<command?>
-- Translate matchmaking function
-- Status (banned, left, allowed) // check if still on server before sending
-  announcement
-- Allow per channel/role which commands are allowed
-- DB connection to mongo db
+- / announce command parameter for how many player are needed on each role
+- / announcment doesnt mention players in embed -> make normal message out of it
+- / assign rank roles on confirm
+- update command should update by discordId and log profile afterwards
 
 ### Low priority
 
-- command confirmedBy: shows who and when a message was confirmed
-- Update command: .update <@DiscordTag> \<property> \<value>
-- anotherOne: outputs the next player from the matchmaking pool for a certain
-  role
+- another \<role>: outputs the next player from the matchmaking pool for a
+  certain role
+- Help command only show commands you're allowed to use and where to use them
+- me command
+- remove memory db
 
 ### Streamer section
 
