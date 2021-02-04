@@ -1,4 +1,5 @@
-const { ClientError } = require('../types');
+const { MessageEmbed } = require('discord.js');
+const { ClientError, Signup } = require('../types');
 
 module.exports = {
   name: 'update',
@@ -6,22 +7,39 @@ module.exports = {
   props: [
     { name: 'property', required: true },
     { name: 'value', required: true },
-    { name: 'discordTags', required: true },
+    { name: 'discordIds', required: true },
   ],
   allowedRoles: ['Admin'],
   allowedChannels: ['bot-commands'],
   async execute(msg, args, db, mongoDb, lobby) {
-    console.log('args', args);
-    if (msg.mentions.users.size === 0)
+    if (args.length < 3)
       throw new ClientError(
-        'Command must include a mention of a user as the first argument',
+        'Too few arguments. Format is !update <key> <value> <discordId...>',
       );
-    msg.mentions.users.forEach((value, key) => {
-      let foundUser = db.signups.find(item => item.discordId === key);
+
+    if (!new Signup().hasOwnProperty(args[0]))
+      throw new ClientError('Key does not exist');
+
+    let userIds = args.slice(2);
+
+    userIds.forEach(id => {
+      let foundUser = db.signups.find(item => item.discordId === id);
       if (args[0] in foundUser) {
         foundUser[args[0]] = args[1];
-        mongoDb.updateOne({ discordId: key }, { $set: foundUser });
+        mongoDb.updateOne({ discordId: id }, { $set: foundUser });
       }
+
+      msg.channel.send(
+        new MessageEmbed()
+          .setTitle('Updated signup')
+          .setTimestamp()
+          .addFields(
+            Object.keys(foundUser).map(key => ({
+              name: key,
+              value: foundUser[key] ?? '-',
+            })),
+          ),
+      );
     });
   },
 };

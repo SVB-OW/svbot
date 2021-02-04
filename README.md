@@ -10,7 +10,7 @@ Add to server via this link:
 - / announce command parameter for how many player are needed on each role
 - / announcment doesnt mention players in embed -> make normal message out of it
 - / assign rank roles on confirm
-- update command should update by discordId and log profile afterwards
+- / update command should update by discordId and log profile afterwards
 
 ### Low priority
 
