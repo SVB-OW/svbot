@@ -31,7 +31,7 @@ module.exports = {
     const roleByName = msg.guild.roles.cache.find(
       item => item.name.toUpperCase() === lobby.rank,
     );
-    lobby.pingMsg = await msg.client.channels.cache
+    lobby.pingMsg = await msg.guild.channels.cache
       .find(c => c.name === 'player-pings')
       .send(
         `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,

@@ -2,7 +2,7 @@
 const { readdirSync } = require('fs');
 const { Client, Collection } = require('discord.js');
 const { discordToken, prefix, mongoUri, dbName } = require('./config');
-const { ClientError } = require('./types/index.js');
+const { ClientError } = require('./types');
 
 const client = new Client();
 // client.user.setUsername('<username>');
