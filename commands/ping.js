@@ -10,7 +10,7 @@ module.exports = {
     { name: 'streamer', required: true },
   ],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, db, mongoDb, lobby) {
+  async execute(msg, args, db, mongoSignups, mongoLobbies) {
     // Validate
     // Checks Rank
     if (!args[0] || !rankRegex.test(args[0]))
@@ -20,10 +20,8 @@ module.exports = {
       throw new ClientError('Region is invalid ' + args[1]);
     // Checks Streamer
     if (!args[2]) throw new ClientError('Streamer cannot be empty ' + args[2]);
-    // Check that last match was cleared
-    if (lobby.pingMsg)
-      throw new ClientError('Last match must be cleared first');
 
+    let lobby = {};
     lobby.rank = args[0].toUpperCase();
     lobby.region = args[1].toUpperCase();
     lobby.streamer = args[2];
@@ -38,5 +36,11 @@ module.exports = {
       );
 
     await lobby.pingMsg.react('👍');
+
+    lobby.pingMsg = { id: lobby.pingMsg.id };
+    lobby.pingOccured = new Date().toISOString();
+    lobby.announced = false;
+    lobby.cleared = false;
+    await mongoLobbies.insertOne(lobby);
   },
 };

@@ -5,7 +5,7 @@ module.exports = {
   description: 'Deletes max 100 previous messages in the channel',
   permission: 'ADMINISTRATOR',
   props: [{ name: 'number', required: false }],
-  async execute(msg, args, db, mongoDb, lobby) {
+  async execute(msg, args, db, mongoSignups, lobby) {
     const num = args[0] ? Number.parseInt(args[0]) : 100;
     if (num < 1 || num > 100)
       throw new ClientError('Number must be in range 1-100');

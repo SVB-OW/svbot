@@ -11,7 +11,7 @@ module.exports = {
     { name: 'supportRank', required: true },
   ],
   allowedChannels: ['signup', 'bot-commands'],
-  async execute(msg, args, db, mongoDb, lobby) {
+  async execute(msg, args, db, mongoSignups, lobby) {
     if (args.length !== 4)
       throw new ClientError(
         'Invalid number of arguments. Format is ".confirm <msgId> <tankRank> <dpsRank> <supportRank>',
@@ -37,7 +37,10 @@ module.exports = {
       msg.createdTimestamp,
     ).toISOString();
 
-    mongoDb.updateOne({ signupMsgId: args[0] }, { $set: foundSignupByMsgId });
+    mongoSignups.updateOne(
+      { signupMsgId: args[0] },
+      { $set: foundSignupByMsgId },
+    );
 
     // Assign rank roles on confirm
     const member = await msg.guild.members.fetch(foundSignupByMsgId.discordId);

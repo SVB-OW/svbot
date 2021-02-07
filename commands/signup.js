@@ -9,7 +9,7 @@ module.exports = {
     { name: 'region', required: true },
   ],
   allowedChannels: ['signup'],
-  async execute(msg, args, db, mongoDb, lobby) {
+  async execute(msg, args, db, mongoSignups, lobby) {
     // Checks command contains valid btag
     if (!args[0] || !btagRegex.test(args[0]))
       throw new ClientError(
@@ -45,7 +45,7 @@ module.exports = {
       signedUpOn: new Date(msg.createdTimestamp).toISOString(),
     });
     db.signups.push(signup);
-    await mongoDb.insertOne(signup);
+    await mongoSignups.insertOne(signup);
 
     await msg.channel.send(
       'Signup has been recieved and will be checked by an event moderator',

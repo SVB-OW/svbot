@@ -1,6 +1,5 @@
 const { MessageEmbed } = require('discord.js');
 const { ClientError } = require('../types');
-const { servers } = require('../config');
 
 module.exports = {
   name: 'announce',
@@ -11,34 +10,45 @@ module.exports = {
     { name: 'dpsPlayersCount', required: false },
     { name: 'supportPlayersCount', required: false },
   ],
-  async execute(msg, args, db, mongoDb, lobby) {
+  async execute(msg, args, db, mongoSignups, mongoLobbies) {
     // Validate
-    if (!lobby.pingMsg) throw new ClientError('No ping has occured yet');
+    if ((await mongoLobbies.countDocuments()) === 0)
+      throw new ClientError('No ping has occured yet');
 
     const tankCount = args[0] ? Number.parseInt(args[0]) : 4;
     const dpsCount = args[1] ? Number.parseInt(args[1]) : 4;
     const suppCount = args[2] ? Number.parseInt(args[2]) : 4;
 
+    // Fetch ping msg
+    let lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
+    lobby.tankPlayers = [];
+    lobby.damagePlayers = [];
+    lobby.supportPlayers = [];
+
+    lobby.pingMsg = await msg.guild.channels.cache
+      .find(c => c.name === 'player-pings')
+      .messages.fetch(lobby.pingMsg.id);
+
     // List of players who reacted to ping message
-    let msgReactionUsers = lobby.pingMsg.reactions.cache
-      .filter(mr => mr.emoji.name === '👍')
-      .first()
-      .users.cache.filter(user => !user.bot);
+    let msgReactionUsers = (
+      await lobby.pingMsg.reactions.cache
+        .filter(mr => mr.emoji.name === '👍')
+        .first()
+        .users.fetch()
+    ).filter(user => !user.bot);
+
     let guildMembers = await msg.guild.members.fetch({ force: true });
 
     // Iterate list of users who reacted
     for (const [userId, user] of msgReactionUsers) {
       // Find singup for current user
-      let findSignup = db.signups.find(item => item.discordId === userId);
+      let findSignup = await mongoSignups.findOne({ discordId: userId });
+
       // Check that signup exists, was confirmed and the user is still in the server
-      // console.log(
-      //   'member on server?',
-      //   guildMembers.find(m => m.id === findSignup.discordId) ? true : false,
-      // );
       if (
         findSignup &&
         findSignup.confirmedOn &&
-        guildMembers.find(m => m.id === findSignup.discordId)
+        guildMembers.get(findSignup.discordId)
       ) {
         // Sort roles by which has the least players already
         let rolePools = [
@@ -150,5 +160,9 @@ module.exports = {
     await msg.guild.channels.cache
       .find(c => c.name === 'player-pings')
       .send(playerMessage);
+
+    lobby.pingMsg = { id: lobby.pingMsg.id };
+    lobby.announced = true;
+    mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby });
   },
 };

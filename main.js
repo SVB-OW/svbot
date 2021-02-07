@@ -22,10 +22,10 @@ let db = {};
 // Ugly async await block
 (async () => {
   await dbClient.connect();
-  mongoDb = dbClient.db(dbName).collection('signups');
+  mongoDb = dbClient.db(dbName);
 
   // InMemory Database
-  db.signups = await mongoDb.find().toArray();
+  db.signups = await mongoDb.collection('singup').find().toArray();
 })();
 
 // Current lobby config
@@ -59,10 +59,6 @@ client.on('ready', async () => {
 });
 
 client.on('message', async msg => {
-  let guildMembers = await msg.guild.members.fetch({ force: true });
-  let mem = guildMembers.get('289401547119525889');
-  // console.log('mem', mem);
-  // exit();
   try {
     // Exit without error
     if (
@@ -102,7 +98,13 @@ client.on('message', async msg => {
       throw new ClientError('This command is not permitted in this channel');
 
     // Execution
-    await command.execute(msg, args, db, mongoDb, lobby);
+    await command.execute(
+      msg,
+      args,
+      db,
+      mongoDb.collection('signups'),
+      mongoDb.collection('lobby'),
+    );
   } catch (e) {
     // Send client errors back to channel
     if (e.name === 'ClientError') {

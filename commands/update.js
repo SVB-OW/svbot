@@ -11,7 +11,7 @@ module.exports = {
   ],
   allowedRoles: ['Admin'],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, db, mongoDb, lobby) {
+  async execute(msg, args, db, mongoSignups, lobby) {
     if (args.length < 3)
       throw new ClientError(
         'Too few arguments. Format is !update <key> <value> <discordId...>',
@@ -26,7 +26,7 @@ module.exports = {
       let foundUser = db.signups.find(item => item.discordId === id);
       if (args[0] in foundUser) {
         foundUser[args[0]] = args[1];
-        mongoDb.updateOne({ discordId: id }, { $set: foundUser });
+        mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
       }
 
       msg.channel.send(
