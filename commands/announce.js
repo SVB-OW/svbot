@@ -131,10 +131,10 @@ module.exports = {
       ${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
       `;
 
-    await msg.client.channels.cache
+    await msg.guild.channels.cache
       .find(c => c.name === 'matchmaker')
       .send(btagEmbed);
-    await msg.client.channels.cache
+    await msg.guild.channels.cache
       .find(c => c.name === 'player-pings')
       .send(playerMessage);
   },
