@@ -98,7 +98,16 @@ module.exports = {
     let top4damages = lobby.damagePlayers.slice(0, dpsCount);
     let top4supports = lobby.supportPlayers.slice(0, suppCount);
 
-    // TODO: add message for players to join messages
+    let ingameRole = msg.guild.roles.cache.find(r => r.name === 'Ingame');
+    top4tanks.forEach(s =>
+      msg.guild.members.cache.fetch(s.disocrdId).roles.add(ingameRole),
+    );
+    top4damages.forEach(s =>
+      msg.guild.members.cache.fetch(s.disocrdId).roles.add(ingameRole),
+    );
+    top4supports.forEach(s =>
+      msg.guild.members.cache.fetch(s.disocrdId).roles.add(ingameRole),
+    );
 
     let lobbyHostRole = msg.guild.roles.cache.find(
       r => r.name === 'Lobby Host',
@@ -122,6 +131,7 @@ module.exports = {
         },
       );
 
+    // TODO: add message for players to join messages
     const playerMessage = `**Lobby**
       *Tank*
       ${top4tanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
