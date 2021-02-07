@@ -11,6 +11,7 @@ client.commands = new Collection();
 
 // Init mongodb and inMemory db
 const { MongoClient } = require('mongodb');
+const { exit } = require('process');
 const dbClient = new MongoClient(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -58,6 +59,10 @@ client.on('ready', async () => {
 });
 
 client.on('message', async msg => {
+  let guildMembers = await msg.guild.members.fetch({ force: true });
+  let mem = guildMembers.get('289401547119525889');
+  // console.log('mem', mem);
+  // exit();
   try {
     // Exit without error
     if (

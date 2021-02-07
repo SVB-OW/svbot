@@ -24,13 +24,13 @@ module.exports = {
       .filter(mr => mr.emoji.name === '👍')
       .first()
       .users.cache.filter(user => !user.bot);
+    let guildMembers = await msg.guild.members.fetch({ force: true });
 
     // Iterate list of users who reacted
     for (const [userId, user] of msgReactionUsers) {
       // Find singup for current user
       let findSignup = db.signups.find(item => item.discordId === userId);
       // Check that signup exists, was confirmed and the user is still in the server
-      let guildMembers = await msg.channel.guild.members.fetch({ force: true });
       // console.log(
       //   'member on server?',
       //   guildMembers.find(m => m.id === findSignup.discordId) ? true : false,
@@ -99,15 +99,18 @@ module.exports = {
     let top4supports = lobby.supportPlayers.slice(0, suppCount);
 
     let ingameRole = msg.guild.roles.cache.find(r => r.name === 'Ingame');
-    top4tanks.forEach(s =>
-      msg.guild.members.cache.fetch(s.disocrdId).roles.add(ingameRole),
-    );
-    top4damages.forEach(s =>
-      msg.guild.members.cache.fetch(s.disocrdId).roles.add(ingameRole),
-    );
-    top4supports.forEach(s =>
-      msg.guild.members.cache.fetch(s.disocrdId).roles.add(ingameRole),
-    );
+
+    top4tanks.forEach(s => {
+      guildMembers.get(s.discordId).roles.add(ingameRole);
+    });
+
+    top4damages.forEach(s => {
+      guildMembers.get(s.discordId).roles.add(ingameRole);
+    });
+
+    top4supports.forEach(s => {
+      guildMembers.get(s.discordId).roles.add(ingameRole);
+    });
 
     let lobbyHostRole = msg.guild.roles.cache.find(
       r => r.name === 'Lobby Host',
