@@ -9,7 +9,7 @@ module.exports = {
     { name: 'region', required: true },
   ],
   allowedChannels: ['signup'],
-  async execute(msg, args, db, mongoSignups, lobby) {
+  async execute(msg, args, mongoSignups, mongoLobbies) {
     // Checks command contains valid btag
     if (!args[0] || !btagRegex.test(args[0]))
       throw new ClientError(
@@ -27,10 +27,8 @@ module.exports = {
         'Make sure you attach a screenshot of your career profile to the message',
       );
     // Overwrite existing signup
-    let existingSignup = db.signups.findIndex(
-      item => item.discordId === msg.author.id,
-    );
-    if (existingSignup >= 0)
+    let existingSignup = mongoSignups.findOne({ discordId: msg.author.id });
+    if (existingSignup)
       throw new ClientError(
         'You already have signed up. If you would like to update your rank, discord or battle tag, please dm a mod.',
       );
@@ -44,7 +42,7 @@ module.exports = {
       signupMsgId: msg.id,
       signedUpOn: new Date(msg.createdTimestamp).toISOString(),
     });
-    db.signups.push(signup);
+
     await mongoSignups.insertOne(signup);
 
     await msg.channel.send(

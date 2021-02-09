@@ -7,10 +7,16 @@ Add to server via this link:
 
 ## ToDo
 
-- / announce command parameter for how many player are needed on each role
-- / announcment doesnt mention players in embed -> make normal message out of it
-- / assign rank roles on confirm
-- / update command should update by discordId and log profile afterwards
+- X announce command parameter for how many player are needed on each role
+- X announcment doesnt mention players in embed -> make normal message out of it
+- X assign rank roles on confirm
+- X update command should update by discordId and log profile afterwards
+- X remove memory db
+- X announcement doesnt increase gamesPlayed
+- check validations for ping, announce, clear
+- rework matchmaker in announce
+- X btagMessage in announcement can't be embed
+- countdown/up update by id instead of tag
 
 ### Low priority
 
@@ -18,7 +24,6 @@ Add to server via this link:
   certain role
 - Help command only show commands you're allowed to use and where to use them
 - me command
-- remove memory db
 
 ### Streamer section
 

@@ -8,7 +8,7 @@ module.exports = {
   // allowedRoles: ['Lobby Host', 'Gold', 'Admin'],
   props: [{ name: 'command', required: false }],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, db, mongoSignups, lobby) {
+  async execute(msg, args, mongoSignups, mongoLobbies) {
     const embed = new MessageEmbed().setTitle('Commands').setTimestamp();
 
     if (args.length) {

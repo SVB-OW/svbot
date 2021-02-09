@@ -11,14 +11,14 @@ module.exports = {
     { name: 'supportRank', required: true },
   ],
   allowedChannels: ['signup', 'bot-commands'],
-  async execute(msg, args, db, mongoSignups, lobby) {
+  async execute(msg, args, mongoSignups, mongoLobbies) {
     if (args.length !== 4)
       throw new ClientError(
         'Invalid number of arguments. Format is ".confirm <msgId> <tankRank> <dpsRank> <supportRank>',
       );
-    let foundSignupByMsgId = db.signups.find(
-      item => item.signupMsgId === args[0],
-    );
+    let foundSignupByMsgId = await mongoSignups.findOne({
+      signupMsgId: args[0],
+    });
     if (!foundSignupByMsgId) throw new ClientError('MsgId was not found in DB');
 
     if (!rankRegex.test(args[1])) throw new ClientError('Tank rank is invalid');

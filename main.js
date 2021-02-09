@@ -101,7 +101,6 @@ client.on('message', async msg => {
     await command.execute(
       msg,
       args,
-      db,
       mongoDb.collection('signups'),
       mongoDb.collection('lobby'),
     );

@@ -3,7 +3,7 @@ module.exports = {
   description:
     'Kicks all players with @Ingame from voice lobbies and removes their role',
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, db, mongoSignups, mongoLobbies) {
+  async execute(msg, args, mongoSignups, mongoLobbies) {
     let lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
 
     lobby.cleared = true;

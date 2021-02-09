@@ -10,7 +10,7 @@ module.exports = {
     { name: 'dpsPlayersCount', required: false },
     { name: 'supportPlayersCount', required: false },
   ],
-  async execute(msg, args, db, mongoSignups, mongoLobbies) {
+  async execute(msg, args, mongoSignups, mongoLobbies) {
     // Validate
     if ((await mongoLobbies.countDocuments()) === 0)
       throw new ClientError('No ping has occured yet');
@@ -112,51 +112,57 @@ module.exports = {
 
     top4tanks.forEach(s => {
       guildMembers.get(s.discordId).roles.add(ingameRole);
+      mongoSignups.updateOne(
+        { discordId: s.discordId },
+        { $inc: { gamesPlayed: 1 } },
+      );
     });
 
     top4damages.forEach(s => {
       guildMembers.get(s.discordId).roles.add(ingameRole);
+      mongoSignups.updateOne(
+        { discordId: s.discordId },
+        { $inc: { gamesPlayed: 1 } },
+      );
     });
 
     top4supports.forEach(s => {
       guildMembers.get(s.discordId).roles.add(ingameRole);
+      mongoSignups.updateOne(
+        { discordId: s.discordId },
+        { $inc: { gamesPlayed: 1 } },
+      );
     });
 
     let lobbyHostRole = msg.guild.roles.cache.find(
       r => r.name === 'Lobby Host',
     );
-    const btagEmbed = new MessageEmbed()
-      .setTitle('Lobby')
-      .setDescription(`<@&${lobbyHostRole.id}>`)
-      .setTimestamp()
-      .addFields(
-        {
-          name: 'Tank Players',
-          value: `${top4tanks.map(p => p.battleTag).join(', ') || 'none'}`,
-        },
-        {
-          name: 'Damage Players',
-          value: `${top4damages.map(p => p.battleTag).join(', ') || 'none'}`,
-        },
-        {
-          name: 'Support Players',
-          value: `${top4supports.map(p => p.battleTag).join(', ') || 'none'}`,
-        },
-      );
+    const btagMessage = `**Next lobby <@&${lobbyHostRole.id}>**
+*Tank*
+${top4tanks.map(p => p.battleTag).join(', ') || 'none'}
+*Damage*
+${top4damages.map(p => p.battleTag).join(', ') || 'none'}
+*Support*
+${top4supports.map(p => p.battleTag).join(', ') || 'none'}
+`;
 
-    // TODO: add message for players to join messages
-    const playerMessage = `**Lobby**
-      *Tank*
-      ${top4tanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
-      *Damage*
-      ${top4damages.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
-      *Support*
-      ${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
-      `;
+    const playerMessage = `**Lobby Announcement**
+Following players have been selected for the next game.
+If you are listed below, please join the Waiting Lobby voice channel, start the game on the right region and join the custom game.
+
+*Tank*
+${top4tanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+
+*Damage*
+${top4damages.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+
+*Support*
+${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+`;
 
     await msg.guild.channels.cache
       .find(c => c.name === 'matchmaker')
-      .send(btagEmbed);
+      .send(btagMessage);
     await msg.guild.channels.cache
       .find(c => c.name === 'player-pings')
       .send(playerMessage);

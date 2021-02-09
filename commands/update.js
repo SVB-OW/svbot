@@ -11,7 +11,7 @@ module.exports = {
   ],
   allowedRoles: ['Admin'],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, db, mongoSignups, lobby) {
+  async execute(msg, args, mongoSignups, mongoLobbies) {
     if (args.length < 3)
       throw new ClientError(
         'Too few arguments. Format is !update <key> <value> <discordId...>',
@@ -23,7 +23,10 @@ module.exports = {
     let userIds = args.slice(2);
 
     userIds.forEach(id => {
-      let foundUser = db.signups.find(item => item.discordId === id);
+      let foundUser = mongoSignups.findOne({ discordId: id });
+
+      if (!foundUser) throw new ClientError(`User id ${id} was not found`);
+
       if (args[0] in foundUser) {
         foundUser[args[0]] = args[1];
         mongoSignups.updateOne({ discordId: id }, { $set: foundUser });

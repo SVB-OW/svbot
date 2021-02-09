@@ -10,7 +10,7 @@ module.exports = {
     { name: 'streamer', required: true },
   ],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, db, mongoSignups, mongoLobbies) {
+  async execute(msg, args, mongoSignups, mongoLobbies) {
     // Validate
     // Checks Rank
     if (!args[0] || !rankRegex.test(args[0]))
