@@ -28,7 +28,10 @@ module.exports = {
           ),
       );
     } else {
-      let firstSignup = await mongoSignups.find().limit(1);
+      let firstSignup = await mongoSignups.findOne();
+
+      if (!firstSignup) throw new ClientError(`User id ${id} was not found`);
+
       msg.channel.send(
         new MessageEmbed()
           .setTitle('first signup')

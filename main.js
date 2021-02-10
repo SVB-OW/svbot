@@ -1,7 +1,14 @@
 //#region Preparation
 const { readdirSync } = require('fs');
 const { Client, Collection } = require('discord.js');
-const { discordToken, prefix, mongoUri, dbName } = require('./config');
+const {
+  discordToken,
+  prefixProd,
+  prefixTest,
+  mongoUri,
+  dbProd,
+  dbTest,
+} = require('./config');
 const { ClientError } = require('./types');
 
 const client = new Client();
@@ -11,33 +18,19 @@ client.commands = new Collection();
 
 // Init mongodb and inMemory db
 const { MongoClient } = require('mongodb');
-const { exit } = require('process');
 const dbClient = new MongoClient(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 // Init db
-let mongoDb;
-let db = {};
+let mongoDbProd;
+let mongoDbTest;
 // Ugly async await block
 (async () => {
   await dbClient.connect();
-  mongoDb = dbClient.db(dbName);
-
-  // InMemory Database
-  db.signups = await mongoDb.collection('singup').find().toArray();
+  mongoDbProd = dbClient.db(dbProd);
+  mongoDbTest = dbClient.db(dbTest);
 })();
-
-// Current lobby config
-let lobby = {
-  pingMsg: null, //null
-  rank: '',
-  region: '',
-  streamer: '',
-  tankPlayers: [],
-  damagePlayers: [],
-  supportPlayers: [],
-};
 //#endregion
 
 //#region Dynamic commands
@@ -59,15 +52,20 @@ client.on('ready', async () => {
 });
 
 client.on('message', async msg => {
+  console.log('msg', msg.content);
   try {
     // Exit without error
     if (
-      !msg.content.startsWith(prefix) ||
+      !(
+        msg.content.startsWith(prefixProd) || msg.content.startsWith(prefixTest)
+      ) ||
       msg.channel.type !== 'text' ||
       false /*  msg.author.bot */
     )
       return;
 
+    const prefix = msg.content.startsWith(prefixProd) ? prefixProd : prefixTest;
+    console.log('prefix', prefix);
     const args = msg.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 
@@ -98,12 +96,21 @@ client.on('message', async msg => {
       throw new ClientError('This command is not permitted in this channel');
 
     // Execution
-    await command.execute(
-      msg,
-      args,
-      mongoDb.collection('signups'),
-      mongoDb.collection('lobby'),
-    );
+    if (prefix === prefixProd) {
+      await command.execute(
+        msg,
+        args,
+        mongoDbProd.collection('signups'),
+        mongoDbProd.collection('lobby'),
+      );
+    } else {
+      await command.execute(
+        msg,
+        args,
+        mongoDbTest.collection('signups'),
+        mongoDbTest.collection('lobby'),
+      );
+    }
   } catch (e) {
     // Send client errors back to channel
     if (e.name === 'ClientError') {

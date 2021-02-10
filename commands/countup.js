@@ -14,6 +14,9 @@ module.exports = {
       let foundUser = await mongoSignups.findOne({
         discordId: key,
       });
+
+      if (!foundUser) throw new ClientError(`Client id ${key} was not found`);
+
       foundUser.gamesPlayed++;
       mongoSignups.updateOne({ discordId: key }, { $set: foundUser });
     });

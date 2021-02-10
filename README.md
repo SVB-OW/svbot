@@ -5,6 +5,8 @@ Discord bot for setting up the ranked gauntlet.
 Add to server via this link:
 [https://discord.com/oauth2/authorize?client_id=785912791739269130&scope=bot&permissions=8]
 
+Github Actions: [https://github.com/fdendorfer/SVBot/actions]
+
 ## ToDo
 
 - X announce command parameter for how many player are needed on each role

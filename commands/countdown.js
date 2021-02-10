@@ -12,6 +12,9 @@ module.exports = {
       );
     msg.mentions.users.forEach(async (value, key) => {
       let foundUser = await mongoSignups.findOne({ discordId: key });
+
+      if (!foundUser) throw new ClientError(`Client id ${key} was not found`);
+
       foundUser.gamesPlayed--;
       mongoSignups.updateOne({ discordId: key }, { $set: foundUser });
     });
