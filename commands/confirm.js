@@ -70,7 +70,6 @@ module.exports = {
       .find(c => c.name === 'signup')
       .messages.fetch(foundSignupByMsgId.signupMsgId)
       .then(oldMsg => {
-        // console.log('oldMsg', oldMsg);
         oldMsg.react('👍');
       });
 

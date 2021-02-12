@@ -16,6 +16,7 @@ Github Actions: [https://github.com/fdendorfer/SVBot/actions]
 - X remove memory db
 - X announcement doesnt increase gamesPlayed
 - check validations for ping, announce, clear
+- check non found users
 - rework matchmaker in announce
 - X btagMessage in announcement can't be embed
 - countdown/up update by id instead of tag

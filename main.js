@@ -52,7 +52,6 @@ client.on('ready', async () => {
 });
 
 client.on('message', async msg => {
-  console.log('msg', msg.content);
   try {
     // Exit without error
     if (
@@ -65,7 +64,6 @@ client.on('message', async msg => {
       return;
 
     const prefix = msg.content.startsWith(prefixProd) ? prefixProd : prefixTest;
-    console.log('prefix', prefix);
     const args = msg.content.slice(prefix.length).trim().split(/ +/);
     const commandName = args.shift().toLowerCase();
 

@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { prefix } = require('../config');
+const { prefixProd } = require('../config');
 
 module.exports = {
   name: 'help',
@@ -19,7 +19,12 @@ module.exports = {
             .map(p => (p.required ? `<${p.name}>` : `<${p.name}?>`))
             .join(' ');
           embed.addField(
-            '```' + prefix + (command.help || arg) + ' ' + propsString + '```',
+            '```' +
+              prefixProd +
+              (command.help || arg) +
+              ' ' +
+              propsString +
+              '```',
             command.description,
           );
         }
@@ -30,7 +35,12 @@ module.exports = {
           .map(p => (p.required ? `<${p.name}>` : `<${p.name}?>`))
           .join(' ');
         embed.addField(
-          '```' + prefix + (command.help || name) + ' ' + propsString + '```',
+          '```' +
+            prefixProd +
+            (command.help || name) +
+            ' ' +
+            propsString +
+            '```',
           command.description +
             '\nAllowed Roles: ' +
             command.allowedRoles?.join(', '),
