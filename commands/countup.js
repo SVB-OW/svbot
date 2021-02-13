@@ -2,20 +2,17 @@ const { ClientError } = require('../types');
 
 module.exports = {
   name: 'countup',
-  description: 'Increments the played cound of a player',
-  props: [{ name: 'discordTag', required: true }],
+  description: 'Increments the played cound of one or more player',
+  props: [{ name: 'discordIds', required: true }],
   allowedChannels: ['bot-commands'],
   async execute(msg, args, mongoSignups, mongoLobbies) {
-    if (msg.mentions.users.size !== 1)
-      throw new ClientError(
-        'Command must include a mention of a user as the first argument',
-      );
-    msg.mentions.users.forEach(async (value, key) => {
-      let foundUser = await mongoSignups.findOne({
-        discordId: key,
-      });
+    if (args.length === 0)
+      throw new ClientError('Command must include at least one user id');
 
-      if (!foundUser) throw new ClientError(`Client id ${key} was not found`);
+    args.forEach(async value => {
+      let foundUser = await mongoSignups.findOne({ discordId: value });
+      if (!foundUser)
+        throw new ClientError(`Signup for ${value} was not found`);
 
       foundUser.gamesPlayed++;
       mongoSignups.updateOne({ discordId: key }, { $set: foundUser });

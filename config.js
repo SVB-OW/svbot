@@ -2,9 +2,8 @@ module.exports = {
   discordToken: 'Nzg1OTEyNzkxNzM5MjY5MTMw.X8-wUw.3UV0IpkVAsp1kBTQ7HsE3Fd6G3c',
   mongoUri:
     'mongodb+srv://svbot:ZHCenGjnTpK9ZcqX@svbotcluster.1h7rr.mongodb.net/svbot?retryWrites=true&w=majority',
-  dbLive: process.env.NODE_ENV === 'production' ? 'svbot-beta' : 'svbot',
-  dbProd: 'svbot-beta',
-  dbTest: 'svbot',
+  dbProd: 'svbot',
+  dbTest: 'svbot-test',
   prefixLive: process.env.NODE_ENV === 'production' ? '!' : ',',
   prefixProd: '!',
   prefixTest: ',',

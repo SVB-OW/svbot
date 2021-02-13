@@ -12,6 +12,11 @@ module.exports = {
   allowedChannels: ['bot-commands'],
   async execute(msg, args, mongoSignups, mongoLobbies) {
     // Validate
+    const pingsChannel = await msg.guild.channels.cache.find(
+      c => c.name === 'player-pings',
+    );
+    if (!pingsChannel)
+      throw new ClientError('Channel player-pings does not exist');
     // Checks Rank
     if (!args[0] || !rankRegex.test(args[0]))
       throw new ClientError('Rank is invalid ' + args[0]);
@@ -29,11 +34,10 @@ module.exports = {
     const roleByName = msg.guild.roles.cache.find(
       item => item.name.toUpperCase() === lobby.rank,
     );
-    lobby.pingMsg = await msg.guild.channels.cache
-      .find(c => c.name === 'player-pings')
-      .send(
-        `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,
-      );
+    if (!roleByName) throw new ClientError(`Role ${lobby.rank} does not exist`);
+    lobby.pingMsg = await pingsChannel.send(
+      `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,
+    );
 
     await lobby.pingMsg.react('👍');
 

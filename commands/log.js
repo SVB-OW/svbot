@@ -10,6 +10,7 @@ module.exports = {
   async execute(msg, args, mongoSignups, mongoLobbies) {
     if (mongoSignups.countDocuments() === 0)
       throw new ClientError('No signups yet');
+
     if (msg.mentions.users.size === 1) {
       let found = await mongoSignups.findOne({
         discordId: msg.mentions.users.first().id,
@@ -29,8 +30,6 @@ module.exports = {
       );
     } else {
       let firstSignup = await mongoSignups.findOne();
-
-      if (!firstSignup) throw new ClientError(`User id ${id} was not found`);
 
       msg.channel.send(
         new MessageEmbed()

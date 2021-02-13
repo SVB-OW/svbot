@@ -1,4 +1,3 @@
-const { MessageEmbed } = require('discord.js');
 const { ClientError } = require('../types');
 
 module.exports = {
@@ -11,9 +10,25 @@ module.exports = {
     { name: 'supportPlayersCount', required: false },
   ],
   async execute(msg, args, mongoSignups, mongoLobbies) {
-    // Validate
+    //#region Validations
     if ((await mongoLobbies.countDocuments()) === 0)
       throw new ClientError('No ping has occured yet');
+
+    let ingameRole = msg.guild.roles.cache.find(r => r.name === 'Ingame');
+    if (!ingameRole) throw new ClientError('Ingame role does not exist');
+    let hostRole = msg.guild.roles.cache.find(r => r.name === 'Lobby Host');
+    if (!hostRole) throw new ClientError('Lobby Host role does not exist');
+
+    const mmChannel = msg.guild.channels.cache.find(
+      c => c.name === 'matchmaker',
+    );
+    if (!mmChannel) throw new ClientError('Channel matchmaker does not exist');
+    const pingsChannel = msg.guild.channels.cache.find(
+      c => c.name === 'player-pings',
+    );
+    if (!pingsChannel)
+      throw new ClientError('Channel player-pings does not exist');
+    //#endregion
 
     const tankCount = args[0] ? Number.parseInt(args[0]) : 4;
     const dpsCount = args[1] ? Number.parseInt(args[1]) : 4;
@@ -108,8 +123,6 @@ module.exports = {
     let top4damages = lobby.damagePlayers.slice(0, dpsCount);
     let top4supports = lobby.supportPlayers.slice(0, suppCount);
 
-    let ingameRole = msg.guild.roles.cache.find(r => r.name === 'Ingame');
-
     top4tanks.forEach(s => {
       guildMembers.get(s.discordId).roles.add(ingameRole);
       mongoSignups.updateOne(
@@ -134,10 +147,7 @@ module.exports = {
       );
     });
 
-    let lobbyHostRole = msg.guild.roles.cache.find(
-      r => r.name === 'Lobby Host',
-    );
-    const btagMessage = `**Next lobby <@&${lobbyHostRole.id}>**
+    const btagMessage = `**Next lobby <@&${hostRole.id}>**
 *Tank*
 ${top4tanks.map(p => p.battleTag).join(', ') || 'none'}
 *Damage*
@@ -160,12 +170,8 @@ ${top4damages.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 ${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 `;
 
-    await msg.guild.channels.cache
-      .find(c => c.name === 'matchmaker')
-      .send(btagMessage);
-    await msg.guild.channels.cache
-      .find(c => c.name === 'player-pings')
-      .send(playerMessage);
+    mmChannel.send(btagMessage);
+    pingsChannel.send(playerMessage);
 
     lobby.pingMsg = { id: lobby.pingMsg.id };
     lobby.announced = true;

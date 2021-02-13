@@ -16,6 +16,12 @@ module.exports = {
       throw new ClientError(
         'Invalid number of arguments. Format is ".confirm <msgId> <tankRank> <dpsRank> <supportRank>',
       );
+
+    const signupChannel = msg.guild.channels.cache.find(
+      c => c.name === 'signup',
+    );
+    if (!signupChannel) throw new ClientError('Signup channel does not exist');
+
     let foundSignupByMsgId = await mongoSignups.findOne({
       signupMsgId: args[0],
     });
@@ -66,9 +72,8 @@ module.exports = {
       );
 
     // TODO: Old messages might not be fetchable
-    msg.guild.channels.cache
-      .find(c => c.name === 'signup')
-      .messages.fetch(foundSignupByMsgId.signupMsgId)
+    signupChannel.messages
+      .fetch(foundSignupByMsgId.signupMsgId)
       .then(oldMsg => {
         oldMsg.react('👍');
       });

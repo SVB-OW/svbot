@@ -1,3 +1,5 @@
+const { ClientError } = require('../types');
+
 module.exports = {
   name: 'clear',
   description:
@@ -5,11 +7,13 @@ module.exports = {
   allowedChannels: ['bot-commands'],
   async execute(msg, args, mongoSignups, mongoLobbies) {
     let lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
+    if (!lobby) throw new ClientError('No lobby was announced yet');
+    let role = msg.guild.roles.cache.find(role => role.name === 'Ingame');
+    if (!role) throw new ClientError('Ingame role does not exist');
 
     lobby.cleared = true;
     mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby });
 
-    let role = msg.guild.roles.cache.find(role => role.name === 'Ingame');
     let ingamePlayers = msg.guild.roles.cache.get(role.id).members;
     ingamePlayers.forEach(value => {
       value.voice.setChannel(null);
