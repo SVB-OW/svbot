@@ -27,7 +27,9 @@ module.exports = {
         'Make sure you attach a screenshot of your career profile to the message',
       );
     // Overwrite existing signup
-    let existingSignup = mongoSignups.findOne({ discordId: msg.author.id });
+    let existingSignup = await mongoSignups.findOne({
+      discordId: msg.author.id,
+    });
     if (existingSignup)
       throw new ClientError(
         'You already have signed up. If you would like to update your rank, discord or battle tag, please dm a mod.',
