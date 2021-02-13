@@ -8,7 +8,7 @@ module.exports = {
   props: [{ name: 'discordTag', required: false }],
   allowedChannels: ['bot-commands'],
   async execute(msg, args, mongoSignups, mongoLobbies) {
-    if (mongoSignups.countDocuments() === 0)
+    if ((await mongoSignups.countDocuments()) === 0)
       throw new ClientError('No signups yet');
 
     if (msg.mentions.users.size === 1) {
