@@ -12,7 +12,7 @@ module.exports = {
   ],
   allowedChannels: ['signup', 'bot-commands'],
   async execute(msg, args, mongoSignups, mongoLobbies) {
-    if (args.length !== 4)
+    if (args.length < 4)
       throw new ClientError(
         'Invalid number of arguments. Format is ".confirm <msgId> <tankRank> <dpsRank> <supportRank>',
       );

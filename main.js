@@ -12,8 +12,6 @@ const {
 const { ClientError } = require('./types');
 
 const client = new Client();
-// client.user.setUsername('<username>');
-// client.user.setAvatar('<url or path>');
 client.commands = new Collection();
 
 // Init mongodb and inMemory db
@@ -45,6 +43,8 @@ for (const file of commandFiles) {
 //#endregion
 
 client.on('ready', async () => {
+  // client.user.setUsername('<username>');
+  client.user.setAvatar('./svbot.png');
   client.user.setActivity(
     process.env.NODE_ENV === 'production' ? 'Production' : 'Test',
     { type: 'WATCHING' },

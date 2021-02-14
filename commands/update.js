@@ -24,7 +24,7 @@ module.exports = {
 
     userIds.forEach(id => {
       let foundUser = mongoSignups.findOne({ discordId: id });
-      if (!foundUser) throw new ClientError(`User id ${id} was not found`);
+      if (!foundUser) throw new ClientError(`Signup for ${id} was not found`);
 
       if (args[0] in foundUser) {
         foundUser[args[0]] = args[1];
