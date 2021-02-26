@@ -1,6 +1,7 @@
 //#region Preparation
 const { readdirSync } = require('fs');
 const { Client, Collection } = require('discord.js');
+const sendmail = require('sendmail')({ silent: true });
 const {
   discordToken,
   prefixProd,
@@ -43,12 +44,40 @@ for (const file of commandFiles) {
 //#endregion
 
 client.on('ready', async () => {
-  // client.user.setUsername('<username>');
-  client.user.setAvatar('./svbot.png');
-  client.user.setActivity(
-    process.env.NODE_ENV === 'production' ? 'Production' : 'Test',
-    { type: 'WATCHING' },
-  );
+  try {
+    // await client.user.setUsername('<username>');
+    // await client.user.setAvatar('./svbot.png');
+    await client.user.setActivity(
+      process.env.NODE_ENV === 'production' ? 'Production' : 'Test',
+      { type: 'WATCHING' },
+    );
+  } catch (e) {
+    console.error(e);
+
+    let html = `<table>
+    <thead>
+      <tr>
+        ${Object.keys(e)
+          .map(i => '<th>' + i + '</th>')
+          .join('')}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      ${Object.values(e)
+        .map(i => '<td>' + i + '</td>')
+        .join('')}
+      </tr>
+    </tbody>
+  </table>`;
+
+    sendmail({
+      from: 'svbot@svb.gg',
+      to: 'flo.dendorfer@gmail.com',
+      subject: 'SVBot: ' + e.name,
+      html,
+    });
+  }
 });
 
 client.on('message', async msg => {
@@ -114,7 +143,33 @@ client.on('message', async msg => {
     if (e.name === 'ClientError') {
       msg.reply(`\`\`\`diff\n- Error: ${e.message.substring(0, 120)}\n\`\`\``);
       msg.react('🚫');
-    } else console.error(e);
+    } else {
+      console.error(e);
+
+      let html = `<table>
+      <thead>
+        <tr>
+          ${Object.keys(e)
+            .map(i => '<th>' + i + '</th>')
+            .join('')}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        ${Object.values(e)
+          .map(i => '<td>' + i + '</td>')
+          .join('')}
+        </tr>
+      </tbody>
+    </table>`;
+
+      sendmail({
+        from: 'svbot@svb.gg',
+        to: 'flo.dendorfer@gmail.com',
+        subject: 'Error in SVBot',
+        html,
+      });
+    }
   }
 });
 
