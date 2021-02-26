@@ -6,12 +6,8 @@ const {
   isProd,
   discordToken,
   prefixLive,
-  prefixProd,
-  prefixTest,
   mongoUri,
   dbLive,
-  dbProd,
-  dbTest,
 } = require('./config');
 const { ClientError } = require('./types');
 
@@ -26,14 +22,10 @@ const dbClient = new MongoClient(mongoUri, {
 });
 // Init db
 let mongoDb;
-let mongoDbProd;
-let mongoDbTest;
 // Ugly async await block
 (async () => {
   await dbClient.connect();
   mongoDb = dbClient.db(dbLive);
-  mongoDbProd = dbClient.db(dbProd);
-  mongoDbTest = dbClient.db(dbTest);
 })();
 //#endregion
 
@@ -49,14 +41,12 @@ for (const file of commandFiles) {
 //#endregion
 
 client.on('ready', async () => {
-  console.log('prefixLive', prefixLive);
   try {
     // await client.user.setUsername('SVBot');
     // await client.user.setAvatar('./svbot.png');
-    await client.user.setActivity(
-      process.env.NODE_ENV === 'production' ? 'Production' : 'Test',
-      { type: 'WATCHING' },
-    );
+    await client.user.setActivity(isProd ? 'Production' : 'Test', {
+      type: 'WATCHING',
+    });
   } catch (e) {
     console.error(e);
 
