@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const { prefixProd } = require('../config');
+const { prefixLive } = require('../config');
 
 module.exports = {
   name: 'help',
@@ -20,7 +20,7 @@ module.exports = {
             .join(' ');
           embed.addField(
             '```' +
-              prefixProd +
+              prefixLive +
               (command.help || arg) +
               ' ' +
               propsString +
@@ -36,7 +36,7 @@ module.exports = {
           .join(' ');
         embed.addField(
           '```' +
-            prefixProd +
+            prefixLive +
             (command.help || name) +
             ' ' +
             propsString +

@@ -3,10 +3,13 @@ const { readdirSync } = require('fs');
 const { Client, Collection } = require('discord.js');
 const sendmail = require('sendmail')({ silent: true });
 const {
+  isProd,
   discordToken,
+  prefixLive,
   prefixProd,
   prefixTest,
   mongoUri,
+  dbLive,
   dbProd,
   dbTest,
 } = require('./config');
@@ -22,11 +25,13 @@ const dbClient = new MongoClient(mongoUri, {
   useUnifiedTopology: true,
 });
 // Init db
+let mongoDb;
 let mongoDbProd;
 let mongoDbTest;
 // Ugly async await block
 (async () => {
   await dbClient.connect();
+  mongoDb = dbClient.db(dbLive);
   mongoDbProd = dbClient.db(dbProd);
   mongoDbTest = dbClient.db(dbTest);
 })();
@@ -44,8 +49,9 @@ for (const file of commandFiles) {
 //#endregion
 
 client.on('ready', async () => {
+  console.log('prefixLive', prefixLive);
   try {
-    // await client.user.setUsername('<username>');
+    // await client.user.setUsername('SVBot');
     // await client.user.setAvatar('./svbot.png');
     await client.user.setActivity(
       process.env.NODE_ENV === 'production' ? 'Production' : 'Test',
@@ -84,60 +90,45 @@ client.on('message', async msg => {
   try {
     // Exit without error
     if (
-      !(
-        msg.content.startsWith(prefixProd) || msg.content.startsWith(prefixTest)
-      ) ||
+      !msg.content.startsWith(prefixLive) ||
       msg.channel.type !== 'text' ||
       false /*  msg.author.bot */
     )
       return;
 
-    const prefix = msg.content.startsWith(prefixProd) ? prefixProd : prefixTest;
-    const args = msg.content.slice(prefix.length).trim().split(/ +/);
-    const commandName = args.shift().toLowerCase();
+    const args = msg.content.slice(prefixLive.length).trim().split(/ +/);
+    const cmdName = args.shift().toLowerCase();
 
     // Find command
-    if (!client.commands.has(commandName))
+    if (!client.commands.has(cmdName))
       throw new ClientError('Command not found');
-    const command = client.commands.get(commandName);
+    const cmd = client.commands.get(cmdName);
 
     // Permission validation
-    if (command.permission) {
+    if (cmd.permission) {
       const authorPerms = msg.channel.permissionsFor(msg.author);
-      if (!authorPerms || !authorPerms.has(command.permission))
+      if (!authorPerms || !authorPerms.has(cmd.permission))
         throw new ClientError("You're not permitted to use this command");
     }
 
     // Role validation
     if (
-      command.allowedRoles &&
-      !msg.member.roles.cache.some(r => command.allowedRoles.includes(r.name))
+      cmd.allowedRoles &&
+      !msg.member.roles.cache.some(r => cmd.allowedRoles.includes(r.name))
     )
       throw new ClientError("You're not permitted to use this command");
 
     // Channel validation
-    if (
-      command.allowedChannels &&
-      !command.allowedChannels.includes(msg.channel.name)
-    )
+    if (cmd.allowedChannels && !cmd.allowedChannels.includes(msg.channel.name))
       throw new ClientError('This command is not permitted in this channel');
 
     // Execution
-    if (prefix === prefixProd) {
-      await command.execute(
-        msg,
-        args,
-        mongoDbProd.collection('signups'),
-        mongoDbProd.collection('lobby'),
-      );
-    } else {
-      await command.execute(
-        msg,
-        args,
-        mongoDbTest.collection('signups'),
-        mongoDbTest.collection('lobby'),
-      );
-    }
+    await cmd.execute(
+      msg,
+      args,
+      mongoDb.collection('signups'),
+      mongoDb.collection('lobby'),
+    );
   } catch (e) {
     // Send client errors back to channel
     if (e.name === 'ClientError') {
