@@ -14,16 +14,17 @@ module.exports = {
   async execute(msg, args, mongoSignups, mongoLobbies) {
     if (args.length < 3)
       throw new ClientError(
-        'Too few arguments. Format is !update <key> <value> <discordId...>',
+        'Too few arguments. Format is !update <property> <value> <discordIds...>',
       );
 
     if (!new Signup().hasOwnProperty(args[0]))
-      throw new ClientError('Key does not exist');
+      throw new ClientError('Property does not exist');
 
     let userIds = args.slice(2);
 
-    userIds.forEach(id => {
-      let foundUser = mongoSignups.findOne({ discordId: id });
+    userIds.forEach(async id => {
+      let foundUser = await mongoSignups.findOne({ discordId: id });
+      console.log('foundUser', foundUser);
       if (!foundUser) throw new ClientError(`Signup for ${id} was not found`);
 
       if (args[0] in foundUser) {
