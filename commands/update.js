@@ -28,7 +28,11 @@ module.exports = {
       if (!foundUser) throw new ClientError(`Signup for ${id} was not found`);
 
       if (args[0] in foundUser) {
-        foundUser[args[0]] = args[1];
+        let newvalue = args[1];
+        if (args[0].toLowerCase() in ["tankrank", "damagerank", "supportrank"]) {
+          newvalue = args[1].toUpperCase();
+        }
+        foundUser[args[0]] = newvalue;
         mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
       }
 
