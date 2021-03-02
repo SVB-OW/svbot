@@ -11,7 +11,7 @@ module.exports = {
   ],
   allowedRoles: ['Admin'],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups, mongoLobbies) {
+  async execute(msg, args, mongoSignups) {
     if (args.length < 3)
       throw new ClientError(
         'Too few arguments. Format is !update <property> <value> <discordIds...>',

@@ -7,7 +7,7 @@ module.exports = {
     'Logs the first db entry or optionally a specific entry by signupId',
   props: [{ name: 'discordTag', required: false }],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups, mongoLobbies) {
+  async execute(msg, args, mongoSignups) {
     if ((await mongoSignups.countDocuments()) === 0)
       throw new ClientError('No signups yet');
 

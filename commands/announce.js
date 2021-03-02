@@ -55,7 +55,7 @@ module.exports = {
     let guildMembers = await msg.guild.members.fetch({ force: true });
 
     // Iterate list of users who reacted
-    for (const [userId, user] of msgReactionUsers) {
+    for (const [userId] of msgReactionUsers) {
       // Find singup for current user
       let findSignup = await mongoSignups.findOne({ discordId: userId });
 
