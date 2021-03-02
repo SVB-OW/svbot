@@ -15,7 +15,7 @@ module.exports = {
         throw new ClientError(`Signup for ${value} was not found`);
 
       foundUser.gamesPlayed++;
-      mongoSignups.updateOne({ discordId: key }, { $set: foundUser });
+      mongoSignups.updateOne({ discordId: value }, { $set: foundUser });
     });
   },
 };
