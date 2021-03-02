@@ -1,7 +1,7 @@
 {
   "name": "svbot",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "license": "MIT",
   "scripts": {
     "start": "node main.js",
@@ -11,5 +11,9 @@
     "discord.js": "^12.4.1",
     "mongodb": "^3.6.3",
     "sendmail": "^1.6.1"
+  },
+  "devDependencies": {
+    "@types/mongodb": "^3.6.8",
+    "@types/node": "^14.14.31"
   }
 }

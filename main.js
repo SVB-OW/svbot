@@ -42,7 +42,7 @@ for (const file of commandFiles) {
 
 client.on('ready', async () => {
   try {
-    // await client.user.setUsername('SVBot');
+    await client.user.setUsername('SVBot');
     // await client.user.setAvatar('./svbot.png');
     await client.user.setActivity(isProd ? 'Production' : 'Test', {
       type: 'WATCHING',
