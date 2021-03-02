@@ -122,8 +122,8 @@ client.on('message', async msg => {
   } catch (e) {
     // Send client errors back to channel
     if (e.name === 'ClientError') {
-      msg.reply(`\`\`\`diff\n- Error: ${e.message.substring(0, 120)}\n\`\`\``);
-      msg.react('🚫');
+      await msg.reply(`\`\`\`diff\n- Error: ${e.message.substring(0, 120)}\n\`\`\``);
+      await msg.react('🚫');
     } else {
       console.error(e);
 

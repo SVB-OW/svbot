@@ -32,7 +32,7 @@ module.exports = {
         mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
       }
 
-      msg.channel.send(
+      await msg.channel.send(
         new MessageEmbed()
           .setTitle('Updated signup')
           .setTimestamp()

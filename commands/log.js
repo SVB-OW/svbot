@@ -17,7 +17,7 @@ module.exports = {
       });
       if (!found) throw new ClientError('Signup not found');
 
-      msg.channel.send(
+      await msg.channel.send(
         new MessageEmbed()
           .setTitle(args[0])
           .setTimestamp()
@@ -31,7 +31,7 @@ module.exports = {
     } else {
       let firstSignup = await mongoSignups.findOne();
 
-      msg.channel.send(
+      await msg.channel.send(
         new MessageEmbed()
           .setTitle('first signup')
           .setTimestamp()

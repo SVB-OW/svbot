@@ -48,6 +48,6 @@ module.exports = {
       }
     }
 
-    msg.channel.send(embed);
+    await msg.channel.send(embed);
   },
 };
