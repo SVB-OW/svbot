@@ -11,7 +11,7 @@ module.exports = {
   ],
   allowedRoles: ['Admin'],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups, mongoLobbies) {
+  async execute(msg, args, mongoSignups) {
     if (args.length < 3)
       throw new ClientError(
         'Too few arguments. Format is !update <property> <value> <discordIds...>',
@@ -28,11 +28,15 @@ module.exports = {
       if (!foundUser) throw new ClientError(`Signup for ${id} was not found`);
 
       if (args[0] in foundUser) {
-        foundUser[args[0]] = args[1];
+        let newvalue = args[1];
+        if (args[0].toLowerCase() in ["tankrank", "damagerank", "supportrank"]) {
+          newvalue = args[1].toUpperCase();
+        }
+        foundUser[args[0]] = newvalue;
         mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
       }
 
-      msg.channel.send(
+      await msg.channel.send(
         new MessageEmbed()
           .setTitle('Updated signup')
           .setTimestamp()

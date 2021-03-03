@@ -9,7 +9,7 @@ module.exports = {
     { name: 'region', required: true },
   ],
   allowedChannels: ['signup'],
-  async execute(msg, args, mongoSignups, mongoLobbies) {
+  async execute(msg, args, mongoSignups) {
     // Checks command contains valid btag
     if (!args[0] || !btagRegex.test(args[0]))
       throw new ClientError(
