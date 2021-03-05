@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: 'stats',
   description: 'Display some stats for the event',
-  allowedRoles: ['Admin'],
+  allowedChannels: ['bot-commands'],
   async execute(msg, args, mongoSignups) {
     // Get the stats!
     let totalPlayers = await mongoSignups.countDocuments();
