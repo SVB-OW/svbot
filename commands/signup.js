@@ -48,7 +48,7 @@ module.exports = {
     await mongoSignups.insertOne(signup);
 
     await msg.channel.send(
-      'Signup has been recieved and will be checked by an event moderator',
+      'Signup has been received and will be checked by an event moderator',
     );
   },
 };
