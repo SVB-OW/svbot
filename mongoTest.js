@@ -10,6 +10,6 @@ const dbClient = new MongoClient(mongoUri, {
   const mongoDb = dbClient.db('svbot');
   const signups = mongoDb.collection('signups');
 
-  let o = await signups.findOne({}, { sort: { $natural: -1 } });
+  let o = await signups.find().toArray();
   console.log('o', o);
 })();
