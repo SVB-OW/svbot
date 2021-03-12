@@ -24,7 +24,7 @@ module.exports = {
           .addFields(
             Object.keys(found).map(key => ({
               name: key,
-              value: found[key] ?? '-',
+              value: found[key] || '-',
             })),
           ),
       );

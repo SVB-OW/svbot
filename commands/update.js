@@ -9,7 +9,6 @@ module.exports = {
     { name: 'value', required: true },
     { name: 'discordIds', required: true },
   ],
-  allowedRoles: ['Admin'],
   allowedChannels: ['bot-commands'],
   async execute(msg, args, mongoSignups) {
     if (args.length < 3)
@@ -24,15 +23,14 @@ module.exports = {
 
     userIds.forEach(async id => {
       let foundUser = await mongoSignups.findOne({ discordId: id });
-      console.log('foundUser', foundUser);
       if (!foundUser) throw new ClientError(`Signup for ${id} was not found`);
 
       if (args[0] in foundUser) {
-        let newvalue = args[1];
-        if (args[0].toLowerCase() in ["tankrank", "damagerank", "supportrank"]) {
-          newvalue = args[1].toUpperCase();
-        }
-        foundUser[args[0]] = newvalue;
+        let newVal = args[1];
+        if (['tankRank', 'damageRank', 'supportRank'].includes(args[0]))
+          newVal = args[1].toUpperCase();
+
+        foundUser[args[0]] = newVal;
         mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
       }
 
@@ -43,7 +41,7 @@ module.exports = {
           .addFields(
             Object.keys(foundUser).map(key => ({
               name: key,
-              value: foundUser[key] ?? '-',
+              value: foundUser[key] || '-',
             })),
           ),
       );

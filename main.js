@@ -122,7 +122,9 @@ client.on('message', async msg => {
   } catch (e) {
     // Send client errors back to channel
     if (e.name === 'ClientError') {
-      await msg.reply(`\`\`\`diff\n- Error: ${e.message.substring(0, 120)}\n\`\`\``);
+      await msg.reply(
+        `\`\`\`diff\n- Error: ${e.message.substring(0, 120)}\n\`\`\``,
+      );
       await msg.react('🚫');
     } else {
       console.error(e);
@@ -145,7 +147,7 @@ client.on('message', async msg => {
     </table>`;
 
       sendmail({
-        from: 'svbot@svb.gg',
+        from: 'svbot@svb.net',
         to: 'flo.dendorfer@gmail.com',
         subject: 'Error in SVBot',
         html,

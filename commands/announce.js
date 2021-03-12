@@ -12,7 +12,7 @@ module.exports = {
   async execute(msg, args, mongoSignups, mongoLobbies) {
     //#region Validations
     if ((await mongoLobbies.countDocuments()) === 0)
-      throw new ClientError('No ping has occured yet');
+      throw new ClientError('No ping has occurred yet');
 
     let ingameRole = msg.guild.roles.cache.find(r => r.name === 'Ingame');
     if (!ingameRole) throw new ClientError('Ingame role does not exist');

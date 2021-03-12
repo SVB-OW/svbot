@@ -10,7 +10,7 @@ module.exports = {
     { name: 'dpsRank', required: true },
     { name: 'supportRank', required: true },
   ],
-  allowedChannels: ['signup', 'bot-commands'],
+  allowedChannels: ['bot-commands'],
   async execute(msg, args, mongoSignups) {
     if (args.length < 4)
       throw new ClientError(
