@@ -13,7 +13,7 @@ module.exports = {
 
     if (args.length) {
       let found = await mongoSignups.findOne({
-        discordId: args[0],
+        discordId: args[0].replace(/[<>@!]/g, ''),
       });
       if (!found) throw new ClientError('Signup not found');
 
