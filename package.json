@@ -1,19 +1,18 @@
 {
   "name": "svbot",
-  "version": "1.0.0",
-  "main": "main.js",
+  "version": "1.1.0",
   "license": "MIT",
   "scripts": {
-    "start": "node main.js",
-    "watch": "npx nodemon main.js"
+    "start": "node out/main.js",
+    "build": "npx -p typescript tsc",
+    "dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon out/main.js\""
   },
   "dependencies": {
+    "@types/mongodb": "^3.6.8",
+    "@types/node": "^14.14.31",
     "discord.js": "^12.4.1",
     "mongodb": "^3.6.3",
-    "sendmail": "^1.6.1"
-  },
-  "devDependencies": {
-    "@types/mongodb": "^3.6.8",
-    "@types/node": "^14.14.31"
+    "sendmail": "^1.6.1",
+    "typescript": "^4.2.3"
   }
 }

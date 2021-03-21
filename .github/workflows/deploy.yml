@@ -19,5 +19,6 @@ jobs:
           node-version: '14'
           check-latest: true
       - run: npm ci
-      - run: pm2 delete main.js || true
-      - run: pm2 start main.js --name "svbot"
+      - run: npm run build
+      - run: pm2 delete svbot || true
+      - run: pm2 start out/main.js --name "svbot"
