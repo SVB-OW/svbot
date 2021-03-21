@@ -89,7 +89,10 @@ client.on('message', async (msg: Message) => {
       throw new ClientError("You're not permitted to use this command");
 
     // Channel validation
-    if (cmd.allowedChannels && !cmd.allowedChannels.includes(msg.channel.name))
+    if (
+      cmd.allowedChannels.length > 0 &&
+      !cmd.allowedChannels.includes(msg.channel.name)
+    )
       throw new ClientError('This command is not permitted in this channel');
 
     // Execution
