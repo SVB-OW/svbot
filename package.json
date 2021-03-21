@@ -1,11 +1,11 @@
 {
   "name": "svbot",
-  "version": "1.0.0",
-  "main": "main.js",
+  "version": "1.1.0",
   "license": "MIT",
   "scripts": {
-    "start": "node main.js",
-    "watch": "npx nodemon main.js"
+    "start": "node out/main.js",
+    "build": "npx tsc",
+    "dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon out/main.js\""
   },
   "dependencies": {
     "discord.js": "^12.4.1",
