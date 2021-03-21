@@ -163,8 +163,8 @@ ${top4supports.map(p => p.battleTag).join(', ') || 'none'}
 `;
 
     const playerMessage = `**Lobby Announcement**
-Following players have been selected for the next game.
-If you are listed below, please join the Waiting Lobby voice channel, start the game on the right region and join the custom game.
+The following players have been selected for the next game.
+If you are listed below, please join the Waiting Lobby voice channel, start the game on the right region and wait for an invite to the custom game lobby.
 
 *Tank*
 ${top4tanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
