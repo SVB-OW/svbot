@@ -1,5 +1,5 @@
 import { Message } from 'discord.js';
-import { Signup, Rank, Region } from '.';
+import { Signup, Rank, Region } from '..';
 
 export class Lobby {
   _id?: string;

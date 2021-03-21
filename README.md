@@ -20,10 +20,12 @@ Github Actions: [https://github.com/fdendorfer/SVBot/actions]
 - [x] check non found users
 - [x] countdown/up update by id instead of tag
 - [ ] clear last lobby before new announce
-- [ ] rework matchmaker in announce?
+- [ ] update command should update roles and optionally take msgId from
+      #update-request channel and react with check
 
 ### Low priority
 
+- [ ] rework matchmaker in announce?
 - [ ] another \<role>: outputs the next player from the matchmaking pool for a
       certain role
 - [ ] Help command only show commands you're allowed to use and where to use

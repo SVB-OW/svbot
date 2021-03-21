@@ -1,7 +1,6 @@
-import { Message, PermissionResolvable } from 'discord.js';
+import { PermissionResolvable } from 'discord.js';
 import { Collection } from 'mongodb';
-import { CommandProperty } from './CommandProperty';
-import { ICommandMessage } from './ICommandMessage';
+import { CommandProperty, ICommandMessage } from '..';
 
 // bot command files
 export class Command {

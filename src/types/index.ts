@@ -1,15 +1,15 @@
-// Db types
-export * from './Signup';
-export * from './Lobby';
+// db types
+export * from './db/Signup';
+export * from './db/Lobby';
 
 // other types
-export * from './ClientError';
-export * from './Command';
-export * from './CommandProperty';
+export * from './discord/ClientError';
+export * from './discord/Command';
+export * from './discord/CommandProperty';
 
 // discord.js extended types
-export * from './CommandsClient';
-export * from './ICommandMessage';
+export * from './discord/CommandsClient';
+export * from './discord/ICommandMessage';
 
 // enums
 export * from './enums/Rank';

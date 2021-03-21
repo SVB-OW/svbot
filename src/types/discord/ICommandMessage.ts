@@ -1,5 +1,5 @@
 import { Guild, Message, TextChannel } from 'discord.js';
-import { CommandClient } from './CommandsClient';
+import { CommandClient } from '..';
 
 export interface ICommandMessage extends Message {
   guild: Guild;

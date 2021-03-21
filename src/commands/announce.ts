@@ -1,6 +1,5 @@
 import { Role, TextChannel } from 'discord.js';
-import { Command, ClientError } from '../types';
-import { Lobby } from '../types/Lobby';
+import { Command, ClientError, Lobby } from '../types';
 
 module.exports = new Command({
   name: 'announce',
