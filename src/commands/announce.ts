@@ -10,7 +10,7 @@ module.exports = new Command({
     { name: 'supportPlayersCount', required: false },
   ],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups, mongoLobbies) {
+  async execute({ msg, args, mongoSignups, mongoLobbies }) {
     //#region Validations
     if ((await mongoLobbies.countDocuments()) === 0)
       throw new ClientError('No ping has occurred yet');
@@ -40,10 +40,9 @@ module.exports = new Command({
     const suppCount = args[2] ? Number.parseInt(args[2]) : 4;
 
     // Fetch ping msg
-    let lobby = new Lobby(
-      await mongoLobbies.findOne({}, { sort: { $natural: -1 } }),
-    );
-
+    const lobby =
+      (await mongoLobbies.findOne({}, { sort: { $natural: -1 } })) ||
+      new Lobby();
     lobby.pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId);
     if (!lobby.pingMsg)
       throw new ClientError(

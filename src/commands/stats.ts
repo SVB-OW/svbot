@@ -1,13 +1,11 @@
 import { Command } from '../types';
-import { BufferResolvable, MessageAttachment, MessageEmbed } from 'discord.js';
-import { existsSync, readFileSync } from 'fs';
-import { join } from 'path';
+import { MessageEmbed } from 'discord.js';
 
 module.exports = new Command({
   name: 'stats',
   description: 'Display some stats for the event',
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups) {
+  async execute({ msg, args, mongoSignups }) {
     // Get the stats!
     let totalPlayers = await mongoSignups.countDocuments();
     let confirmedPlayers = await mongoSignups.countDocuments({

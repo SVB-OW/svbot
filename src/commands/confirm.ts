@@ -12,7 +12,7 @@ module.exports = new Command({
     { name: 'supportRank', required: true },
   ],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups) {
+  async execute({ msg, args, mongoSignups }) {
     if (args.length < 4)
       throw new ClientError(
         'Invalid number of arguments. Format is ".confirm <msgId> <tankRank> <dpsRank> <supportRank>',
@@ -23,7 +23,7 @@ module.exports = new Command({
     ) as TextChannel;
     if (!signupChannel) throw new ClientError('Signup channel does not exist');
 
-    let foundSignupByMsgId = await mongoSignups.findOne({
+    const foundSignupByMsgId = await mongoSignups.findOne({
       signupMsgId: args[0],
     });
     if (!foundSignupByMsgId) throw new ClientError('MsgId was not found in DB');

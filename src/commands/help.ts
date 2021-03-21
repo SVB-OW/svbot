@@ -9,7 +9,7 @@ module.exports = new Command({
   props: [{ name: 'command', required: false }],
   allowedChannels: ['bot-commands'],
   // allowedRoles: ['Lobby Host', 'Gold', 'Admin'],
-  async execute(msg, args) {
+  async execute({ msg, args }) {
     const embed = new MessageEmbed().setTitle('Commands').setTimestamp();
 
     if (args.length) {

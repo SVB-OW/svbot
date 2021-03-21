@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node out/main.js",
     "build": "npx -p typescript tsc",
-    "dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon out/main.js\""
+    "dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon --quiet out/main.js\""
   },
   "dependencies": {
     "@types/mongodb": "^3.6.8",

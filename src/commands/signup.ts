@@ -9,7 +9,7 @@ module.exports = new Command({
     { name: 'region', required: true },
   ],
   allowedChannels: ['signup'],
-  async execute(msg, args, mongoSignups) {
+  async execute({ msg, args, mongoSignups }) {
     // Checks command contains valid btag
     if (!args[0] || !btagRegex.test(args[0]))
       throw new ClientError(
@@ -36,7 +36,7 @@ module.exports = new Command({
       );
 
     const attachment = msg.attachments.values().next().value;
-    let signup = new Signup({
+    const signup = new Signup({
       discordId: msg.author.id,
       battleTag: args[0],
       region: args[1].toUpperCase(),
@@ -45,7 +45,7 @@ module.exports = new Command({
       signedUpOn: new Date(msg.createdTimestamp).toISOString(),
     });
 
-    await mongoSignups.insertOne(signup);
+    await mongoSignups.insertOne(signup as any);
 
     await msg.channel.send(
       'Signup has been received and will be checked by an event moderator',

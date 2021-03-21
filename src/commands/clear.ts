@@ -6,7 +6,7 @@ module.exports = new Command({
   description:
     'Kicks all players with @Ingame from voice lobbies and removes their role',
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups, mongoLobbies) {
+  async execute({ msg, mongoLobbies }) {
     let lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
     if (!lobby) throw new ClientError('No lobby was announced yet');
     let role = msg.guild.roles.cache.find(

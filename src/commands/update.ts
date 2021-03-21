@@ -10,7 +10,7 @@ module.exports = new Command({
     { name: 'discordIds', required: true },
   ],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups) {
+  async execute({ msg, args, mongoSignups }) {
     if (args.length < 3)
       throw new ClientError(
         'Too few arguments. Format is !update <property> <value> <discordIds...>',
@@ -22,9 +22,10 @@ module.exports = new Command({
     let userIds = args.slice(2);
 
     userIds.forEach(async id => {
-      let foundUser = await mongoSignups.findOne({ discordId: id });
+      const foundUser = await mongoSignups.findOne({ discordId: id });
       if (!foundUser) throw new ClientError(`Signup for ${id} was not found`);
 
+      // if key exists on foundUser
       if (args[0] in foundUser) {
         let newVal = args[1];
         if (['tankRank', 'damageRank', 'supportRank'].includes(args[0]))

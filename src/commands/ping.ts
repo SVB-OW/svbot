@@ -11,7 +11,7 @@ module.exports = new Command({
     { name: 'streamer', required: true },
   ],
   allowedChannels: ['bot-commands'],
-  async execute(msg, args, mongoSignups, mongoLobbies) {
+  async execute({ msg, args, mongoLobbies }) {
     // Validate
     const pingsChannel = (await msg.guild.channels.cache.find(
       c => c.name === 'player-pings',
@@ -43,6 +43,6 @@ module.exports = new Command({
     await lobby.pingMsg.react('👍');
 
     lobby.pingMsgId = lobby.pingMsg.id;
-    await mongoLobbies.insertOne(lobby);
+    await mongoLobbies.insertOne(lobby as any);
   },
 });

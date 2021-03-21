@@ -1,6 +1,6 @@
 import { PermissionResolvable } from 'discord.js';
-import { Collection } from 'mongodb';
-import { CommandProperty, ICommandMessage } from '..';
+import { CommandProperty, ICommandOptions } from '..';
+import {} from './ICommandOptions';
 
 // bot command files
 export class Command {
@@ -10,12 +10,7 @@ export class Command {
   allowedChannels: string[] = [];
   allowedRoles: string[] = [];
   permission = '' as PermissionResolvable;
-  async execute(
-    msg: ICommandMessage,
-    args: string[],
-    mongoSignups: Collection,
-    mongoLobbies: Collection,
-  ): Promise<void> {}
+  async execute(options: ICommandOptions): Promise<void> {}
 
   constructor(obj?: Partial<Command>) {
     Object.assign(this, obj);

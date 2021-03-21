@@ -1,4 +1,5 @@
 export class Signup {
+  _id?: string;
   discordId: string = '';
   battleTag: string = '';
   region: string = '';
@@ -11,6 +12,7 @@ export class Signup {
   supportRank: string = '';
   gamesPlayed: number = 0;
   screenshot: string = '';
+  [key: string]: any; // makes object properties indexable
 
   constructor(obj?: Partial<Signup>) {
     Object.assign(this, obj);

@@ -4,7 +4,12 @@ import { join } from 'path';
 import { Message } from 'discord.js';
 import { Db, MongoClient } from 'mongodb';
 import { isProd, discordToken, prefixLive, mongoUri, dbLive } from './config';
-import { CommandClient, ICommandMessage, ClientError } from './types';
+import {
+  CommandClient,
+  ICommandMessage,
+  ClientError,
+  ICommandOptions,
+} from './types';
 const sendmail = require('sendmail')({ silent: true });
 const client = new CommandClient();
 
@@ -96,12 +101,14 @@ client.on('message', async (msg: Message) => {
       throw new ClientError('This command is not permitted in this channel');
 
     // Execution
-    await cmd.execute(
-      msg as ICommandMessage,
+    await cmd.execute({
+      msg: msg as ICommandMessage,
       args,
-      mongoDb.collection('signups'),
-      mongoDb.collection('lobby'),
-    );
+      mongoSignups: mongoDb.collection('signups'),
+      mongoLobbies: mongoDb.collection('lobbies'),
+      mongoContenstants: mongoDb.collection('contestants'),
+      mongoRuns: mongoDb.collection('runs'),
+    } as ICommandOptions);
   } catch (e) {
     // Send client errors back to channel
     if (e instanceof ClientError) {
