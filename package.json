@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node out/main.js",
-    "build": "tsc",
+    "build": "npx -p typescript tsc",
     "dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon out/main.js\""
   },
   "dependencies": {
