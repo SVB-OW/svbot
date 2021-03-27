@@ -22,9 +22,11 @@ module.exports = new Command({
       throw new ClientError(msg, 'Property does not exist');
 
     let newVal = args[1];
+    let updateRoles = false;
     if (['tankRank', 'damageRank', 'supportRank'].includes(args[0])) {
       if (!rankResolver(args[1])) throw new ClientError(msg, 'Invalid rank');
       newVal = rankResolver(args[1]) as string;
+      updateRoles = true;
     }
 
     let userIds = args.slice(2);
@@ -38,41 +40,42 @@ module.exports = new Command({
       mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
 
       const member = await msg.guild.members.fetch(foundUser.discordId);
-
-      // Remove all rank roles (doesn't work with admins)
-      console.log(
-        'to remove rank roles',
-        Object.values(member.roles)
-          .filter((r: Role) => !rankResolver(r.name))
-          .map((r: Role) => r.id),
-      );
-      await member.roles.set(
-        Object.values(member.roles)
-          .filter((r: Role) => !rankResolver(r.name))
-          .map((r: Role) => r.id),
-      );
-
-      // Assign rank roles on confirm
-      if (foundUser.tankRank !== '-')
-        member.roles.add(
-          msg.guild.roles.cache.find(
-            r => r.name.toUpperCase() === foundUser.tankRank,
-          ) as Role,
+      if (member.roles.cache.find(r => r.name === 'Admin'))
+        throw new ClientError(
+          msg,
+          'Roles for admins cannot be changed automatically',
         );
 
-      if (foundUser.damageRank !== '-')
-        member.roles.add(
-          msg.guild.roles.cache.find(
-            r => r.name.toUpperCase() === foundUser.damageRank,
-          ) as Role,
+      if (updateRoles) {
+        // Remove all rank roles (doesn't work with admins)
+        await member.roles.set(
+          Object.values(member.roles)
+            .filter((r: Role) => !rankResolver(r.name))
+            .map((r: Role) => r.id),
         );
 
-      if (foundUser.supportRank !== '-')
-        member.roles.add(
-          msg.guild.roles.cache.find(
-            r => r.name.toUpperCase() === foundUser.supportRank,
-          ) as Role,
-        );
+        // Assign rank roles on confirm
+        if (foundUser.tankRank !== '-')
+          member.roles.add(
+            msg.guild.roles.cache.find(
+              r => r.name.toUpperCase() === foundUser.tankRank,
+            ) as Role,
+          );
+
+        if (foundUser.damageRank !== '-')
+          member.roles.add(
+            msg.guild.roles.cache.find(
+              r => r.name.toUpperCase() === foundUser.damageRank,
+            ) as Role,
+          );
+
+        if (foundUser.supportRank !== '-')
+          member.roles.add(
+            msg.guild.roles.cache.find(
+              r => r.name.toUpperCase() === foundUser.supportRank,
+            ) as Role,
+          );
+      }
 
       await msg.channel.send(
         new MessageEmbed()
