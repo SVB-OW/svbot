@@ -12,7 +12,3 @@ export const dbLive = isProd ? dbProd : dbTest;
 export const prefixLive = isProd ? prefixProd : prefixTest;
 export const btagRegex = new RegExp(/.{3,}#[0-9]{4,}/);
 export const regionRegex = new RegExp(/^(EU|NA)$/, 'i');
-export const rankRegex = new RegExp(
-  /^(Bronze|Silver|Gold|Platinum|Diamond|Master|Grandmaster|-)$/,
-  'i',
-);

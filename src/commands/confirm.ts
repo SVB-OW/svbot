@@ -1,6 +1,6 @@
 import { Role, TextChannel } from 'discord.js';
 import { Command, ClientError } from '../types';
-import { rankRegex } from '../config';
+import { rankResolver } from '../helpers';
 
 module.exports = new Command({
   name: 'confirm',
@@ -28,17 +28,16 @@ module.exports = new Command({
     });
     if (!foundSignupByMsgId) throw new ClientError('MsgId was not found in DB');
 
-    if (!rankRegex.test(args[1])) throw new ClientError('Tank rank is invalid');
+    if (!rankResolver(args[1])) throw new ClientError('Tank rank is invalid');
 
-    if (!rankRegex.test(args[2]))
-      throw new ClientError('Damage rank is invalid');
+    if (!rankResolver(args[2])) throw new ClientError('Damage rank is invalid');
 
-    if (!rankRegex.test(args[3]))
+    if (!rankResolver(args[3]))
       throw new ClientError('Support rank is invalid');
 
-    foundSignupByMsgId.tankRank = args[1].toUpperCase();
-    foundSignupByMsgId.damageRank = args[2].toUpperCase();
-    foundSignupByMsgId.supportRank = args[3].toUpperCase();
+    foundSignupByMsgId.tankRank = rankResolver(args[1]) as string;
+    foundSignupByMsgId.damageRank = rankResolver(args[2]) as string;
+    foundSignupByMsgId.supportRank = rankResolver(args[3]) as string;
     foundSignupByMsgId.confirmedBy = msg.author.username;
     foundSignupByMsgId.confirmedOn = new Date(
       msg.createdTimestamp,

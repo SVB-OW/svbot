@@ -1,5 +1,5 @@
 import { MessageEmbed, Role } from 'discord.js';
-import { rankRegex } from '../config';
+import { rankResolver } from '../helpers';
 import { ClientError, Command, Signup } from '../types';
 
 module.exports = new Command({
@@ -38,7 +38,7 @@ module.exports = new Command({
       // Remove all rank roles (doesn't work with admins)
       await member.roles.set(
         Object.values(member.roles)
-          .filter((r: Role) => !rankRegex.test(r.name))
+          .filter((r: Role) => !rankResolver(r.name))
           .map((r: Role) => r.id),
       );
 
