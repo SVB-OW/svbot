@@ -8,11 +8,11 @@ module.exports = new Command({
   allowedChannels: ['bot-commands'],
   async execute({ msg, mongoLobbies }) {
     const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
-    if (!lobby) throw new ClientError('No lobby was announced yet');
+    if (!lobby) throw new ClientError(msg, 'No lobby was announced yet');
     const role = msg.guild.roles.cache.find(
       role => role.name === 'Ingame',
     ) as Role;
-    if (!role) throw new ClientError('Ingame role does not exist');
+    if (!role) throw new ClientError(msg, 'Ingame role does not exist');
 
     lobby.pingCleared = true;
     mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby });

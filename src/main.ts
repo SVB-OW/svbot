@@ -40,95 +40,93 @@ for (const file of commandFiles) {
 //#endregion
 
 client.on('ready', async () => {
-  try {
-    // await client.user?.setUsername('SVBot');
-    // await client.user?.setAvatar('../assets/svbot.png');
-    await client.user?.setActivity(isProd ? 'Production' : 'Test', {
-      type: 'WATCHING',
-    });
-    // await client.user?.setActivity('The Ranked Gauntlet', {type: 'COMPETING'});
-  } catch (e) {
-    let html = `<h1>Name: ${e.name}</h1><h3>${e.message}</h3><pre>${e.stack}</pre>`;
+  // await client.user?.setUsername('SVBot');
+  // await client.user?.setAvatar('../assets/svbot.png');
+  await client.user?.setActivity(isProd ? 'Production' : 'Test', {
+    type: 'WATCHING',
+  });
+  // await client.user?.setActivity('The Ranked Gauntlet', {type: 'COMPETING'});
+});
+
+client.on('message', async (msg: Message) => {
+  // Exit without error
+  if (
+    !msg.content.startsWith(prefixLive) ||
+    msg.channel.type !== 'text' ||
+    false /*  msg.author.bot */
+  )
+    return;
+
+  const args = msg.content.slice(prefixLive.length).trim().split(/ +/);
+  const cmdName = args.shift();
+
+  // Find command
+  if (!cmdName) throw new ClientError(msg, 'Command not found');
+  const cmd = client.commands.get(cmdName);
+  if (!cmd) throw new ClientError(msg, 'Command not found');
+
+  // Permission validation
+  if (cmd.permission) {
+    const authorPerms = msg.channel.permissionsFor(msg.author);
+    if (!authorPerms || !authorPerms.has(cmd.permission))
+      throw new ClientError(msg, "You're not permitted to use this command");
+  }
+
+  // Role validation
+  if (
+    cmd.allowedRoles.length > 0 &&
+    !msg.member?.roles.cache.some((r: { name: any }) =>
+      cmd.allowedRoles.includes(r.name),
+    )
+  )
+    throw new ClientError(msg, "You're not permitted to use this command");
+
+  // Channel validation
+  if (
+    cmd.allowedChannels.length > 0 &&
+    !cmd.allowedChannels.includes(msg.channel.name)
+  )
+    throw new ClientError(msg, 'This command is not permitted in this channel');
+
+  // Execution
+  await cmd.execute({
+    msg: msg as ICommandMessage,
+    args,
+    mongoSignups: mongoDb.collection('signups'),
+    mongoLobbies: mongoDb.collection('lobbies'),
+    mongoContenstants: mongoDb.collection('contestants'),
+    mongoRuns: mongoDb.collection('runs'),
+  } as ICommandOptions);
+});
+
+client.on('error', async (err, ...rest) => {
+  console.log('args', Object.keys(rest));
+});
+
+// #region Global Error Handler
+async function errorHandler(err: any) {
+  // Send client errors back to channel
+  if (err instanceof ClientError) {
+    await err.msg.reply(
+      `\`\`\`diff\n- Error: ${err.message.substring(0, 120)}\n\`\`\``,
+    );
+    await err.msg.react('🚫');
+  } else if (err instanceof Error) {
+    let html = `<h1>Name: ${err.name}</h1><h3>Message: ${err.message}</h3></div><pre>${err.stack}</pre>`;
 
     sendmail({
       from: 'svbot@svb.net',
       to: 'flo.dendorfer@gmail.com',
-      subject: 'Error in SVBot: ',
+      subject: 'Error in SVBot',
       html,
     });
+  } else {
+    console.error(err);
   }
-});
+}
 
-client.on('message', async (msg: Message) => {
-  try {
-    // Exit without error
-    if (
-      !msg.content.startsWith(prefixLive) ||
-      msg.channel.type !== 'text' ||
-      false /*  msg.author.bot */
-    )
-      return;
-
-    const args = msg.content.slice(prefixLive.length).trim().split(/ +/);
-    const cmdName = args.shift();
-
-    // Find command
-    if (!cmdName) throw new ClientError('Command not found');
-    const cmd = client.commands.get(cmdName);
-    if (!cmd) throw new ClientError('Command not found');
-
-    // Permission validation
-    if (cmd.permission) {
-      const authorPerms = msg.channel.permissionsFor(msg.author);
-      if (!authorPerms || !authorPerms.has(cmd.permission))
-        throw new ClientError("You're not permitted to use this command");
-    }
-
-    // Role validation
-    if (
-      cmd.allowedRoles.length > 0 &&
-      !msg.member?.roles.cache.some((r: { name: any }) =>
-        cmd.allowedRoles.includes(r.name),
-      )
-    )
-      throw new ClientError("You're not permitted to use this command");
-
-    // Channel validation
-    if (
-      cmd.allowedChannels.length > 0 &&
-      !cmd.allowedChannels.includes(msg.channel.name)
-    )
-      throw new ClientError('This command is not permitted in this channel');
-
-    // Execution
-    await cmd.execute({
-      msg: msg as ICommandMessage,
-      args,
-      mongoSignups: mongoDb.collection('signups'),
-      mongoLobbies: mongoDb.collection('lobbies'),
-      mongoContenstants: mongoDb.collection('contestants'),
-      mongoRuns: mongoDb.collection('runs'),
-    } as ICommandOptions);
-  } catch (e) {
-    // Send client errors back to channel
-    if (e instanceof ClientError) {
-      await msg.reply(
-        `\`\`\`diff\n- Error: ${e.message.substring(0, 120)}\n\`\`\``,
-      );
-      await msg.react('🚫');
-    } else if (e instanceof Error) {
-      let html = `<h1>Name: ${e.name}</h1><h3>${e.message}</h3><pre>${e.stack}</pre>`;
-
-      sendmail({
-        from: 'svbot@svb.net',
-        to: 'flo.dendorfer@gmail.com',
-        subject: 'Error in SVBot',
-        html,
-      });
-    } else {
-      console.error(e);
-    }
-  }
-});
+process.on('unhandledRejection', errorHandler);
+process.on('uncaughtException', errorHandler);
+// #endregion
 
 client.login(discordToken);

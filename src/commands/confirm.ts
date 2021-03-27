@@ -15,25 +15,30 @@ module.exports = new Command({
   async execute({ msg, args, mongoSignups }) {
     if (args.length < 4)
       throw new ClientError(
+        msg,
         'Invalid number of arguments. Format is ".confirm <msgId> <tankRank> <dpsRank> <supportRank>',
       );
 
     const signupChannel = msg.guild.channels.cache.find(
       c => c.name === 'signup',
     ) as TextChannel;
-    if (!signupChannel) throw new ClientError('Signup channel does not exist');
+    if (!signupChannel)
+      throw new ClientError(msg, 'Signup channel does not exist');
 
     const foundSignupByMsgId = await mongoSignups.findOne({
       signupMsgId: args[0],
     });
-    if (!foundSignupByMsgId) throw new ClientError('MsgId was not found in DB');
+    if (!foundSignupByMsgId)
+      throw new ClientError(msg, 'MsgId was not found in DB');
 
-    if (!rankResolver(args[1])) throw new ClientError('Tank rank is invalid');
+    if (!rankResolver(args[1]))
+      throw new ClientError(msg, 'Tank rank is invalid');
 
-    if (!rankResolver(args[2])) throw new ClientError('Damage rank is invalid');
+    if (!rankResolver(args[2]))
+      throw new ClientError(msg, 'Damage rank is invalid');
 
     if (!rankResolver(args[3]))
-      throw new ClientError('Support rank is invalid');
+      throw new ClientError(msg, 'Support rank is invalid');
 
     foundSignupByMsgId.tankRank = rankResolver(args[1]) as string;
     foundSignupByMsgId.damageRank = rankResolver(args[2]) as string;

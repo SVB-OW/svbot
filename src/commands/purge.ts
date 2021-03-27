@@ -8,7 +8,7 @@ module.exports = new Command({
   async execute({ msg, args }) {
     const num = args[0] ? Number.parseInt(args[0]) : 100;
     if (num < 1 || num > 100)
-      throw new ClientError('Number must be in range 1-100');
+      throw new ClientError(msg, 'Number must be in range 1-100');
 
     await msg.channel.bulkDelete(num);
     msg.channel

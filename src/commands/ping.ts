@@ -18,15 +18,16 @@ module.exports = new Command({
       c => c.name === 'player-pings',
     )) as TextChannel;
     if (!pingsChannel)
-      throw new ClientError('Channel player-pings does not exist');
+      throw new ClientError(msg, 'Channel player-pings does not exist');
     // Checks Rank
     if (!args[0] || !rankResolver(args[0]))
-      throw new ClientError('Rank is invalid ' + args[0]);
+      throw new ClientError(msg, 'Rank is invalid ' + args[0]);
     // Checks Region
     if (!args[1] || !regionRegex.test(args[1]))
-      throw new ClientError('Region is invalid ' + args[1]);
+      throw new ClientError(msg, 'Region is invalid ' + args[1]);
     // Checks Streamer
-    if (!args[2]) throw new ClientError('Streamer cannot be empty ' + args[2]);
+    if (!args[2])
+      throw new ClientError(msg, 'Streamer cannot be empty ' + args[2]);
 
     let lobby = new Lobby();
     lobby.rank = rankResolver(args[0]) as Rank;
@@ -36,7 +37,8 @@ module.exports = new Command({
     const roleByName = msg.guild.roles.cache.find(
       item => item.name.toUpperCase() === lobby.rank,
     );
-    if (!roleByName) throw new ClientError(`Role ${lobby.rank} does not exist`);
+    if (!roleByName)
+      throw new ClientError(msg, `Role ${lobby.rank} does not exist`);
     lobby.pingMsg = await pingsChannel.send(
       `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,
     );

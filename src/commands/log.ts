@@ -9,12 +9,15 @@ module.exports = new Command({
   allowedChannels: ['bot-commands'],
   async execute({ msg, args, mongoSignups }) {
     if (!args[0])
-      throw new ClientError('Parameter discordId | discordTag is required');
+      throw new ClientError(
+        msg,
+        'Parameter discordId | discordTag is required',
+      );
 
     const found = await mongoSignups.findOne({
       discordId: args[0].replace(/[<>@!]/g, ''),
     });
-    if (!found) throw new ClientError('Signup not found');
+    if (!found) throw new ClientError(msg, 'Signup not found');
 
     await msg.channel.send(
       new MessageEmbed()

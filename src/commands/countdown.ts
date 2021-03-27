@@ -5,14 +5,14 @@ module.exports = new Command({
   description: 'Decrements the played cound of one or more player',
   props: [{ name: 'discordIds', required: true }],
   allowedChannels: ['bot-commands'],
-  async execute({ args, mongoSignups }) {
+  async execute({ msg, args, mongoSignups }) {
     if (args.length === 0)
-      throw new ClientError('Command must include at least one user id');
+      throw new ClientError(msg, 'Command must include at least one user id');
 
     args.forEach(async value => {
       let foundUser = await mongoSignups.findOne({ discordId: value });
       if (!foundUser)
-        throw new ClientError(`Signup for ${value} was not found`);
+        throw new ClientError(msg, `Signup for ${value} was not found`);
 
       foundUser.gamesPlayed--;
       mongoSignups.updateOne({ discordId: value }, { $set: foundUser });

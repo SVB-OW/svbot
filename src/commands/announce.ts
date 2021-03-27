@@ -13,32 +13,33 @@ module.exports = new Command({
   async execute({ msg, args, mongoSignups, mongoLobbies }) {
     //#region Validations
     if ((await mongoLobbies.countDocuments()) === 0)
-      throw new ClientError('No ping has occurred yet');
+      throw new ClientError(msg, 'No ping has occurred yet');
 
     let ingameRole = msg.guild.roles.cache.find(
       r => r.name === 'Ingame',
     ) as Role;
-    if (!ingameRole) throw new ClientError('Ingame role does not exist');
+    if (!ingameRole) throw new ClientError(msg, 'Ingame role does not exist');
     let hostRole = msg.guild.roles.cache.find(
       r => r.name === 'Lobby Host',
     ) as Role;
-    if (!hostRole) throw new ClientError('Lobby Host role does not exist');
+    if (!hostRole) throw new ClientError(msg, 'Lobby Host role does not exist');
 
     const mmChannel = msg.guild.channels.cache.find(
       c => c.name === 'matchmaker',
     ) as TextChannel;
-    if (!mmChannel) throw new ClientError('Channel matchmaker does not exist');
+    if (!mmChannel)
+      throw new ClientError(msg, 'Channel matchmaker does not exist');
     const pingsChannel = msg.guild.channels.cache.find(
       c => c.name === 'player-pings',
     ) as TextChannel;
     if (!pingsChannel)
-      throw new ClientError('Channel player-pings does not exist');
+      throw new ClientError(msg, 'Channel player-pings does not exist');
 
     const unclearedLobbies = await mongoLobbies.countDocuments({
       pingAnnounced: true,
       pingCleared: false,
     });
-    if (unclearedLobbies) throw new ClientError('Forgot something?');
+    if (unclearedLobbies) throw new ClientError(msg, 'Forgot something?');
     //#endregion
 
     const tankCount = args[0] ? Number.parseInt(args[0]) : 4;
@@ -52,6 +53,7 @@ module.exports = new Command({
     lobby.pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId);
     if (!lobby.pingMsg)
       throw new ClientError(
+        msg,
         'Ping message not found. Please create another ping',
       );
 
