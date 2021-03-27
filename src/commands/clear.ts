@@ -7,14 +7,14 @@ module.exports = new Command({
     'Kicks all players with @Ingame from voice lobbies and removes their role',
   allowedChannels: ['bot-commands'],
   async execute({ msg, mongoLobbies }) {
-    let lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
+    const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
     if (!lobby) throw new ClientError('No lobby was announced yet');
-    let role = msg.guild.roles.cache.find(
+    const role = msg.guild.roles.cache.find(
       role => role.name === 'Ingame',
     ) as Role;
     if (!role) throw new ClientError('Ingame role does not exist');
 
-    lobby.cleared = true;
+    lobby.pingCleared = true;
     mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby });
 
     let ingamePlayers = msg.guild.roles.cache.get(role.id)?.members;

@@ -33,6 +33,12 @@ module.exports = new Command({
     ) as TextChannel;
     if (!pingsChannel)
       throw new ClientError('Channel player-pings does not exist');
+
+    const unclearedLobbies = await mongoLobbies.countDocuments({
+      pingAnnounced: true,
+      pingCleared: false,
+    });
+    if (unclearedLobbies) throw new ClientError('Forgot something?');
     //#endregion
 
     const tankCount = args[0] ? Number.parseInt(args[0]) : 4;
@@ -179,7 +185,7 @@ ${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
     pingsChannel.send(playerMessage);
 
     delete lobby.pingMsg;
-    lobby.announced = true;
+    lobby.pingAnnounced = true;
     mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby });
   },
 });

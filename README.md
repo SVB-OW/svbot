@@ -19,9 +19,8 @@ Github Actions: [https://github.com/fdendorfer/SVBot/actions]
 - [x] btagMessage in announcement can't be embed
 - [x] check non found users
 - [x] countdown/up update by id instead of tag
-- [ ] clear last lobby before new announce
-- [ ] update command should update roles and optionally take msgId from
-      #update-request channel and react with check
+- [x] clear last lobby before new announce
+- [x] update command should update roles
 
 ### Low priority
 

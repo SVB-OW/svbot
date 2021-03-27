@@ -1,4 +1,5 @@
-import { MessageEmbed } from 'discord.js';
+import { MessageEmbed, Role } from 'discord.js';
+import { rankRegex } from '../config';
 import { ClientError, Command, Signup } from '../types';
 
 module.exports = new Command({
@@ -25,15 +26,43 @@ module.exports = new Command({
       const foundUser = await mongoSignups.findOne({ discordId: id });
       if (!foundUser) throw new ClientError(`Signup for ${id} was not found`);
 
-      // if key exists on foundUser
-      if (args[0] in foundUser) {
-        let newVal = args[1];
-        if (['tankRank', 'damageRank', 'supportRank'].includes(args[0]))
-          newVal = args[1].toUpperCase();
+      let newVal = args[1];
+      if (['tankRank', 'damageRank', 'supportRank'].includes(args[0]))
+        newVal = args[1].toUpperCase();
 
-        foundUser[args[0]] = newVal;
-        mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
-      }
+      foundUser[args[0]] = newVal;
+      mongoSignups.updateOne({ discordId: id }, { $set: foundUser });
+
+      const member = await msg.guild.members.fetch(foundUser.discordId);
+
+      // Remove all rank roles (doesn't work with admins)
+      await member.roles.set(
+        Object.values(member.roles)
+          .filter((r: Role) => !rankRegex.test(r.name))
+          .map((r: Role) => r.id),
+      );
+
+      // Assign rank roles on confirm
+      if (foundUser.tankRank !== '-')
+        member.roles.add(
+          msg.guild.roles.cache.find(
+            r => r.name.toUpperCase() === foundUser.tankRank,
+          ) as Role,
+        );
+
+      if (foundUser.damageRank !== '-')
+        member.roles.add(
+          msg.guild.roles.cache.find(
+            r => r.name.toUpperCase() === foundUser.damageRank,
+          ) as Role,
+        );
+
+      if (foundUser.supportRank !== '-')
+        member.roles.add(
+          msg.guild.roles.cache.find(
+            r => r.name.toUpperCase() === foundUser.supportRank,
+          ) as Role,
+        );
 
       await msg.channel.send(
         new MessageEmbed()
