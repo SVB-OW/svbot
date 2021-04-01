@@ -21,5 +21,8 @@ export function rankResolver(input: string): boolean | string {
 
   if (['GM', 'GRANDMASTER'].includes(input)) return 'GRANDMASTER';
 
+  // When no rank should be used
+  if (input === '-') return '-';
+
   return false;
 }
