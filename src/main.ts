@@ -99,16 +99,12 @@ client.on('message', async (msg: Message) => {
   } as ICommandOptions);
 });
 
-client.on('error', async (err, ...rest) => {
-  console.log('args', Object.keys(rest));
-});
-
 // #region Global Error Handler
 async function errorHandler(err: any) {
   // Send client errors back to channel
   if (err instanceof ClientError) {
     await err.msg.reply(
-      `\`\`\`diff\n- Error: ${err.message.substring(0, 120)}\n\`\`\``,
+      `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
     );
     await err.msg.react('🚫');
   } else if (err instanceof Error) {
@@ -117,7 +113,7 @@ async function errorHandler(err: any) {
     sendmail({
       from: 'svbot@svb.net',
       to: 'flo.dendorfer@gmail.com',
-      subject: 'Error in SVBot',
+      subject: 'Error in SVBot' + isProd ? 'Production' : 'Development',
       html,
     });
   } else {

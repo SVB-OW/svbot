@@ -36,7 +36,7 @@ module.exports = new Command({
     if (existingSignup)
       throw new ClientError(
         msg,
-        'You already have signed up. If you would like to update your rank, discord or battle tag, please dm a mod.',
+        `You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`,
       );
 
     const attachment = msg.attachments.values().next().value;
