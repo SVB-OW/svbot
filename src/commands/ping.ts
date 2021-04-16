@@ -2,6 +2,7 @@ import { Command, ClientError, Lobby, Rank, Region } from '../types';
 import { regionRegex } from '../config';
 import { rankResolver } from '../helpers';
 import { TextChannel } from 'discord.js';
+import { Collection } from 'mongodb';
 
 module.exports = new Command({
   name: 'ping',
@@ -39,13 +40,13 @@ module.exports = new Command({
     );
     if (!roleByName)
       throw new ClientError(msg, `Role ${lobby.rank} does not exist`);
-    lobby.pingMsg = await pingsChannel.send(
+    let pingMsg = await pingsChannel.send(
       `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,
     );
 
-    await lobby.pingMsg.react('👍');
+    await pingMsg.react('👍');
 
-    lobby.pingMsgId = lobby.pingMsg.id;
-    await mongoLobbies.insertOne(lobby as any);
+    lobby.pingMsgId = pingMsg.id;
+    let l = mongoLobbies.insertOne(lobby as any);
   },
 });

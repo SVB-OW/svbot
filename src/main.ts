@@ -117,7 +117,7 @@ async function errorHandler(err: any) {
       html,
     });
   } else {
-    console.error(err);
+    // console.error(err);
   }
 }
 
