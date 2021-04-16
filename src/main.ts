@@ -42,10 +42,10 @@ for (const file of commandFiles) {
 client.on('ready', async () => {
   // await client.user?.setUsername('SVBot');
   // await client.user?.setAvatar('../assets/svbot.png');
-  await client.user?.setActivity(isProd ? 'Production' : 'Test', {
-    type: 'WATCHING',
-  });
-  // await client.user?.setActivity('The Ranked Gauntlet', {type: 'COMPETING'});
+  // await client.user?.setActivity(isProd ? 'Production' : 'Test', {
+  //   type: 'WATCHING',
+  // });
+  await client.user?.setActivity('The Ranked Gauntlet', { type: 'COMPETING' });
 });
 
 client.on('message', async (msg: Message) => {
