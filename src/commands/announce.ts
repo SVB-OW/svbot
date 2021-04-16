@@ -34,12 +34,6 @@ module.exports = new Command({
     ) as TextChannel;
     if (!pingsChannel)
       throw new ClientError(msg, 'Channel player-pings does not exist');
-
-    const unclearedLobbies = await mongoLobbies.countDocuments({
-      pingAnnounced: true,
-      pingCleared: false,
-    });
-    if (unclearedLobbies) throw new ClientError(msg, 'Forgot something?');
     //#endregion
 
     const tankCount = args[0] ? Number.parseInt(args[0]) : 4;
