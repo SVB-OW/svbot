@@ -71,22 +71,22 @@ module.exports = new Command({
     const embed = new MessageEmbed().setTitle('Event Stats').setTimestamp();
     if (msg.guild.iconURL()) embed.setThumbnail(msg.guild.iconURL() as string);
 
-    embed.addField('Registered', totalPlayers, true);
-    embed.addField('Confirmed', confirmedPlayers, true);
-    embed.addField('Unconfirmed', unconfirmedPlayers, true);
+    embed.addField('Registered', totalPlayers.toString(), true);
+    embed.addField('Confirmed', confirmedPlayers.toString(), true);
+    embed.addField('Unconfirmed', unconfirmedPlayers.toString(), true);
 
-    embed.addField('EU Players', euPlayers, true);
-    embed.addField('NA Players', naPlayers, true);
-    embed.addField('Bronze', bronzePlayers, true);
+    embed.addField('EU Players', euPlayers.toString(), true);
+    embed.addField('NA Players', naPlayers.toString(), true);
+    embed.addField('Bronze', bronzePlayers.toString(), true);
 
-    embed.addField('Silver', silverPlayers, true);
-    embed.addField('Gold', goldPlayers, true);
-    embed.addField('Platinum', platinumPlayers, true);
+    embed.addField('Silver', silverPlayers.toString(), true);
+    embed.addField('Gold', goldPlayers.toString(), true);
+    embed.addField('Platinum', platinumPlayers.toString(), true);
 
-    embed.addField('Diamond', diamondPlayers, true);
-    embed.addField('Master', masterPlayers, true);
-    embed.addField('Grandmaster', grandmasterPlayers, true);
+    embed.addField('Diamond', diamondPlayers.toString(), true);
+    embed.addField('Master', masterPlayers.toString(), true);
+    embed.addField('Grandmaster', grandmasterPlayers.toString(), true);
 
-    await msg.channel.send(embed);
+    await msg.channel.send({ embeds: [embed] });
   },
 });

@@ -2,7 +2,7 @@ import { Command, ClientError, Lobby, Rank, Region } from '../types';
 import { regionRegex } from '../config';
 import { rankResolver } from '../helpers';
 import { TextChannel } from 'discord.js';
-import { Collection } from 'mongodb';
+import { WithId } from 'mongodb';
 
 module.exports = new Command({
   name: 'ping',
@@ -15,9 +15,9 @@ module.exports = new Command({
   allowedChannels: ['bot-commands'],
   async execute({ msg, args, mongoLobbies }) {
     // Validate
-    const pingsChannel = (await msg.guild.channels.cache.find(
+    const pingsChannel = msg.guild.channels.cache.find(
       c => c.name === 'player-pings',
-    )) as TextChannel;
+    ) as TextChannel;
     if (!pingsChannel)
       throw new ClientError(msg, 'Channel player-pings does not exist');
     // Checks Rank
@@ -30,7 +30,7 @@ module.exports = new Command({
     if (!args[2])
       throw new ClientError(msg, 'Streamer cannot be empty ' + args[2]);
 
-    let lobby = new Lobby();
+    const lobby = new Lobby() as WithId<Lobby>;
     lobby.rank = rankResolver(args[0]) as Rank;
     lobby.region = args[1].toUpperCase() as Region;
     lobby.streamer = args[2];
@@ -47,6 +47,6 @@ module.exports = new Command({
     await pingMsg.react('👍');
 
     lobby.pingMsgId = pingMsg.id;
-    let l = mongoLobbies.insertOne(lobby as any);
+    mongoLobbies.insertOne(lobby);
   },
 });

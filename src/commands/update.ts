@@ -77,17 +77,19 @@ module.exports = new Command({
           );
       }
 
-      await msg.channel.send(
-        new MessageEmbed()
-          .setTitle('Updated signup')
-          .setTimestamp()
-          .addFields(
-            Object.keys(foundUser).map(key => ({
-              name: key,
-              value: foundUser[key] || '-',
-            })),
-          ),
-      );
+      await msg.channel.send({
+        embeds: [
+          new MessageEmbed()
+            .setTitle('Updated signup')
+            .setTimestamp()
+            .addFields(
+              Object.keys(foundUser).map(key => ({
+                name: key,
+                value: foundUser[key] || '-',
+              })),
+            ),
+        ],
+      });
     });
   },
 });

@@ -1,7 +1,7 @@
 //#region Preparation
 import { readdirSync } from 'fs';
 import { join } from 'path';
-import { Message } from 'discord.js';
+import { Intents, Message } from 'discord.js';
 import { Db, MongoClient } from 'mongodb';
 import { isProd, discordToken, prefixLive, mongoUri, dbLive } from './config';
 import {
@@ -11,13 +11,17 @@ import {
   ICommandOptions,
 } from './types';
 const sendmail = require('sendmail')({ silent: true });
-const client = new CommandClient();
+const client = new CommandClient({
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_MEMBERS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+  ],
+});
 
 // Init mongodb and inMemory db
-const dbClient = new MongoClient(mongoUri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const dbClient = new MongoClient(mongoUri);
 
 // Init db
 let mongoDb: Db;
@@ -30,9 +34,9 @@ let mongoDb: Db;
 
 //#region Dynamic commands
 // Import all files from ./commands and map to client.commands
-const commandFiles = readdirSync(
-  join(process.cwd(), '/out/commands'),
-).filter((file: string) => file.endsWith('.js'));
+const commandFiles = readdirSync(join(process.cwd(), '/out/commands')).filter(
+  (file: string) => file.endsWith('.js'),
+);
 for (const file of commandFiles) {
   const command = require(join(process.cwd(), '/out/commands', file));
   client.commands.set(command.name, command);
@@ -48,13 +52,9 @@ client.on('ready', async () => {
   await client.user?.setActivity('The Ranked Gauntlet', { type: 'COMPETING' });
 });
 
-client.on('message', async (msg: Message) => {
+client.on('messageCreate', async (msg: Message) => {
   // Exit without error
-  if (
-    !msg.content.startsWith(prefixLive) ||
-    msg.channel.type !== 'text' ||
-    false /*  msg.author.bot */
-  )
+  if (!msg.content.startsWith(prefixLive) || msg.channel.type !== 'GUILD_TEXT')
     return;
 
   const args = msg.content.slice(prefixLive.length).trim().split(/ +/);
@@ -113,11 +113,12 @@ async function errorHandler(err: any) {
     sendmail({
       from: 'svbot@svb.net',
       to: 'flo.dendorfer@gmail.com',
-      subject: 'Error in SVBot' + isProd ? 'Production' : 'Development',
+      subject: 'Error in SVBot ' + (isProd ? 'Production' : 'Development'),
       html,
     });
+    if (!isProd) console.error(err);
   } else {
-    // console.error(err);
+    console.error(err);
   }
 }
 

@@ -1,3 +1,4 @@
+import { ObjectId } from 'bson';
 import { Role, TextChannel } from 'discord.js';
 import { Command, ClientError, Lobby } from '../types';
 
@@ -41,15 +42,12 @@ module.exports = new Command({
     const suppCount = args[2] ? Number.parseInt(args[2]) : 4;
 
     // Fetch ping msg
-    const lobby =
-      (await mongoLobbies.findOne({}, { sort: { $natural: -1 } })) ||
-      new Lobby();
+    const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
+    if (!lobby) throw new ClientError(msg, 'No lobby has been created yet');
+
     lobby.pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId);
     if (!lobby.pingMsg)
-      throw new ClientError(
-        msg,
-        'Ping message not found. Please create another ping',
-      );
+      throw new ClientError(msg, 'Ping message could not be fetched');
 
     // Collection of players who reacted to ping message
     let msgReactionUsers =

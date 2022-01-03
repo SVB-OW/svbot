@@ -2,7 +2,7 @@ import { Command, ClientError } from '../types';
 
 module.exports = new Command({
   name: 'countup',
-  description: 'Increments the played cound of one or more player',
+  description: 'Increments the played count of one or more player',
   props: [{ name: 'discordIds', required: true }],
   allowedChannels: ['bot-commands'],
   async execute({ msg, args, mongoSignups }) {

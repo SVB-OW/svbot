@@ -19,16 +19,18 @@ module.exports = new Command({
     });
     if (!found) throw new ClientError(msg, 'Signup not found');
 
-    await msg.channel.send(
-      new MessageEmbed()
-        .setTitle(args[0])
-        .setTimestamp()
-        .addFields(
-          Object.keys(found).map(key => ({
-            name: key,
-            value: found[key] || '-',
-          })),
-        ),
-    );
+    await msg.channel.send({
+      embeds: [
+        new MessageEmbed()
+          .setTitle(args[0])
+          .setTimestamp()
+          .addFields(
+            Object.keys(found).map(key => ({
+              name: key,
+              value: found[key] || '-',
+            })),
+          ),
+      ],
+    });
   },
 });

@@ -35,10 +35,17 @@ Github Actions: [https://github.com/fdendorfer/SVBot/actions]
 ### Streamer section
 
 - [ ] leaderboard: shows streamers points
-- [ ] countup / -down: adds points to streamers
 
-### Stream interface
+## Usage
 
-- [ ] streamer leaderboard
-- [ ] website for selection process
-- [ ] stream elements with handicaps
+### Host flow
+
+- !ping Gold EU Bogur
+- !announce 3 4 4
+- !clear
+
+### Signup flow
+
+- !signup Flo0010#2600 EU
+- !confirm 927704356785106965 GM dia bronze
+- !update supportRank G 289401547119525889

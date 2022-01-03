@@ -11,8 +11,9 @@ module.exports = new Command({
       throw new ClientError(msg, 'Number must be in range 1-100');
 
     await msg.channel.bulkDelete(num);
-    msg.channel
-      .send(num + ' messages have been deleted')
-      .then(m => m.delete({ timeout: 3000 }));
+    const infoMsg = await msg.channel.send(num + ' messages have been deleted');
+    setTimeout(() => {
+      infoMsg.delete();
+    }, 3000);
   },
 });

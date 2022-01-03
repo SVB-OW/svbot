@@ -16,7 +16,7 @@ module.exports = new Command({
     if (args.length < 4)
       throw new ClientError(
         msg,
-        'Invalid number of arguments. Format is ".confirm <msgId> <tankRank> <dpsRank> <supportRank>',
+        'Invalid number of arguments. Format is "!confirm <msgId> <tankRank> <dpsRank> <supportRank>',
       );
 
     const signupChannel = msg.guild.channels.cache.find(
