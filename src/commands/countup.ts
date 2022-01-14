@@ -10,7 +10,7 @@ module.exports = new Command({
       throw new ClientError(msg, 'Command must include at least one user id');
 
     args.forEach(async value => {
-      let foundUser = await mongoSignups.findOne({ discordId: value });
+      const foundUser = await mongoSignups.findOne({ discordId: value });
       if (!foundUser)
         throw new ClientError(msg, `Signup for ${value} was not found`);
 

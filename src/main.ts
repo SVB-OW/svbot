@@ -5,12 +5,12 @@ import { Intents, Message } from 'discord.js';
 import { Db, MongoClient } from 'mongodb';
 import { isProd, discordToken, prefixLive, mongoUri, dbLive } from './config';
 import {
+  ClientError,
   CommandClient,
   ICommandMessage,
-  ClientError,
   ICommandOptions,
 } from './types';
-const sendmail = require('sendmail')({ silent: true });
+const sendmail = require('sendmail')({ silent: isProd }); // Silent in prod
 const client = new CommandClient({
   intents: [
     Intents.FLAGS.GUILDS,
@@ -95,7 +95,6 @@ client.on('messageCreate', async (msg: Message) => {
     mongoSignups: mongoDb.collection('signups'),
     mongoLobbies: mongoDb.collection('lobbies'),
     mongoContenstants: mongoDb.collection('contestants'),
-    mongoRuns: mongoDb.collection('runs'),
   } as ICommandOptions);
 });
 
@@ -107,7 +106,7 @@ async function errorHandler(err: any) {
       `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
     );
     await err.msg.react('🚫');
-  } else if (err instanceof Error) {
+  } else if (err instanceof Error && isProd) {
     let html = `<h1>Name: ${err.name}</h1><h3>Message: ${err.message}</h3></div><pre>${err.stack}</pre>`;
 
     sendmail({

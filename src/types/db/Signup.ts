@@ -1,8 +1,10 @@
+import { Region } from '..';
+
 export class Signup {
   _id?: string;
   discordId: string = '';
   battleTag: string = '';
-  region: string = '';
+  region: Region = Region.EU;
   signupMsgId: string = '';
   signedUpOn: string = '';
   confirmedOn: string = '';

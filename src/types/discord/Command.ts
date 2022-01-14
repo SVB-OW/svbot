@@ -1,6 +1,5 @@
 import { PermissionResolvable } from 'discord.js';
 import { CommandProperty, ICommandOptions } from '..';
-import {} from './ICommandOptions';
 
 // bot command files
 export class Command {

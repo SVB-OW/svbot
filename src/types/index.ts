@@ -1,7 +1,6 @@
 // db types
 export * from './db/Contestant';
 export * from './db/Lobby';
-export * from './db/Run';
 export * from './db/Signup';
 
 // other types

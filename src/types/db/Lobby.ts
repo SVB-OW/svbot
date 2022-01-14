@@ -1,4 +1,3 @@
-import { Message } from 'discord.js';
 import { Signup, Rank, Region } from '..';
 
 export class Lobby {
@@ -10,7 +9,6 @@ export class Lobby {
   damagePlayers: Signup[] = [];
   supportPlayers: Signup[] = [];
   pingMsgId: string = '';
-  pingMsg?: Message;
   pingOccured: string = new Date().toISOString();
   pingAnnounced: boolean = false;
   pingCleared: boolean = false;

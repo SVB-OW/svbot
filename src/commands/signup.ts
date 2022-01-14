@@ -1,4 +1,4 @@
-import { ClientError, Command, Signup } from '../types';
+import { ClientError, Command, Region, Signup } from '../types';
 import { btagRegex, regionRegex } from '../config';
 
 module.exports = new Command({
@@ -30,7 +30,7 @@ module.exports = new Command({
         'Make sure you attach a screenshot of your career profile to the message',
       );
     // Overwrite existing signup
-    let existingSignup = await mongoSignups.findOne({
+    const existingSignup = await mongoSignups.findOne({
       discordId: msg.author.id,
     });
     if (existingSignup)
@@ -43,7 +43,7 @@ module.exports = new Command({
     const signup = new Signup({
       discordId: msg.author.id,
       battleTag: args[0],
-      region: args[1].toUpperCase(),
+      region: args[1].toUpperCase() as Region,
       screenshot: attachment.proxyURL,
       signupMsgId: msg.id,
       signedUpOn: new Date(msg.createdTimestamp).toISOString(),

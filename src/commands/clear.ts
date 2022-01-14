@@ -17,7 +17,7 @@ module.exports = new Command({
     lobby.pingCleared = true;
     mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby });
 
-    let ingamePlayers = msg.guild.roles.cache.get(role.id)?.members;
+    const ingamePlayers = msg.guild.roles.cache.get(role.id)?.members;
     ingamePlayers?.forEach(value => {
       value.voice.setChannel(null);
       value.roles.remove(role);

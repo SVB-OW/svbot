@@ -1,4 +1,4 @@
-import { Command } from '../types';
+import { Command, Region } from '../types';
 import { MessageEmbed } from 'discord.js';
 
 module.exports = new Command({
@@ -7,60 +7,60 @@ module.exports = new Command({
   allowedChannels: ['bot-commands'],
   async execute({ msg, args, mongoSignups }) {
     // Get the stats!
-    let totalPlayers = await mongoSignups.countDocuments();
-    let confirmedPlayers = await mongoSignups.countDocuments({
+    const totalPlayers = await mongoSignups.countDocuments();
+    const confirmedPlayers = await mongoSignups.countDocuments({
       confirmedBy: { $ne: '' },
     });
-    let unconfirmedPlayers = await mongoSignups.countDocuments({
+    const unconfirmedPlayers = await mongoSignups.countDocuments({
       confirmedBy: '',
     });
 
-    let euPlayers = await mongoSignups.countDocuments({ region: 'EU' });
-    let naPlayers = await mongoSignups.countDocuments({ region: 'NA' });
+    const euPlayers = await mongoSignups.countDocuments({ region: Region.EU });
+    const naPlayers = await mongoSignups.countDocuments({ region: Region.NA });
 
-    let bronzePlayers = await mongoSignups.countDocuments({
+    const bronzePlayers = await mongoSignups.countDocuments({
       $or: [
         { tankRank: 'BRONZE' },
         { damageRank: 'BRONZE' },
         { supportRank: 'BRONZE' },
       ],
     });
-    let silverPlayers = await mongoSignups.countDocuments({
+    const silverPlayers = await mongoSignups.countDocuments({
       $or: [
         { tankRank: 'SILVER' },
         { damageRank: 'SILVER' },
         { supportRank: 'SILVER' },
       ],
     });
-    let goldPlayers = await mongoSignups.countDocuments({
+    const goldPlayers = await mongoSignups.countDocuments({
       $or: [
         { tankRank: 'GOLD' },
         { damageRank: 'GOLD' },
         { supportRank: 'GOLD' },
       ],
     });
-    let platinumPlayers = await mongoSignups.countDocuments({
+    const platinumPlayers = await mongoSignups.countDocuments({
       $or: [
         { tankRank: 'PLATINUM' },
         { damageRank: 'PLATINUM' },
         { supportRank: 'PLATINUM' },
       ],
     });
-    let diamondPlayers = await mongoSignups.countDocuments({
+    const diamondPlayers = await mongoSignups.countDocuments({
       $or: [
         { tankRank: 'DIAMOND' },
         { damageRank: 'DIAMOND' },
         { supportRank: 'DIAMOND' },
       ],
     });
-    let masterPlayers = await mongoSignups.countDocuments({
+    const masterPlayers = await mongoSignups.countDocuments({
       $or: [
         { tankRank: 'MASTER' },
         { damageRank: 'MASTER' },
         { supportRank: 'MASTER' },
       ],
     });
-    let grandmasterPlayers = await mongoSignups.countDocuments({
+    const grandmasterPlayers = await mongoSignups.countDocuments({
       $or: [
         { tankRank: 'GRANDMASTER' },
         { damageRank: 'GRANDMASTER' },

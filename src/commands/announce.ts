@@ -1,6 +1,5 @@
-import { ObjectId } from 'bson';
 import { Role, TextChannel } from 'discord.js';
-import { Command, ClientError, Lobby } from '../types';
+import { Command, ClientError } from '../types';
 
 module.exports = new Command({
   name: 'announce',
@@ -16,11 +15,11 @@ module.exports = new Command({
     if ((await mongoLobbies.countDocuments()) === 0)
       throw new ClientError(msg, 'No ping has occurred yet');
 
-    let ingameRole = msg.guild.roles.cache.find(
+    const ingameRole = msg.guild.roles.cache.find(
       r => r.name === 'Ingame',
     ) as Role;
     if (!ingameRole) throw new ClientError(msg, 'Ingame role does not exist');
-    let hostRole = msg.guild.roles.cache.find(
+    const hostRole = msg.guild.roles.cache.find(
       r => r.name === 'Lobby Host',
     ) as Role;
     if (!hostRole) throw new ClientError(msg, 'Lobby Host role does not exist');
@@ -45,24 +44,24 @@ module.exports = new Command({
     const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } });
     if (!lobby) throw new ClientError(msg, 'No lobby has been created yet');
 
-    lobby.pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId);
-    if (!lobby.pingMsg)
+    const pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId);
+    if (!pingMsg)
       throw new ClientError(msg, 'Ping message could not be fetched');
 
     // Collection of players who reacted to ping message
-    let msgReactionUsers =
+    const msgReactionUsers =
       (
-        await lobby.pingMsg.reactions.cache
+        await pingMsg.reactions.cache
           .find(mr => mr.emoji.name === '👍')
           ?.users.fetch()
       )?.filter(user => !user.bot) || [];
 
-    let guildMembers = await msg.guild.members.fetch({ force: true });
+    const guildMembers = await msg.guild.members.fetch({ force: true });
 
     // Iterate list of users who reacted
     for (const [userId] of msgReactionUsers) {
       // Find singup for current user
-      let findSignup = await mongoSignups.findOne({ discordId: userId });
+      const findSignup = await mongoSignups.findOne({ discordId: userId });
 
       // Check that signup exists, was confirmed and the user is still in the server
       if (
@@ -71,7 +70,7 @@ module.exports = new Command({
         guildMembers.get(findSignup.discordId)
       ) {
         // Sort roles by which has the least players already
-        let rolePools = [
+        const rolePools = [
           { name: 'tank', arr: lobby.tankPlayers },
           { name: 'damage', arr: lobby.damagePlayers },
           { name: 'support', arr: lobby.supportPlayers },
@@ -124,9 +123,9 @@ module.exports = new Command({
       return 0;
     });
 
-    let top4tanks = lobby.tankPlayers.slice(0, tankCount);
-    let top4damages = lobby.damagePlayers.slice(0, dpsCount);
-    let top4supports = lobby.supportPlayers.slice(0, suppCount);
+    const top4tanks = lobby.tankPlayers.slice(0, tankCount);
+    const top4damages = lobby.damagePlayers.slice(0, dpsCount);
+    const top4supports = lobby.supportPlayers.slice(0, suppCount);
 
     top4tanks.forEach(s => {
       guildMembers.get(s.discordId)?.roles.add(ingameRole);
@@ -154,11 +153,11 @@ module.exports = new Command({
 
     const btagMessage = `**Next lobby <@&${hostRole.id}>**
 *Tank*
-${top4tanks.map(p => p.battleTag).join(', ') || 'none'}
+${top4tanks.map(p => p.battconstag).join(', ') || 'none'}
 *Damage*
-${top4damages.map(p => p.battleTag).join(', ') || 'none'}
+${top4damages.map(p => p.battconstag).join(', ') || 'none'}
 *Support*
-${top4supports.map(p => p.battleTag).join(', ') || 'none'}
+${top4supports.map(p => p.battconstag).join(', ') || 'none'}
 `;
 
     const playerMessage = `**Lobby Announcement**
@@ -178,7 +177,6 @@ ${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
     mmChannel.send(btagMessage);
     pingsChannel.send(playerMessage);
 
-    delete lobby.pingMsg;
     lobby.pingAnnounced = true;
     mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby });
   },

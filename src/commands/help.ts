@@ -16,7 +16,7 @@ module.exports = new Command({
       for (const arg of args) {
         const command = msg.client.commands.get(arg);
         if (command) {
-          let propsString = (command.props || [])
+          const propsString = (command.props || [])
             .map(p => (p.required ? `<${p.name}>` : `<${p.name}?>`))
             .join(' ');
           embed.addField(
@@ -27,7 +27,7 @@ module.exports = new Command({
       }
     } else {
       for (const [name, command] of msg.client.commands) {
-        let propsString = (command.props || [])
+        const propsString = (command.props || [])
           .map(p => (p.required ? `<${p.name}>` : `<${p.name}?>`))
           .join(' ');
         embed.addField(

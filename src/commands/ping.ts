@@ -40,7 +40,7 @@ module.exports = new Command({
     );
     if (!roleByName)
       throw new ClientError(msg, `Role ${lobby.rank} does not exist`);
-    let pingMsg = await pingsChannel.send(
+    const pingMsg = await pingsChannel.send(
       `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,
     );
 

@@ -29,7 +29,7 @@ module.exports = new Command({
       updateRoles = true;
     }
 
-    let userIds = args.slice(2);
+    const userIds = args.slice(2);
 
     await userIds.forEach(async id => {
       const foundUser = await mongoSignups.findOne({ discordId: id });
