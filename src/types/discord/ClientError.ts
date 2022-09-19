@@ -1,11 +1,11 @@
-import { Message } from 'discord.js';
+import { Message } from 'discord.js'
 
 export class ClientError extends Error {
-  msg: Message;
+	msg: Message
 
-  constructor(msg: Message, ...params: any[]) {
-    super(...params);
-    this.name = 'ClientError';
-    this.msg = msg;
-  }
+	constructor(msg: Message, ...params: any[]) {
+		super(...params)
+		this.name = 'ClientError'
+		this.msg = msg
+	}
 }

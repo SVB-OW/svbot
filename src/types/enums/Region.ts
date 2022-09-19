@@ -1,4 +1,4 @@
 export enum Region {
-  EU = 'EU',
-  NA = 'NA',
+	EU = 'EU',
+	NA = 'NA',
 }

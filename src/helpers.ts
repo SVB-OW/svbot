@@ -4,25 +4,25 @@
  * @returns false, if value is invalid otherwise the value for the database
  */
 export function rankResolver(input: string): boolean | string {
-  if (typeof input !== 'string') return false;
-  input = input.toUpperCase();
+	if (typeof input !== 'string') return false
+	input = input.toUpperCase()
 
-  if (['B', 'BRONZE'].includes(input)) return 'BRONZE';
+	if (['B', 'BRONZE'].includes(input)) return 'BRONZE'
 
-  if (['S', 'SILVER'].includes(input)) return 'SILVER';
+	if (['S', 'SILVER'].includes(input)) return 'SILVER'
 
-  if (['G', 'GOLD'].includes(input)) return 'GOLD';
+	if (['G', 'GOLD'].includes(input)) return 'GOLD'
 
-  if (['P', 'PLAT', 'PLATINUM'].includes(input)) return 'PLATINUM';
+	if (['P', 'PLAT', 'PLATINUM'].includes(input)) return 'PLATINUM'
 
-  if (['D', 'DIA', 'DIAMOND'].includes(input)) return 'DIAMOND';
+	if (['D', 'DIA', 'DIAMOND'].includes(input)) return 'DIAMOND'
 
-  if (['M', 'MASTER'].includes(input)) return 'MASTER';
+	if (['M', 'MASTER'].includes(input)) return 'MASTER'
 
-  if (['GM', 'GRANDMASTER'].includes(input)) return 'GRANDMASTER';
+	if (['GM', 'GRANDMASTER'].includes(input)) return 'GRANDMASTER'
 
-  // When no rank should be used
-  if (input === '-') return '-';
+	// When no rank should be used
+	if (input === '-') return '-'
 
-  return false;
+	return false
 }
