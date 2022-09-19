@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: '18.2'
           check-latest: true
-      - run: npm ci
-      - run: npm run build
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
       - run: pm2 delete svbot || true
       - run: pm2 start out/main.js --name "svbot"
