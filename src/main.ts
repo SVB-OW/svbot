@@ -67,7 +67,7 @@ client.on('messageCreate', async (msg: Message) => {
 		args,
 		mongoSignups: mongoDb.collection('signups'),
 		mongoLobbies: mongoDb.collection('lobbies'),
-		mongoContenstants: mongoDb.collection('contestants'),
+		mongoContestants: mongoDb.collection('contestants'),
 		mongoRuns: mongoDb.collection('runs'),
 	} as ICommandOptions)
 })
