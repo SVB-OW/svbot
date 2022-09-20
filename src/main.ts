@@ -32,11 +32,6 @@ for (const file of commandFiles) {
 //#endregion
 
 client.on('ready', async () => {
-	// await client.user?.setUsername('SVBot')
-	// await client.user?.setAvatar('../assets/svbot.png');
-	// await client.user?.setActivity(isProd ? 'Production' : 'Test', {
-	//   type: 'WATCHING',
-	// });
 	client.user?.setActivity('The Ranked Gauntlet', { type: ActivityType.Competing })
 	console.log(`Logged in as ${client.user?.tag}!`)
 })
@@ -44,7 +39,7 @@ client.on('ready', async () => {
 client.on('messageCreate', async (msg: Message) => {
 	console.log('msg', msg)
 	// Exit without error
-	if (!msg.content.startsWith(prefixLive) || msg.channel.type !== ChannelType.GuildText || false /*  msg.author.bot */) return
+	if (!msg.content.startsWith(prefixLive) || msg.channel.type !== ChannelType.GuildText /*  msg.author.bot */) return
 
 	const args = msg.content.slice(prefixLive.length).trim().split(/ +/)
 	const cmdName = args.shift()
