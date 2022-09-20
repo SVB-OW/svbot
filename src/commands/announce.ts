@@ -25,7 +25,7 @@ module.exports = new Command({
 		if (!pingsChannel) throw new ClientError(msg, 'Channel player-pings does not exist')
 		//#endregion
 
-		const tankCount = args[0] ? Number.parseInt(args[0]) : 4
+		const tankCount = args[0] ? Number.parseInt(args[0]) : 2
 		const dpsCount = args[1] ? Number.parseInt(args[1]) : 4
 		const suppCount = args[2] ? Number.parseInt(args[2]) : 4
 
