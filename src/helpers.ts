@@ -4,7 +4,6 @@
  * @returns false, if value is invalid otherwise the value for the database
  */
 export function rankResolver(input: string): boolean | string {
-	if (typeof input !== 'string') return false
 	input = input.toUpperCase()
 
 	if (['B', 'BRONZE'].includes(input)) return 'BRONZE'
