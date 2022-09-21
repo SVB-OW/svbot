@@ -6,5 +6,5 @@ export type ICommandOptions = {
 	args: string[]
 	mongoSignups: Collection<Signup>
 	mongoLobbies: Collection<Lobby>
-	mongoContenstants: Collection<Contestant>
+	mongoContestants: Collection<Contestant>
 }
