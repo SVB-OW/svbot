@@ -7,7 +7,6 @@ module.exports = new Command({
 	description: 'Shows this help list of all commands or filtered by multiple names',
 	props: [{ name: 'command', required: false }],
 	allowedChannels: ['bot-commands'],
-	// allowedRoles: ['Lobby Host', 'Gold', 'Admin'],
 	async execute({ msg, args }) {
 		const embed = new EmbedBuilder().setTitle('Commands').setTimestamp()
 

@@ -1,10 +1,10 @@
 //#region Preparation
 import { readdirSync } from 'fs'
 import { join } from 'path'
-import { ActivityType, ChannelType, GatewayIntentBits, Message } from 'discord.js'
+import { ActivityType, ChannelType, GatewayIntentBits, Interaction, Message } from 'discord.js'
 import { Db, MongoClient } from 'mongodb'
-import { isProd, discordToken, prefixLive, mongoUri, dbLive } from './config'
-import { CommandClient, ICommandMessage, ClientError, ICommandOptions } from './types'
+import { isProd, discordToken, mongoUri, dbLive } from './config'
+import { CommandClient, ClientError, ICommandOptions } from './types'
 const sendmail = require('sendmail')({ silent: true })
 const client = new CommandClient({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.MessageContent],
@@ -36,58 +36,45 @@ client.on('ready', async () => {
 	console.log(`Logged in as ${client.user?.tag}!`)
 })
 
-client.on('messageCreate', async (msg: Message) => {
-	console.log('msg', msg)
+client.on('interactionCreate', async (ia: Interaction) => {
+	console.log('ia created', ia)
 	// Exit without error
-	if (!msg.content.startsWith(prefixLive) || msg.channel.type !== ChannelType.GuildText /*  msg.author.bot */) return
-
-	const args = msg.content.slice(prefixLive.length).trim().split(/ +/)
-	const cmdName = args.shift()
+	if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText)) return
 
 	// Find command
-	if (!cmdName) throw new ClientError(msg, 'Command not found')
-	const cmd = client.commands.get(cmdName)
-	if (!cmd) throw new ClientError(msg, 'Command not found')
-
-	// Permission validation
-	if (cmd.permission) {
-		const authorPerms = msg.channel.permissionsFor(msg.author)
-		if (!authorPerms || !authorPerms.has(cmd.permission)) throw new ClientError(msg, "You're not permitted to use this command")
-	}
-
-	// Role validation
-	if (cmd.allowedRoles.length > 0 && !msg.member?.roles.cache.some((r: { name: any }) => cmd.allowedRoles.includes(r.name))) throw new ClientError(msg, "You're not permitted to use this command")
+	const cmd = client.commands.get(ia.commandName)
+	if (!cmd) throw new ClientError(ia, 'Command not found')
 
 	// Channel validation
-	if (cmd.allowedChannels.length > 0 && !cmd.allowedChannels.includes(msg.channel.name)) throw new ClientError(msg, 'This command is not permitted in this channel')
+	if (cmd.allowedChannels.length > 0 && !cmd.allowedChannels.includes(ia.channel.name)) throw new ClientError(ia, 'This command is not permitted in this channel')
 
 	// Execution
 	await cmd.execute({
-		msg: msg as ICommandMessage,
-		args,
+		ia,
 		mongoSignups: mongoDb.collection('signups'),
 		mongoLobbies: mongoDb.collection('lobbies'),
 		mongoContestants: mongoDb.collection('contestants'),
-		mongoRuns: mongoDb.collection('runs'),
-	} as ICommandOptions)
+	})
 })
 
 // #region Global Error Handler
 async function errorHandler(err: any) {
 	// Send client errors back to channel
 	if (err instanceof ClientError) {
-		await err.msg.reply(`\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``)
-		await err.msg.react('🚫')
+		// Handle known errors
+		await err.ia.reply(`\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``)
 	} else if (err instanceof Error && isProd) {
+		// Handle unknown errors in prod
 		let html = `<h1>Name: ${err.name}</h1><h3>Message: ${err.message}</h3></div><pre>${err.stack}</pre>`
 
 		sendmail({
 			from: 'svbot@svb.net',
 			to: 'flo.dendorfer@gmail.com',
-			subject: 'Error in SVBot' + isProd ? 'Production' : 'Development',
+			subject: 'Error in SVBot Production',
 			html,
 		})
 	} else {
+		// Handle unknown errors in dev
 		console.error(err)
 	}
 }

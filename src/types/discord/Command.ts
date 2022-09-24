@@ -1,4 +1,4 @@
-import { PermissionResolvable } from 'discord.js'
+import { PermissionFlagsBits, PermissionResolvable } from 'discord.js'
 import { CommandProperty, ICommandOptions } from '..'
 
 // bot command files
@@ -7,8 +7,7 @@ export class Command {
 	description: string = ''
 	props: CommandProperty[] = []
 	allowedChannels: string[] = []
-	allowedRoles: string[] = []
-	permission = '' as PermissionResolvable
+	allowedPermissions: bigint = PermissionFlagsBits.SendMessages
 	async execute(options: ICommandOptions): Promise<void> {}
 
 	constructor(obj?: Partial<Command>) {
