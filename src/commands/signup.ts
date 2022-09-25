@@ -9,32 +9,38 @@ module.exports = new Command({
 		{ name: 'region', required: true },
 	],
 	allowedChannels: ['signup'],
-	async execute({ msg, args, mongoSignups }) {
+	async execute({ ia , mongoSignups}) {
 		// Checks command contains valid btag
-		if (!args[0] || !btagRegex.test(args[0])) throw new ClientError(msg, 'Battle Tag invalid. Format should be "!signup Krusher99#1234 EU"')
+		let btag = ia.options.getString('battletag', true)
+		if (!btagRegex.test(btag)) throw new ClientError(ia, 'Battle Tag invalid. Format should be "!signup Krusher99#1234 EU"')
+
 		// Checks the command contains a region (caseinsensitive)
-		if (!args[1] || !regionRegex.test(args[1])) throw new ClientError(msg, 'Region invalid. Format should be "!signup Krusher99#1234 EU"')
+		let region = ia.options.getString('region', true)
+		if (!regionRegex.test(region)) throw new ClientError(ia, 'Region invalid. Format should be "!signup Krusher99#1234 EU"')
+
 		// Checks the command has exactly one attachment
-		// TODO: Check, the attachment is an image
-		if (msg.attachments.size !== 1) throw new ClientError(msg, 'Make sure you attach a screenshot of your career profile to the message')
+		let imgtypes = [".jpg", ".png"]
+		let img = ia.options.getAttachment('screenshot', true)
+		if (img?.size !== 1) throw new ClientError(ia, 'Make sure you attach a screenshot of your career profile to the message')
+		if (imgtypes.indexOf(img?.proxyURL.substr(-4, 4)) !== -1) throw new ClientError(ia, 'Image type is not accepted')
+
 		// Overwrite existing signup
 		const existingSignup = await mongoSignups.findOne({
-			discordId: msg.author.id,
+			discordId: ia.user.id,
 		})
-		if (existingSignup) throw new ClientError(msg, `You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`)
+		if (existingSignup) throw new ClientError(ia, `You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`)
 
-		const attachment = msg.attachments.values().next().value
 		const signup = new Signup({
-			discordId: msg.author.id,
-			battleTag: args[0],
-			region: args[1].toUpperCase() as Region,
-			screenshot: attachment.proxyURL,
-			signupMsgId: msg.id,
-			signedUpOn: new Date(msg.createdTimestamp).toISOString(),
+			discordId: ia.user.id,
+			battleTag: btag,
+			region: region.toUpperCase() as Region,
+			screenshot: img.proxyURL,
+			signupMsgId: ia.id,
+			signedUpOn: new Date(ia.createdTimestamp).toISOString(),
 		})
 
 		await mongoSignups.insertOne(signup as any)
 
-		await msg.channel.send('Signup has been received and will be checked by an event moderator')
+		await ia.reply('Signup has been received and will be checked by an event moderator')
 	},
 })
