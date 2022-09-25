@@ -1,15 +1,17 @@
 import { Command, ClientError } from '../types'
+import { PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'purge',
 	description: 'Deletes max 100 previous messages in the channel',
-	permission: 'Administrator',
+	allowedPermissions: PermissionFlagsBits.Administrator,
 	props: [{ name: 'number', required: false }],
-	async execute({ msg, args }) {
-		const num = args[0] ? Number.parseInt(args[0]) : 100
-		if (num < 1 || num > 100) throw new ClientError(msg, 'Number must be in range 1-100')
+	async execute({ ia }) {
 
-		await msg.channel.bulkDelete(num)
-		msg.channel.send(num + ' messages have been deleted').then((m) => setTimeout(() => m.delete(), 3000))
+		const num = ia.options.data[0].value ? Number.parseInt(ia.options.data[0].value) : 100
+		if (num < 1 || num > 100) throw new ClientError(ia, 'Number must be in range 1-100')
+
+		await ia.channel.bulkDelete(num)
+		ia.reply(num + ' messages have been deleted').then((m) => setTimeout(() => m.delete(), 3000))
 	},
 })
