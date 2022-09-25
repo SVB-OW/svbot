@@ -9,19 +9,18 @@ module.exports = new Command({
 	async execute({ ia, mongoLobbies }) {
 		const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } })
 		if (!lobby) throw new ClientError(ia, 'No lobby was announced yet')
-		// @ts-ignore
+
 		const role = ia.guild.roles.cache.find((role) => role.name === 'Ingame') as Role
 		if (!role) throw new ClientError(ia, 'Ingame role does not exist')
 
 		lobby.pingCleared = true
-		await mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
+		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
 
-		// @ts-ignore
 		const ingamePlayers = ia.guild.roles.cache.get(role.id)?.members
 		ingamePlayers?.forEach((value) => {
 			value.voice.setChannel(null)
 			value.roles.remove(role)
 		})
-		await ia.reply('Ingame role cleared')
+		ia.reply('Ingame role cleared')
 	},
 })

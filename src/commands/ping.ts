@@ -19,20 +19,20 @@ module.exports = new Command({
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
 
 		if (ia.options.data.length < 3) throw new ClientError(ia, 'Invalid number of arguments. Format is "!ping <rank> <region> <streamer>')
-		let rankPing = ia.options.data[0].value.toString()
-		let regionPing = ia.options.data[1].value.toString()
-		let streamerPing = ia.options.data[2].value.toString()
+		const pingRank = ia.options.data[0].value.toString()
+		const pingRegion = ia.options.data[1].value.toString()
+		const pingStreamer = ia.options.data[2].value.toString()
 
 		// Checks Rank
-		if (!rankResolver(rankPing)) throw new ClientError(ia, 'Rank is invalid ' + rankPing)
+		if (!rankResolver(pingRank)) throw new ClientError(ia, 'Rank is invalid ' + pingRank)
 
 		// Checks Region
-		if (!regionRegex.test(regionPing)) throw new ClientError(ia, 'Region is invalid ' + regionPing)
+		if (!regionRegex.test(pingRegion)) throw new ClientError(ia, 'Region is invalid ' + pingRegion)
 
 		const lobby = new Lobby() as WithId<Lobby>
-		lobby.rank = rankResolver(rankPing) as Rank
-		lobby.region = regionPing.toUpperCase() as Region
-		lobby.streamer = streamerPing
+		lobby.rank = rankResolver(pingRank) as Rank
+		lobby.region = pingRegion.toUpperCase() as Region
+		lobby.streamer = pingStreamer
 
 		const roleByName = ia.guild.roles.cache.find((item) => item.name.toUpperCase() === lobby.rank)
 		if (!roleByName) throw new ClientError(ia, `Role ${lobby.rank} does not exist`)

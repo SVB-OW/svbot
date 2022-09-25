@@ -15,10 +15,10 @@ module.exports = new Command({
 	async execute({ ia, mongoSignups }) {
 		if (ia.options.data.length < 4) throw new ClientError(ia, 'Invalid number of arguments. Format is "!confirm <msgId> <tankRank> <dpsRank> <supportRank>')
 
-		let msgId = ia.options.data[0].value.toString()
-		let tankRank = ia.options.data[1].value.toString()
-		let dpsRank = ia.options.data[2].value.toString()
-		let supportRank = ia.options.data[3].value.toString()
+		const msgId = ia.options.data[0].value.toString()
+		const tankRank = ia.options.data[1].value.toString()
+		const dpsRank = ia.options.data[2].value.toString()
+		const supportRank = ia.options.data[3].value.toString()
 
 		const signupChannel = ia.guild.channels.cache.find((c) => c.name === 'signup') as TextChannel
 		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
