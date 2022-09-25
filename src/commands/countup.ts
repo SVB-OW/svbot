@@ -5,15 +5,16 @@ module.exports = new Command({
 	description: 'Increments the played count of one or more player',
 	props: [{ name: 'discordIds', required: true }],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
-		if (args.length === 0) throw new ClientError(msg, 'Command must include at least one user id')
+	async execute({ ia, mongoSignups }) {
+		if (ia.options.data.length === 0) throw new ClientError(ia, 'Command must include at least one user id')
 
-		args.forEach(async (value) => {
-			const foundUser = await mongoSignups.findOne({ discordId: value })
-			if (!foundUser) throw new ClientError(msg, `Signup for ${value} was not found`)
+		ia.options.data.forEach(async (value) => {
+			const uid = value.user?.id
+			const foundUser = await mongoSignups.findOne({ discordId: uid })
+			if (!foundUser) throw new ClientError(ia, `Signup for ${uid} was not found`)
 
 			foundUser.gamesPlayed++
-			mongoSignups.updateOne({ discordId: value }, { $set: foundUser })
+			mongoSignups.updateOne({ discordId: uid }, { $set: foundUser })
 		})
 	},
 })
