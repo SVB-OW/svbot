@@ -12,44 +12,49 @@ module.exports = new Command({
 		{ name: 'supportRank', required: true },
 	],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
-		if (args.length < 4) throw new ClientError(msg, 'Invalid number of arguments. Format is "!confirm <msgId> <tankRank> <dpsRank> <supportRank>')
+	async execute({ ia, mongoSignups }) {
+		if (ia.options.data.length < 4) throw new ClientError(ia, 'Invalid number of arguments. Format is "!confirm <msgId> <tankRank> <dpsRank> <supportRank>')
 
-		const signupChannel = msg.guild.channels.cache.find((c) => c.name === 'signup') as TextChannel
-		if (!signupChannel) throw new ClientError(msg, 'Signup channel does not exist')
+		let msgId = ia.options.data[0].value.toString()
+		let tankRank = ia.options.data[1].value.toString()
+		let dpsRank = ia.options.data[2].value.toString()
+		let supportRank = ia.options.data[3].value.toString()
+
+		const signupChannel = ia.guild.channels.cache.find((c) => c.name === 'signup') as TextChannel
+		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
 
 		const foundSignupByMsgId = await mongoSignups.findOne({
-			signupMsgId: args[0],
+			signupMsgId: msgId,
 		})
-		if (!foundSignupByMsgId) throw new ClientError(msg, 'MsgId was not found in DB')
+		if (!foundSignupByMsgId) throw new ClientError(ia, 'MsgId was not found in DB')
 
-		if (!rankResolver(args[1])) throw new ClientError(msg, 'Tank rank is invalid')
+		if (!rankResolver(tankRank)) throw new ClientError(ia, 'Tank rank is invalid')
 
-		if (!rankResolver(args[2])) throw new ClientError(msg, 'Damage rank is invalid')
+		if (!rankResolver(dpsRank)) throw new ClientError(ia, 'Damage rank is invalid')
 
-		if (!rankResolver(args[3])) throw new ClientError(msg, 'Support rank is invalid')
+		if (!rankResolver(supportRank)) throw new ClientError(ia, 'Support rank is invalid')
 
-		foundSignupByMsgId.tankRank = rankResolver(args[1]) as string
-		foundSignupByMsgId.damageRank = rankResolver(args[2]) as string
-		foundSignupByMsgId.supportRank = rankResolver(args[3]) as string
-		foundSignupByMsgId.confirmedBy = msg.author.username
-		foundSignupByMsgId.confirmedOn = new Date(msg.createdTimestamp).toISOString()
+		foundSignupByMsgId.tankRank = rankResolver(tankRank) as string
+		foundSignupByMsgId.damageRank = rankResolver(dpsRank) as string
+		foundSignupByMsgId.supportRank = rankResolver(supportRank) as string
+		foundSignupByMsgId.confirmedBy = ia.user.id
+		foundSignupByMsgId.confirmedOn = new Date(ia.createdTimestamp).toISOString()
 
-		mongoSignups.updateOne({ signupMsgId: args[0] }, { $set: foundSignupByMsgId })
+		await mongoSignups.updateOne({ signupMsgId: msgId }, { $set: foundSignupByMsgId })
 
 		// Assign rank roles on confirm
-		const member = await msg.guild.members.fetch(foundSignupByMsgId.discordId)
-		if (foundSignupByMsgId.tankRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
+		const member = await ia.guild.members.fetch(foundSignupByMsgId.discordId)
+		if (foundSignupByMsgId.tankRank !== '-') member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
 
-		if (foundSignupByMsgId.damageRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
+		if (foundSignupByMsgId.damageRank !== '-') member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
 
-		if (foundSignupByMsgId.supportRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
+		if (foundSignupByMsgId.supportRank !== '-') member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
 
 		// TODO: Old messages might not be fetchable
 		signupChannel.messages.fetch(foundSignupByMsgId.signupMsgId).then((oldMsg) => {
 			oldMsg.react('👍')
 		})
 
-		msg.channel.send('Signup successfully validated')
+		await ia.reply('Signup successfully validated')
 	},
 })
