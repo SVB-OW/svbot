@@ -5,7 +5,7 @@ module.exports = new Command({
 	name: 'stats',
 	description: 'Display some stats for the event',
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
+	async execute({ ia, mongoSignups }) {
 		// Get the stats!
 		const totalPlayers = await mongoSignups.countDocuments()
 		const confirmedPlayers = await mongoSignups.countDocuments({
@@ -41,7 +41,7 @@ module.exports = new Command({
 		})
 
 		const embed = new EmbedBuilder().setTitle('Event Stats').setTimestamp()
-		if (msg.guild.iconURL()) embed.setThumbnail(msg.guild.iconURL() as string)
+		if (ia.guild.iconURL()) embed.setThumbnail(ia.guild.iconURL() as string)
 
 		embed.addFields([
 			{ name: 'Confirmed', value: confirmedPlayers.toString(), inline: true },
@@ -60,6 +60,6 @@ module.exports = new Command({
 			{ name: 'Grandmaster', value: grandmasterPlayers.toString().toString(), inline: true },
 		])
 
-		await msg.channel.send({ embeds: [embed] })
+		await ia.reply({ embeds: [embed] })
 	},
 })
