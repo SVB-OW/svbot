@@ -20,7 +20,7 @@ module.exports = new Command({
 		const dpsRank = ia.options.data[2].value.toString()
 		const supportRank = ia.options.data[3].value.toString()
 
-		const signupChannel = ia.guild.channels.cache.find((c) => c.name === 'signup') as TextChannel
+		const signupChannel = ia.guild!.channels.cache.find((c) => c.name === 'signup') as TextChannel
 		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
 
 		const foundSignupByMsgId = await mongoSignups.findOne({
@@ -43,12 +43,12 @@ module.exports = new Command({
 		await mongoSignups.updateOne({ signupMsgId: msgId }, { $set: foundSignupByMsgId })
 
 		// Assign rank roles on confirm
-		const member = await ia.guild.members.fetch(foundSignupByMsgId.discordId)
-		if (foundSignupByMsgId.tankRank !== '-') member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
+		const member = await ia.guild!.members.fetch(foundSignupByMsgId.discordId)
+		if (foundSignupByMsgId.tankRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
 
-		if (foundSignupByMsgId.damageRank !== '-') member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
+		if (foundSignupByMsgId.damageRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
 
-		if (foundSignupByMsgId.supportRank !== '-') member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
+		if (foundSignupByMsgId.supportRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
 
 		// TODO: Old messages might not be fetchable
 		signupChannel.messages.fetch(foundSignupByMsgId.signupMsgId).then((oldMsg) => {
