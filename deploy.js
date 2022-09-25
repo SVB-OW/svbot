@@ -14,11 +14,12 @@ for (const file of commandFiles) {
 //#endregion
 
 const commands = commandsCollection.map((cmd) =>
-	new SlashCommandBuilder()
-		.setName(cmd.name)
-		.setDescription(cmd.description)
-		.setDefaultMemberPermissions(cmd.allowedPermissions || 0)
-		.toJSON(),
+  new SlashCommandBuilder()
+    .setName(cmd.name)
+    .setDescription(cmd.description)
+    .setDefaultMemberPermissions(cmd.allowedPermissions || 0)
+    .setDMPermission(false)
+    .toJSON(),
 )
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
