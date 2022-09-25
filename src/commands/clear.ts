@@ -1,24 +1,27 @@
-import { Role } from 'discord.js'
+import { Role, PermissionFlagsBits } from 'discord.js'
 import { Command, ClientError } from '../types'
 
 module.exports = new Command({
 	name: 'clear',
 	description: 'Kicks all players with @Ingame from voice lobbies and removes their role',
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, mongoLobbies }) {
+	async execute({ ia, mongoLobbies }) {
 		const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } })
-		if (!lobby) throw new ClientError(msg, 'No lobby was announced yet')
-		const role = msg.guild.roles.cache.find((role) => role.name === 'Ingame') as Role
-		if (!role) throw new ClientError(msg, 'Ingame role does not exist')
+		if (!lobby) throw new ClientError(ia, 'No lobby was announced yet')
+		// @ts-ignore
+		const role = ia.guild.roles.cache.find((role) => role.name === 'Ingame') as Role
+		if (!role) throw new ClientError(ia, 'Ingame role does not exist')
 
 		lobby.pingCleared = true
-		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
+		await mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
 
-		const ingamePlayers = msg.guild.roles.cache.get(role.id)?.members
+		// @ts-ignore
+		const ingamePlayers = ia.guild.roles.cache.get(role.id)?.members
 		ingamePlayers?.forEach((value) => {
 			value.voice.setChannel(null)
 			value.roles.remove(role)
 		})
-		msg.channel.send('Ingame role cleared')
+		await ia.reply('Ingame role cleared')
 	},
 })
