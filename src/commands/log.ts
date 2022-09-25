@@ -9,7 +9,7 @@ module.exports = new Command({
 	async execute({ ia, mongoSignups }) {
 		if (ia.options.data.length != 1) throw new ClientError(ia, 'Parameter discordId | discordTag is required')
 
-		const uid = ia.options.data[0].value.toString()
+		const uid = ia.options.data[0].value!.toString()
 		const found = await mongoSignups.findOne({
 			discordId: uid.replace(/[<>@!]/g, ''),
 		})

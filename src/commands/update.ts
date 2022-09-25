@@ -14,10 +14,10 @@ module.exports = new Command({
 	async execute({ ia, mongoSignups }) {
 		if (ia.options.data.length < 3) throw new ClientError(ia, 'Too few arguments. Format is !update <property> <value> <discordIds...>')
 
-		let propVal = ia.options.data[0].value.toString()
+		let propVal = ia.options.data[0].value!.toString()
 		if (!new Signup().hasOwnProperty(propVal)) throw new ClientError(ia, 'Property does not exist')
 
-		let newVal = ia.options.data[1].value.toString()
+		let newVal = ia.options.data[1].value!.toString()
 		let updateRoles = false
 		if (['tankRank', 'damageRank', 'supportRank'].includes(propVal)) {
 			if (!rankResolver(newVal)) throw new ClientError(ia, 'Invalid rank')
