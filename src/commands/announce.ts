@@ -10,34 +10,36 @@ module.exports = new Command({
 		{ name: 'supportPlayersCount', required: false },
 	],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups, mongoLobbies }) {
+	async execute({ ia, mongoSignups, mongoLobbies }) {
 		//#region Validations
-		if ((await mongoLobbies.countDocuments()) === 0) throw new ClientError(msg, 'No ping has occurred yet')
+		if ((await mongoLobbies.countDocuments()) === 0) throw new ClientError(ia, 'No ping has occurred yet')
 
-		const ingameRole = msg.guild.roles.cache.find((r) => r.name === 'Ingame') as Role
-		if (!ingameRole) throw new ClientError(msg, 'Ingame role does not exist')
-		const hostRole = msg.guild.roles.cache.find((r) => r.name === 'Lobby Host') as Role
-		if (!hostRole) throw new ClientError(msg, 'Lobby Host role does not exist')
+		const ingameRole = ia.guild.roles.cache.find((r) => r.name === 'Ingame') as Role
+		if (!ingameRole) throw new ClientError(ia, 'Ingame role does not exist')
+		const hostRole = ia.guild.roles.cache.find((r) => r.name === 'Lobby Host') as Role
+		if (!hostRole) throw new ClientError(ia, 'Lobby Host role does not exist')
 
-		const mmChannel = msg.guild.channels.cache.find((c) => c.name === 'matchmaker') as TextChannel
-		if (!mmChannel) throw new ClientError(msg, 'Channel matchmaker does not exist')
-		const pingsChannel = msg.guild.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
-		if (!pingsChannel) throw new ClientError(msg, 'Channel player-pings does not exist')
+		const mmChannel = ia.guild.channels.cache.find((c) => c.name === 'matchmaker') as TextChannel
+		if (!mmChannel) throw new ClientError(ia, 'Channel matchmaker does not exist')
+		const pingsChannel = ia.guild.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
+		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
 		//#endregion
 
-		const tankCount = args[0] ? Number.parseInt(args[0]) : 2
-		const dpsCount = args[1] ? Number.parseInt(args[1]) : 4
-		const suppCount = args[2] ? Number.parseInt(args[2]) : 4
+		if (ia.options.data.length < 3) throw new ClientError(ia, 'Invalid number of arguments. Format is "!announce <tankCount> <dpsCount> <supportCount>')
+
+		const tankCount = ia.options.data[0].value ? Number.parseInt(ia.options.data[0].value) : 2
+		const dpsCount = ia.options.data[1].value ? Number.parseInt(ia.options.data[1].value) : 4
+		const suppCount = ia.options.data[2].value ? Number.parseInt(ia.options.data[2].value) : 4
 
 		// Fetch ping msg
 		const lobby = (await mongoLobbies.findOne({}, { sort: { $natural: -1 } })) || new Lobby()
 		const pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId)
-		if (!pingMsg) throw new ClientError(msg, 'Ping message not found. Please create another ping')
+		if (!pingMsg) throw new ClientError(ia, 'Ping message not found. Please create another ping')
 
 		// Collection of players who reacted to ping message
 		const msgReactionUsers = (await pingMsg.reactions.cache.find((mr) => mr.emoji.name === '👍')?.users.fetch())?.filter((user) => !user.bot) || []
 
-		const guildMembers = await msg.guild.members.fetch({ force: true })
+		const guildMembers = await ia.guild.members.fetch({ force: true })
 
 		// Iterate list of users who reacted
 		for (const [userId] of msgReactionUsers) {
