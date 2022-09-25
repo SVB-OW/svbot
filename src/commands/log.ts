@@ -6,18 +6,19 @@ module.exports = new Command({
 	description: 'Logs the first db entry or optionally a specific entry by signupId',
 	props: [{ name: 'discordId | discordTag', required: true }],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
-		if (!args[0]) throw new ClientError(msg, 'Parameter discordId | discordTag is required')
+	async execute({ ia, mongoSignups }) {
+		if (ia.options.data.length != 1) throw new ClientError(ia, 'Parameter discordId | discordTag is required')
 
+		const uid = ia.options.data[0].value.toString()
 		const found = await mongoSignups.findOne({
-			discordId: args[0].replace(/[<>@!]/g, ''),
+			discordId: uid.replace(/[<>@!]/g, ''),
 		})
-		if (!found) throw new ClientError(msg, 'Signup not found')
+		if (!found) throw new ClientError(ia, 'Signup not found')
 
-		await msg.channel.send({
+		await ia.reply({
 			embeds: [
 				new EmbedBuilder()
-					.setTitle(args[0])
+					.setTitle(uid)
 					.setTimestamp()
 					.addFields(
 						Object.keys(found).map((key) => ({
