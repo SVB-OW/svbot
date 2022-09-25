@@ -8,7 +8,7 @@ module.exports = new Command({
 	props: [{ name: 'number', required: false }],
 	async execute({ ia }) {
 
-		const num = ia.options.data[0].value ? Number.parseInt(ia.options.data[0].value) : 100
+		const num = ia.options.data[0].value ? Number.parseInt(ia.options.data[0].value.toString()) : 100
 		if (num < 1 || num > 100) throw new ClientError(ia, 'Number must be in range 1-100')
 
 		await ia.channel.bulkDelete(num)
