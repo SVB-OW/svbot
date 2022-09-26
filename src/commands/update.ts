@@ -4,11 +4,11 @@ import { ClientError, Command, Signup } from '../types'
 
 module.exports = new Command({
 	name: 'update',
-	description: 'Updates a property of one or more users',
+	description: 'Updates a property of a user',
 	props: [
 		{ name: 'property', required: true },
 		{ name: 'value', required: true },
-		{ name: 'discord_ids', required: true },
+		{ name: 'discord_id', required: true },
 	],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {
@@ -26,45 +26,44 @@ module.exports = new Command({
 
 		let userId = ia.options.getString('discord_id', true)
 
-		await userIds.forEach(async (id) => {
-			const foundUser = await mongoSignups.findOne({ discordId: id })
-			if (!foundUser) throw new ClientError(ia, `Signup for ${id} was not found`)
+		const foundUser = await mongoSignups.findOne({ discordId: userId })
+		if (!foundUser) throw new ClientError(ia, `Signup for ${userId} was not found`)
 
-			foundUser[propVal] = newVal
-			mongoSignups.updateOne({ discordId: id }, { $set: foundUser })
+		foundUser[propVal] = newVal
+		await mongoSignups.updateOne({ discordId: userId }, { $set: foundUser })
 
-			const member = await ia.guild!.members.fetch(foundUser.discordId)
-			if (member.roles.cache.find((r) => r.name === 'Admin')) throw new ClientError(ia, 'Roles for admins cannot be changed automatically')
+		const member = await ia.guild!.members.fetch(foundUser.discordId)
+		if (member.roles.cache.find((r) => r.name === 'Admin')) throw new ClientError(ia, 'Roles for admins cannot be changed automatically')
 
-			if (updateRoles) {
-				// Remove all rank roles (doesn't work with admins)
-				await member.roles.set(
-					Object.values(member.roles)
-						.filter((r: Role) => !rankResolver(r.name))
-						.map((r: Role) => r.id),
-				)
+		if (updateRoles) {
+			// Remove all rank roles (doesn't work with admins)
+			await member.roles.set(
+				Object.values(member.roles)
+					.filter((r: Role) => !rankResolver(r.name))
+					.map((r: Role) => r.id),
+			)
 
-				// Assign rank roles on confirm
-				if (foundUser.tankRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.tankRank) as Role)
+			// Assign rank roles on confirm
+			if (foundUser.tankRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.tankRank) as Role)
 
-				if (foundUser.damageRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.damageRank) as Role)
+			if (foundUser.damageRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.damageRank) as Role)
 
-				if (foundUser.supportRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.supportRank) as Role)
-			}
+			if (foundUser.supportRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.supportRank) as Role)
+		}
 
-			await ia.reply({
-				embeds: [
-					new EmbedBuilder()
-						.setTitle('Updated signup')
-						.setTimestamp()
-						.addFields(
-							Object.keys(foundUser).map((key) => ({
-								name: key,
-								value: foundUser[key] || '-',
-							})),
-						),
-				],
-			})
+		await ia.reply({
+			embeds: [
+				new EmbedBuilder()
+					.setTitle('Updated signup')
+					.setTimestamp()
+					.addFields(
+						Object.keys(foundUser).map((key) => ({
+							name: key,
+							value: foundUser[key] || '-',
+						})),
+					),
+			],
 		})
+
 	},
 })
