@@ -5,9 +5,9 @@ module.exports = new Command({
 	name: 'announce',
 	description: 'Post player list in #matchmaker',
 	props: [
-		{ name: 'tankPlayersCount', required: false },
-		{ name: 'dpsPlayersCount', required: false },
-		{ name: 'supportPlayersCount', required: false },
+		{ name: 'tank_players_count', required: false, type: 'number' },
+		{ name: 'dps_players_count', required: false, type: 'number' },
+		{ name: 'support_players_count', required: false, type: 'number' },
 	],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups, mongoLobbies }) {

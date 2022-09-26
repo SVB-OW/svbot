@@ -6,10 +6,10 @@ module.exports = new Command({
 	name: 'confirm',
 	description: 'Confirms a signup entry',
 	props: [
-		{ name: 'signupMsgId', required: true },
-		{ name: 'tankRank', required: true },
-		{ name: 'dpsRank', required: true },
-		{ name: 'supportRank', required: true },
+		{ name: 'signup_msg_id', required: true },
+		{ name: 'tank_rank', required: true },
+		{ name: 'dps_rank', required: true },
+		{ name: 'support_rank', required: true },
 	],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {

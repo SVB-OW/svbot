@@ -8,7 +8,7 @@ module.exports = new Command({
 	props: [
 		{ name: 'property', required: true },
 		{ name: 'value', required: true },
-		{ name: 'discordIds', required: true },
+		{ name: 'discord_ids', required: true },
 	],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {

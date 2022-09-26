@@ -4,7 +4,7 @@ import { EmbedBuilder } from 'discord.js'
 module.exports = new Command({
 	name: 'log',
 	description: 'Logs the first db entry or optionally a specific entry by signupId',
-	props: [{ name: 'discordId | discordTag', required: true }],
+	props: [{ name: 'discord_id_or_tag', required: true }],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {
 		if (ia.options.data.length != 1) throw new ClientError(ia, 'Parameter discordId | discordTag is required')

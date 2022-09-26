@@ -13,14 +13,27 @@ for (const file of commandFiles) {
 }
 //#endregion
 
-const commands = commandsCollection.map((cmd) =>
-  new SlashCommandBuilder()
-    .setName(cmd.name)
-    .setDescription(cmd.description)
-    .setDefaultMemberPermissions(cmd.allowedPermissions || 0)
-    .setDMPermission(false)
-    .toJSON(),
-)
+const optionBuilder = (option, prop) => option.setName(prop.name).setDescription(prop.name).setRequired(prop.required)
+const commands = commandsCollection.map((cmd) => {
+	const slash = new SlashCommandBuilder()
+		.setName(cmd.name)
+		.setDescription(cmd.description)
+		.setDefaultMemberPermissions(cmd.allowedPermissions || 0)
+		.setDMPermission(false)
+
+	cmd.props.forEach((prop) => {
+		// if (prop.type === 'number')
+		//   slash.addNumberOption((option) => option.setName(prop.name).setDescription(prop.name).setRequired(prop.required));
+		// else if (prop.type === 'boolean')
+		//   slash.addBooleanOption((option) =>
+		//     option.setName(prop.name).setDescription(prop.name).setRequired(prop.required),
+		//   );
+		// else
+		console.log('add option', prop)
+		slash.addStringOption((option) => option.setName(prop.name).setDescription(prop.name).setRequired(prop.required))
+	})
+	return slash.toJSON()
+})
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
 
