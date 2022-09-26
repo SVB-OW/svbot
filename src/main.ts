@@ -1,10 +1,10 @@
 //#region Preparation
 import { readdirSync } from 'fs'
 import { join } from 'path'
-import { ActivityType, ChannelType, GatewayIntentBits, Interaction, Message } from 'discord.js'
+import { ActivityType, ChannelType, GatewayIntentBits, Interaction} from 'discord.js'
 import { Db, MongoClient } from 'mongodb'
 import { isProd, discordToken, mongoUri, dbLive } from './config'
-import { CommandClient, ClientError, ICommandOptions } from './types'
+import { CommandClient, ClientError} from './types'
 const sendmail = require('sendmail')({ silent: true })
 const client = new CommandClient({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.MessageContent],

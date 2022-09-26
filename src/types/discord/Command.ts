@@ -1,4 +1,4 @@
-import { PermissionFlagsBits, PermissionResolvable } from 'discord.js'
+import { PermissionFlagsBits} from 'discord.js'
 import { CommandProperty, ICommandOptions } from '..'
 
 // bot command files
