@@ -7,20 +7,14 @@ on:
     branches: ['*']
 
 jobs:
-  - uses: actions/checkout@v2
-  - uses: actions/setup-node@v2-beta
-    with:
-      node-version: '18.2'
-      check-latest: true
-      
-  format:
+  run:
     runs-on: self-hosted
 
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '18.2'
+          check-latest: true
       - run: yarn format
-
-  lint:
-    runs-on: self-hosted
-
-    steps:
       - run: yarn lint
