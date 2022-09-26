@@ -1,13 +1,20 @@
 //#region Preparation
-import { readdirSync } from 'fs'
+import { ActivityType, ChannelType, GatewayIntentBits } from 'discord.js'
+import { ClientError, CommandClient } from './types'
+import { dbLive, discordToken, isProd, mongoUri } from './config'
+import type { Db } from 'mongodb'
+import type { Interaction } from 'discord.js'
+import { MongoClient } from 'mongodb'
 import { join } from 'path'
-import { ActivityType, ChannelType, GatewayIntentBits, Interaction} from 'discord.js'
-import { Db, MongoClient } from 'mongodb'
-import { isProd, discordToken, mongoUri, dbLive } from './config'
-import { CommandClient, ClientError} from './types'
+import { readdirSync } from 'fs'
 const sendmail = require('sendmail')({ silent: true })
 const client = new CommandClient({
-	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.GuildMessageReactions, GatewayIntentBits.MessageContent],
+	intents: [
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMessageReactions,
+		GatewayIntentBits.MessageContent,
+	],
 })
 
 // Init mongodb and inMemory db
@@ -46,7 +53,8 @@ client.on('interactionCreate', async (ia: Interaction) => {
 	if (!cmd) throw new ClientError(ia, 'Command not found')
 
 	// Channel validation
-	if (cmd.allowedChannels.length > 0 && !cmd.allowedChannels.includes(ia.channel.name)) throw new ClientError(ia, 'This command is not permitted in this channel')
+	if (cmd.allowedChannels.length > 0 && !cmd.allowedChannels.includes(ia.channel.name))
+		throw new ClientError(ia, 'This command is not permitted in this channel')
 
 	// Execution
 	await cmd.execute({
@@ -65,7 +73,7 @@ async function errorHandler(err: any) {
 		await err.ia.reply(`\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``)
 	} else if (err instanceof Error && isProd) {
 		// Handle unknown errors in prod
-		let html = `<h1>Name: ${err.name}</h1><h3>Message: ${err.message}</h3></div><pre>${err.stack}</pre>`
+		const html = `<h1>Name: ${err.name}</h1><h3>Message: ${err.message}</h3></div><pre>${err.stack}</pre>`
 
 		sendmail({
 			from: 'svbot@svb.net',

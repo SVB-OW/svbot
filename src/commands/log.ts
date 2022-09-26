@@ -1,4 +1,4 @@
-import { Command, ClientError } from '../types'
+import { ClientError, Command } from '../types'
 import { EmbedBuilder } from 'discord.js'
 
 module.exports = new Command({
@@ -7,7 +7,6 @@ module.exports = new Command({
 	props: [{ name: 'discord_id_or_tag', required: true }],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {
-
 		const uid = ia.options.getString('discord_id_or_tag', true)
 		const found = await mongoSignups.findOne({
 			discordId: uid.replace(/[<>@!]/g, ''),

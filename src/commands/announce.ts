@@ -1,5 +1,5 @@
-import { Role, TextChannel } from 'discord.js'
-import { Command, ClientError, Lobby } from '../types'
+import { ClientError, Command, Lobby } from '../types'
+import type { Role, TextChannel } from 'discord.js'
 
 module.exports = new Command({
 	name: 'announce',
@@ -35,7 +35,10 @@ module.exports = new Command({
 		if (!pingMsg) throw new ClientError(ia, 'Ping message not found. Please create another ping')
 
 		// Collection of players who reacted to ping message
-		const msgReactionUsers = (await pingMsg.reactions.cache.find((mr) => mr.emoji.name === '👍')?.users.fetch())?.filter((user) => !user.bot) || []
+		const msgReactionUsers =
+			(await pingMsg.reactions.cache.find((mr) => mr.emoji.name === '👍')?.users.fetch())?.filter(
+				(user) => !user.bot,
+			) || []
 
 		const guildMembers = await ia.guild!.members.fetch({ force: true })
 

@@ -1,5 +1,6 @@
-import { Command, ClientError } from '../types'
-import { ChannelType, PermissionFlagsBits, TextChannel } from 'discord.js'
+import { ClientError, Command } from '../types'
+import { PermissionFlagsBits } from 'discord.js'
+import type { TextChannel } from 'discord.js'
 
 module.exports = new Command({
 	name: 'purge',
@@ -7,11 +8,11 @@ module.exports = new Command({
 	allowedPermissions: PermissionFlagsBits.ManageMessages,
 	props: [{ name: 'number', required: false }],
 	async execute({ ia }) {
-
 		const num = ia.options.getNumber('number') ?? 100
 		if (num < 1 || num > 100) throw new ClientError(ia, 'Number must be in range 1-100')
 
-		// const messages = await ia.channel!.messages.fetch({ limit: num }); // do we need this??
+		// Need to fetch messages, because they can only be deleted from cache
+		await ia.channel!.messages.fetch({ limit: num })
 		await (ia.channel! as TextChannel).bulkDelete(num, true)
 		await ia.reply({ content: num + ' messages deleted!', ephemeral: true })
 	},

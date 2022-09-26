@@ -1,5 +1,5 @@
-import { PermissionFlagsBits } from 'discord.js'
 import { Command } from '../types'
+import { PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'env',

@@ -1,5 +1,6 @@
-import { ClientError, Command, Region, Signup } from '../types'
+import { ClientError, Command, Signup } from '../types'
 import { btagRegex, regionRegex } from '../config'
+import type { Region } from '../types'
 
 module.exports = new Command({
 	name: 'signup',
@@ -11,24 +12,31 @@ module.exports = new Command({
 	allowedChannels: ['signup'],
 	async execute({ ia, mongoSignups }) {
 		// Checks command contains valid btag
-		let btag = ia.options.getString('battletag', true)
-		if (!btagRegex.test(btag)) throw new ClientError(ia, 'Battle Tag invalid. Format should be "!signup Krusher99#1234 EU"')
+		const btag = ia.options.getString('battletag', true)
+		if (!btagRegex.test(btag))
+			throw new ClientError(ia, 'Battle Tag invalid. Format should be "!signup Krusher99#1234 EU"')
 
 		// Checks the command contains a region (caseinsensitive)
-		let region = ia.options.getString('region', true)
-		if (!regionRegex.test(region)) throw new ClientError(ia, 'Region invalid. Format should be "!signup Krusher99#1234 EU"')
+		const region = ia.options.getString('region', true)
+		if (!regionRegex.test(region))
+			throw new ClientError(ia, 'Region invalid. Format should be "!signup Krusher99#1234 EU"')
 
 		// Checks the command has exactly one attachment
-		let imgtypes = ['.jpg', '.png']
-		let img = ia.options.getAttachment('screenshot', true)
-		if (img?.size !== 1) throw new ClientError(ia, 'Make sure you attach a screenshot of your career profile to the message')
+		const imgtypes = ['.jpg', '.png']
+		const img = ia.options.getAttachment('screenshot', true)
+		if (img?.size !== 1)
+			throw new ClientError(ia, 'Make sure you attach a screenshot of your career profile to the message')
 		if (imgtypes.indexOf(img?.proxyURL.substr(-4, 4)) !== -1) throw new ClientError(ia, 'Image type is not accepted')
 
 		// Overwrite existing signup
 		const existingSignup = await mongoSignups.findOne({
 			discordId: ia.user.id,
 		})
-		if (existingSignup) throw new ClientError(ia, `You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`)
+		if (existingSignup)
+			throw new ClientError(
+				ia,
+				`You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`,
+			)
 
 		const signup = new Signup({
 			discordId: ia.user.id,

@@ -1,13 +1,14 @@
-import { PermissionFlagsBits} from 'discord.js'
-import { CommandProperty, ICommandOptions } from '..'
+import type { CommandProperty, ICommandOptions } from '..'
+import { PermissionFlagsBits } from 'discord.js'
 
 // bot command files
 export class Command {
-	name: string = ''
-	description: string = ''
+	name = ''
+	description = ''
 	props: CommandProperty[] = []
 	allowedChannels: string[] = []
 	allowedPermissions: bigint = PermissionFlagsBits.SendMessages
+	// eslint-disable-next-line
 	async execute(options: ICommandOptions): Promise<void> {}
 
 	constructor(obj?: Partial<Command>) {

@@ -1,5 +1,5 @@
-import { Role, TextChannel } from 'discord.js'
-import { Command, ClientError } from '../types'
+import { ClientError, Command } from '../types'
+import type { Role, TextChannel } from 'discord.js'
 import { rankResolver } from '../helpers'
 
 module.exports = new Command({
@@ -42,11 +42,20 @@ module.exports = new Command({
 
 		// Assign rank roles on confirm
 		const member = await ia.guild!.members.fetch(foundSignupByMsgId.discordId)
-		if (foundSignupByMsgId.tankRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
+		if (foundSignupByMsgId.tankRank !== '-')
+			await member.roles.add(
+				ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role,
+			)
 
-		if (foundSignupByMsgId.damageRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
+		if (foundSignupByMsgId.damageRank !== '-')
+			await member.roles.add(
+				ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role,
+			)
 
-		if (foundSignupByMsgId.supportRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
+		if (foundSignupByMsgId.supportRank !== '-')
+			await member.roles.add(
+				ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role,
+			)
 
 		// TODO: Old messages might not be fetchable
 		signupChannel.messages.fetch(foundSignupByMsgId.signupMsgId).then((oldMsg) => {

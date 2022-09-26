@@ -1,5 +1,6 @@
-import { Role, PermissionFlagsBits } from 'discord.js'
-import { Command, ClientError } from '../types'
+import { ClientError, Command } from '../types'
+import { PermissionFlagsBits } from 'discord.js'
+import type { Role } from 'discord.js'
 
 module.exports = new Command({
 	name: 'clear',

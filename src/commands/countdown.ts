@@ -1,4 +1,4 @@
-import { Command, ClientError } from '../types'
+import { ClientError, Command } from '../types'
 
 module.exports = new Command({
 	name: 'countdown',

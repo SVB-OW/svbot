@@ -1,6 +1,7 @@
-import { EmbedBuilder, Role } from 'discord.js'
-import { rankResolver } from '../helpers'
 import { ClientError, Command, Signup } from '../types'
+import { EmbedBuilder } from 'discord.js'
+import type { Role } from 'discord.js'
+import { rankResolver } from '../helpers'
 
 module.exports = new Command({
 	name: 'update',
@@ -12,8 +13,7 @@ module.exports = new Command({
 	],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {
-
-		let propVal = ia.options.getString('property', true)
+		const propVal = ia.options.getString('property', true)
 		if (!new Signup().hasOwnProperty(propVal)) throw new ClientError(ia, 'Property does not exist')
 
 		let newVal = ia.options.getString('value', true)
@@ -24,7 +24,7 @@ module.exports = new Command({
 			updateRoles = true
 		}
 
-		let userId = ia.options.getString('discord_id', true)
+		const userId = ia.options.getString('discord_id', true)
 
 		const foundUser = await mongoSignups.findOne({ discordId: userId })
 		if (!foundUser) throw new ClientError(ia, `Signup for ${userId} was not found`)
@@ -33,7 +33,8 @@ module.exports = new Command({
 		await mongoSignups.updateOne({ discordId: userId }, { $set: foundUser })
 
 		const member = await ia.guild!.members.fetch(foundUser.discordId)
-		if (member.roles.cache.find((r) => r.name === 'Admin')) throw new ClientError(ia, 'Roles for admins cannot be changed automatically')
+		if (member.roles.cache.find((r) => r.name === 'Admin'))
+			throw new ClientError(ia, 'Roles for admins cannot be changed automatically')
 
 		if (updateRoles) {
 			// Remove all rank roles (doesn't work with admins)
@@ -44,11 +45,16 @@ module.exports = new Command({
 			)
 
 			// Assign rank roles on confirm
-			if (foundUser.tankRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.tankRank) as Role)
+			if (foundUser.tankRank !== '-')
+				await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.tankRank) as Role)
 
-			if (foundUser.damageRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.damageRank) as Role)
+			if (foundUser.damageRank !== '-')
+				await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.damageRank) as Role)
 
-			if (foundUser.supportRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.supportRank) as Role)
+			if (foundUser.supportRank !== '-')
+				await member.roles.add(
+					ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.supportRank) as Role,
+				)
 		}
 
 		await ia.reply({
@@ -64,6 +70,5 @@ module.exports = new Command({
 					),
 			],
 		})
-
 	},
 })
