@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, CacheType } from 'discord.js'
+import type { CacheType, ChatInputCommandInteraction } from 'discord.js'
 
 export class ClientError extends Error {
 	ia: ChatInputCommandInteraction<CacheType>

@@ -5,7 +5,10 @@
 	"scripts": {
 		"start": "node out/main.js",
 		"build": "npx -p typescript tsc",
-		"dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon out/main.js\""
+		"dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon out/main.js\"",
+		"lint": "eslint src/",
+		"lint-fix": "eslint src/ --fix",
+		"format": "prettier --write \"src/**/*.{ts,js}\""
 	},
 	"dependencies": {
 		"@discordjs/rest": "^1.1.0",
@@ -14,5 +17,11 @@
 		"mongodb": "^4.10.0",
 		"sendmail": "^1.6.1",
 		"typescript": "^4.2.3"
+	},
+	"devDependencies": {
+		"@typescript-eslint/eslint-plugin": "^5.38.1",
+		"@typescript-eslint/parser": "^5.38.1",
+		"eslint": "^8.24.0",
+		"prettier": "^2.7.1"
 	}
 }
