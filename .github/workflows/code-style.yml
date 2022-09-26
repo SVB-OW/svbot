@@ -2,9 +2,9 @@ name: 'Code Style'
 
 on:
   push:
-    branches: [*]
+    branches: ['*']
   pull_request:
-    branches: [*]
+    branches: ['*']
 
 jobs:
   format:
