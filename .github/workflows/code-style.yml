@@ -8,13 +8,13 @@ on:
 
 jobs:
   format:
-    runs-on: alpine-latest
+    runs-on: self-hosted
 
     steps:
       - run: yarn format
 
   lint:
-    runs-on: alpine-latest
+    runs-on: self-hosted
 
     steps:
       - run: yarn lint
