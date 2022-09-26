@@ -25,11 +25,9 @@ module.exports = new Command({
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
 		//#endregion
 
-		if (ia.options.data.length < 3) throw new ClientError(ia, 'Invalid number of arguments. Format is "!announce <tankCount> <dpsCount> <supportCount>')
-
-		const tankCount = Math.min(Number.parseInt(ia.options.data[0].value!.toString()), 2)
-		const dpsCount = Math.min(Number.parseInt(ia.options.data[1].value!.toString()), 4)
-		const suppCount = Math.min(Number.parseInt(ia.options.data[2].value!.toString()), 4)
+		const tankCount = ia.options.getNumber('tank_players_count') ?? 2
+		const dpsCount = ia.options.getNumber('dps_players_count') ?? 4
+		const suppCount = ia.options.getNumber('support_players_count') ?? 4
 
 		// Fetch ping msg
 		const lobby = (await mongoLobbies.findOne({}, { sort: { $natural: -1 } })) || new Lobby()

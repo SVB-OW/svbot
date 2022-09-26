@@ -7,9 +7,8 @@ module.exports = new Command({
 	props: [{ name: 'discord_id_or_tag', required: true }],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {
-		if (ia.options.data.length != 1) throw new ClientError(ia, 'Parameter discordId | discordTag is required')
 
-		const uid = ia.options.data[0].value!.toString()
+		const uid = ia.options.getString('discord_id_or_tag', true)
 		const found = await mongoSignups.findOne({
 			discordId: uid.replace(/[<>@!]/g, ''),
 		})

@@ -18,10 +18,9 @@ module.exports = new Command({
 		const pingsChannel = ia.guild!.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
 
-		if (ia.options.data.length < 3) throw new ClientError(ia, 'Invalid number of arguments. Format is "!ping <rank> <region> <streamer>')
-		const pingRank = ia.options.data[0].value!.toString()
-		const pingRegion = ia.options.data[1].value!.toString()
-		const pingStreamer = ia.options.data[2].value!.toString()
+		const pingRank = ia.options.getString('rank', true)
+		const pingRegion = ia.options.getString('region', true)
+		const pingStreamer = ia.options.getString('streamer', true)
 
 		// Checks Rank
 		if (!rankResolver(pingRank)) throw new ClientError(ia, 'Rank is invalid ' + pingRank)

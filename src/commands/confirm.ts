@@ -13,12 +13,10 @@ module.exports = new Command({
 	],
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoSignups }) {
-		if (ia.options.data.length < 4) throw new ClientError(ia, 'Invalid number of arguments. Format is "!confirm <msgId> <tankRank> <dpsRank> <supportRank>')
-
-		const msgId = ia.options.data[0].value!.toString()
-		const tankRank = ia.options.data[1].value!.toString()
-		const dpsRank = ia.options.data[2].value!.toString()
-		const supportRank = ia.options.data[3].value!.toString()
+		const msgId = ia.options.getString('signup_msg_id', true)
+		const tankRank = ia.options.getString('tank_rank', true)
+		const dpsRank = ia.options.getString('dps_rank', true)
+		const supportRank = ia.options.getString('support_rank', true)
 
 		const signupChannel = ia.guild!.channels.cache.find((c) => c.name === 'signup') as TextChannel
 		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
@@ -44,11 +42,11 @@ module.exports = new Command({
 
 		// Assign rank roles on confirm
 		const member = await ia.guild!.members.fetch(foundSignupByMsgId.discordId)
-		if (foundSignupByMsgId.tankRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
+		if (foundSignupByMsgId.tankRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
 
-		if (foundSignupByMsgId.damageRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
+		if (foundSignupByMsgId.damageRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
 
-		if (foundSignupByMsgId.supportRank !== '-') member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
+		if (foundSignupByMsgId.supportRank !== '-') await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
 
 		// TODO: Old messages might not be fetchable
 		signupChannel.messages.fetch(foundSignupByMsgId.signupMsgId).then((oldMsg) => {
