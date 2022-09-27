@@ -14,14 +14,14 @@ module.exports = new Command({
 		//#region Validations
 		if ((await mongoLobbies.countDocuments()) === 0) throw new ClientError(ia, 'No ping has occurred yet')
 
-		const ingameRole = ia.guild!.roles.cache.find((r) => r.name === 'Ingame') as Role
+		const ingameRole = ia.guild.roles.cache.find((r) => r.name === 'Ingame') as Role
 		if (!ingameRole) throw new ClientError(ia, 'Ingame role does not exist')
-		const hostRole = ia.guild!.roles.cache.find((r) => r.name === 'Lobby Host') as Role
+		const hostRole = ia.guild.roles.cache.find((r) => r.name === 'Lobby Host') as Role
 		if (!hostRole) throw new ClientError(ia, 'Lobby Host role does not exist')
 
-		const mmChannel = ia.guild!.channels.cache.find((c) => c.name === 'matchmaker') as TextChannel
+		const mmChannel = ia.guild.channels.cache.find((c) => c.name === 'matchmaker') as TextChannel
 		if (!mmChannel) throw new ClientError(ia, 'Channel matchmaker does not exist')
-		const pingsChannel = ia.guild!.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
+		const pingsChannel = ia.guild.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
 		//#endregion
 
@@ -40,7 +40,7 @@ module.exports = new Command({
 				(user) => !user.bot,
 			) || []
 
-		const guildMembers = await ia.guild!.members.fetch({ force: true })
+		const guildMembers = await ia.guild.members.fetch({ force: true })
 
 		// Iterate list of users who reacted
 		for (const [userId] of msgReactionUsers) {

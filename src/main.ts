@@ -3,6 +3,7 @@ import { ActivityType, ChannelType, GatewayIntentBits } from 'discord.js'
 import { ClientError, CommandClient } from './types'
 import { dbLive, discordToken, isProd, mongoUri } from './config'
 import type { Db } from 'mongodb'
+import type { ICommandInteraction } from './types'
 import type { Interaction } from 'discord.js'
 import { MongoClient } from 'mongodb'
 import { join } from 'path'
@@ -58,7 +59,7 @@ client.on('interactionCreate', async (ia: Interaction) => {
 
 	// Execution
 	await cmd.execute({
-		ia,
+		ia: ia as ICommandInteraction,
 		mongoSignups: mongoDb.collection('signups'),
 		mongoLobbies: mongoDb.collection('lobbies'),
 		mongoContestants: mongoDb.collection('contestants'),

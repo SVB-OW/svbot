@@ -41,7 +41,7 @@ module.exports = new Command({
 		})
 
 		const embed = new EmbedBuilder().setTitle('Event Stats').setTimestamp()
-		if (ia.guild!.iconURL()) embed.setThumbnail(ia.guild!.iconURL() as string)
+		if (ia.guild.iconURL()) embed.setThumbnail(ia.guild.iconURL() as string)
 
 		embed.addFields([
 			{ name: 'Total', value: totalPlayers.toString(), inline: true },

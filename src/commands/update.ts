@@ -32,7 +32,7 @@ module.exports = new Command({
 		foundUser[propVal] = newVal
 		await mongoSignups.updateOne({ discordId: userId }, { $set: foundUser })
 
-		const member = await ia.guild!.members.fetch(foundUser.discordId)
+		const member = await ia.guild.members.fetch(foundUser.discordId)
 		if (member.roles.cache.find((r) => r.name === 'Admin'))
 			throw new ClientError(ia, 'Roles for admins cannot be changed automatically')
 
@@ -46,15 +46,13 @@ module.exports = new Command({
 
 			// Assign rank roles on confirm
 			if (foundUser.tankRank !== '-')
-				await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.tankRank) as Role)
+				await member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundUser.tankRank) as Role)
 
 			if (foundUser.damageRank !== '-')
-				await member.roles.add(ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.damageRank) as Role)
+				await member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundUser.damageRank) as Role)
 
 			if (foundUser.supportRank !== '-')
-				await member.roles.add(
-					ia.guild!.roles.cache.find((r) => r.name.toUpperCase() === foundUser.supportRank) as Role,
-				)
+				await member.roles.add(ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundUser.supportRank) as Role)
 		}
 
 		await ia.reply({

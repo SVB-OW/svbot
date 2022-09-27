@@ -16,7 +16,7 @@ module.exports = new Command({
 	allowedChannels: ['bot-commands'],
 	async execute({ ia, mongoLobbies }) {
 		// Validate
-		const pingsChannel = ia.guild!.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
+		const pingsChannel = ia.guild.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
 
 		const pingRank = ia.options.getString('rank', true)
@@ -34,7 +34,7 @@ module.exports = new Command({
 		lobby.region = pingRegion.toUpperCase() as Region
 		lobby.streamer = pingStreamer
 
-		const roleByName = ia.guild!.roles.cache.find((item) => item.name.toUpperCase() === lobby.rank)
+		const roleByName = ia.guild.roles.cache.find((item) => item.name.toUpperCase() === lobby.rank)
 		if (!roleByName) throw new ClientError(ia, `Role ${lobby.rank} does not exist`)
 		const pingMsg = await pingsChannel.send(
 			`${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,
