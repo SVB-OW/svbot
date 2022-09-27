@@ -1,5 +1,6 @@
 import { ClientError, Command, Lobby } from '../types'
 import type { Role, TextChannel } from 'discord.js'
+import { PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'announce',
@@ -10,18 +11,19 @@ module.exports = new Command({
 		{ name: 'support_players_count', required: false, type: 'number' },
 	],
 	allowedChannels: ['bot-commands'],
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups, mongoLobbies }) {
 		//#region Validations
 		if ((await mongoLobbies.countDocuments()) === 0) throw new ClientError(ia, 'No ping has occurred yet')
 
-		const ingameRole = ia.guild.roles.cache.find((r) => r.name === 'Ingame') as Role
+		const ingameRole = ia.guild.roles.cache.find(r => r.name === 'Ingame') as Role
 		if (!ingameRole) throw new ClientError(ia, 'Ingame role does not exist')
-		const hostRole = ia.guild.roles.cache.find((r) => r.name === 'Lobby Host') as Role
+		const hostRole = ia.guild.roles.cache.find(r => r.name === 'Lobby Host') as Role
 		if (!hostRole) throw new ClientError(ia, 'Lobby Host role does not exist')
 
-		const mmChannel = ia.guild.channels.cache.find((c) => c.name === 'matchmaker') as TextChannel
+		const mmChannel = ia.guild.channels.cache.find(c => c.name === 'matchmaker') as TextChannel
 		if (!mmChannel) throw new ClientError(ia, 'Channel matchmaker does not exist')
-		const pingsChannel = ia.guild.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
+		const pingsChannel = ia.guild.channels.cache.find(c => c.name === 'player-pings') as TextChannel
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
 		//#endregion
 
@@ -36,9 +38,7 @@ module.exports = new Command({
 
 		// Collection of players who reacted to ping message
 		const msgReactionUsers =
-			(await pingMsg.reactions.cache.find((mr) => mr.emoji.name === '👍')?.users.fetch())?.filter(
-				(user) => !user.bot,
-			) || []
+			(await pingMsg.reactions.cache.find(mr => mr.emoji.name === '👍')?.users.fetch())?.filter(user => !user.bot) || []
 
 		const guildMembers = await ia.guild.members.fetch({ force: true })
 
@@ -107,28 +107,28 @@ module.exports = new Command({
 		const top4damages = lobby.damagePlayers.slice(0, dpsCount)
 		const top4supports = lobby.supportPlayers.slice(0, suppCount)
 
-		top4tanks.forEach((s) => {
+		top4tanks.forEach(s => {
 			guildMembers.get(s.discordId)?.roles.add(ingameRole)
 			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
 		})
 
-		top4damages.forEach((s) => {
+		top4damages.forEach(s => {
 			guildMembers.get(s.discordId)?.roles.add(ingameRole)
 			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
 		})
 
-		top4supports.forEach((s) => {
+		top4supports.forEach(s => {
 			guildMembers.get(s.discordId)?.roles.add(ingameRole)
 			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
 		})
 
 		const btagMessage = `**Next lobby <@&${hostRole.id}>**
 *Tank*
-${top4tanks.map((p) => p.battconstag).join(', ') || 'none'}
+${top4tanks.map(p => p.battconstag).join(', ') || 'none'}
 *Damage*
-${top4damages.map((p) => p.battconstag).join(', ') || 'none'}
+${top4damages.map(p => p.battconstag).join(', ') || 'none'}
 *Support*
-${top4supports.map((p) => p.battleTag).join(', ') || 'none'}
+${top4supports.map(p => p.battleTag).join(', ') || 'none'}
 `
 
 		const playerMessage = `**Lobby Announcement**
@@ -136,13 +136,13 @@ The following players have been selected for the next game.
 If you are listed below, please join the Waiting Lobby voice channel, start the game on the right region and wait for an invite to the custom game lobby.
 
 *Tank*
-${top4tanks.map((p) => `<@${p.discordId}>`).join(', ') || 'none'}
+${top4tanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 
 *Damage*
-${top4damages.map((p) => `<@${p.discordId}>`).join(', ') || 'none'}
+${top4damages.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 
 *Support*
-${top4supports.map((p) => `<@${p.discordId}>`).join(', ') || 'none'}
+${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 `
 
 		mmChannel.send(btagMessage)

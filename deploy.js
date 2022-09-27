@@ -1,4 +1,4 @@
-const { Collection, SlashCommandBuilder, Routes, PermissionFlagsBits } = require('discord.js')
+const { Collection, SlashCommandBuilder, Routes } = require('discord.js')
 const { REST } = require('@discordjs/rest')
 const fs = require('node:fs')
 const path = require('node:path')
@@ -22,15 +22,50 @@ const commands = commandsCollection.map(cmd => {
 
 	cmd.props.forEach(prop => {
 		if (prop.type === 'number')
-			slash.addNumberOption(option => option.setName(prop.name).setDescription(prop.name).setRequired(prop.required))
+			slash.addNumberOption(option =>
+				option
+					.setName(prop.name)
+					.setDescription(prop.name)
+					.setRequired(prop.required || false),
+			)
 		else if (prop.type === 'boolean')
-			slash.addBooleanOption(option => option.setName(prop.name).setDescription(prop.name).setRequired(prop.required))
-		else slash.addStringOption(option => option.setName(prop.name).setDescription(prop.name).setRequired(prop.required))
+			slash.addBooleanOption(option =>
+				option
+					.setName(prop.name)
+					.setDescription(prop.name)
+					.setRequired(prop.required || false),
+			)
+		else if (prop.type === 'attachment')
+			slash.addAttachmentOption(option =>
+				option
+					.setName(prop.name)
+					.setDescription(prop.name)
+					.setRequired(prop.required || false),
+			)
+		else
+			slash.addStringOption(option =>
+				option
+					.setName(prop.name)
+					.setDescription(prop.name)
+					.setRequired(prop.required || false),
+			)
 	})
 	return slash.toJSON()
 })
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
+
+// Delete all commands (SVBot Server)
+rest
+	.put(Routes.applicationGuildCommands('785912791739269130', '784164409606012958'), { body: [] })
+	.then(() => console.log('Successfully deleted application commands.'))
+	.catch(console.error)
+
+// Delete all commands (global)
+// rest
+// 	.put(Routes.applicationCommands('785912791739269130'), { body: [] })
+// 	.then(() => console.log('Successfully deleted all application commands.'))
+// 	.catch(console.error)
 
 // Register commands once (SVBot Server)
 rest
@@ -42,16 +77,4 @@ rest
 // rest
 // 	.put(Routes.applicationCommands('785912791739269130'), { body: commands })
 // 	.then(() => console.log('Successfully registered all application commands.'))
-// 	.catch(console.error)
-
-// Delete all commands (SVBot Server)
-// rest
-// 	.put(Routes.applicationGuildCommands('785912791739269130', '784164409606012958'), { body: [] })
-// 	.then(() => console.log('Successfully deleted application commands.'))
-// 	.catch(console.error)
-
-// Delete all commands (global)
-// rest
-// 	.put(Routes.applicationCommands('785912791739269130'), { body: [] })
-// 	.then(() => console.log('Successfully deleted all application commands.'))
 // 	.catch(console.error)

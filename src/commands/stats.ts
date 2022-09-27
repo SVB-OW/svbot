@@ -1,10 +1,11 @@
 import { Command, Region } from '../types'
-import { EmbedBuilder } from 'discord.js'
+import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'stats',
 	description: 'Display some stats for the event',
 	allowedChannels: ['bot-commands'],
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
 		// Get the stats!
 		const totalPlayers = await mongoSignups.countDocuments()

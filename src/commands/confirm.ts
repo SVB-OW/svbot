@@ -1,5 +1,6 @@
 import { ClientError, Command } from '../types'
 import type { Role, TextChannel } from 'discord.js'
+import { PermissionFlagsBits } from 'discord.js'
 import { rankResolver } from '../helpers'
 
 module.exports = new Command({
@@ -12,13 +13,14 @@ module.exports = new Command({
 		{ name: 'support_rank', required: true },
 	],
 	allowedChannels: ['bot-commands'],
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
 		const msgId = ia.options.getString('signup_msg_id', true)
 		const tankRank = ia.options.getString('tank_rank', true)
 		const dpsRank = ia.options.getString('dps_rank', true)
 		const supportRank = ia.options.getString('support_rank', true)
 
-		const signupChannel = ia.guild.channels.cache.find((c) => c.name === 'signup') as TextChannel
+		const signupChannel = ia.guild.channels.cache.find(c => c.name === 'signup') as TextChannel
 		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
 
 		const foundSignupByMsgId = await mongoSignups.findOne({
@@ -44,21 +46,21 @@ module.exports = new Command({
 		const member = await ia.guild.members.fetch(foundSignupByMsgId.discordId)
 		if (foundSignupByMsgId.tankRank !== '-')
 			await member.roles.add(
-				ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role,
+				ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role,
 			)
 
 		if (foundSignupByMsgId.damageRank !== '-')
 			await member.roles.add(
-				ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role,
+				ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role,
 			)
 
 		if (foundSignupByMsgId.supportRank !== '-')
 			await member.roles.add(
-				ia.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role,
+				ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role,
 			)
 
 		// TODO: Old messages might not be fetchable
-		signupChannel.messages.fetch(foundSignupByMsgId.signupMsgId).then((oldMsg) => {
+		signupChannel.messages.fetch(foundSignupByMsgId.signupMsgId).then(oldMsg => {
 			oldMsg.react('👍')
 		})
 

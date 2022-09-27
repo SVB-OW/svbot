@@ -8,11 +8,12 @@ module.exports = new Command({
 	props: [
 		{ name: 'battle_tag', required: true },
 		{ name: 'region', required: true },
+		{ name: 'profile_screenshot', required: true, type: 'attachment' },
 	],
 	allowedChannels: ['signup'],
 	async execute({ ia, mongoSignups }) {
 		// Checks command contains valid btag
-		const btag = ia.options.getString('battletag', true)
+		const btag = ia.options.getString('battle_tag', true)
 		if (!btagRegex.test(btag))
 			throw new ClientError(ia, 'Battle Tag invalid. Format should be "!signup Krusher99#1234 EU"')
 
@@ -22,16 +23,12 @@ module.exports = new Command({
 			throw new ClientError(ia, 'Region invalid. Format should be "!signup Krusher99#1234 EU"')
 
 		// Checks the command has exactly one attachment
-		const imgtypes = ['.jpg', '.png']
-		const img = ia.options.getAttachment('screenshot', true)
-		if (img?.size !== 1)
-			throw new ClientError(ia, 'Make sure you attach a screenshot of your career profile to the message')
-		if (imgtypes.indexOf(img?.proxyURL.substr(-4, 4)) !== -1) throw new ClientError(ia, 'Image type is not accepted')
+		const img = ia.options.getAttachment('profile_screenshot', true)
+		console.log('img', img)
+		if (!img.contentType?.startsWith('image/')) throw new ClientError(ia, 'File type is not accepted')
 
 		// Overwrite existing signup
-		const existingSignup = await mongoSignups.findOne({
-			discordId: ia.user.id,
-		})
+		const existingSignup = await mongoSignups.findOne({ discordId: ia.user.id })
 		if (existingSignup)
 			throw new ClientError(
 				ia,

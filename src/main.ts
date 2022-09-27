@@ -46,7 +46,6 @@ client.on('ready', async () => {
 })
 
 client.on('interactionCreate', async (ia: Interaction) => {
-	console.log('ia created', ia)
 	// Exit without error
 	if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText)) return
 
@@ -74,7 +73,7 @@ async function errorHandler(err: any) {
 		// Handle known errors
 		await err.ia.reply({
 			content: `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
-			ephemeral: true
+			ephemeral: true,
 		})
 	} else if (err instanceof Error && isProd) {
 		// Handle unknown errors in prod
