@@ -64,6 +64,6 @@ module.exports = new Command({
 			oldMsg.react('👍')
 		})
 
-		await ia.reply('Signup successfully validated')
+		await ia.reply(foundSignupByMsgId.discordId + ' successfully validated')
 	},
 })
