@@ -1,16 +1,17 @@
-const { Collection, SlashCommandBuilder, Routes } = require('discord.js')
-const { REST } = require('@discordjs/rest')
-const fs = require('node:fs')
-const path = require('node:path')
+import { Collection, Routes, SlashCommandBuilder } from 'discord.js'
+import { REST } from '@discordjs/rest'
+import { join } from 'node:path'
+import { readdirSync } from 'node:fs'
 
 //#region Dynamic commands
 const commandsCollection = new Collection()
 // Import all files from ./commands and map to client.commands
-const commandFiles = fs.readdirSync(path.join(process.cwd(), '/out/commands')).filter(file => file.endsWith('.js'))
+const commandFiles = readdirSync(join(process.cwd(), '/out/commands')).filter(file => file.endsWith('.js'))
 for (const file of commandFiles) {
-	const command = require(path.join(process.cwd(), '/out/commands', file))
-	commandsCollection.set(command.name, command)
+	const command = await import('./out/commands/' + file)
+	commandsCollection.set(command.default.name, command.default)
 }
+console.log('commandsCollection', commandsCollection)
 //#endregion
 
 const commands = commandsCollection.map(cmd => {
@@ -56,25 +57,25 @@ const commands = commandsCollection.map(cmd => {
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
 
 // Delete all commands (SVBot Server)
-rest
+await rest
 	.put(Routes.applicationGuildCommands('785912791739269130', '784164409606012958'), { body: [] })
 	.then(() => console.log('Successfully deleted application commands.'))
 	.catch(console.error)
 
 // Delete all commands (global)
-// rest
-// 	.put(Routes.applicationCommands('785912791739269130'), { body: [] })
-// 	.then(() => console.log('Successfully deleted all application commands.'))
-// 	.catch(console.error)
-
-// Register commands once (SVBot Server)
-rest
-	.put(Routes.applicationGuildCommands('785912791739269130', '784164409606012958'), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
+await rest
+	.put(Routes.applicationCommands('785912791739269130'), { body: [] })
+	.then(() => console.log('Successfully deleted all application commands.'))
 	.catch(console.error)
 
-// Register commands once (global)
-// rest
-// 	.put(Routes.applicationCommands('785912791739269130'), { body: commands })
-// 	.then(() => console.log('Successfully registered all application commands.'))
+// Register commands once (SVBot Server)
+// await rest
+// 	.put(Routes.applicationGuildCommands('785912791739269130', '784164409606012958'), { body: commands })
+// 	.then(() => console.log('Successfully registered application commands.'))
 // 	.catch(console.error)
+
+// Register commands once (global)
+await rest
+	.put(Routes.applicationCommands('785912791739269130'), { body: commands })
+	.then(() => console.log('Successfully registered all application commands.'))
+	.catch(console.error)

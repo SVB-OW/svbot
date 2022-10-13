@@ -1,14 +1,15 @@
 import { ClientError, Command, Lobby } from '../types'
 import type { Role, TextChannel } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
+import { sortPlayers } from '../helpers'
 
 module.exports = new Command({
 	name: 'announce',
 	description: 'Post player list in #matchmaker',
 	props: [
-		{ name: 'tank_players_count', required: false, type: 'number' },
-		{ name: 'dps_players_count', required: false, type: 'number' },
-		{ name: 'support_players_count', required: false, type: 'number' },
+		{ name: 'tank_players_count', type: 'number' },
+		{ name: 'dps_players_count', type: 'number' },
+		{ name: 'support_players_count', type: 'number' },
 	],
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
@@ -31,16 +32,15 @@ module.exports = new Command({
 		const dpsCount = ia.options.getNumber('dps_players_count') ?? 4
 		const suppCount = ia.options.getNumber('support_players_count') ?? 4
 
-		// Fetch ping msg
+		// Fetch ping msg from newst lobby in db
 		const lobby = (await mongoLobbies.findOne({}, { sort: { $natural: -1 } })) || new Lobby()
 		const pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId)
 		if (!pingMsg) throw new ClientError(ia, 'Ping message not found. Please create another ping')
 
 		// Collection of players who reacted to ping message
-		const msgReactionUsers =
-			(await pingMsg.reactions.cache.find(mr => mr.emoji.name === '👍')?.users.fetch())?.filter(user => !user.bot) || []
+		const msgReactionUsers = (await pingMsg.reactions.cache.get('👍')?.users.fetch())?.filter(user => !user.bot) || []
 
-		const guildMembers = await ia.guild.members.fetch({ force: true })
+		const guildMembers = await ia.guild.members.fetch()
 
 		// Iterate list of users who reacted
 		for (const [userId] of msgReactionUsers) {
@@ -78,57 +78,36 @@ module.exports = new Command({
 			}
 		}
 
-		lobby.tankPlayers.sort((a, b) => {
-			if (a.gamesPlayed > b.gamesPlayed) return 1
-			if (a.gamesPlayed < b.gamesPlayed) return -1
-			if (a.region === lobby.region && b.region !== lobby.region) return -1
-			if (b.region === lobby.region && a.region !== lobby.region) return 1
+		lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby))
+		lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby))
+		lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby))
 
-			return 0
-		})
-		lobby.damagePlayers.sort((a, b) => {
-			if (a.gamesPlayed > b.gamesPlayed) return 1
-			if (a.gamesPlayed < b.gamesPlayed) return -1
-			if (a.region === lobby.region && b.region !== lobby.region) return -1
-			if (b.region === lobby.region && a.region !== lobby.region) return 1
+		const topTanks = lobby.tankPlayers.slice(0, tankCount)
+		const topDps = lobby.damagePlayers.slice(0, dpsCount)
+		const topSupports = lobby.supportPlayers.slice(0, suppCount)
 
-			return 0
-		})
-		lobby.supportPlayers.sort((a, b) => {
-			if (a.gamesPlayed > b.gamesPlayed) return 1
-			if (a.gamesPlayed < b.gamesPlayed) return -1
-			if (a.region === lobby.region && b.region !== lobby.region) return -1
-			if (b.region === lobby.region && a.region !== lobby.region) return 1
-
-			return 0
-		})
-
-		const top4tanks = lobby.tankPlayers.slice(0, tankCount)
-		const top4damages = lobby.damagePlayers.slice(0, dpsCount)
-		const top4supports = lobby.supportPlayers.slice(0, suppCount)
-
-		top4tanks.forEach(s => {
+		topTanks.forEach(s => {
 			guildMembers.get(s.discordId)?.roles.add(ingameRole)
 			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
 		})
 
-		top4damages.forEach(s => {
+		topDps.forEach(s => {
 			guildMembers.get(s.discordId)?.roles.add(ingameRole)
 			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
 		})
 
-		top4supports.forEach(s => {
+		topSupports.forEach(s => {
 			guildMembers.get(s.discordId)?.roles.add(ingameRole)
 			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
 		})
 
 		const btagMessage = `**Next lobby <@&${hostRole.id}>**
 *Tank*
-${top4tanks.map(p => p.battconstag).join(', ') || 'none'}
+${topTanks.map(p => p.battleTag).join(', ') || 'none'}
 *Damage*
-${top4damages.map(p => p.battconstag).join(', ') || 'none'}
+${topDps.map(p => p.battleTag).join(', ') || 'none'}
 *Support*
-${top4supports.map(p => p.battleTag).join(', ') || 'none'}
+${topSupports.map(p => p.battleTag).join(', ') || 'none'}
 `
 
 		const playerMessage = `**Lobby Announcement**
@@ -136,13 +115,13 @@ The following players have been selected for the next game.
 If you are listed below, please join the Waiting Lobby voice channel, start the game on the right region and wait for an invite to the custom game lobby.
 
 *Tank*
-${top4tanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+${topTanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 
 *Damage*
-${top4damages.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+${topDps.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 
 *Support*
-${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+${topSupports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 `
 
 		mmChannel.send(btagMessage)
@@ -151,5 +130,7 @@ ${top4supports.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
 		delete lobby.pingMsg
 		lobby.pingAnnounced = true
 		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
+
+		ia.reply('Lobby ping announced')
 	},
 })

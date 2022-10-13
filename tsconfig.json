@@ -10,6 +10,6 @@
 		"types": ["@types/node"],
 		"skipLibCheck": true
 	},
-	"include": ["./src", "deploy.js"],
+	"include": ["./src", "deploy.mjs"],
 	"exclude": ["node_modules"]
 }

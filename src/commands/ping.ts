@@ -46,5 +46,6 @@ module.exports = new Command({
 
 		lobby.pingMsgId = pingMsg.id
 		await mongoLobbies.insertOne(lobby)
+		ia.reply(`Ping sent out for ${lobby.streamer} playing ${lobby.rank} on ${lobby.region}`)
 	},
 })

@@ -13,6 +13,7 @@ const sendmail = require('sendmail')({ silent: true })
 const client = new CommandClient({
 	intents: [
 		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.GuildMessageReactions,
 		GatewayIntentBits.MessageContent,
@@ -42,7 +43,7 @@ for (const file of commandFiles) {
 
 client.on('ready', async () => {
 	client.user?.setActivity('The Ranked Gauntlet', { type: ActivityType.Competing })
-	console.log(`Logged in as ${client.user?.tag}!`)
+	console.log(`Logged in as ${client.user?.tag} from ${isProd ? 'production' : 'development'}!`)
 })
 
 client.on('interactionCreate', async (ia: Interaction) => {
@@ -71,7 +72,7 @@ async function errorHandler(err: any) {
 	// Send client errors back to channel
 	if (err instanceof ClientError) {
 		// Handle known errors
-		await err.ia.reply({
+		err.ia.reply({
 			content: `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
 			ephemeral: true,
 		})

@@ -25,11 +25,10 @@ Github Actions: [https://github.com/fdendorfer/SVBot/actions]
 ### Low priority
 
 - [x] aliases for ranks (b,s,g,p,d,m,gm / plat,dia)
+- [x] allow update command to change roles of admins
 - [ ] rework matchmaker in announce?
 - [ ] another \<role>: outputs the next player from the matchmaking pool for a
       certain role
-- [ ] Help command only show commands you're allowed to use and where to use
-      them
 - [ ] me command
 
 ### Streamer section

@@ -1,9 +1,13 @@
+import type { Lobby, Signup } from './types'
+
 /**
  * converts command input to db value
  * @param input command argument
  * @returns false, if value is invalid otherwise the value for the database
  */
 export function rankResolver(input: string): boolean | string {
+	if (typeof input !== 'string') return false
+
 	input = input.toUpperCase()
 
 	if (['B', 'BRONZE'].includes(input)) return 'BRONZE'
@@ -24,4 +28,13 @@ export function rankResolver(input: string): boolean | string {
 	if (input === '-') return '-'
 
 	return false
+}
+
+export function sortPlayers(a: Signup, b: Signup, lobby: Lobby) {
+	if (a.gamesPlayed > b.gamesPlayed) return 1
+	if (a.gamesPlayed < b.gamesPlayed) return -1
+	if (a.region === lobby.region && b.region !== lobby.region) return -1
+	if (b.region === lobby.region && a.region !== lobby.region) return 1
+
+	return 0
 }

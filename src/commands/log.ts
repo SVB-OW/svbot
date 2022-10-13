@@ -4,21 +4,18 @@ import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 module.exports = new Command({
 	name: 'log',
 	description: 'Logs the first db entry or optionally a specific entry by signupId',
-	props: [{ name: 'discord_id_or_tag', required: true }],
+	props: [{ name: 'discord_id', required: true }],
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
-		const uid = ia.options.getString('discord_id_or_tag', true)
-		const found = await mongoSignups.findOne({
-			discordId: uid.replace(/[<>@!]/g, ''),
-		})
-		console.log('found', found)
+		const discordId = ia.options.getString('discord_id', true)
+		const found = await mongoSignups.findOne({ discordId })
 		if (!found) throw new ClientError(ia, 'Signup not found')
 
-		await ia.reply({
+		ia.reply({
 			embeds: [
 				new EmbedBuilder()
-					.setTitle(uid)
+					.setTitle(discordId)
 					.setTimestamp()
 					.addFields(
 						Object.keys(found).map(key => ({

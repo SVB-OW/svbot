@@ -27,7 +27,7 @@ module.exports = new Command({
 		console.log('img', img)
 		if (!img.contentType?.startsWith('image/')) throw new ClientError(ia, 'File type is not accepted')
 
-		// Overwrite existing signup
+		// Check for existing signup
 		const existingSignup = await mongoSignups.findOne({ discordId: ia.user.id })
 		if (existingSignup)
 			throw new ClientError(
@@ -35,17 +35,17 @@ module.exports = new Command({
 				`You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`,
 			)
 
+		const reply = await ia.reply('Signup has been received and will be checked by an event moderator')
+
 		const signup = new Signup({
 			discordId: ia.user.id,
 			battleTag: btag,
 			region: region.toUpperCase() as Region,
 			screenshot: img.proxyURL,
-			signupMsgId: ia.id,
+			signupMsgId: reply.id,
 			signedUpOn: new Date(ia.createdTimestamp).toISOString(),
 		})
 
-		await mongoSignups.insertOne(signup as any)
-
-		await ia.reply('Signup has been received and will be checked by an event moderator')
+		mongoSignups.insertOne(signup)
 	},
 })
