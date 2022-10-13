@@ -1,50 +1,41 @@
 # SVBot
 
-Discord bot for setting up the ranked gauntlet.
+Discord bot to organize the ranked gauntlet.
 
 Add to server via this link:
 [https://discord.com/oauth2/authorize?client_id=785912791739269130&scope=bot&permissions=8]
 
-Github Actions: [https://github.com/fdendorfer/SVBot/actions]
+Github Actions: [https://github.com/SVB-OW/SVBot/actions]
 
-## ToDo
+## Requirements
 
-- [x] announce command parameter for how many player are needed on each role
-- [x] announcment doesnt mention players in embed -> make normal message out of
-      it
-- [x] assign rank roles on confirm
-- [x] update command should update by discordId and log profile afterwards
-- [x] remove memory db
-- [x] announcement doesnt increase gamesPlayed
-- [x] btagMessage in announcement can't be embed
-- [x] check non found users
-- [x] countdown/up update by id instead of tag
-- [x] clear last lobby before new announce
-- [x] update command should update roles
+Names are case-insensitive
+
+- Roles: 'Ingame', 'Lobby Host', 'GAUNTLET \<rank>'
+- Channels: 'matchmaker', 'player-pings', 'signup'
+- Voice Channels: 'Waiting Lobby'
+
+## Features
+
+- Allow discord users to register for the gauntlet by using the /signup command
+- Registered players can be viewed by staff with the "Manage Events" permission (Event Mods) using the /log command
+- Event Mods can view the registrations and 'confirm' them to assign them their rank roles using the /confirm command
+- To change some detail about a player after the confirmation, Event Mods can use the /update command
+- Event Mods can get info about the all the registered players using the /stats command
+- Once the streamer has chosen a rank they want to challenge an Event mod can start the round signups using the /ping command
+- When it's time to start the game and Event Mod can announce the team formations using the /announce command
+- If someone is brought in or switched out after the announcement an Event Mod can adjust their gamesPlayed using the /countup or /countdown commands
+- After the game is done an Event Mod can kick players out of the voice chat and remove their @Ingame role using the /clear command
 
 ### Low priority
 
-- [x] aliases for ranks (b,s,g,p,d,m,gm / plat,dia)
-- [x] allow update command to change roles of admins
+- [ ] Only kick users from gauntlet voice channels
+- [ ] Display the signup picture somewhere to make it easier for mods to confirm their rank
 - [ ] rework matchmaker in announce?
-- [ ] another \<role>: outputs the next player from the matchmaking pool for a
+- [ ] /another \<role>: outputs the next player from the matchmaking pool for a
       certain role
 - [ ] me command
 
 ### Streamer section
 
 - [ ] leaderboard: shows streamers points
-
-## Usage
-
-### Host flow
-
-- !ping Gold EU Bogur
-- !announce 3 4 4
-- !clear
-
-### Signup flow
-
-- !signup Flo0010#2600 EU
-- !confirm 927704356785106965 GM dia bronze
-- !update supportRank G 289401547119525889
