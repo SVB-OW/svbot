@@ -27,7 +27,7 @@ Github Actions: [https://github.com/fdendorfer/SVBot/actions]
 - [x] aliases for ranks (b,s,g,p,d,m,gm / plat,dia)
 - [x] allow update command to change roles of admins
 - [ ] rework matchmaker in announce?
-- [ ] another \<role>: outputs the next player from the matchmaking pool for a
+- [x] another \<role>: outputs the next player from the matchmaking pool for a
       certain role
 - [ ] me command
 
@@ -39,12 +39,12 @@ Github Actions: [https://github.com/fdendorfer/SVBot/actions]
 
 ### Host flow
 
-- !ping Gold EU Bogur
-- !announce 3 4 4
-- !clear
+- /ping Gold EU Bogur
+- /announce 3 4 4
+- /clear
 
 ### Signup flow
 
-- !signup Flo0010#2600 EU
-- !confirm 927704356785106965 GM dia bronze
-- !update supportRank G 289401547119525889
+- /signup Flo0010#2600 EU
+- /confirm 927704356785106965 GM dia bronze
+- /update supportRank G 289401547119525889
