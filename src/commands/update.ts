@@ -42,19 +42,25 @@ module.exports = new Command({
 			// Remove all rank roles
 			await member.roles.set(
 				Array.from(member.roles.cache.values())
-					.filter(r => !rankResolver(r.name))
+					.filter(r => !rankResolver(r.name.toUpperCase().replace('GAUNTLET ', '')))
 					.map(r => r.id),
 			)
 
 			// Assign rank roles
 			if (foundUser.tankRank !== '-')
-				await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundUser.tankRank) as Role)
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundUser.tankRank) as Role,
+				)
 
 			if (foundUser.damageRank !== '-')
-				await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundUser.damageRank) as Role)
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundUser.damageRank) as Role,
+				)
 
 			if (foundUser.supportRank !== '-')
-				await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundUser.supportRank) as Role)
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundUser.supportRank) as Role,
+				)
 		}
 
 		await ia.reply({

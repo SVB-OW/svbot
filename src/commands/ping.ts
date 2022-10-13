@@ -36,7 +36,7 @@ module.exports = new Command({
 		lobby.region = pingRegion.toUpperCase() as Region
 		lobby.streamer = pingStreamer
 
-		const roleByName = ia.guild.roles.cache.find(item => item.name.toUpperCase() === lobby.rank)
+		const roleByName = ia.guild.roles.cache.find(item => item.name.toUpperCase() === 'GAUNTLET ' + lobby.rank)
 		if (!roleByName) throw new ClientError(ia, `Role ${lobby.rank} does not exist`)
 		const pingMsg = await pingsChannel.send(
 			`${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,

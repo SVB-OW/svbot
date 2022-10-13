@@ -43,13 +43,13 @@ module.exports = new Command({
 		// Assign rank roles on confirm
 		const member = await ia.guild.members.fetch(foundSignup.discordId)
 		if (foundSignup.tankRank !== '-')
-			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundSignup.tankRank) as Role)
+			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.tankRank) as Role)
 
 		if (foundSignup.damageRank !== '-')
-			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundSignup.damageRank) as Role)
+			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.damageRank) as Role)
 
 		if (foundSignup.supportRank !== '-')
-			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === foundSignup.supportRank) as Role)
+			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.supportRank) as Role)
 
 		signupChannel.messages.fetch(foundSignup.signupMsgId).then(oldMsg => {
 			oldMsg.edit('Signup has been received and accepted by an event moderator')
