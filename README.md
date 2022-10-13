@@ -32,7 +32,7 @@ Names are case-insensitive
 - [ ] Only kick users from gauntlet voice channels
 - [ ] Display the signup picture somewhere to make it easier for mods to confirm their rank
 - [ ] rework matchmaker in announce?
-- [ ] /another \<role>: outputs the next player from the matchmaking pool for a
+- [x] another \<role>: outputs the next player from the matchmaking pool for a
       certain role
 - [ ] me command
 
