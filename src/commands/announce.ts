@@ -1,5 +1,5 @@
 import { ClientError, Command, Lobby } from '../types'
-import type { Role, TextChannel } from 'discord.js'
+import type { Role, TextChannel, VoiceChannel } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
 import { sortPlayers } from '../helpers'
 
@@ -26,6 +26,8 @@ module.exports = new Command({
 		if (!mmChannel) throw new ClientError(ia, 'Channel matchmaker does not exist')
 		const pingsChannel = ia.guild.channels.cache.find(c => c.name === 'player-pings') as TextChannel
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
+		const lobbyChannel = ia.guild.channels.cache.find(c => c.name === 'waiting lobby') as VoiceChannel
+		if (!lobbyChannel) throw new ClientError(ia, 'Waiting Lobby channel does not exist')
 		//#endregion
 
 		const tankCount = ia.options.getNumber('tank_players_count') ?? 2
@@ -112,7 +114,9 @@ ${topSupports.map(p => p.battleTag).join(', ') || 'none'}
 
 		const playerMessage = `**Lobby Announcement**
 The following players have been selected for the next game.
-If you are listed below, please join the Waiting Lobby voice channel, start the game on the right region and wait for an invite to the custom game lobby.
+If you are listed below, please join the <#${
+			lobbyChannel.id
+		}> channel, start the game and wait for an invite to the custom game lobby.
 
 *Tank*
 ${topTanks.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
