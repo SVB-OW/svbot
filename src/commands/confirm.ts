@@ -65,11 +65,14 @@ module.exports = new Command({
 			else throw e // let others bubble up
 		}
 
-		signupChannel.messages.fetch(foundSignup.signupMsgId).then(oldMsg => {
-			oldMsg.edit('Signup has been received and accepted by an event moderator')
+		await signupChannel.messages.fetch({ around: foundSignup.msgId, limit: 1, cache: false })
+		const oldMsg = signupChannel.messages.cache.get(foundSignup.signupMsgId)
+		if (oldMsg) {
+			oldMsg.edit({ content: 'Signup has been received and accepted by an event moderator', files: [] })
 			oldMsg.react('👍')
-		})
-
-		await ia.reply(`Signup for ${member.displayName} successfully validated`)
+			ia.reply(`Signup for ${member.displayName} successfully validated`)
+		} else {
+			throw new ClientError(ia, 'Signup message could not be fetched, but was validated anyway')
+		}
 	},
 })
