@@ -11,7 +11,7 @@ Github Actions: [https://github.com/SVB-OW/SVBot/actions]
 
 Names are case-insensitive
 
-- Roles: 'Ingame', 'Lobby Host', 'GAUNTLET \<rank>'
+- Roles: 'Ingame', 'Lobby Host', 'Gauntlet', 'Gauntlet \<rank>'
 - Channels: 'matchmaker', 'player-pings', 'signup'
 - Voice Channels: 'Waiting Lobby'
 

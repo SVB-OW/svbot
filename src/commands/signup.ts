@@ -15,16 +15,15 @@ module.exports = new Command({
 		// Checks command contains valid btag
 		const btag = ia.options.getString('battle_tag', true)
 		if (!btagRegex.test(btag))
-			throw new ClientError(ia, 'Battle Tag invalid. Format should be "!signup Krusher99#1234 EU"')
+			throw new ClientError(ia, 'Battle Tag invalid. Format should be "/signup Krusher99#1234 EU"')
 
 		// Checks the command contains a region (caseinsensitive)
 		const region = ia.options.getString('region', true)
 		if (!regionRegex.test(region))
-			throw new ClientError(ia, 'Region invalid. Format should be "!signup Krusher99#1234 EU"')
+			throw new ClientError(ia, 'Region invalid. Format should be "/signup Krusher99#1234 EU"')
 
 		// Checks the command has exactly one attachment
 		const img = ia.options.getAttachment('profile_screenshot', true)
-		console.log('img', img)
 		if (!img.contentType?.startsWith('image/')) throw new ClientError(ia, 'File type is not accepted')
 
 		// Check for existing signup
