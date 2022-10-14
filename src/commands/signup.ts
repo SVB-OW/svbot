@@ -34,7 +34,10 @@ module.exports = new Command({
 				`You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`,
 			)
 
-		const reply = await ia.reply('Signup has been received and will be checked by an event moderator')
+		const reply = await ia.reply({
+			content: 'Signup has been received and will be checked by an event moderator',
+			files: [img],
+		})
 
 		const signup = new Signup({
 			discordId: ia.user.id,
