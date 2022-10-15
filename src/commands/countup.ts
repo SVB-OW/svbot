@@ -14,6 +14,6 @@ module.exports = new Command({
 
 		foundUser.gamesPlayed++
 		mongoSignups.updateOne({ discordId }, { $set: foundUser })
-		await ia.reply("Games played increased!")
+		await ia.reply('Games played increased!')
 	},
 })
