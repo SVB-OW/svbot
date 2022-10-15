@@ -67,11 +67,6 @@ module.exports = new Command({
 			embeds: [
 				new EmbedBuilder()
 					.setTitle('Updated signup')
-					.setDescription(
-						member.permissions.has(PermissionFlagsBits.Administrator, true)
-							? 'Roles for admins cannot be changed automatically!'
-							: '',
-					)
 					.setTimestamp()
 					.addFields(
 						Object.keys(foundUser).map(key => ({
