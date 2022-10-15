@@ -1,17 +1,18 @@
-import { Signup, Rank, Region } from '..'
+import { Rank, Region } from '..'
+import type { Signup } from '..'
 
 export class Lobby {
 	_id?: string
 	rank: Rank = Rank.BRONZE
 	region: Region = Region.EU
-	streamer: string = ''
+	streamer = ''
 	tankPlayers: Signup[] = []
 	damagePlayers: Signup[] = []
 	supportPlayers: Signup[] = []
-	pingMsgId: string = ''
+	pingMsgId = ''
 	pingOccured: string = new Date().toISOString()
-	pingAnnounced: boolean = false
-	pingCleared: boolean = false;
+	pingAnnounced = false
+	pingCleared = false;
 	[key: string]: any // makes object properties indexable
 
 	constructor(obj?: Partial<Lobby>) {

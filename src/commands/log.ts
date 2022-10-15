@@ -1,28 +1,27 @@
-import { Command, ClientError } from '../types'
-import { EmbedBuilder } from 'discord.js'
+import { ClientError, Command } from '../types'
+import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'log',
 	description: 'Logs the first db entry or optionally a specific entry by signupId',
-	props: [{ name: 'discordId | discordTag', required: true }],
+	props: [{ name: 'discord_id', required: true }],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
-		if (!args[0]) throw new ClientError(msg, 'Parameter discordId | discordTag is required')
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
+	async execute({ ia, mongoSignups }) {
+		const discordId = ia.options.getString('discord_id', true)
+		const found = await mongoSignups.findOne({ discordId })
+		if (!found) throw new ClientError(ia, 'Signup not found')
 
-		const found = await mongoSignups.findOne({
-			discordId: args[0].replace(/[<>@!]/g, ''),
-		})
-		if (!found) throw new ClientError(msg, 'Signup not found')
-
-		await msg.channel.send({
+		ia.reply({
 			embeds: [
 				new EmbedBuilder()
-					.setTitle(args[0])
+					.setTitle(discordId)
 					.setTimestamp()
 					.addFields(
-						Object.keys(found).map((key) => ({
+						Object.keys(found).map(key => ({
 							name: key,
-							value: found[key] || '-',
+							value: found[key]?.toString() || '-',
+							inline: true,
 						})),
 					),
 			],

@@ -1,8 +1,10 @@
-import { Command, ClientError, Lobby, Rank, Region } from '../types'
-import { regionRegex } from '../config'
+import { ClientError, Command, Lobby } from '../types'
+import type { Rank, Region } from '../types'
+import { PermissionFlagsBits } from 'discord.js'
+import type { TextChannel } from 'discord.js'
+import type { WithId } from 'mongodb'
 import { rankResolver } from '../helpers'
-import { TextChannel } from 'discord.js'
-import { WithId } from 'mongodb'
+import { regionRegex } from '../config'
 
 module.exports = new Command({
 	name: 'ping',
@@ -13,29 +15,37 @@ module.exports = new Command({
 		{ name: 'streamer', required: true },
 	],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoLobbies }) {
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
+	async execute({ ia, mongoLobbies }) {
 		// Validate
-		const pingsChannel = msg.guild.channels.cache.find((c) => c.name === 'player-pings') as TextChannel
-		if (!pingsChannel) throw new ClientError(msg, 'Channel player-pings does not exist')
+		const pingsChannel = ia.guild.channels.cache.find(c => c.name === 'player-pings') as TextChannel
+		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
+
+		const pingRank = ia.options.getString('rank', true)
+		const pingRegion = ia.options.getString('region', true)
+		const pingStreamer = ia.options.getString('streamer', true)
+
 		// Checks Rank
-		if (!args[0] || !rankResolver(args[0])) throw new ClientError(msg, 'Rank is invalid ' + args[0])
+		if (!rankResolver(pingRank)) throw new ClientError(ia, 'Rank is invalid ' + pingRank)
+
 		// Checks Region
-		if (!args[1] || !regionRegex.test(args[1])) throw new ClientError(msg, 'Region is invalid ' + args[1])
-		// Checks Streamer
-		if (!args[2]) throw new ClientError(msg, 'Streamer cannot be empty ' + args[2])
+		if (!regionRegex.test(pingRegion)) throw new ClientError(ia, 'Region is invalid ' + pingRegion)
 
 		const lobby = new Lobby() as WithId<Lobby>
-		lobby.rank = rankResolver(args[0]) as Rank
-		lobby.region = args[1].toUpperCase() as Region
-		lobby.streamer = args[2]
+		lobby.rank = rankResolver(pingRank) as Rank
+		lobby.region = pingRegion.toUpperCase() as Region
+		lobby.streamer = pingStreamer
 
-		const roleByName = msg.guild.roles.cache.find((item) => item.name.toUpperCase() === lobby.rank)
-		if (!roleByName) throw new ClientError(msg, `Role ${lobby.rank} does not exist`)
-		const pingMsg = await pingsChannel.send(`${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`)
+		const roleByName = ia.guild.roles.cache.find(item => item.name.toUpperCase() === 'GAUNTLET ' + lobby.rank)
+		if (!roleByName) throw new ClientError(ia, `Role ${lobby.rank} does not exist`)
+		const pingMsg = await pingsChannel.send(
+			`${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`,
+		)
 
 		await pingMsg.react('👍')
 
 		lobby.pingMsgId = pingMsg.id
-		mongoLobbies.insertOne(lobby)
+		await mongoLobbies.insertOne(lobby)
+		ia.reply(`Ping sent out for ${lobby.streamer} playing ${lobby.rank} on ${lobby.region}`)
 	},
 })

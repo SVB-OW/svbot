@@ -1,9 +1,8 @@
-import { Collection } from 'mongodb'
-import { Contestant, ICommandMessage, Lobby, Signup } from '..'
+import type { Contestant, ICommandInteraction, Lobby, Signup } from '..'
+import type { Collection } from 'mongodb'
 
 export type ICommandOptions = {
-	msg: ICommandMessage
-	args: string[]
+	ia: ICommandInteraction
 	mongoSignups: Collection<Signup>
 	mongoLobbies: Collection<Lobby>
 	mongoContestants: Collection<Contestant>

@@ -2,18 +2,18 @@ import { Region } from '..'
 
 export class Signup {
 	_id?: string
-	discordId: string = ''
-	battleTag: string = ''
+	discordId = ''
+	battleTag = ''
 	region: Region = Region.EU
-	signupMsgId: string = ''
-	signedUpOn: string = ''
-	confirmedOn: string = ''
-	confirmedBy: string = ''
-	tankRank: string = ''
-	damageRank: string = ''
-	supportRank: string = ''
-	gamesPlayed: number = 0
-	screenshot: string = '';
+	signupMsgId = ''
+	signedUpOn = ''
+	confirmedOn = ''
+	confirmedBy = ''
+	tankRank = ''
+	damageRank = ''
+	supportRank = ''
+	gamesPlayed = 0
+	screenshot = '';
 	[key: string]: any // makes object properties indexable
 
 	constructor(obj?: Partial<Signup>) {

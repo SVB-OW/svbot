@@ -1,0 +1,51 @@
+name: 'Checks'
+
+on:
+  push:
+    branches: ['*']
+  pull_request:
+    branches: ['*']
+
+jobs:
+  analyze:
+    name: 'Analyze'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['javascript']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: ${{ matrix.language }}
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+  run:
+    name: 'Linters, Formatters, and Tests'
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '18.2'
+          check-latest: true
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn format
+      - run: yarn lint

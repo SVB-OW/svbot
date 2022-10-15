@@ -1,55 +1,77 @@
-import { Role, TextChannel } from 'discord.js'
-import { Command, ClientError } from '../types'
+import { ClientError, Command } from '../types'
+import type { Role, TextChannel } from 'discord.js'
+import { DiscordjsTypeError } from 'discord.js'
+import { PermissionFlagsBits } from 'discord.js'
 import { rankResolver } from '../helpers'
 
 module.exports = new Command({
 	name: 'confirm',
 	description: 'Confirms a signup entry',
 	props: [
-		{ name: 'signupMsgId', required: true },
-		{ name: 'tankRank', required: true },
-		{ name: 'dpsRank', required: true },
-		{ name: 'supportRank', required: true },
+		{ name: 'discord_id', required: true },
+		{ name: 'tank_rank', required: true },
+		{ name: 'dps_rank', required: true },
+		{ name: 'support_rank', required: true },
 	],
-	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
-		if (args.length < 4) throw new ClientError(msg, 'Invalid number of arguments. Format is "!confirm <msgId> <tankRank> <dpsRank> <supportRank>')
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
+	async execute({ ia, mongoSignups }) {
+		const discordId = ia.options.getString('discord_id', true)
+		const tankRank = ia.options.getString('tank_rank', true)
+		const dpsRank = ia.options.getString('dps_rank', true)
+		const supportRank = ia.options.getString('support_rank', true)
 
-		const signupChannel = msg.guild.channels.cache.find((c) => c.name === 'signup') as TextChannel
-		if (!signupChannel) throw new ClientError(msg, 'Signup channel does not exist')
+		const signupChannel = ia.guild.channels.cache.find(c => c.name === 'signup') as TextChannel
+		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
 
-		const foundSignupByMsgId = await mongoSignups.findOne({
-			signupMsgId: args[0],
-		})
-		if (!foundSignupByMsgId) throw new ClientError(msg, 'MsgId was not found in DB')
+		const foundSignup = await mongoSignups.findOne({ discordId })
+		if (!foundSignup) throw new ClientError(ia, 'MsgId was not found in DB')
 
-		if (!rankResolver(args[1])) throw new ClientError(msg, 'Tank rank is invalid')
+		if (!rankResolver(tankRank)) throw new ClientError(ia, 'Tank rank is invalid')
 
-		if (!rankResolver(args[2])) throw new ClientError(msg, 'Damage rank is invalid')
+		if (!rankResolver(dpsRank)) throw new ClientError(ia, 'Damage rank is invalid')
 
-		if (!rankResolver(args[3])) throw new ClientError(msg, 'Support rank is invalid')
+		if (!rankResolver(supportRank)) throw new ClientError(ia, 'Support rank is invalid')
 
-		foundSignupByMsgId.tankRank = rankResolver(args[1]) as string
-		foundSignupByMsgId.damageRank = rankResolver(args[2]) as string
-		foundSignupByMsgId.supportRank = rankResolver(args[3]) as string
-		foundSignupByMsgId.confirmedBy = msg.author.username
-		foundSignupByMsgId.confirmedOn = new Date(msg.createdTimestamp).toISOString()
+		foundSignup.tankRank = rankResolver(tankRank) as string
+		foundSignup.damageRank = rankResolver(dpsRank) as string
+		foundSignup.supportRank = rankResolver(supportRank) as string
+		foundSignup.confirmedBy = ia.user.username
+		foundSignup.confirmedOn = new Date(ia.createdTimestamp).toISOString()
 
-		mongoSignups.updateOne({ signupMsgId: args[0] }, { $set: foundSignupByMsgId })
+		await mongoSignups.updateOne({ discordId }, { $set: foundSignup })
 
 		// Assign rank roles on confirm
-		const member = await msg.guild.members.fetch(foundSignupByMsgId.discordId)
-		if (foundSignupByMsgId.tankRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.tankRank) as Role)
+		const member = await ia.guild.members.fetch(foundSignup.discordId)
+		try {
+			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET') as Role)
 
-		if (foundSignupByMsgId.damageRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.damageRank) as Role)
+			if (foundSignup.tankRank !== '-')
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.tankRank) as Role,
+				)
 
-		if (foundSignupByMsgId.supportRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundSignupByMsgId.supportRank) as Role)
+			if (foundSignup.damageRank !== '-')
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.damageRank) as Role,
+				)
 
-		// TODO: Old messages might not be fetchable
-		signupChannel.messages.fetch(foundSignupByMsgId.signupMsgId).then((oldMsg) => {
+			if (foundSignup.supportRank !== '-')
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.supportRank) as Role,
+				)
+		} catch (e) {
+			if (e instanceof DiscordjsTypeError) throw new ClientError(ia, 'Role does not exist')
+			else throw e // let others bubble up
+		}
+
+		await signupChannel.messages.fetch(foundSignup.signupMsgId)
+		const oldMsg = signupChannel.messages.cache.get(foundSignup.signupMsgId)
+		if (oldMsg) {
+			oldMsg.edit({ content: 'Signup has been received and accepted by an event moderator', files: [] })
 			oldMsg.react('👍')
-		})
-
-		msg.channel.send('Signup successfully validated')
+			ia.reply(`Signup for ${member.displayName} successfully validated`)
+		} else {
+			throw new ClientError(ia, 'Signup message could not be fetched, but was validated anyway')
+		}
 	},
 })

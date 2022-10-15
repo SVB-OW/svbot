@@ -1,11 +1,11 @@
-import { Message } from 'discord.js'
+import type { CacheType, ChatInputCommandInteraction } from 'discord.js'
 
 export class ClientError extends Error {
-	msg: Message
+	ia: ChatInputCommandInteraction<CacheType>
 
-	constructor(msg: Message, ...params: any[]) {
+	constructor(ia: ChatInputCommandInteraction<CacheType>, ...params: any[]) {
 		super(...params)
 		this.name = 'ClientError'
-		this.msg = msg
+		this.ia = ia
 	}
 }

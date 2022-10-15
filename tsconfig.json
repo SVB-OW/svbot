@@ -1,15 +1,15 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "module": "CommonJS",
-    "moduleResolution": "Node",
-    "strict": true,
-    "esModuleInterop": true,
-    "outDir": "./out",
-    "forceConsistentCasingInFileNames": true,
-    "types": ["@types/node"],
-    "skipLibCheck": true
-  },
-  "include": ["./src"],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"target": "ES2020",
+		"module": "CommonJS",
+		"moduleResolution": "Node",
+		"strict": true,
+		"esModuleInterop": true,
+		"outDir": "./out",
+		"forceConsistentCasingInFileNames": true,
+		"types": ["@types/node"],
+		"skipLibCheck": true
+	},
+	"include": ["./src", "deploy.mjs"],
+	"exclude": ["node_modules"]
 }

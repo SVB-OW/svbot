@@ -1,19 +1,19 @@
-import { Command, ClientError } from '../types'
+import { ClientError, Command } from '../types'
+import { PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'countdown',
-	description: 'Decrements the played count of one or more player',
-	props: [{ name: 'discordIds', required: true }],
+	description: 'Decrements the games played count of a player',
+	props: [{ name: 'discord_id', required: true }],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
-		if (args.length === 0) throw new ClientError(msg, 'Command must include at least one user id')
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
+	async execute({ ia, mongoSignups }) {
+		const discordId = ia.options.getString('discord_id', true)
+		const foundUser = await mongoSignups.findOne({ discordId })
+		if (!foundUser) throw new ClientError(ia, `Signup for ${discordId} was not found`)
 
-		args.forEach(async (value) => {
-			const foundUser = await mongoSignups.findOne({ discordId: value })
-			if (!foundUser) throw new ClientError(msg, `Signup for ${value} was not found`)
-
-			foundUser.gamesPlayed--
-			mongoSignups.updateOne({ discordId: value }, { $set: foundUser })
-		})
+		foundUser.gamesPlayed--
+		mongoSignups.updateOne({ discordId }, { $set: foundUser })
+		await ia.reply('Games played decreased!')
 	},
 })

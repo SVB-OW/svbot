@@ -2,9 +2,7 @@ name: Deployment
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs:
   run:
@@ -20,7 +18,7 @@ jobs:
         with:
           node-version: '18.2'
           check-latest: true
-      - run: yarn install --frozen-lockfile
+      - run: yarn install
       - run: yarn build
       - run: pm2 delete svbot || true
       - run: pm2 start out/main.js --name "svbot"

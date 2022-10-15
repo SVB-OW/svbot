@@ -1,70 +1,80 @@
-import { EmbedBuilder, Role } from 'discord.js'
-import { rankResolver } from '../helpers'
 import { ClientError, Command, Signup } from '../types'
+import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
+import type { Role } from 'discord.js'
+import { rankResolver } from '../helpers'
 
 module.exports = new Command({
 	name: 'update',
-	description: 'Updates a property of one or more users',
+	description: 'Updates a property of a user',
 	props: [
 		{ name: 'property', required: true },
 		{ name: 'value', required: true },
-		{ name: 'discordIds', required: true },
+		{ name: 'discord_id', required: true },
 	],
 	allowedChannels: ['bot-commands'],
-	async execute({ msg, args, mongoSignups }) {
-		if (args.length < 3) throw new ClientError(msg, 'Too few arguments. Format is !update <property> <value> <discordIds...>')
+	allowedPermissions: PermissionFlagsBits.ManageEvents,
+	async execute({ ia, mongoSignups }) {
+		const propVal = ia.options.getString('property', true)
+		let newVal = ia.options.getString('value', true)
+		const discordId = ia.options.getString('discord_id', true)
 
-		if (!new Signup().hasOwnProperty(args[0])) throw new ClientError(msg, 'Property does not exist')
+		if (!new Signup().hasOwnProperty(propVal)) throw new ClientError(ia, 'Property does not exist')
 
-		let newVal = args[1]
 		let updateRoles = false
-		if (['tankRank', 'damageRank', 'supportRank'].includes(args[0])) {
-			if (!rankResolver(args[1])) throw new ClientError(msg, 'Invalid rank')
-			newVal = rankResolver(args[1]) as string
+		// Check if the property to update is a rank role property
+		if (['tankRank', 'damageRank', 'supportRank'].includes(propVal)) {
+			if (!rankResolver(newVal)) throw new ClientError(ia, 'Invalid rank')
+			newVal = rankResolver(newVal) as string
 			updateRoles = true
 		}
 
-		let userIds = args.slice(2)
+		const foundUser = await mongoSignups.findOne({ discordId })
+		if (!foundUser) throw new ClientError(ia, `Signup for ${discordId} was not found`)
 
-		await userIds.forEach(async (id) => {
-			const foundUser = await mongoSignups.findOne({ discordId: id })
-			if (!foundUser) throw new ClientError(msg, `Signup for ${id} was not found`)
+		// Update the property and parse it to number if possible
+		foundUser[propVal] = isNaN(parseInt(newVal)) ? newVal : parseInt(newVal)
+		await mongoSignups.updateOne({ discordId }, { $set: foundUser })
 
-			foundUser[args[0]] = newVal
-			mongoSignups.updateOne({ discordId: id }, { $set: foundUser })
+		// Fetch guild member
+		const member = await ia.guild.members.fetch(foundUser.discordId)
 
-			const member = await msg.guild.members.fetch(foundUser.discordId)
-			if (member.roles.cache.find((r) => r.name === 'Admin')) throw new ClientError(msg, 'Roles for admins cannot be changed automatically')
+		if (updateRoles) {
+			// Remove all rank roles
+			await member.roles.set(
+				Array.from(member.roles.cache.values())
+					.filter(r => !rankResolver(r.name.toUpperCase().replace('GAUNTLET ', '')))
+					.map(r => r.id),
+			)
 
-			if (updateRoles) {
-				// Remove all rank roles (doesn't work with admins)
-				await member.roles.set(
-					Object.values(member.roles)
-						.filter((r: Role) => !rankResolver(r.name))
-						.map((r: Role) => r.id),
+			// Assign rank roles
+			if (foundUser.tankRank !== '-')
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundUser.tankRank) as Role,
 				)
 
-				// Assign rank roles on confirm
-				if (foundUser.tankRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundUser.tankRank) as Role)
+			if (foundUser.damageRank !== '-')
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundUser.damageRank) as Role,
+				)
 
-				if (foundUser.damageRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundUser.damageRank) as Role)
+			if (foundUser.supportRank !== '-')
+				await member.roles.add(
+					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundUser.supportRank) as Role,
+				)
+		}
 
-				if (foundUser.supportRank !== '-') member.roles.add(msg.guild.roles.cache.find((r) => r.name.toUpperCase() === foundUser.supportRank) as Role)
-			}
-
-			await msg.channel.send({
-				embeds: [
-					new EmbedBuilder()
-						.setTitle('Updated signup')
-						.setTimestamp()
-						.addFields(
-							Object.keys(foundUser).map((key) => ({
-								name: key,
-								value: foundUser[key] || '-',
-							})),
-						),
-				],
-			})
+		await ia.reply({
+			embeds: [
+				new EmbedBuilder()
+					.setTitle('Updated signup')
+					.setTimestamp()
+					.addFields(
+						Object.keys(foundUser).map(key => ({
+							name: key,
+							value: foundUser[key].toString() || '-',
+						})),
+					),
+			],
 		})
 	},
 })
