@@ -29,12 +29,8 @@ Names are case-insensitive
 
 ### Low priority
 
-- [ ] Only kick users from gauntlet voice channels
-- [ ] Display the signup picture somewhere to make it easier for mods to confirm their rank
+- [ ] another \<role> should skip, if given user already has @ingame role
 - [ ] rework matchmaker in announce?
-- [x] another \<role>: outputs the next player from the matchmaking pool for a
-      certain role
-- [ ] me command
 
 ### Streamer section
 
