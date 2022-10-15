@@ -34,7 +34,7 @@ module.exports = new Command({
 				`You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`,
 			)
 
-		const reply = await ia.reply({
+		await ia.reply({
 			content: 'Signup has been received and will be checked by an event moderator',
 			files: [img],
 		})
@@ -44,7 +44,7 @@ module.exports = new Command({
 			battleTag: btag,
 			region: region.toUpperCase() as Region,
 			screenshot: img.proxyURL,
-			signupMsgId: reply.id,
+			signupMsgId: (await ia.fetchReply()).id,
 			signedUpOn: new Date(ia.createdTimestamp).toISOString(),
 		})
 

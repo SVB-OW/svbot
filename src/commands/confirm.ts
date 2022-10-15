@@ -13,7 +13,6 @@ module.exports = new Command({
 		{ name: 'dps_rank', required: true },
 		{ name: 'support_rank', required: true },
 	],
-	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
 		const discordId = ia.options.getString('discord_id', true)
@@ -36,7 +35,7 @@ module.exports = new Command({
 		foundSignup.tankRank = rankResolver(tankRank) as string
 		foundSignup.damageRank = rankResolver(dpsRank) as string
 		foundSignup.supportRank = rankResolver(supportRank) as string
-		foundSignup.confirmedBy = ia.user.id
+		foundSignup.confirmedBy = ia.user.username
 		foundSignup.confirmedOn = new Date(ia.createdTimestamp).toISOString()
 
 		await mongoSignups.updateOne({ discordId }, { $set: foundSignup })
@@ -65,7 +64,7 @@ module.exports = new Command({
 			else throw e // let others bubble up
 		}
 
-		await signupChannel.messages.fetch({ around: foundSignup.msgId, limit: 1, cache: false })
+		await signupChannel.messages.fetch(foundSignup.signupMsgId)
 		const oldMsg = signupChannel.messages.cache.get(foundSignup.signupMsgId)
 		if (oldMsg) {
 			oldMsg.edit({ content: 'Signup has been received and accepted by an event moderator', files: [] })
