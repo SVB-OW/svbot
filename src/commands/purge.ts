@@ -4,7 +4,7 @@ import { PermissionFlagsBits } from 'discord.js'
 module.exports = new Command({
 	name: 'purge',
 	description: 'Deletes max 100 previous messages in the channel',
-	props: [{ name: 'number', required: false, type: 'number' }],
+	props: [{ name: 'number', type: 'number' }],
 	allowedPermissions: PermissionFlagsBits.ManageMessages,
 	async execute({ ia }) {
 		const num = ia.options.getNumber('number') ?? 1

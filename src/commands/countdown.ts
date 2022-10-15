@@ -14,5 +14,6 @@ module.exports = new Command({
 
 		foundUser.gamesPlayed--
 		mongoSignups.updateOne({ discordId }, { $set: foundUser })
+		await ia.reply("Games played decreased!")
 	},
 })
