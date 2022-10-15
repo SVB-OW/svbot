@@ -13,6 +13,7 @@ module.exports = new Command({
 		if (!foundUser) throw new ClientError(ia, `Signup for ${discordId} was not found`)
 
 		foundUser.gamesPlayed--
+		if (foundUser.gamesPlayed < 0) foundUser.gamesPlayed = 0
 		mongoSignups.updateOne({ discordId }, { $set: foundUser })
 		await ia.reply('Games played decreased!')
 	},
