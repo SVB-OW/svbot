@@ -1,4 +1,4 @@
-import { ClientError, Command } from '../types'
+import { ClientError, Command, Signup } from '../types'
 import type { Role, TextChannel, VoiceChannel } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
 import { sortPlayers } from '../helpers'
@@ -37,42 +37,52 @@ module.exports = new Command({
 
 		const guildMembers = await ia.guild.members.fetch()
 
-		lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby))
-		lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby))
-		lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby))
-
-		const topTanks = lobby.tankPlayers.slice(1)
-		const topDps = lobby.damagePlayers.slice(1)
-		const topSupports = lobby.supportPlayers.slice(1)
 		let playerMsg = ``
 		let btagMsg = ``
+		let foundPlayer: Signup | undefined
 
 		if (additionalRole === 'tank') {
-			topTanks.forEach(s => {
-				guildMembers.get(s.discordId)?.roles.add(ingameRole)
-				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
+			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby))
+
+			// loop through players to find first player without ingame
+			lobby.tankPlayers.forEach(p => {
+				if (!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)) {
+					foundPlayer = p
+				}
 			})
-			playerMsg = `${topTanks.map(p => `<@${p.discordId}>`)}`
-			btagMsg = `${topTanks.map(p => `<@${p.battleTag}>`)}`
 		}
 
 		if (additionalRole === 'dps') {
-			topDps.forEach(s => {
-				guildMembers.get(s.discordId)?.roles.add(ingameRole)
-				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
+			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby))
+
+			// loop through players to find first player without ingame
+			lobby.damagePlayers.forEach(p => {
+				if (!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)) {
+					foundPlayer = p
+				}
 			})
-			playerMsg = `${topDps.map(p => `<@${p.discordId}>`)}`
-			btagMsg = `${topDps.map(p => `<@${p.battleTag}>`)}`
 		}
 
 		if (additionalRole === 'support') {
-			topSupports.forEach(s => {
-				guildMembers.get(s.discordId)?.roles.add(ingameRole)
-				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
+			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby))
+
+			// loop through players to find first player without ingame
+			lobby.supportPlayers.forEach(p => {
+				if (!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)) {
+					foundPlayer = p
+				}
 			})
-			playerMsg = `${topSupports.map(p => `<@${p.discordId}>`)}`
-			btagMsg = `${topSupports.map(p => `<@${p.battleTag}>`)}`
 		}
+
+		// check we've got one!
+		if (foundPlayer === undefined) {
+			throw new ClientError(ia, `No additional ${additionalRole} players available!`)
+		}
+
+		guildMembers.get(foundPlayer.discordId)?.roles.add(ingameRole)
+		await mongoSignups.updateOne({ discordId: foundPlayer.discordId }, { $inc: { gamesPlayed: 1 } })
+		playerMsg = `<@${foundPlayer.discordId}>`
+		btagMsg = `${foundPlayer.battleTag}`
 
 		const btagMessage = `**Additional ${additionalRole} selected <@&${hostRole.id}>**
 ${btagMsg}`
@@ -81,13 +91,11 @@ ${btagMsg}`
 ${playerMsg}, we need another ${additionalRole}!
 Please urgently join the <#${lobbyChannel.id}> channel, start the game and wait for an invite to the custom game lobby.`
 
-		mmChannel.send(btagMessage)
-		pingsChannel.send(playerMessage)
+		await mmChannel.send(btagMessage)
+		await pingsChannel.send(playerMessage)
 
-		delete lobby.pingMsg
-		lobby.pingAnnounced = true
-		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby }) // not sure if we need this?
+		await mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
 
-		ia.reply('Additional player ping sent')
+		await ia.reply('Additional player ping sent')
 	},
 })
