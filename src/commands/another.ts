@@ -1,4 +1,4 @@
-import { ClientError, Command, Lobby } from '../types'
+import { ClientError, Command } from '../types'
 import type { Role, TextChannel, VoiceChannel } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
 import { sortPlayers } from '../helpers'
@@ -6,9 +6,7 @@ import { sortPlayers } from '../helpers'
 module.exports = new Command({
 	name: 'another',
 	description: 'Get another player for chosen role pinged',
-	props: [
-		{ name: 'role', type: 'string' },
-	],
+	props: [{ name: 'role', required: true }],
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups, mongoLobbies }) {
@@ -28,13 +26,13 @@ module.exports = new Command({
 		if (!lobbyChannel) throw new ClientError(ia, 'Waiting Lobby channel does not exist')
 		//#endregion
 
-		const additionalRole = ia.options.getString('role')!.toLowerCase()
+		const additionalRole = ia.options.getString('role', true).toLowerCase()
 		if (!['tank', 'dps', 'support'].includes(additionalRole)) throw new ClientError(ia, 'Requested role not valid')
 
 		// Fetch ping msg from newest lobby in db
-		const lobby = (await mongoLobbies.findOne({}, { sort: { $natural: -1 } }))
-		if (!lobby) throw new ClientError(ia, "Lobby not found")
-		let pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId)
+		const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } })
+		if (!lobby) throw new ClientError(ia, 'Lobby not found')
+		const pingMsg = await pingsChannel.messages.fetch(lobby.pingMsgId)
 		if (!pingMsg) throw new ClientError(ia, 'Ping message not found. Please create another ping')
 
 		const guildMembers = await ia.guild.members.fetch()
@@ -49,7 +47,7 @@ module.exports = new Command({
 		let playerMsg = ``
 		let btagMsg = ``
 
-		if (additionalRole === "tank") {
+		if (additionalRole === 'tank') {
 			topTanks.forEach(s => {
 				guildMembers.get(s.discordId)?.roles.add(ingameRole)
 				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
@@ -58,7 +56,7 @@ module.exports = new Command({
 			btagMsg = `${topTanks.map(p => `<@${p.battleTag}>`)}`
 		}
 
-		if (additionalRole === "dps") {
+		if (additionalRole === 'dps') {
 			topDps.forEach(s => {
 				guildMembers.get(s.discordId)?.roles.add(ingameRole)
 				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
@@ -67,7 +65,7 @@ module.exports = new Command({
 			btagMsg = `${topDps.map(p => `<@${p.battleTag}>`)}`
 		}
 
-		if (additionalRole === "support") {
+		if (additionalRole === 'support') {
 			topSupports.forEach(s => {
 				guildMembers.get(s.discordId)?.roles.add(ingameRole)
 				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 } })
