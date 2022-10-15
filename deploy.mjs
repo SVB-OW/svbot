@@ -1,7 +1,10 @@
 import { Collection, Routes, SlashCommandBuilder } from 'discord.js'
 import { REST } from '@discordjs/rest'
+import { config } from 'dotenv'
 import { join } from 'node:path'
 import { readdirSync } from 'node:fs'
+
+config()
 
 //#region Dynamic commands
 const commandsCollection = new Collection()
@@ -11,7 +14,6 @@ for (const file of commandFiles) {
 	const command = await import('./out/commands/' + file)
 	commandsCollection.set(command.default.name, command.default)
 }
-console.log('commandsCollection', commandsCollection)
 //#endregion
 
 const commands = commandsCollection.map(cmd => {
@@ -56,26 +58,14 @@ const commands = commandsCollection.map(cmd => {
 
 const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
 
-// Delete all commands (SVBot Server)
-await rest
-	.put(Routes.applicationGuildCommands('785912791739269130', '784164409606012958'), { body: [] })
-	.then(() => console.log('Successfully deleted application commands.'))
-	.catch(console.error)
-
 // Delete all commands (global)
 await rest
-	.put(Routes.applicationCommands('785912791739269130'), { body: [] })
+	.put(Routes.applicationCommands(process.env.DISCORD_BOT_ID), { body: [] })
 	.then(() => console.log('Successfully deleted all application commands.'))
 	.catch(console.error)
 
-// Register commands once (SVBot Server)
-// await rest
-// 	.put(Routes.applicationGuildCommands('785912791739269130', '784164409606012958'), { body: commands })
-// 	.then(() => console.log('Successfully registered application commands.'))
-// 	.catch(console.error)
-
 // Register commands once (global)
 await rest
-	.put(Routes.applicationCommands('785912791739269130'), { body: commands })
+	.put(Routes.applicationCommands(process.env.DISCORD_BOT_ID), { body: commands })
 	.then(() => console.log('Successfully registered all application commands.'))
 	.catch(console.error)
