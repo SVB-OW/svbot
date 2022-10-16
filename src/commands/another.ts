@@ -37,8 +37,6 @@ module.exports = new Command({
 
 		const guildMembers = await ia.guild.members.fetch()
 
-		let playerMsg = ``
-		let btagMsg = ``
 		let foundPlayer: Signup | undefined
 
 		if (additionalRole === 'tank') {
@@ -81,14 +79,12 @@ module.exports = new Command({
 
 		guildMembers.get(foundPlayer.discordId)?.roles.add(ingameRole)
 		await mongoSignups.updateOne({ discordId: foundPlayer.discordId }, { $inc: { gamesPlayed: 1 } })
-		playerMsg = `<@${foundPlayer.discordId}>`
-		btagMsg = `${foundPlayer.battleTag}`
 
 		const btagMessage = `**Additional ${additionalRole} selected <@&${hostRole.id}>**
-${btagMsg}`
+${foundPlayer.battleTag}`
 
 		const playerMessage = `**Lobby Announcement**
-${playerMsg}, we need another ${additionalRole}!
+${foundPlayer.discordId}, we need another ${additionalRole}!
 Please urgently join the <#${lobbyChannel.id}> channel, start the game and wait for an invite to the custom game lobby.`
 
 		await mmChannel.send(btagMessage)
