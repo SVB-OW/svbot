@@ -9,10 +9,10 @@ module.exports = new Command({
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
 		const discordId = ia.options.getString('discord_id', true)
-		const foundUser = await mongoSignups.findOne({ discordId })
-		if (!foundUser) throw new ClientError(ia, `Signup for ${discordId} was not found`)
 
-		mongoSignups.deleteOne({ discordId })
-		await ia.reply('Removed signup for BTag ' + foundUser.battleTag)
+		const res = await mongoSignups.deleteOne({ discordId })
+
+		if (res.deletedCount === 0) throw new ClientError(ia, `Signup for ${discordId} was not found`)
+		ia.reply('Removed signup for ' + discordId)
 	},
 })
