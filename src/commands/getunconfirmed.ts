@@ -5,7 +5,7 @@ import { PermissionFlagsBits } from 'discord.js'
 module.exports = new Command({
 	name: 'getunconfirmed',
 	description: 'Gets X unconfirmed users',
-	props: [{ name: 'count', required: false, type: 'number' }],
+	props: [{ name: 'count', type: 'number' }],
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
