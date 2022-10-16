@@ -43,10 +43,8 @@ module.exports = new Command({
 			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby))
 
 			// loop through players to find first player without ingame
-			lobby.tankPlayers.forEach(p => {
-				if (!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)) {
-					foundPlayer = p
-				}
+			foundPlayer = lobby.tankPlayers.find(p => {
+				!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)
 			})
 		}
 
@@ -54,10 +52,8 @@ module.exports = new Command({
 			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby))
 
 			// loop through players to find first player without ingame
-			lobby.damagePlayers.forEach(p => {
-				if (!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)) {
-					foundPlayer = p
-				}
+			foundPlayer = lobby.damagePlayers.find(p => {
+				!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)
 			})
 		}
 
@@ -65,10 +61,8 @@ module.exports = new Command({
 			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby))
 
 			// loop through players to find first player without ingame
-			lobby.supportPlayers.forEach(p => {
-				if (!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)) {
-					foundPlayer = p
-				}
+			foundPlayer = lobby.supportPlayers.find(p => {
+				!guildMembers.get(p.discordId)?.roles.cache.has(ingameRole.id)
 			})
 		}
 
