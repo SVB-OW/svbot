@@ -1,4 +1,6 @@
-require('dotenv').config()
+import { config } from 'dotenv'
+
+config()
 
 const dbProd = 'svbot'
 const dbTest = 'svbot-test'
