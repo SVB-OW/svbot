@@ -7,7 +7,7 @@
 		"esModuleInterop": true,
 		"outDir": "./out",
 		"forceConsistentCasingInFileNames": true,
-		"types": ["@types/node"],
+		"types": ["@types/node", "jest"],
 		"skipLibCheck": true
 	},
 	"include": ["./src", "deploy.mjs"],
