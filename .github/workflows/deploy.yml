@@ -2,7 +2,8 @@ name: Deployment
 
 on:
   push:
-    branches: [main]
+    branches: [main, ci*]
+  workflow_dispatch:
 
 jobs:
   run:
@@ -11,6 +12,7 @@ jobs:
       NODE_ENV: production
       DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
       MONGO_URI: ${{ secrets.MONGO_URI }}
+      PROD_ERROR_EMAIL: ${{ secrets.PROD_ERROR_EMAIL }}
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +20,8 @@ jobs:
         with:
           node-version: '18'
           check-latest: true
+          cache: 'yarn'
       - run: yarn install
       - run: yarn build
-      - run: RUNNER_TRACKING_ID="" && pm2 delete svbot || true
-      - run: RUNNER_TRACKING_ID="" && pm2 start out/main.js --name "svbot"
+      - run: pm2 delete svbot || true
+      - run: pm2 start out/main.js --name "svbot"
