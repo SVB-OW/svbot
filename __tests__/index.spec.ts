@@ -1,8 +1,9 @@
-import { Message } from 'discord.js'
+import { TextChannel, Role } from 'discord.js'
 import { rankResolver, sortPlayers } from "../src/helpers";
-import { Lobby, Region, Signup } from "../src/types"
+import { ICommandInteraction, Lobby, Region, Signup } from "../src/types"
+import { getRankRoles, getSignupChannel } from "../src/validations";
 
-describe("Support Functions", () => {
+describe("Support functions", () => {
 
 	const eu_player = {
 		gamesPlayed: 0,
@@ -15,6 +16,57 @@ describe("Support Functions", () => {
 	const eu_lobby = {
 		region: Region.EU
 	} as Lobby
+
+	// define some channels we use
+	const signupChannel = {
+		name: 'signup'
+	} as unknown as TextChannel
+	const matchmakerChannel = {
+		name: 'matchmaker'
+	} as unknown as TextChannel
+	const pingsChannel = {
+		name: 'player-pings'
+	} as unknown as TextChannel
+	const lobbyChannel = {
+		name: 'waiting lobby'
+	} as unknown as TextChannel
+	const channelCache = [signupChannel, matchmakerChannel, pingsChannel, lobbyChannel]
+
+	// define some roles we use
+	const bronzeRole = {
+		name: 'Gauntlet Bronze'
+	} as unknown as Role
+	const silverRole = {
+		name: 'Gauntlet Silver'
+	} as unknown as Role
+	const goldRole = {
+		name: 'Gauntlet Gold'
+	} as unknown as Role
+	const platRole = {
+		name: 'Gauntlet Platinum'
+	} as unknown as Role
+	const diaRole = {
+		name: 'Gauntlet Diamond'
+	} as unknown as Role
+	const masterRole = {
+		name: 'Gauntlet Master'
+	} as unknown as Role
+	const gmRole = {
+		name: 'Gauntlet GrandMaster'
+	} as unknown as Role
+	const rolesCache = [bronzeRole, silverRole, goldRole, platRole, diaRole, masterRole, gmRole]
+
+	// fake an interaction and define the caches
+	const ia = {
+		guild: {
+			channels: {
+				cache: channelCache
+			},
+			roles: {
+				cache: rolesCache
+			}
+		}
+	} as unknown as ICommandInteraction
 
 	it("should sort Region", () => {
 		expect(sortPlayers(eu_player, na_player, eu_lobby)).toBe(-1)
@@ -47,4 +99,12 @@ describe("Support Functions", () => {
 		expect(rankResolver("gm")).toBe("GRANDMASTER")
 		expect(rankResolver("grandmaster")).toBe("GRANDMASTER")
 	});
+
+	it("should find the signup channel", () => {
+		expect(getSignupChannel(ia)).toBe(signupChannel)
+	})
+
+	it("should find the rank roles", () => {
+		expect(Object.keys(getRankRoles(ia))).toHaveLength(7)
+	})
 })
