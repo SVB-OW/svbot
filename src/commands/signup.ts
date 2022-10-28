@@ -12,6 +12,7 @@ module.exports = new Command({
 	],
 	allowedChannels: ['signup'],
 	async execute({ ia, mongoSignups }) {
+		await ia.deferReply()
 		// Checks command contains valid btag
 		const btag = ia.options.getString('battle_tag', true)
 		if (!btagRegex.test(btag))
@@ -34,7 +35,7 @@ module.exports = new Command({
 				`You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`,
 			)
 
-		await ia.reply({
+		ia.editReply({
 			content: 'Signup has been received and will be checked by an event moderator',
 			files: [img],
 		})
