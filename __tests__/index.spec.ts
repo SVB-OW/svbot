@@ -20,40 +20,40 @@ describe("Support functions", () => {
 	// define some channels we use
 	const signupChannel = {
 		name: 'signup'
-	} as unknown as TextChannel
+	} as Partial<TextChannel>
 	const matchmakerChannel = {
 		name: 'matchmaker'
-	} as unknown as TextChannel
+	} as Partial<TextChannel>
 	const pingsChannel = {
 		name: 'player-pings'
-	} as unknown as TextChannel
+	} as Partial<TextChannel>
 	const lobbyChannel = {
 		name: 'waiting lobby'
-	} as unknown as TextChannel
+	} as Partial<TextChannel>
 	const channelCache = [signupChannel, matchmakerChannel, pingsChannel, lobbyChannel]
 
 	// define some roles we use
 	const bronzeRole = {
 		name: 'Gauntlet Bronze'
-	} as unknown as Role
+	} as Partial<Role>
 	const silverRole = {
 		name: 'Gauntlet Silver'
-	} as unknown as Role
+	} as Partial<Role>
 	const goldRole = {
 		name: 'Gauntlet Gold'
-	} as unknown as Role
+	} as Partial<Role>
 	const platRole = {
 		name: 'Gauntlet Platinum'
-	} as unknown as Role
+	} as Partial<Role>
 	const diaRole = {
 		name: 'Gauntlet Diamond'
-	} as unknown as Role
+	} as Partial<Role>
 	const masterRole = {
 		name: 'Gauntlet Master'
-	} as unknown as Role
+	} as Partial<Role>
 	const gmRole = {
 		name: 'Gauntlet GrandMaster'
-	} as unknown as Role
+	} as Partial<Role>
 	const rolesCache = [bronzeRole, silverRole, goldRole, platRole, diaRole, masterRole, gmRole]
 
 	// fake an interaction and define the caches
@@ -108,3 +108,31 @@ describe("Support functions", () => {
 		expect(Object.keys(getRankRoles(ia))).toHaveLength(7)
 	})
 })
+
+// describe("Command Functions", () => {
+// 	beforeEach(() => {
+// 		jest.clearAllMocks();
+// 	});
+//
+// 	const client = jest.fn()
+//
+// 	const ia = ({
+// 		channel: {
+// 			send: jest.fn(),
+// 		},
+// 		content: "",
+// 		author: {
+// 			bot: false,
+// 		},
+// 	} as unknown) as Message;
+//
+// 	it("should send error messages quietly", async () => {
+// 		await interaction()
+// 		expect(ia.reply).toBeCalledWith("moo")
+// 	})
+// })
+
+// refs:
+// https://jestjs.io/docs/expect
+// https://www.youtube.com/watch?v=5TjXmsJtWZc
+// https://github.com/stuyy/jest-unit-tests-demo/blob/master/__tests__/index.spec.ts
