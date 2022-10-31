@@ -16,9 +16,13 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 'latest'
+          node-version: '18'
           check-latest: true
-      - run: yarn install
+.     - uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+.     - run: yarn install
       - run: yarn build
       - run: pm2 delete svbot || true
       - run: pm2 start out/main.js --name "svbot"
