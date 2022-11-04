@@ -21,4 +21,4 @@ jobs:
       - run: yarn install
       - run: yarn build
       - run: pm2 delete svbot || true
-      - run: pm2 start out/main.js --name "svbot"
+      - run: RUNNER_TRACKING_ID="" && pm2 start out/main.js --name "svbot"
