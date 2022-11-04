@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: 'Deploy'
+    name: Deploy
     env:
       CI: true
       NODE_ENV: production
