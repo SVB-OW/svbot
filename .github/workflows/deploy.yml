@@ -6,7 +6,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  run:
+  deploy:
+    name: 'Deploy'
     env:
       CI: true
       NODE_ENV: production
