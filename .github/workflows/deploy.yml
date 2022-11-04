@@ -13,12 +13,12 @@ jobs:
       MONGO_URI: ${{ secrets.MONGO_URI }}
     runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '18.2'
+          node-version: '18'
           check-latest: true
       - run: yarn install
       - run: yarn build
-      - run: pm2 delete svbot || true
+      - run: RUNNER_TRACKING_ID="" && pm2 delete svbot || true
       - run: RUNNER_TRACKING_ID="" && pm2 start out/main.js --name "svbot"
