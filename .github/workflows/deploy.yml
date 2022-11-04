@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  run:
     name: Deploy
     env:
       CI: true
