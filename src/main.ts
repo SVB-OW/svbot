@@ -1,7 +1,7 @@
 //#region Preparation
 import { ActivityType, ChannelType, GatewayIntentBits } from 'discord.js'
 import { ClientError, CommandClient } from './types'
-import { dbLive, discordToken, isProd, mongoUri } from './config'
+import { dbLive, discordToken, isProd, mongoUri, prodErrorEmail } from './config'
 import type { Db } from 'mongodb'
 import type { ICommandInteraction } from './types'
 import type { Interaction } from 'discord.js'
@@ -82,7 +82,7 @@ async function errorHandler(err: any) {
 
 		sendmail({
 			from: 'svbot@svb.net',
-			to: 'flo.dendorfer@gmail.com',
+			to: prodErrorEmail,
 			subject: 'Error in SVBot Production',
 			html,
 		})
