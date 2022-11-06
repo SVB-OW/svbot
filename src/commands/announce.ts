@@ -51,12 +51,17 @@ module.exports = new Command({
 
 			// Check that signup exists, was confirmed and the user is still in the server
 			if (findSignup && findSignup.confirmedOn && guildMembers.get(findSignup.discordId)) {
-				// Order of roles that are harder to fill
+				// Sort roles by which has the least players already
 				const rolePools = [
-					{ name: 'support', arr: lobby.supportPlayers },
 					{ name: 'tank', arr: lobby.tankPlayers },
 					{ name: 'damage', arr: lobby.damagePlayers },
-				]
+					{ name: 'support', arr: lobby.supportPlayers },
+				].sort((a, b) => {
+					if (a.arr.length < b.arr.length) return -1
+					if (a.arr.length > b.arr.length) return 1
+
+					return 0
+				})
 
 				if (findSignup[rolePools[0].name + 'Rank'] === lobby.rank) {
 					lobby[rolePools[0].name + 'Players'].push(findSignup)
