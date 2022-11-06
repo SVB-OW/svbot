@@ -72,7 +72,7 @@ async function errorHandler(err: any) {
 	// Send client errors back to channel
 	if (err instanceof ClientError) {
 		// Handle known errors
-		if (err.ia.replied)
+		if (err.ia.deferred)
 			err.ia.editReply({
 				content: `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
 			})
