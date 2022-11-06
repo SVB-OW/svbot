@@ -72,10 +72,15 @@ async function errorHandler(err: any) {
 	// Send client errors back to channel
 	if (err instanceof ClientError) {
 		// Handle known errors
-		err.ia.reply({
-			content: `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
-			ephemeral: true,
-		})
+		if (err.ia.replied)
+			err.ia.editReply({
+				content: `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
+			})
+		else
+			err.ia.reply({
+				content: `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
+				ephemeral: true,
+			})
 	} else if (err instanceof Error && isProd) {
 		// Handle unknown errors in prod
 		const html = `<h1>Name: ${err.name}</h1><h3>Message: ${err.message}</h3></div><pre>${err.stack}</pre>`
