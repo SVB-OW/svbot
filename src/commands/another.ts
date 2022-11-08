@@ -22,7 +22,7 @@ module.exports = new Command({
 		if (!mmChannel) throw new ClientError(ia, 'Channel matchmaker does not exist')
 		const pingsChannel = ia.guild.channels.cache.find(c => c.name === 'player-pings') as TextChannel
 		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
-		const lobbyChannel = ia.guild.channels.cache.find(c => c.name === 'waiting lobby') as VoiceChannel
+		const lobbyChannel = ia.guild.channels.cache.find(c => c.name.toLowerCase() === 'waiting lobby') as VoiceChannel
 		if (!lobbyChannel) throw new ClientError(ia, 'Waiting Lobby channel does not exist')
 		//#endregion
 
