@@ -5,7 +5,7 @@
 The SVBot needs each player to have a rank in each role of Overwatch. The roles are
 
 - Tank
-- DPS
+- DAMAGE
 - Support
 
 ## Ranks
@@ -13,7 +13,7 @@ The SVBot needs each player to have a rank in each role of Overwatch. The roles 
 The possible ranks are
 
 | Full name   | Short   |
-|-------------|---------|
+| ----------- | ------- |
 | Bronze      | B       |
 | Silver      | S       |
 | Gold        | G       |
@@ -96,22 +96,22 @@ Once around is finished the lobby can be cleaned up via the `/clear` command. Th
 
 ## Command overview
 
-| Name           | Arguments                                                                                                     | Function                                                                                                                                       |
-|----------------|---------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| announce       | `tank_players_count`: number, `dps_players_count`: number, `support_players_count`: number                    | Prepares a lobby for a round with the given number of tanks, DPS and supports                                                                  |
-| another        | `role`: [role](#ow-roles)                                                                                     | Gets another player for the chosen role                                                                                                        |
-| clear          | -                                                                                                             | Kicks all players with the `@Ingame` role from voice chat and removes the role from them                                                       |
-| confirm        | `discord_id`: number, `tank_rank`: [rank](#ranks), `dps_rank`: [rank](#ranks), `support_rank`: [rank](#ranks) | Confirms a signup entry                                                                                                                        |
-| countdown      | `discord_id`: number                                                                                          | Decrements the number of games played for the given player                                                                                     |
-| countup        | `discord_id`: number                                                                                          | Increments the number of games played for the given player                                                                                     |
-| echo           | anything                                                                                                      | Replies with the same params you have given                                                                                                    |
-| env            | -                                                                                                             | Outputs the content of the NODE_ENV variable                                                                                                   |
-| getunconfirmed | `count`                                                                                                       | Outputs the information of the `count` newest unconfirmed signups. **NOTE: CURRENTLY THE COMMAND DOES NOT WORK IF GIVEN THE `count` ARGUMENT** |
-| latency        | -                                                                                                             | Outputs the bots latency                                                                                                                       |
-| log            | `discord_id`: number                                                                                          | Displays a specific players entry by discord ID                                                                                                |
-| ping           | `rank`: [rank](#ranks), `region`: [region](#signup), `streamer`: string                                       | Ping players with a certain rank for a lobby with the streamer and region in #player-pings                                                     |
-| purge          | `number`: number                                                                                              | Deletes `number`, but at most 100, previous messages in the channel                                                                            |
-| reject         | `discord_id`: number                                                                                          | Removes the players signup                                                                                                                     |
-| signup         | `battle_tag`: [battle tag](#signup), `region`: [region](#signup), `profile_screenshot`: attachment            | Sign up with btag, region and profile screenshot                                                                                               |
-| stats          | -                                                                                                             | Display some stats for the event                                                                                                               |
-| update         | `property`: [property](#changing-ranks-of-a-confirmed-user), `value`: [rank](#ranks), `discord_id`: number    | Updates the rank of a signed up player                                                                                                         |
+| Name           | Arguments                                                                                                        | Function                                                                                                                                       |
+| -------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| announce       | `tank_players_count`: number, `damage_players_count`: number, `support_players_count`: number                    | Prepares a lobby for a round with the given number of tanks, DAMAGE and supports                                                               |
+| another        | `role`: [role](#ow-roles)                                                                                        | Gets another player for the chosen role                                                                                                        |
+| clear          | -                                                                                                                | Kicks all players with the `@Ingame` role from voice chat and removes the role from them                                                       |
+| confirm        | `discord_id`: number, `tank_rank`: [rank](#ranks), `damage_rank`: [rank](#ranks), `support_rank`: [rank](#ranks) | Confirms a signup entry                                                                                                                        |
+| countdown      | `discord_id`: number                                                                                             | Decrements the number of games played for the given player                                                                                     |
+| countup        | `discord_id`: number                                                                                             | Increments the number of games played for the given player                                                                                     |
+| echo           | anything                                                                                                         | Replies with the same params you have given                                                                                                    |
+| env            | -                                                                                                                | Outputs the content of the NODE_ENV variable                                                                                                   |
+| getunconfirmed | `count`                                                                                                          | Outputs the information of the `count` newest unconfirmed signups. **NOTE: CURRENTLY THE COMMAND DOES NOT WORK IF GIVEN THE `count` ARGUMENT** |
+| latency        | -                                                                                                                | Outputs the bots latency                                                                                                                       |
+| log            | `discord_id`: number                                                                                             | Displays a specific players entry by discord ID                                                                                                |
+| ping           | `rank`: [rank](#ranks), `region`: [region](#signup), `streamer`: string                                          | Ping players with a certain rank for a lobby with the streamer and region in #player-pings                                                     |
+| purge          | `number`: number                                                                                                 | Deletes `number`, but at most 100, previous messages in the channel                                                                            |
+| reject         | `discord_id`: number                                                                                             | Removes the players signup                                                                                                                     |
+| signup         | `battle_tag`: [battle tag](#signup), `region`: [region](#signup), `profile_screenshot`: attachment               | Sign up with btag, region and profile screenshot                                                                                               |
+| stats          | -                                                                                                                | Display some stats for the event                                                                                                               |
+| update         | `property`: [property](#changing-ranks-of-a-confirmed-user), `value`: [rank](#ranks), `discord_id`: number       | Updates the rank of a signed up player                                                                                                         |

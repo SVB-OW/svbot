@@ -1,4 +1,4 @@
-import type { Lobby, Signup } from './types'
+import type { Region, Signup } from './types'
 
 /**
  * converts command input to db value
@@ -30,11 +30,11 @@ export function rankResolver(input: string): boolean | string {
 	return false
 }
 
-export function sortPlayers(a: Signup, b: Signup, lobby: Lobby) {
+export function sortPlayers(a: Signup, b: Signup, region: Region) {
 	if (a.gamesPlayed > b.gamesPlayed) return 1
 	if (a.gamesPlayed < b.gamesPlayed) return -1
-	if (a.region === lobby.region && b.region !== lobby.region) return -1
-	if (b.region === lobby.region && a.region !== lobby.region) return 1
+	if (a.region === region && b.region !== region) return -1
+	if (b.region === region && a.region !== region) return 1
 
 	return 0
 }

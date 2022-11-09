@@ -13,7 +13,8 @@ export class Signup {
 	damageRank = ''
 	supportRank = ''
 	gamesPlayed = 0
-	screenshot = '';
+	screenshot = ''
+	playing = false;
 	[key: string]: any // makes object properties indexable
 
 	constructor(obj?: Partial<Signup>) {

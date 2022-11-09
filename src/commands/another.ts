@@ -27,7 +27,7 @@ module.exports = new Command({
 		//#endregion
 
 		const additionalRole = ia.options.getString('role', true).toLowerCase()
-		if (!['tank', 'dps', 'support'].includes(additionalRole)) throw new ClientError(ia, 'Requested role not valid')
+		if (!['tank', 'damage', 'support'].includes(additionalRole)) throw new ClientError(ia, 'Requested role not valid')
 
 		// Fetch ping msg from newest lobby in db
 		const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } })
@@ -40,7 +40,7 @@ module.exports = new Command({
 		let foundPlayer: Signup | undefined
 
 		if (additionalRole === 'tank') {
-			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby))
+			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby.region))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.tankPlayers.find(p => {
@@ -48,8 +48,8 @@ module.exports = new Command({
 			})
 		}
 
-		if (additionalRole === 'dps') {
-			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby))
+		if (additionalRole === 'damage') {
+			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby.region))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.damagePlayers.find(p => {
@@ -58,7 +58,7 @@ module.exports = new Command({
 		}
 
 		if (additionalRole === 'support') {
-			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby))
+			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby.region))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.supportPlayers.find(p => {
