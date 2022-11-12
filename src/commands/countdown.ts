@@ -19,8 +19,10 @@ module.exports = new Command({
 		embed.addFields([
 			{ name: 'DiscordID', value: foundUser.discordId, inline: true },
 			{ name: 'BattleTag', value: foundUser.battleTag, inline: true },
+			{ name: '​', value: '​', inline: true },
 			{ name: 'Old value', value: `${foundUser.gamesPlayed}`, inline: true },
 			{ name: 'New value', value: `${foundUser.gamesPlayed - 1}`, inline: true },
+			{ name: '​', value: '​', inline: true },
 		])
 		await ia.reply({ embeds: [embed] })
 	},
