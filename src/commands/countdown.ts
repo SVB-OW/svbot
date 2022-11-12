@@ -1,5 +1,5 @@
 import { ClientError, Command } from '../types'
-import { PermissionFlagsBits } from 'discord.js'
+import { PermissionFlagsBits, EmbedBuilder } from 'discord.js'
 
 module.exports = new Command({
 	name: 'countdown',
@@ -15,6 +15,15 @@ module.exports = new Command({
 		foundUser.gamesPlayed--
 		if (foundUser.gamesPlayed < 0) foundUser.gamesPlayed = 0
 		mongoSignups.updateOne({ discordId }, { $set: foundUser })
-		await ia.reply('Games played decreased!')
+		const embed = new EmbedBuilder().setTitle('Games played decreased').setTimestamp()
+		embed.addFields([
+			{ name: 'DiscordID', value: foundUser.discordId, inline: true },
+			{ name: 'BattleTag', value: foundUser.battleTag, inline: true },
+			{ name: '​', value: '​', inline: true },
+			{ name: 'Old value', value: `${foundUser.gamesPlayed}`, inline: true },
+			{ name: 'New value', value: `${foundUser.gamesPlayed - 1}`, inline: true },
+			{ name: '​', value: '​', inline: true },
+		])
+		await ia.reply({ embeds: [embed] })
 	},
 })
