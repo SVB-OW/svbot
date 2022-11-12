@@ -3,5 +3,3 @@ out
 .env
 test*.js
 .idea
-package-lock.json
-*.lock
