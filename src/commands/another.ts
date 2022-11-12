@@ -40,7 +40,7 @@ module.exports = new Command({
 		let foundPlayer: Signup | undefined
 
 		if (additionalRole === 'tank') {
-			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby.region))
+			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.tankPlayers.find(p => {
@@ -49,7 +49,7 @@ module.exports = new Command({
 		}
 
 		if (additionalRole === 'damage') {
-			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby.region))
+			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.damagePlayers.find(p => {
@@ -58,7 +58,7 @@ module.exports = new Command({
 		}
 
 		if (additionalRole === 'support') {
-			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby.region))
+			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.supportPlayers.find(p => {

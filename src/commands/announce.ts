@@ -82,43 +82,27 @@ module.exports = new Command({
 			}),
 		)
 
-		console.log('rolePools after filling', rolePools)
-
 		Object.entries(rolePools).forEach(([name, rolePool]) => {
 			// Sort and filter those who aren't locked
-			rolePool.possibleArr = rolePool.arr
-				.filter(signup => !signup.playing)
-				.sort((a, b) => sortPlayers(a, b, lobby.region))
+			rolePool.arr.sort((a, b) => sortPlayers(a, b, lobby))
+			rolePool.possibleArr = rolePool.arr.filter(signup => !signup.playing)
 			rolePool.lockedArr = rolePool.possibleArr.slice(0, counts[name as keyof typeof counts])
 			rolePool.lockedArr.forEach(signup => (signup.playing = true))
-		})
 
-		console.log('rolePools after locking', rolePools)
-
-		// Old code below
-
-		rolePools.tank.lockedArr.forEach(s => {
-			guildMembers.get(s.discordId)?.roles.add(ingameRole)
-			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 }, $set: { playing: true } })
-		})
-
-		rolePools.damage.lockedArr.forEach(s => {
-			guildMembers.get(s.discordId)?.roles.add(ingameRole)
-			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 }, $set: { playing: true } })
-		})
-
-		rolePools.support.lockedArr.forEach(s => {
-			guildMembers.get(s.discordId)?.roles.add(ingameRole)
-			mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 }, $set: { playing: true } })
+			// Add ingame roles and update db
+			rolePool.lockedArr.forEach(s => {
+				guildMembers.get(s.discordId)?.roles.add(ingameRole)
+				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 }, $set: { playing: true } })
+			})
 		})
 
 		const btagMessage = `**Next lobby <@&${hostRole.id}>**
 *Tank*
-${rolePools.tank.lockedArr.map(p => `${p.battleTag} / ${p.discordName}`).join(', ') || 'none'}
+${rolePools.tank.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
 *Damage*
-${rolePools.damage.lockedArr.map(p => `${p.battleTag} / ${p.discordName}`).join(', ') || 'none'}
+${rolePools.damage.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
 *Support*
-${rolePools.support.lockedArr.map(p => `${p.battleTag} / ${p.discordName}`).join(', ') || 'none'}
+${rolePools.support.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
 `
 
 		const playerMessage = `**Lobby Announcement**
@@ -128,13 +112,13 @@ If you are listed below, please join the <#${
 		}> channel, start the game and wait for an invite to the custom game lobby.
 
 *Tank*
-${rolePools.tank.lockedArr.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+${rolePools.tank.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n ') || 'none'}
 
 *Damage*
-${rolePools.damage.lockedArr.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+${rolePools.damage.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n ') || 'none'}
 
 *Support*
-${rolePools.support.lockedArr.map(p => `<@${p.discordId}>`).join(', ') || 'none'}
+${rolePools.support.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n ') || 'none'}
 `
 
 		mmChannel.send(btagMessage)

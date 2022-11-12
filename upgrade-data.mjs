@@ -14,6 +14,15 @@ const mongoSignups = mongoDb.collection('signups')
 const mongoLobbies = mongoDb.collection('lobbies')
 const mongoContestants = mongoDb.collection('contestants')
 
-const res = await mongoSignups.updateMany({}, { $set: { discordName: '' } })
+async function setDiscordNames() {
+	return await mongoSignups.updateMany({}, { $set: { discordName: '' } })
+}
 
-console.log('res', res)
+async function resetPlaying() {
+	return await mongoSignups.updateMany({}, { $set: { playing: false } })
+}
+
+// console.log('res', setDiscordNames())
+console.log('res', await resetPlaying())
+
+dbClient.close()

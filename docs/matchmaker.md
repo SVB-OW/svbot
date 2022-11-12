@@ -42,30 +42,31 @@ damagePlayers: B
 
 ## V2 Lock player in role (WIP)
 
+Required: 1-1-1
+
+List of players who reacted to the next game ping
+
 | Name | Tank | DAMAGE | Support | Games Played |
 | A | g | g | - | 5 |
 | B | g | - | - | 5 |
-| C | g | g | - | 0 |
+| C | g | g | - | 4 |
 | D | - | g | g | 0 |
 | E | - | - | g | 0 |
-Required: 2-2-2
 
-- Get all players who reacted to the next game ping and put them into the role pools
-- Sort role pools, by which has the least players already
-  rolePools: [support, damage, tank]
-- For each role pool
+// Filled into the role pools
+tankPlayers: [A, B, C]
+damagePlayers: [A, C, D]
+supportPlayers: [D, E]
 
-  - Support: sort
-    possibleSupportPlayers: [D, E]
-    lockedSupport: [D, E]
+// Sort by games played and specialists
+possibleTankPlayers: [C, A, B]
+possibleDamagePlayers: [D, C, A]
+possibleSupportPlayers: [E, D]
 
-  - DAMAGE: sort // D, E are eliminated
-    possibleDAMAGEPlayers: [C, A]
-    lockedDAMAGEPlayers: [C, A]
-
-  - Tank: sort // C, A are eliminated
-    possibleTankPlayers: [B]
-    lockedTankPlayers: [B]
+// Result
+lockedSupportPlayers: [E]
+lockedTankPlayers: [C]
+lockedDamagePlayers: [D]
 
 ## V2 Shuffle (not implemented)
 
