@@ -3,6 +3,7 @@ import { Region } from '..'
 export class Signup {
 	_id?: string
 	discordId = ''
+	discordName = ''
 	battleTag = ''
 	region: Region = Region.EU
 	signupMsgId = ''

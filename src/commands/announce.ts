@@ -43,21 +43,15 @@ module.exports = new Command({
 			throw new ClientError(ia, 'Ping message not found. Please create another ping')
 		})
 
-		lobby.tankPlayers = []
-		lobby.damagePlayers = []
-		lobby.supportPlayers = []
-		console.log('lobby', lobby)
-
 		// Collection of players who reacted to ping message
-		// const msgReactionUsers = (await pingMsg.reactions.cache.get('👍')?.users.fetch())?.filter(user => !user.bot) || []
-		const msgReactionUsers = await mongoSignups.find({}).toArray()
+		const msgReactionUsers = (await pingMsg.reactions.cache.get('👍')?.users.fetch())?.filter(user => !user.bot) || []
 
 		const guildMembers = await ia.guild.members.fetch()
 
 		// Iterate list of users who reacted
-		for (const user of msgReactionUsers) {
+		for (const [userId] of msgReactionUsers) {
 			// Find singup for current user
-			const findSignup = user //await mongoSignups.findOne({ discordId: user.userId })
+			const findSignup = await mongoSignups.findOne({ discordId: userId })
 
 			// Check that signup exists, was confirmed and the user is still in the server
 			if (findSignup && findSignup.confirmedOn) {
