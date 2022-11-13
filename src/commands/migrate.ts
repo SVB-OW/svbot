@@ -10,15 +10,16 @@ module.exports = new Command({
 		ia.deferReply()
 		const guildMembers = await ia.guild.members.fetch()
 
-		guildMembers.forEach(async member => {
+		const requests = guildMembers.map(async member => {
 			let findSignup = await mongoSignups.findOne({ discordId: member.id })
 			if (!findSignup) return
 
-			findSignup.discordName = member.displayName.split('#')[0]
 			findSignup = Object.assign({}, new Signup(), findSignup)
+			findSignup.discordName = member.displayName.split('#')[0]
 
-			mongoSignups.updateOne({ _id: member.id }, { $set: findSignup })
+			return mongoSignups.updateOne({ discordId: member.id }, { $set: findSignup })
 		})
+		await Promise.all(requests)
 		ia.editReply('Migration complete')
 	},
 })
