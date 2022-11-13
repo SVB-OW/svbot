@@ -67,7 +67,7 @@ module.exports = new Command({
 		await signupChannel.messages.fetch(foundSignup.signupMsgId)
 		const oldMsg = signupChannel.messages.cache.get(foundSignup.signupMsgId)
 		if (oldMsg) {
-			oldMsg.edit({ content: 'Signup has been received and accepted by an event moderator', files: [] })
+			oldMsg.edit({ content: 'Signup has been received and accepted by an event moderator' })
 			oldMsg.react('👍')
 			ia.reply(`Signup for ${member.displayName} successfully validated`)
 		} else {

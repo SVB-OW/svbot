@@ -35,17 +35,18 @@ module.exports = new Command({
 				`You already have signed up. To update your rank, post a new screenshot in #rank-update. For everything else write in #help`,
 			)
 
-		ia.editReply({
+		const reply = await ia.editReply({
 			content: 'Signup has been received and will be checked by an event moderator',
 			files: [img],
 		})
 
+		const screenshot = reply.attachments.first()?.url
 		const signup = new Signup({
 			discordId: ia.user.id,
 			battleTag: btag,
 			region: region.toUpperCase() as Region,
-			screenshot: img.proxyURL,
-			signupMsgId: (await ia.fetchReply()).id,
+			screenshot: screenshot,
+			signupMsgId: reply.id,
 			signedUpOn: new Date(ia.createdTimestamp).toISOString(),
 		})
 
