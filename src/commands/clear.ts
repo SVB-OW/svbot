@@ -6,7 +6,7 @@ module.exports = new Command({
 	description: 'Kicks all players with @Ingame from voice lobbies and removes their role',
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
-	async execute({ ia, mongoLobbies }) {
+	async execute({ ia, mongoLobbies, mongoSignups }) {
 		const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } })
 		if (!lobby) throw new ClientError(ia, 'No lobby was announced yet')
 
@@ -15,9 +15,13 @@ module.exports = new Command({
 
 		lobby.pingCleared = true
 		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
+		mongoSignups.updateMany({ playing: true }, { $set: { playing: false } })
 
 		const ingamePlayers = ia.guild.roles.cache.get(role.id)?.members
-		ingamePlayers?.forEach(value => value.roles.remove(role))
+		ingamePlayers?.forEach(user => {
+			user.roles.remove(role)
+			if (!user.permissions.has(PermissionFlagsBits.ManageEvents)) user.voice.disconnect()
+		})
 		ia.reply('Ingame role cleared')
 	},
 })

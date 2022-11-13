@@ -1,5 +1,5 @@
 import { ClientError, Command } from '../types'
-import { PermissionFlagsBits, EmbedBuilder } from 'discord.js'
+import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'countdown',

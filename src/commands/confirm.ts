@@ -10,14 +10,14 @@ module.exports = new Command({
 	props: [
 		{ name: 'discord_id', required: true },
 		{ name: 'tank_rank', required: true },
-		{ name: 'dps_rank', required: true },
+		{ name: 'damage_rank', required: true },
 		{ name: 'support_rank', required: true },
 	],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
 		const discordId = ia.options.getString('discord_id', true)
 		const tankRank = ia.options.getString('tank_rank', true)
-		const dpsRank = ia.options.getString('dps_rank', true)
+		const damageRank = ia.options.getString('damage_rank', true)
 		const supportRank = ia.options.getString('support_rank', true)
 
 		const signupChannel = ia.guild.channels.cache.find(c => c.name === 'signup') as TextChannel
@@ -28,12 +28,12 @@ module.exports = new Command({
 
 		if (!rankResolver(tankRank)) throw new ClientError(ia, 'Tank rank is invalid')
 
-		if (!rankResolver(dpsRank)) throw new ClientError(ia, 'Damage rank is invalid')
+		if (!rankResolver(damageRank)) throw new ClientError(ia, 'Damage rank is invalid')
 
 		if (!rankResolver(supportRank)) throw new ClientError(ia, 'Support rank is invalid')
 
 		foundSignup.tankRank = rankResolver(tankRank) as string
-		foundSignup.damageRank = rankResolver(dpsRank) as string
+		foundSignup.damageRank = rankResolver(damageRank) as string
 		foundSignup.supportRank = rankResolver(supportRank) as string
 		foundSignup.confirmedBy = ia.user.username
 		foundSignup.confirmedOn = new Date(ia.createdTimestamp).toISOString()
