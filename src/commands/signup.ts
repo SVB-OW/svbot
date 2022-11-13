@@ -43,6 +43,7 @@ module.exports = new Command({
 		const screenshot = reply.attachments.first()?.url
 		const signup = new Signup({
 			discordId: ia.user.id,
+			discordName: ia.user.username.split('#')[0],
 			battleTag: btag,
 			region: region.toUpperCase() as Region,
 			screenshot: screenshot,
