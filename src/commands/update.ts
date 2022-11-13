@@ -72,6 +72,7 @@ module.exports = new Command({
 						Object.keys(foundUser).map(key => ({
 							name: key,
 							value: foundUser[key].toString() || '-',
+							inline: true,
 						})),
 					),
 			],

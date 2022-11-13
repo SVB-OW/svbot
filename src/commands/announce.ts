@@ -97,8 +97,10 @@ module.exports = new Command({
 		const btagMessage = `**Next lobby <@&${hostRole.id}>**
 *Tank*
 ${rolePools.tank.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
+
 *Damage*
 ${rolePools.damage.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
+
 *Support*
 ${rolePools.support.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
 `
