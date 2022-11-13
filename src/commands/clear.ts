@@ -18,7 +18,10 @@ module.exports = new Command({
 		mongoSignups.updateMany({ playing: true }, { $set: { playing: false } })
 
 		const ingamePlayers = ia.guild.roles.cache.get(role.id)?.members
-		ingamePlayers?.forEach(value => value.roles.remove(role))
+		ingamePlayers?.forEach(user => {
+			user.roles.remove(role)
+			if (!user.permissions.has(PermissionFlagsBits.ManageEvents)) user.voice.disconnect()
+		})
 		ia.reply('Ingame role cleared')
 	},
 })

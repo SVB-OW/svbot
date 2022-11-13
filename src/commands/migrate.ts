@@ -7,6 +7,7 @@ module.exports = new Command({
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.Administrator,
 	async execute({ ia, mongoSignups }) {
+		ia.deferReply()
 		const guildMembers = await ia.guild.members.fetch()
 
 		guildMembers.forEach(async member => {
@@ -18,6 +19,6 @@ module.exports = new Command({
 
 			mongoSignups.updateOne({ _id: member.id }, { $set: findSignup })
 		})
-		ia.reply('Migration complete')
+		ia.editReply('Migration complete')
 	},
 })

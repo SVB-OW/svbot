@@ -15,6 +15,7 @@ module.exports = new Command({
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups, mongoLobbies }) {
+		ia.deferReply()
 		//#region Validations
 		if ((await mongoLobbies.countDocuments()) === 0) throw new ClientError(ia, 'No ping has occurred yet')
 
@@ -54,7 +55,7 @@ module.exports = new Command({
 			const findSignup = await mongoSignups.findOne({ discordId: userId })
 
 			// Check that signup exists, was confirmed and the user is still in the server
-			if (findSignup && findSignup.confirmedOn) {
+			if (findSignup && findSignup.confirmedOn && guildMembers.has(userId)) {
 				// Add user to role pool, if they have a role placed in the correct rank
 				if (findSignup.tankRank === lobby.rank) lobby.tankPlayers.push(findSignup)
 				if (findSignup.damageRank === lobby.rank) lobby.damagePlayers.push(findSignup)
@@ -77,13 +78,16 @@ module.exports = new Command({
 		)
 
 		Object.entries(rolePools).forEach(([name, rolePool]) => {
-			// Sort and filter those who aren't locked
+			// Sort players in pool by games played, region and amount of roles in correct rank
 			rolePool.arr.sort((a, b) => sortPlayers(a, b, lobby))
+			// Filter out players who were locked in a previous role
 			rolePool.possibleArr = rolePool.arr.filter(signup => !signup.playing)
+			// Lock desired amount of players
 			rolePool.lockedArr = rolePool.possibleArr.slice(0, counts[name as keyof typeof counts])
+			// Mark locked players as playing
 			rolePool.lockedArr.forEach(signup => (signup.playing = true))
 
-			// Add ingame roles and update db
+			// Add ingame roles and update db of all locked players
 			rolePool.lockedArr.forEach(s => {
 				guildMembers.get(s.discordId)?.roles.add(ingameRole)
 				mongoSignups.updateOne({ discordId: s.discordId }, { $inc: { gamesPlayed: 1 }, $set: { playing: true } })
@@ -122,6 +126,8 @@ ${rolePools.support.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).joi
 		lobby.pingAnnounced = true
 		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
 
-		ia.reply('Lobby ping announced')
+		ia.editReply(
+			`Lobby ping announced ${rolePools.tank.lockedArr.length}-${rolePools.damage.lockedArr.length}-${rolePools.support.lockedArr.length}`,
+		)
 	},
 })
