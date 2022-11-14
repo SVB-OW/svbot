@@ -43,32 +43,39 @@ for (const file of commandFiles) {
 
 client.on('ready', async () => {
 	client.user?.setActivity('The Ranked Gauntlet', { type: ActivityType.Competing })
-	console.log(`Logged in as ${client.user?.tag} from ${isProd ? 'production' : 'development'}!`)
+	console.log(
+		`Logged in as ${client.user?.tag} from ${isProd ? 'production' : 'development'} at ${new Date().toISOString()}!`,
+	)
 })
 
 client.on('interactionCreate', async (ia: Interaction) => {
-	// Exit without error
-	if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText)) return
+	try {
+		// Exit without error
+		if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText)) return
 
-	// Find command
-	const cmd = client.commands.get(ia.commandName)
-	if (!cmd) throw new ClientError(ia, 'Command not found')
+		// Find command
+		const cmd = client.commands.get(ia.commandName)
+		if (!cmd) throw new ClientError(ia, 'Command not found')
 
-	// Channel validation
-	if (cmd.allowedChannels.length > 0 && !cmd.allowedChannels.includes(ia.channel.name))
-		throw new ClientError(ia, 'This command is not permitted in this channel')
+		// Channel validation
+		if (cmd.allowedChannels.length > 0 && !cmd.allowedChannels.includes(ia.channel.name))
+			throw new ClientError(ia, 'This command is not permitted in this channel')
 
-	// Execution
-	await cmd.execute({
-		ia: ia as ICommandInteraction,
-		mongoSignups: mongoDb.collection('signups'),
-		mongoLobbies: mongoDb.collection('lobbies'),
-		mongoContestants: mongoDb.collection('contestants'),
-	})
+		// Execution
+		await cmd.execute({
+			ia: ia as ICommandInteraction,
+			mongoSignups: mongoDb.collection('signups'),
+			mongoLobbies: mongoDb.collection('lobbies'),
+			mongoContestants: mongoDb.collection('contestants'),
+		})
+	} catch (err: any) {
+		err.ia = ia
+		errorHandler(err)
+	}
 })
 
 // #region Global Error Handler
-async function errorHandler(err: any) {
+function errorHandler(err: any) {
 	// Send client errors back to channel
 	if (err instanceof ClientError) {
 		// Handle known errors
@@ -93,12 +100,11 @@ async function errorHandler(err: any) {
 		})
 	} else {
 		// Handle unknown errors in dev
-		console.error(err)
+		errorHandler(new ClientError(err.ia, 'An unknown error occurred'))
+		throw err
 	}
 }
 
-process.on('unhandledRejection', errorHandler)
-process.on('uncaughtException', errorHandler)
 // #endregion
 
 client.login(discordToken)
