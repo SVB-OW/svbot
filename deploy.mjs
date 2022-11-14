@@ -28,29 +28,31 @@ const commands = commandsCollection.map(cmd => {
 			slash.addNumberOption(option =>
 				option
 					.setName(prop.name)
-					.setDescription(prop.name)
-					.setRequired(prop.required || false),
+					.setDescription(prop.description || prop.name)
+					.setRequired(prop.required || false)
+					.setChoices(...Object.entries(prop.choices).map(([name, value]) => ({ name, value }))),
 			)
 		else if (prop.type === 'boolean')
 			slash.addBooleanOption(option =>
 				option
 					.setName(prop.name)
-					.setDescription(prop.name)
+					.setDescription(prop.description || prop.name)
 					.setRequired(prop.required || false),
 			)
 		else if (prop.type === 'attachment')
 			slash.addAttachmentOption(option =>
 				option
 					.setName(prop.name)
-					.setDescription(prop.name)
+					.setDescription(prop.description || prop.name)
 					.setRequired(prop.required || false),
 			)
 		else
 			slash.addStringOption(option =>
 				option
 					.setName(prop.name)
-					.setDescription(prop.name)
-					.setRequired(prop.required || false),
+					.setDescription(prop.description || prop.name)
+					.setRequired(prop.required || false)
+					.setChoices(...Object.entries(prop.choices).map(([name, value]) => ({ name, value }))),
 			)
 	})
 	return slash.toJSON()

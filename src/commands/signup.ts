@@ -7,7 +7,14 @@ module.exports = new Command({
 	description: 'Sign up with btag, region and profile screenshot',
 	props: [
 		{ name: 'battle_tag', required: true },
-		{ name: 'region', required: true },
+		{
+			name: 'region',
+			required: true,
+			choices: {
+				'EU': 'EU',
+				'NA': 'NA',
+			}
+		},
 		{ name: 'profile_screenshot', required: true, type: 'attachment' },
 	],
 	allowedChannels: ['signup'],
