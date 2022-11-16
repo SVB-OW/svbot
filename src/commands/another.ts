@@ -6,7 +6,17 @@ import { sortPlayers } from '../helpers'
 module.exports = new Command({
 	name: 'another',
 	description: 'Get another player for chosen role pinged',
-	props: [{ name: 'role', required: true }],
+	props: [
+		{
+			name: 'role',
+			required: true,
+			choices: {
+				tank: 'tank',
+				damage: 'damage',
+				support: 'support',
+			},
+		},
+	],
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups, mongoLobbies }) {

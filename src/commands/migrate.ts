@@ -3,7 +3,7 @@ import { PermissionFlagsBits } from 'discord.js'
 
 module.exports = new Command({
 	name: 'migrate',
-	description: 'Matches DB object to TS type',
+	description: "If you don't know what this does, don't use it",
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.Administrator,
 	async execute({ ia, mongoSignups }) {

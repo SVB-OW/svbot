@@ -1,4 +1,4 @@
-import { ClientError, Command } from '../types'
+import { ClientError, Command, Rank } from '../types'
 import type { Role, TextChannel } from 'discord.js'
 import { DiscordjsTypeError } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
@@ -9,9 +9,9 @@ module.exports = new Command({
 	description: 'Confirms a signup entry',
 	props: [
 		{ name: 'discord_id', required: true },
-		{ name: 'tank_rank', required: true },
-		{ name: 'damage_rank', required: true },
-		{ name: 'support_rank', required: true },
+		{ name: 'tank_rank', required: true, choices: Rank },
+		{ name: 'damage_rank', required: true, choices: Rank },
+		{ name: 'support_rank', required: true, choices: Rank },
 	],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {

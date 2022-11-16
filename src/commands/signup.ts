@@ -11,9 +11,9 @@ module.exports = new Command({
 			name: 'region',
 			required: true,
 			choices: {
-				'EU': 'EU',
-				'NA': 'NA',
-			}
+				EU: 'EU',
+				NA: 'NA',
+			},
 		},
 		{ name: 'profile_screenshot', required: true, type: 'attachment' },
 	],

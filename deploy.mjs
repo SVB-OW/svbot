@@ -30,7 +30,7 @@ const commands = commandsCollection.map(cmd => {
 					.setName(prop.name)
 					.setDescription(prop.description || prop.name)
 					.setRequired(prop.required || false)
-					.setChoices(...Object.entries(prop.choices).map(([name, value]) => ({ name, value }))),
+					.setChoices(...Object.entries(prop.choices || {}).map(([name, value]) => ({ name, value }))),
 			)
 		else if (prop.type === 'boolean')
 			slash.addBooleanOption(option =>
@@ -52,7 +52,7 @@ const commands = commandsCollection.map(cmd => {
 					.setName(prop.name)
 					.setDescription(prop.description || prop.name)
 					.setRequired(prop.required || false)
-					.setChoices(...Object.entries(prop.choices).map(([name, value]) => ({ name, value }))),
+					.setChoices(...Object.entries(prop.choices || {}).map(([name, value]) => ({ name, value }))),
 			)
 	})
 	return slash.toJSON()
