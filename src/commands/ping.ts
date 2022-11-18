@@ -11,7 +11,14 @@ module.exports = new Command({
 	description: 'Ping rank role with streamer and region in #player-pings',
 	props: [
 		{ name: 'rank', required: true },
-		{ name: 'region', required: true },
+		{
+			name: 'region',
+			required: true,
+			choices: {
+				EU: 'EU',
+				NA: 'NA',
+			},
+		},
 		{ name: 'streamer', required: true },
 	],
 	allowedChannels: ['bot-commands'],

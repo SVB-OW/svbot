@@ -7,7 +7,12 @@ module.exports = new Command({
 	name: 'update',
 	description: 'Updates a property of a user',
 	props: [
-		{ name: 'property', required: true },
+		{
+			name: 'property',
+			required: true,
+			// Creates an object with all the required properties of Signup but with it's key as the value
+			choices: Object.assign({}, ...Object.keys(new Signup()).map(v => ({ [v]: v }))),
+		},
 		{ name: 'value', required: true },
 		{ name: 'discord_id', required: true },
 	],

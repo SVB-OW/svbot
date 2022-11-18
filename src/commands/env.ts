@@ -6,6 +6,6 @@ module.exports = new Command({
 	description: 'Outputs the content of the NODE_ENV variable',
 	allowedPermissions: PermissionFlagsBits.Administrator,
 	async execute({ ia }) {
-		ia.reply(process.env.NODE_ENV || 'local')
+		ia.reply(`${process.env.NODE_ENV || 'local'}: Latency to bot: ${Date.now() - ia.createdTimestamp}ms`)
 	},
 })
