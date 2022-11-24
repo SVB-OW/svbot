@@ -6,6 +6,7 @@
 		"start": "node out/main.js",
 		"build": "npx -p typescript tsc",
 		"dev": "npx concurrently --raw \"tsc --watch\" \"npx nodemon out/main.js\"",
+		"deploy": "yarn build && node deploy.mjs",
 		"lint": "eslint src/",
 		"lint-fix": "eslint src/ --fix",
 		"format": "prettier --check \"src/**/*.{ts,js}\"",

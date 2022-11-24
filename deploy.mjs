@@ -63,11 +63,19 @@ const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN)
 // Delete all commands (global)
 await rest
 	.put(Routes.applicationCommands(process.env.DISCORD_BOT_ID), { body: [] })
-	.then(() => console.log('Successfully deleted all application commands.'))
+	.then(() =>
+		console.log(
+			`Successfully deleted all application commands from ${process.env.NODE_ENV} to ${process.env.DISCORD_BOT_ID}`,
+		),
+	)
 	.catch(console.error)
 
 // Register commands once (global)
 await rest
 	.put(Routes.applicationCommands(process.env.DISCORD_BOT_ID), { body: commands })
-	.then(() => console.log('Successfully registered all application commands.'))
+	.then(() =>
+		console.log(
+			`Successfully registered all application commands ${process.env.NODE_ENV} to ${process.env.DISCORD_BOT_ID}`,
+		),
+	)
 	.catch(console.error)
