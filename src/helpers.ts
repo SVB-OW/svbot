@@ -37,8 +37,8 @@ export function sortPlayers(a: Signup, b: Signup, { region, rank }: Lobby) {
 	if (b.region === region && a.region !== region) return 1
 	const aRolesInRank = Object.values(a).filter(v => v === rank).length
 	const bRolesInRank = Object.values(b).filter(v => v === rank).length
-	if (aRolesInRank > bRolesInRank) return -1
-	if (aRolesInRank < bRolesInRank) return 1
+	if (aRolesInRank > bRolesInRank) return 1
+	if (aRolesInRank < bRolesInRank) return -1
 
 	return 0
 }
