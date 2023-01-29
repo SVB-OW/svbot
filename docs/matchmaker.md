@@ -68,7 +68,7 @@ lockedSupportPlayers: [E]
 lockedTankPlayers: [C]
 lockedDamagePlayers: [D]
 
-## V2 Shuffle (not implemented)
+## V2 Fluid fill (not implemented)
 
 | Name | Tank | DAMAGE | Support | Games Played |
 | A | g | g | - | 0 |
