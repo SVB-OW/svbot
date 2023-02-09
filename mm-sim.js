@@ -1,10 +1,24 @@
-const players = require('./assets/signups_20230129.json')
-const lobbyRank = 'GOLD'
-const counts = {
-	tank: 2,
-	damage: 2,
-	support: 2,
+// const players = require('./assets/signups_20230129.json')
+const players = [
+	{ name: 'A', tankRank: 'BRONZE', damageRank: 'BRONZE', supportRank: 'SILVER', gamesPlayed: 5 },
+	{ name: 'B', tankRank: 'BRONZE', damageRank: 'SILVER', supportRank: 'SILVER', gamesPlayed: 5 },
+	{ name: 'C', tankRank: 'BRONZE', damageRank: 'BRONZE', supportRank: 'SILVER', gamesPlayed: 4 },
+	{ name: 'D', tankRank: 'SILVER', damageRank: 'BRONZE', supportRank: 'BRONZE', gamesPlayed: 0 },
+	{ name: 'E', tankRank: 'SILVER', damageRank: 'SILVER', supportRank: 'BRONZE', gamesPlayed: 0 },
+]
+const team1 = {
+	rank: 'BRONZE',
+	requiredTank: 1,
+	requiredDamage: 1,
+	requiredSupport: 1,
 }
+const team2 = {
+	rank: 'SILVER',
+	requiredTank: 1,
+	requiredDamage: 1,
+	requiredSupport: 1,
+}
+
 function sortPlayers(a, b, { rank }, sortByRolesInRank = false) {
 	if (a.gamesPlayed > b.gamesPlayed) return 1
 	if (a.gamesPlayed < b.gamesPlayed) return -1
@@ -20,22 +34,55 @@ function sortPlayers(a, b, { rank }, sortByRolesInRank = false) {
 }
 
 function lockMethod() {
-	const tankPlayers = []
-	const damagePlayers = []
-	const supportPlayers = []
+	const tankPlayersT1 = []
+	const damagePlayersT1 = []
+	const supportPlayersT1 = []
+	const tankPlayersT2 = []
+	const damagePlayersT2 = []
+	const supportPlayersT2 = []
 
 	for (const player of players) {
-		if (player.tankRank === lobbyRank) tankPlayers.push(player)
-		if (player.damageRank === lobbyRank) damagePlayers.push(player)
-		if (player.supportRank === lobbyRank) supportPlayers.push(player)
+		if (player.tankRank === team1.rank) tankPlayersT1.push(player)
+		if (player.damageRank === team1.rank) damagePlayersT1.push(player)
+		if (player.supportRank === team1.rank) supportPlayersT1.push(player)
+		if (player.tankRank === team2.rank) tankPlayersT2.push(player)
+		if (player.damageRank === team2.rank) damagePlayersT2.push(player)
+		if (player.supportRank === team2.rank) supportPlayersT2.push(player)
 	}
 
 	// Sort roles by which has the least players already
 	const rolePools = Object.fromEntries(
 		Object.entries({
-			tank: { arr: tankPlayers, possibleArr: [], lockedArr: [] },
-			damage: { arr: damagePlayers, possibleArr: [], lockedArr: [] },
-			support: { arr: supportPlayers, possibleArr: [], lockedArr: [] },
+			tankT1: { arr: tankPlayersT1, possibleArr: [], lockedArr: [], rank: team1.rank, required: team1.requiredTank },
+			damageT1: {
+				arr: damagePlayersT1,
+				possibleArr: [],
+				lockedArr: [],
+				rank: team1.rank,
+				required: team1.requiredDamage,
+			},
+			supportT1: {
+				arr: supportPlayersT1,
+				possibleArr: [],
+				lockedArr: [],
+				rank: team1.rank,
+				required: team1.requiredSupport,
+			},
+			tankT2: { arr: tankPlayersT2, possibleArr: [], lockedArr: [], rank: team2.rank, required: team1.requiredTank },
+			damageT2: {
+				arr: damagePlayersT2,
+				possibleArr: [],
+				lockedArr: [],
+				rank: team2.rank,
+				required: team1.requiredDamage,
+			},
+			supportT2: {
+				arr: supportPlayersT2,
+				possibleArr: [],
+				lockedArr: [],
+				rank: team2.rank,
+				required: team1.requiredSupport,
+			},
 		}).sort((a, b) => {
 			if (a[1].arr.length < b[1].arr.length) return -1
 			if (a[1].arr.length > b[1].arr.length) return 1
@@ -46,11 +93,11 @@ function lockMethod() {
 
 	Object.entries(rolePools).forEach(([name, rolePool]) => {
 		// Sort players in pool by games played, region and amount of roles in correct rank
-		rolePool.arr.sort((a, b) => sortPlayers(a, b, { rank: lobbyRank }, true))
+		rolePool.arr.sort((a, b) => sortPlayers(a, b, { rank: rolePool.rank }, true))
 		// Filter out players who were locked in a previous role
 		rolePool.possibleArr = rolePool.arr.filter(signup => !signup.playing)
 		// Lock desired amount of players
-		rolePool.lockedArr = rolePool.possibleArr.slice(0, counts[name])
+		rolePool.lockedArr = rolePool.possibleArr.slice(0, rolePool.required)
 		// Mark locked players as playing
 		rolePool.lockedArr.forEach(signup => (signup.playing = true))
 
@@ -62,7 +109,9 @@ function lockMethod() {
 
 console.log(
 	'lockMethod',
-	Object.entries(lockMethod()).map(([n, p]) => `${n}: ${p.lockedArr[0]?.battleTag}, ${p.lockedArr[1]?.battleTag}`),
+	Object.entries(lockMethod()).map(
+		([n, p]) => `${n}: ${JSON.stringify(p.lockedArr[0], null, 2)}, ${JSON.stringify(p.lockedArr[1], null, 2)}`,
+	),
 )
 
 function fluidMethod() {
@@ -123,7 +172,7 @@ function fluidMethod() {
 	return rolePools
 }
 
-console.log(
-	'fluidMethod',
-	Object.entries(fluidMethod()).map(([n, arr]) => `${n}: ${arr[0]?.battleTag}, ${arr[1]?.battleTag}`),
-)
+// console.log(
+// 	'fluidMethod',
+// 	Object.entries(fluidMethod()).map(([n, arr]) => `${n}: ${arr[0]?.battleTag}, ${arr[1]?.battleTag}`),
+// )

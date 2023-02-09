@@ -5,7 +5,7 @@
 - Fill left to right, until role is full
 - If next player should go into a full role, iterate players in that role from top to bottom, if they can be moved to a different role until it reaches the newest player
 - If noone can be moved including the new player, the player is skipped
-- Kick command (not yet implemented) removes ingame role, removes reaction from player, sets playing to flase and reduces games played by 1
+- Kick command (not yet implemented) removes ingame role, removes reaction from player, sets playing to false and reduces games played by 1
 - Another command would run through this process again and highlight the diff
 
 | Name | Tank | DAMAGE | Support | Games Played |

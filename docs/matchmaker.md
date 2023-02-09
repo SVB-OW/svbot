@@ -59,7 +59,7 @@ damagePlayers: [A, C, D]
 supportPlayers: [D, E]
 
 // Sort by games played and specialists
-possibleTankPlayers: [C, A, B]
+possibleTankPlayers: [C, B, A]
 possibleDamagePlayers: [D, C, A]
 possibleSupportPlayers: [E, D]
 
@@ -67,6 +67,41 @@ possibleSupportPlayers: [E, D]
 lockedSupportPlayers: [E]
 lockedTankPlayers: [C]
 lockedDamagePlayers: [D]
+
+## Rank up enemies
+
+| Name | Tank | DAMAGE | Support | Games Played |
+| A | b | b | s | 5 |
+| B | b | s | s | 5 |
+| C | b | b | s | 4 |
+| D | s | b | b | 0 |
+| E | s | s | b | 0 |
+
+Required: T1: bronze 1-1-1, T2: silver 1-1-1
+
+// Filled into the role pools
+tankPlayersT1: [A, B, C]
+damagePlayersT1: [A, C, D]
+supportPlayersT1: [D, E]
+tankPlayersT2: [D, E]
+damagePlayersT2: [B, E]
+supportPlayersT2: [A, B, C]
+
+// Sort by games played and specialists
+possibleTankPlayersT1: [C, B, A]
+possibleDamagePlayersT1: [D, C, A]
+possibleSupportPlayersT1: [E, D]
+possibleTankPlayersT2: [D, E]
+possibleDamagePlayersT2: [E, B]
+possibleSupportPlayersT2: [C, A, B]
+
+// Result
+lockedSupportPlayersT1: [E]
+lockedTankPlayersT2: [D]
+lockedDamagePlayersT2: [B]
+lockedTankPlayersT1: [C]
+lockedDamagePlayersT1: [A]
+lockedSupportPlayersT2: []
 
 ## V2 Fluid fill (not implemented)
 
