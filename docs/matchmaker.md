@@ -68,7 +68,7 @@ lockedSupportPlayers: [E]
 lockedTankPlayers: [C]
 lockedDamagePlayers: [D]
 
-## Rank up enemies
+### Rank up enemies
 
 | Name | Tank | DAMAGE | Support | Games Played |
 | A | b | b | s | 5 |
@@ -105,14 +105,4 @@ lockedSupportPlayersT2: []
 
 ## V2 Fluid fill (not implemented)
 
-| Name | Tank | DAMAGE | Support | Games Played |
-| A | g | g | - | 0 |
-| B | g | - | - | 5 |
-
-playerPool: [A, B]
-
-tank: [A]
-damage: []
-
-A tank -> damage
-B tank
+(check separate doc)
