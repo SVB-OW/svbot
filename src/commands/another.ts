@@ -1,4 +1,4 @@
-import { ClientError, Command, type Signup } from '../types'
+import { ClientError, Command, Rank, Region, type Signup } from '../types'
 import type { Role, TextChannel, VoiceChannel } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
 import { sortPlayers } from '../helpers'
@@ -16,6 +16,7 @@ module.exports = new Command({
 				support: 'support',
 			},
 		},
+		{ name: 'rank', required: true, choices: Rank },
 	],
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
@@ -38,6 +39,7 @@ module.exports = new Command({
 
 		const additionalRole = ia.options.getString('role', true).toLowerCase()
 		if (!['tank', 'damage', 'support'].includes(additionalRole)) throw new ClientError(ia, 'Requested role not valid')
+		const rank = ia.options.getString('rank', true) as Rank
 
 		// Fetch ping msg from newest lobby in db
 		const lobby = await mongoLobbies.findOne({}, { sort: { $natural: -1 } })
@@ -50,7 +52,7 @@ module.exports = new Command({
 		let foundPlayer: Signup | undefined
 
 		if (additionalRole === 'tank') {
-			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby))
+			lobby.tankPlayers.sort((a, b) => sortPlayers(a, b, lobby.region, rank))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.tankPlayers.find(p => {
@@ -59,7 +61,7 @@ module.exports = new Command({
 		}
 
 		if (additionalRole === 'damage') {
-			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby))
+			lobby.damagePlayers.sort((a, b) => sortPlayers(a, b, lobby.region, rank))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.damagePlayers.find(p => {
@@ -68,7 +70,7 @@ module.exports = new Command({
 		}
 
 		if (additionalRole === 'support') {
-			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby))
+			lobby.supportPlayers.sort((a, b) => sortPlayers(a, b, lobby.region, rank))
 
 			// loop through players to find first player without ingame
 			foundPlayer = lobby.supportPlayers.find(p => {

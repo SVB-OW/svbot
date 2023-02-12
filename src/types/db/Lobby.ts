@@ -10,6 +10,9 @@ export class Lobby {
 	tankPlayers: Signup[] = []
 	damagePlayers: Signup[] = []
 	supportPlayers: Signup[] = []
+	tankPlayersTeam2: Signup[] = []
+	damagePlayersTeam2: Signup[] = []
+	supportPlayersTeam2: Signup[] = []
 	pingMsgId = ''
 	pingOccured: string = new Date().toISOString()
 	pingAnnounced = false

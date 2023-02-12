@@ -42,7 +42,7 @@ module.exports = new Command({
 		lobby.streamer = pingStreamer
 		lobby.region = pingRegion.toUpperCase() as Region
 		lobby.rank = rankResolver(pingRank1) as Rank
-		lobby.rank2 = rankResolver(pingRank2 || Rank['-']) as Rank
+		lobby.rank2 = rankResolver(pingRank2 || lobby.rank) as Rank
 
 		const roleByName = ia.guild.roles.cache.find(item => item.name.toUpperCase() === 'GAUNTLET ' + lobby.rank)
 		const role2ByName = ia.guild.roles.cache.find(item => item.name.toUpperCase() === 'GAUNTLET ' + lobby.rank2)

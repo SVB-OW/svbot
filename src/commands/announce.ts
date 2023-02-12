@@ -1,4 +1,4 @@
-import { ClientError, Command, Lobby } from '../types'
+import { ClientError, Command, Lobby, Rank } from '../types'
 import type { Role, TextChannel, VoiceChannel } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
 import type { Signup } from '../types'
@@ -11,6 +11,9 @@ module.exports = new Command({
 		{ name: 'tank_players_count', type: 'number' },
 		{ name: 'damage_players_count', type: 'number' },
 		{ name: 'support_players_count', type: 'number' },
+		{ name: 'tank_players_count_team2', type: 'number' },
+		{ name: 'damage_players_count_team2', type: 'number' },
+		{ name: 'support_players_count_team2', type: 'number' },
 	],
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
@@ -33,9 +36,12 @@ module.exports = new Command({
 		//#endregion
 
 		const counts = {
-			tank: ia.options.getNumber('tank_players_count') ?? 2,
-			damage: ia.options.getNumber('damage_players_count') ?? 4,
-			support: ia.options.getNumber('support_players_count') ?? 4,
+			tank: ia.options.getNumber('tank_players_count') ?? 1,
+			damage: ia.options.getNumber('damage_players_count') ?? 2,
+			support: ia.options.getNumber('support_players_count') ?? 2,
+			tankTeam2: ia.options.getNumber('tank_players_count_team2') ?? 1,
+			damageTeam2: ia.options.getNumber('damage_players_count_team2') ?? 2,
+			supportTeam2: ia.options.getNumber('support_players_count_team2') ?? 2,
 		}
 
 		// Fetch ping msg from newst lobby in db
@@ -60,6 +66,11 @@ module.exports = new Command({
 				if (findSignup.tankRank === lobby.rank) lobby.tankPlayers.push(findSignup)
 				if (findSignup.damageRank === lobby.rank) lobby.damagePlayers.push(findSignup)
 				if (findSignup.supportRank === lobby.rank) lobby.supportPlayers.push(findSignup)
+				if (lobby.rank2 !== Rank['-'] && findSignup.tankRank === lobby.rank2) lobby.tankPlayersTeam2.push(findSignup)
+				if (lobby.rank2 !== Rank['-'] && findSignup.damageRank === lobby.rank2)
+					lobby.damagePlayersTeam2.push(findSignup)
+				if (lobby.rank2 !== Rank['-'] && findSignup.supportRank === lobby.rank2)
+					lobby.supportPlayersTeam2.push(findSignup)
 			}
 		}
 
@@ -69,6 +80,9 @@ module.exports = new Command({
 				tank: { arr: lobby.tankPlayers, possibleArr: <Signup[]>[], lockedArr: <Signup[]>[] },
 				damage: { arr: lobby.damagePlayers, possibleArr: <Signup[]>[], lockedArr: <Signup[]>[] },
 				support: { arr: lobby.supportPlayers, possibleArr: <Signup[]>[], lockedArr: <Signup[]>[] },
+				tankTeam2: { arr: lobby.tankPlayersTeam2, possibleArr: <Signup[]>[], lockedArr: <Signup[]>[] },
+				damageTeam2: { arr: lobby.damagePlayersTeam2, possibleArr: <Signup[]>[], lockedArr: <Signup[]>[] },
+				supportTeam2: { arr: lobby.supportPlayersTeam2, possibleArr: <Signup[]>[], lockedArr: <Signup[]>[] },
 			}).sort((a, b) => {
 				if (a[1].arr.length < b[1].arr.length) return -1
 				if (a[1].arr.length > b[1].arr.length) return 1
@@ -79,7 +93,7 @@ module.exports = new Command({
 
 		Object.entries(rolePools).forEach(([name, rolePool]) => {
 			// Sort players in pool by games played, region and amount of roles in correct rank
-			rolePool.arr.sort((a, b) => sortPlayers(a, b, lobby))
+			rolePool.arr.sort((a, b) => sortPlayers(a, b, lobby.region, name.includes('2') ? lobby.rank2 : lobby.rank))
 			// Filter out players who were locked in a previous role
 			rolePool.possibleArr = rolePool.arr.filter(signup => !signup.playing)
 			// Lock desired amount of players
@@ -95,14 +109,23 @@ module.exports = new Command({
 		})
 
 		const btagMessage = `**Next lobby <@&${hostRole.id}>**
-*Tank*
-${rolePools.tank.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
+*Tank Team 1*
+${rolePools.tank.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n') || 'none'}
 
-*Damage*
-${rolePools.damage.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
+*Damage Team 1*
+${rolePools.damage.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n') || 'none'}
 
-*Support*
-${rolePools.support.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n ') || 'none'}
+*Support Team 1*
+${rolePools.support.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n') || 'none'}
+
+*Tank Team 2*
+${rolePools.tankTeam2.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n') || 'none'}
+
+*Damage Team 2*
+${rolePools.damageTeam2.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n') || 'none'}
+
+*Support Team 2*
+${rolePools.supportTeam2.lockedArr.map(p => `${p.battleTag} (${p.discordName})`).join('\n') || 'none'}
 `
 
 		const playerMessage = `**Lobby Announcement**
@@ -111,14 +134,23 @@ If you are listed below, please join the <#${
 			lobbyChannel.id
 		}> channel, start the game and wait for an invite to the custom game lobby.
 
-*Tank*
-${rolePools.tank.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n ') || 'none'}
+*Tank Team 1*
+${rolePools.tank.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n') || 'none'}
 
-*Damage*
-${rolePools.damage.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n ') || 'none'}
+*Damage Team 1*
+${rolePools.damage.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n') || 'none'}
 
-*Support*
-${rolePools.support.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n ') || 'none'}
+*Support Team 1*
+${rolePools.support.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n') || 'none'}
+
+*Tank Team 2*
+${rolePools.tankTeam2.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n') || 'none'}
+
+*Damage Team 2*
+${rolePools.damageTeam2.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n') || 'none'}
+
+*Support Team 2*
+${rolePools.supportTeam2.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).join('\n') || 'none'}
 `
 
 		mmChannel.send(btagMessage)
@@ -129,7 +161,7 @@ ${rolePools.support.lockedArr.map(p => `<@${p.discordId}> (${p.battleTag})`).joi
 		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
 
 		ia.editReply(
-			`Lobby ping announced ${rolePools.tank.lockedArr.length}-${rolePools.damage.lockedArr.length}-${rolePools.support.lockedArr.length}`,
+			`Lobby ping announced ${rolePools.tank.lockedArr.length}-${rolePools.damage.lockedArr.length}-${rolePools.support.lockedArr.length} / ${rolePools.tankTeam2.lockedArr.length}-${rolePools.damageTeam2.lockedArr.length}-${rolePools.supportTeam2.lockedArr.length}`,
 		)
 	},
 })
