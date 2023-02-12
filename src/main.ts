@@ -48,6 +48,15 @@ client.on('ready', async () => {
 	)
 })
 
+client.on('messageCreate', async msg => {
+	if (msg.author.bot) return
+	if (msg.content.toLowerCase().startsWith('/')) {
+		msg.reply(
+			"Hi! I am SVBot. You probably wanted to use a slash command, but discord is funny and didn't pick it up. Try again using the popup that opens above the message box. If you still have issues, please send a message in #help",
+		)
+	}
+})
+
 client.on('interactionCreate', async (ia: Interaction) => {
 	try {
 		// Exit without error

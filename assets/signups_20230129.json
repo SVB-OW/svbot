@@ -1,0 +1,4073 @@
+[{
+  "_id": {
+    "$oid": "634b2e1b888d501ca7ff9f38"
+  },
+  "discordId": "131961396064681984",
+  "battleTag": "CactusPuppy#11321",
+  "region": "NA",
+  "signupMsgId": "1030964063775248544",
+  "signedUpOn": "2022-10-15T22:03:05.420Z",
+  "confirmedOn": "2022-10-15T22:14:03.734Z",
+  "confirmedBy": "CactusPuppy",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1030891630787563554/1030964055457923203/ScreenShot_22-10-02_21-02-44-000.jpg",
+  "discordName": "CactusPuppy",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "634c46fd888d501ca7ff9f3b"
+  },
+  "discordId": "174192021936799744",
+  "battleTag": "Invacris#2139",
+  "region": "EU",
+  "signupMsgId": "1031265660375945327",
+  "signedUpOn": "2022-10-16T18:01:30.785Z",
+  "confirmedOn": "2022-10-16T20:21:14.865Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "DIAMOND",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1031265648325697676/unknown.png",
+  "discordName": "Invacris (3.6)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "634c4dce888d501ca7ff9f3c"
+  },
+  "discordId": "308059049918857217",
+  "battleTag": "SerialChiller#11360",
+  "region": "NA",
+  "signupMsgId": "1031272978714992700",
+  "signedUpOn": "2022-10-16T18:30:35.728Z",
+  "confirmedOn": "2022-10-16T20:22:19.858Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1031272967272923207/careerprofile.PNG",
+  "discordName": "serialchiller",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "634c3883bf5f2eab2fea9897"
+  },
+  "discordId": "273553946466058240",
+  "battleTag": "Zalmoxes#11334",
+  "region": "NA",
+  "signupMsgId": "1031250113722593390",
+  "signedUpOn": "2022-10-16T16:59:44.631Z",
+  "confirmedOn": "2022-10-16T18:50:31.921Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1031250103794679848/unknown.png",
+  "discordName": "Jugernaut73",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "634c4361043105cf71b21302"
+  },
+  "discordId": "249872412403826688",
+  "battleTag": "Ryuh#21956",
+  "region": "EU",
+  "signupMsgId": "1031261784935510107",
+  "signedUpOn": "2022-10-16T17:46:07.889Z",
+  "confirmedOn": "2022-10-16T18:51:28.461Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1031261777654194237/profile.png",
+  "discordName": "Ryuh(D3.7)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "634c67cf888d501ca7ff9f3d"
+  },
+  "discordId": "246317831925399553",
+  "battleTag": "Lord#25914",
+  "region": "EU",
+  "signupMsgId": "1031300900557439056",
+  "signedUpOn": "2022-10-16T20:21:32.962Z",
+  "confirmedOn": "2022-10-16T20:22:57.486Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1031300889778077896/Overwatch_2_Screenshot_2022.10.15_-_23.08.44.69.png",
+  "discordName": "Lord",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "634c785d888d501ca7ff9f3e"
+  },
+  "discordId": "277130285450264577",
+  "battleTag": "xoAssassino#1240",
+  "region": "NA",
+  "signupMsgId": "1031318673241149491",
+  "signedUpOn": "2022-10-16T21:32:10.904Z",
+  "confirmedOn": "2022-10-17T13:57:50.563Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1031318665020313751/unknown.png",
+  "discordName": "xoAssassino",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "634d61bc888d501ca7ff9f3f"
+  },
+  "discordId": "475439786736484362",
+  "battleTag": "Plushcap#2312",
+  "region": "EU",
+  "signupMsgId": "1031569255487000656",
+  "signedUpOn": "2022-10-17T14:07:53.549Z",
+  "confirmedOn": "2022-10-18T01:45:47.222Z",
+  "confirmedBy": "CactusPuppy",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 8,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1048351178104262746/image.png",
+  "discordName": "Plushcap [26?-20?-30?]",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635025533a320143cc5b77eb"
+  },
+  "discordId": "445334455490707456",
+  "battleTag": "zER0#23455",
+  "region": "EU",
+  "signupMsgId": "1032329023361122335",
+  "signedUpOn": "2022-10-19T16:26:57.031Z",
+  "confirmedOn": "2022-10-19T16:54:00.051Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1032329014737637519/Unbenannt.png",
+  "discordName": "zERO's mothers son.",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635029343a320143cc5b77ec"
+  },
+  "discordId": "338251741285842944",
+  "battleTag": "Esca#21608",
+  "region": "EU",
+  "signupMsgId": "1032333189345202277",
+  "signedUpOn": "2022-10-19T16:43:29.278Z",
+  "confirmedOn": "2022-10-19T17:21:57.065Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "MASTER",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1032333175835344906/OW2_season_1.png",
+  "discordName": "Esca",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63502c4b3a320143cc5b77ed"
+  },
+  "discordId": "462954864159358996",
+  "battleTag": "megamoi#21132",
+  "region": "EU",
+  "signupMsgId": "1032336508759330826",
+  "signedUpOn": "2022-10-19T16:56:40.700Z",
+  "confirmedOn": "2022-10-19T17:20:58.610Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1038553355875790868/image.png",
+  "discordName": "MegaMoi_ [30-23-25]",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635030c73a320143cc5b77ee"
+  },
+  "discordId": "430316387693494282",
+  "battleTag": "ChicknSlappr#2266",
+  "region": "EU",
+  "signupMsgId": "1032341323291832371",
+  "signedUpOn": "2022-10-19T17:15:49.162Z",
+  "confirmedOn": "2022-10-19T17:23:32.909Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "MASTER",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1032341312785100840/unknown.png",
+  "discordName": "-eddie",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63503c953a320143cc5b77ef"
+  },
+  "discordId": "316610512433446913",
+  "battleTag": "Everhart#21641",
+  "region": "EU",
+  "signupMsgId": "1032353997526409216",
+  "signedUpOn": "2022-10-19T18:06:11.234Z",
+  "confirmedOn": "2022-10-19T20:49:41.695Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1032353988307320882/Screenshot_222.png",
+  "discordName": "Everhart T2.6 S2.3 D2.0",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63505a3f3a320143cc5b77f0"
+  },
+  "discordId": "370401527518593024",
+  "battleTag": "supremefudge#11943",
+  "region": "NA",
+  "signupMsgId": "1032385849532354570",
+  "signedUpOn": "2022-10-19T20:12:44.996Z",
+  "confirmedOn": "2022-10-19T20:50:03.457Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1032385838828503151/unknown.png",
+  "discordName": "supremejudgefudge",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6350744d3a320143cc5b77f1"
+  },
+  "discordId": "274659942273646593",
+  "battleTag": "Beany#21158",
+  "region": "EU",
+  "signupMsgId": "1032413825380646922",
+  "signedUpOn": "2022-10-19T22:03:55.308Z",
+  "confirmedOn": "2022-10-20T12:12:39.823Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "SILVER",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 6,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1033419702220881950/Overwatch_Ktqydh2vHw.png",
+  "discordName": "Beany T S1 | D G5 | S G4",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63507b953a320143cc5b77f2"
+  },
+  "discordId": "385307098449182743",
+  "battleTag": "Skywen#11593",
+  "region": "NA",
+  "signupMsgId": "1032421642476998656",
+  "signedUpOn": "2022-10-19T22:34:58.593Z",
+  "confirmedOn": "2022-10-20T12:13:08.941Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "MASTER",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1032421631747960973/2022-10-18_2.png",
+  "discordName": "Skywen",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635088f03a320143cc5b77f3"
+  },
+  "discordId": "299680380632694795",
+  "battleTag": "hobs21#1888",
+  "region": "NA",
+  "signupMsgId": "1032435985201508372",
+  "signedUpOn": "2022-10-19T23:31:59.072Z",
+  "confirmedOn": "2022-10-20T12:14:18.236Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "DIAMOND",
+  "supportRank": "MASTER",
+  "gamesPlayed": 4,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1040864212701954111/ScreenShot_22-11-12_00-33-37-000.jpg",
+  "discordName": "hobs_21",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6351cc483a320143cc5b77f4"
+  },
+  "discordId": "336601250995109891",
+  "battleTag": "Bharat2001#2851",
+  "region": "EU",
+  "signupMsgId": "1032783171307175987",
+  "signedUpOn": "2022-10-20T22:31:33.739Z",
+  "confirmedOn": "2022-10-21T13:11:16.195Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "MASTER",
+  "damageRank": "DIAMOND",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 11,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1048908528049475594/Screenshot_303.png",
+  "discordName": "HoggieBePoggie 2.6T 3.1D 3.0S",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6352edbf3a320143cc5b77f5"
+  },
+  "discordId": "92752544144572416",
+  "battleTag": "Willz12h#2184",
+  "region": "EU",
+  "signupMsgId": "1033093981271232602",
+  "signedUpOn": "2022-10-21T19:06:35.760Z",
+  "confirmedOn": "2022-10-21T19:42:37.290Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "GOLD",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033093965962018856/unknown.png",
+  "discordName": "Willz",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354024b3a320143cc5b77f6"
+  },
+  "discordId": "195236541222748160",
+  "battleTag": "Zeldig#2125",
+  "region": "EU",
+  "signupMsgId": "1033390921007517818",
+  "signedUpOn": "2022-10-22T14:46:33.531Z",
+  "confirmedOn": "2022-10-22T17:38:12.744Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033390913898172501/ScreenShot_22-10-22_16-46-13-000.jpg",
+  "discordName": "Zeldig",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635404a93a320143cc5b77f7"
+  },
+  "discordId": "235767597247889408",
+  "battleTag": "Amphy#21102",
+  "region": "EU",
+  "signupMsgId": "1033393463275819049",
+  "signedUpOn": "2022-10-22T14:56:38.892Z",
+  "confirmedOn": "2022-10-22T17:38:53.607Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "MASTER",
+  "damageRank": "MASTER",
+  "supportRank": "MASTER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033393452894928956/Screenshot_2022-10-22_155107.png",
+  "discordName": "Amphy",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63540e2d3a320143cc5b77f8"
+  },
+  "discordId": "172830132946337803",
+  "battleTag": "Jace#21723",
+  "region": "EU",
+  "signupMsgId": "1033403679753117698",
+  "signedUpOn": "2022-10-22T15:37:13.969Z",
+  "confirmedOn": "2022-10-22T16:05:49.676Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033403666255847424/unknown.png"
+},{
+  "_id": {
+    "$oid": "635411863a320143cc5b77f9"
+  },
+  "discordId": "603479758755332106",
+  "battleTag": "Bloodline#2118",
+  "region": "EU",
+  "signupMsgId": "1033407273323741244",
+  "signedUpOn": "2022-10-22T15:51:31.557Z",
+  "confirmedOn": "2022-10-22T17:39:24.266Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1033910526553620540/unknown.png",
+  "discordName": "Bloodline",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635411d33a320143cc5b77fa"
+  },
+  "discordId": "303317073428348930",
+  "battleTag": "Galast#2261",
+  "region": "EU",
+  "signupMsgId": "1033407599829319750",
+  "signedUpOn": "2022-10-22T15:52:48.795Z",
+  "confirmedOn": "2022-10-22T16:08:52.345Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "GRANDMASTER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996591738204161/1039268603796672552/image.png",
+  "discordName": "Galast",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354123b3a320143cc5b77fb"
+  },
+  "discordId": "536958226818924575",
+  "battleTag": "silva#11254",
+  "region": "EU",
+  "signupMsgId": "1033408034132742224",
+  "signedUpOn": "2022-10-22T15:54:32.862Z",
+  "confirmedOn": "2022-10-22T16:07:03.954Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 6,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1036382667471601805/unknown.png",
+  "discordName": "Silva",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635413f63a320143cc5b77fc"
+  },
+  "discordId": "253348208279814145",
+  "battleTag": "CloudSeeeker#1208",
+  "region": "NA",
+  "signupMsgId": "1033409892985360454",
+  "signedUpOn": "2022-10-22T16:01:56.020Z",
+  "confirmedOn": "2022-10-22T17:39:54.215Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033409882709295234/Screenshot_1.png",
+  "discordName": "Tommy2face",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635417a63a320143cc5b77fd"
+  },
+  "discordId": "312004021911027714",
+  "battleTag": "iFroggy#11640",
+  "region": "NA",
+  "signupMsgId": "1033413852559327252",
+  "signedUpOn": "2022-10-22T16:17:39.987Z",
+  "confirmedOn": "2022-10-22T17:40:15.001Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033413841675092070/unknown.png",
+  "discordName": "iFroggy",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63542fdb3a320143cc5b77fe"
+  },
+  "discordId": "322867013821136910",
+  "battleTag": "Paprika#11292",
+  "region": "NA",
+  "signupMsgId": "1033439842610184292",
+  "signedUpOn": "2022-10-22T18:00:57.243Z",
+  "confirmedOn": "2022-10-22T18:48:52.156Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "-",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033439835425362040/SVB_Signup.jpg",
+  "discordName": "Paprika",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63543ada3a320143cc5b77ff"
+  },
+  "discordId": "211289041503518730",
+  "battleTag": "Lanlen#11911",
+  "region": "NA",
+  "signupMsgId": "1033451649236226108",
+  "signedUpOn": "2022-10-22T18:47:50.764Z",
+  "confirmedOn": "2022-10-22T18:49:11.855Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "BRONZE",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033451635655069837/ow2_lanlen_career_profile.png",
+  "discordName": "Lanlen",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354517e3a320143cc5b7800"
+  },
+  "discordId": "427405578428481546",
+  "battleTag": "Coronium#1273",
+  "region": "NA",
+  "signupMsgId": "1033475960542077028",
+  "signedUpOn": "2022-10-22T20:24:27.570Z",
+  "confirmedOn": "2022-10-22T20:25:40.877Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033475949280366732/Untitled.png",
+  "discordName": "Coronium",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354582b3a320143cc5b7801"
+  },
+  "discordId": "199024388836687873",
+  "battleTag": "Decoherence#11154",
+  "region": "NA",
+  "signupMsgId": "1033483129287094393",
+  "signedUpOn": "2022-10-22T20:52:57.090Z",
+  "confirmedOn": "2022-10-22T20:54:14.716Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033483119552122890/Screenshot_20221022_053806.png",
+  "discordName": "qurram",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354655e3a320143cc5b7802"
+  },
+  "discordId": "466046353852727296",
+  "battleTag": "VLOOKUP#11645",
+  "region": "NA",
+  "signupMsgId": "1033497301882245160",
+  "signedUpOn": "2022-10-22T21:49:15.502Z",
+  "confirmedOn": "2022-10-23T14:31:42.998Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 4,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1039027693229969468/unknown.png",
+  "discordName": "VLOOKUP",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635480e33a320143cc5b7803"
+  },
+  "discordId": "328259291968569344",
+  "battleTag": "Phoenix#114612",
+  "region": "NA",
+  "signupMsgId": "1033526849948626964",
+  "signedUpOn": "2022-10-22T23:46:41.276Z",
+  "confirmedOn": "2022-10-23T14:32:10.179Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 7,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1048818303600185355/ScreenShot_22-12-03_22-28-08-000.jpg",
+  "discordName": "Phoenix",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635493ae3a320143cc5b7804"
+  },
+  "discordId": "217269245711482880",
+  "battleTag": "jub#11665",
+  "region": "NA",
+  "signupMsgId": "1033547028074090507",
+  "signedUpOn": "2022-10-23T01:06:51.977Z",
+  "confirmedOn": "2022-10-23T07:05:24.181Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "DIAMOND",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033547019312173096/careerprofow2.PNG",
+  "discordName": "jub",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635499063a320143cc5b7805"
+  },
+  "discordId": "451252342709420032",
+  "battleTag": "SoulKingg#11587",
+  "region": "NA",
+  "signupMsgId": "1033552766104260608",
+  "signedUpOn": "2022-10-23T01:29:39.488Z",
+  "confirmedOn": "2022-10-23T14:32:30.242Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033552754867703818/unknown.png",
+  "discordName": "SoulKingg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63549be93a320143cc5b7806"
+  },
+  "discordId": "436601441512062987",
+  "battleTag": "Gulden7#1765",
+  "region": "NA",
+  "signupMsgId": "1033555866248564776",
+  "signedUpOn": "2022-10-23T01:41:59.002Z",
+  "confirmedOn": "2022-10-23T14:32:49.904Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "-",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033555856610046094/Screenshot_20.png",
+  "discordName": "Gulden7",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354b2523a320143cc5b7807"
+  },
+  "discordId": "360550510190788609",
+  "battleTag": "manicfemme#1347",
+  "region": "NA",
+  "signupMsgId": "1033579929025118258",
+  "signedUpOn": "2022-10-23T03:17:35.954Z",
+  "confirmedOn": "2022-10-23T14:33:12.111Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1041202910572322897/image.png",
+  "discordName": "andi (manicfemme)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354be1b3a320143cc5b7808"
+  },
+  "discordId": "689245202741067816",
+  "battleTag": "liseisdead#1116",
+  "region": "NA",
+  "signupMsgId": "1033592584104329287",
+  "signedUpOn": "2022-10-23T04:07:52.313Z",
+  "confirmedOn": "2022-10-23T14:33:37.179Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033592571093581874/unknown.png",
+  "discordName": "lise'",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354da173a320143cc5b7809"
+  },
+  "discordId": "399146215775797258",
+  "battleTag": "Gene#31178",
+  "region": "NA",
+  "signupMsgId": "1033622632958017656",
+  "signedUpOn": "2022-10-23T06:07:17.020Z",
+  "confirmedOn": "2022-10-23T14:33:57.922Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033622621725663312/Screenshot_2022-10-23_170544.png"
+},{
+  "_id": {
+    "$oid": "6354dbc03a320143cc5b780a"
+  },
+  "discordId": "167498917443928064",
+  "battleTag": "Bluebird#12971",
+  "region": "NA",
+  "signupMsgId": "1033624412055941141",
+  "signedUpOn": "2022-10-23T06:14:20.951Z",
+  "confirmedOn": "2022-10-23T14:34:35.157Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033624399816953927/unknown.png",
+  "discordName": "Bluebird",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6354fec73a320143cc5b780b"
+  },
+  "discordId": "376426367023185922",
+  "battleTag": "MrBrainer58#2779",
+  "region": "EU",
+  "signupMsgId": "1033662022904193024",
+  "signedUpOn": "2022-10-23T08:43:48.787Z",
+  "confirmedOn": "2022-10-23T14:35:08.483Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033662013718663229/unknown.png",
+  "discordName": "LilBrainer",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63554d253a320143cc5b780c"
+  },
+  "discordId": "249657735770013696",
+  "battleTag": "SkyFox#21174",
+  "region": "EU",
+  "signupMsgId": "1033746168737431694",
+  "signedUpOn": "2022-10-23T14:18:09.883Z",
+  "confirmedOn": "2022-10-23T14:36:14.518Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "MASTER",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1039261397869154364/unknown.png",
+  "discordName": "SkyFox",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63558c023a320143cc5b780d"
+  },
+  "discordId": "494332003781443619",
+  "battleTag": "SirCritic#21354",
+  "region": "EU",
+  "signupMsgId": "1033813669664014336",
+  "signedUpOn": "2022-10-23T18:46:24.649Z",
+  "confirmedOn": "2022-10-23T19:27:43.393Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033813662466572360/Untitled.jpg",
+  "discordName": "Critic T3.05 / S 2.7 / D 2.5",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635595773a320143cc5b780e"
+  },
+  "discordId": "267762747805138957",
+  "battleTag": "Kanner#11973",
+  "region": "NA",
+  "signupMsgId": "1033823821809078343",
+  "signedUpOn": "2022-10-23T19:26:44.033Z",
+  "confirmedOn": "2022-10-23T19:28:01.811Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033823809951768606/Screenshot_1.png",
+  "discordName": "Kanner",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6355a7153a320143cc5b780f"
+  },
+  "discordId": "307629590174498818",
+  "battleTag": "Nickian#1297",
+  "region": "NA",
+  "signupMsgId": "1033842738170441841",
+  "signedUpOn": "2022-10-23T20:41:54.455Z",
+  "confirmedOn": "2022-11-06T21:16:51.860Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "MASTER",
+  "damageRank": "DIAMOND",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 4,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033842728066363464/Overwatch_tmQMRRuQGd.png",
+  "discordName": "Nickian",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6355c54d3a320143cc5b7810"
+  },
+  "discordId": "653278019133243392",
+  "battleTag": "RIVALDEALER#21235",
+  "region": "EU",
+  "signupMsgId": "1033875188812615792",
+  "signedUpOn": "2022-10-23T22:50:51.286Z",
+  "confirmedOn": "2022-11-05T19:41:21.235Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "BRONZE",
+  "damageRank": "SILVER",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1033875178771447898/rivaldealerOW2.jpg",
+  "discordName": "Catonia",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63566a763a320143cc5b7811"
+  },
+  "discordId": "546941043291979776",
+  "battleTag": "FitnessGamer#21952",
+  "region": "EU",
+  "signupMsgId": "1034052526544265297",
+  "signedUpOn": "2022-10-24T10:35:31.161Z",
+  "confirmedOn": "2022-10-24T19:07:37.455Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1034052513072168980/Screenshot_2022-10-24_113420.png",
+  "discordName": "DaFitnessGamer",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6356b1323a320143cc5b7812"
+  },
+  "discordId": "262618060324732929",
+  "battleTag": "Hubsley#11181",
+  "region": "NA",
+  "signupMsgId": "1034128477114347612",
+  "signedUpOn": "2022-10-24T15:37:19.010Z",
+  "confirmedOn": "2022-10-24T19:08:26.302Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "MASTER",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1046456217255542874/image.png",
+  "discordName": "Hubsley",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635730623a320143cc5b7813"
+  },
+  "discordId": "126094550258155520",
+  "battleTag": "chemsed#1474",
+  "region": "NA",
+  "signupMsgId": "1034265044768264324",
+  "signedUpOn": "2022-10-25T00:40:00.941Z",
+  "confirmedOn": "2022-10-25T14:56:28.229Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "SILVER",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 4,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1038973653557182505/OW2_S1_rank_all_role.jpg",
+  "discordName": "chemsed",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6357f3fb3a320143cc5b7814"
+  },
+  "discordId": "435477507790209055",
+  "battleTag": "TheRealCook#2681",
+  "region": "EU",
+  "signupMsgId": "1034475066886471830",
+  "signedUpOn": "2022-10-25T14:34:33.457Z",
+  "confirmedOn": "2022-10-25T14:56:50.958Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1034475057289895957/Screenshot_2022-10-25_154754.png",
+  "discordName": "The_Real_Cook",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6359b6783a320143cc5b7815"
+  },
+  "discordId": "167732794502414336",
+  "battleTag": "Dogers#21767",
+  "region": "EU",
+  "signupMsgId": "1034958762462674964",
+  "signedUpOn": "2022-10-26T22:36:34.624Z",
+  "confirmedOn": "2022-10-26T22:36:44.130Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "BRONZE",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1034958749422604288/ScreenShot_22-10-26_23-31-57-000.jpg",
+  "discordName": "Dogers",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635b05613a320143cc5b7816"
+  },
+  "discordId": "142710576022290432",
+  "battleTag": "RenciaSama#2806",
+  "region": "EU",
+  "signupMsgId": "1035318379365548122",
+  "signedUpOn": "2022-10-27T22:25:34.368Z",
+  "confirmedOn": "2022-10-27T22:26:54.926Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "MASTER",
+  "gamesPlayed": 8,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1049077547876499476/image.png",
+  "discordName": "Rencia",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635bf65d3a320143cc5b7817"
+  },
+  "discordId": "185443216248537089",
+  "battleTag": "KatNat#2209",
+  "region": "EU",
+  "signupMsgId": "1035577133994610759",
+  "signedUpOn": "2022-10-28T15:33:45.482Z",
+  "confirmedOn": "2022-10-28T16:29:05.368Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "MASTER",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035577119289389148/unknown.png",
+  "discordName": "KatNat",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635c0acd3a320143cc5b7818"
+  },
+  "discordId": "230693458287919127",
+  "battleTag": "Odezur#1580",
+  "region": "NA",
+  "signupMsgId": "1035599078375039026",
+  "signedUpOn": "2022-10-28T17:00:58.326Z",
+  "confirmedOn": "2022-10-28T19:30:03.443Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035599067029454918/Career_Profile_Oct_28_2022.PNG",
+  "discordName": "Odezur",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635c0d543a320143cc5b7819"
+  },
+  "discordId": "653074914047164472",
+  "battleTag": "Cithiel#1453",
+  "region": "NA",
+  "signupMsgId": "1035601795411623946",
+  "signedUpOn": "2022-10-28T17:11:46.505Z",
+  "confirmedOn": "2022-10-28T19:30:28.263Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "SILVER",
+  "supportRank": "-",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035601786179948705/rank_challenge.png",
+  "discordName": "Cithiel",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635c279c3a320143cc5b781a"
+  },
+  "discordId": "247127665067163669",
+  "battleTag": "Bear#14664",
+  "region": "NA",
+  "signupMsgId": "1035630011689996369",
+  "signedUpOn": "2022-10-28T19:03:52.567Z",
+  "confirmedOn": "2022-10-28T19:31:06.029Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "PLATINUM",
+  "damageRank": "SILVER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1039998746278248518/image.png",
+  "discordName": "Bear",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635c3af93a320143cc5b781b"
+  },
+  "discordId": "252542016649560064",
+  "battleTag": "Finnception#2699",
+  "region": "EU",
+  "signupMsgId": "1035650803517628506",
+  "signedUpOn": "2022-10-28T20:26:30.562Z",
+  "confirmedOn": "2022-10-28T22:18:04.081Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "MASTER",
+  "damageRank": "MASTER",
+  "supportRank": "MASTER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035650792222367895/unknown.png",
+  "discordName": "Finnception",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635c461b3a320143cc5b781c"
+  },
+  "discordId": "320928245841395712",
+  "battleTag": "Kars#21831",
+  "region": "EU",
+  "signupMsgId": "1035662757049155684",
+  "signedUpOn": "2022-10-28T21:14:00.748Z",
+  "confirmedOn": "2022-10-28T22:18:27.528Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "DIAMOND",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035662746764718160/unknown.png",
+  "discordName": "Kars",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635c72d64e2a28cdde27b5cd"
+  },
+  "discordId": "289401547119525889",
+  "battleTag": "Flo0010#2600",
+  "region": "EU",
+  "signupMsgId": "1035710786414321764",
+  "signedUpOn": "2022-10-29T00:24:53.709Z",
+  "confirmedOn": "2022-10-29T00:25:40.691Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "DIAMOND",
+  "damageRank": "DIAMOND",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 5,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035710784161976440/unknown.png",
+  "discordName": "Flo0010",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635cfc8d4e2a28cdde27b5ce"
+  },
+  "discordId": "411022183339655178",
+  "battleTag": "Kingbob#1739",
+  "region": "NA",
+  "signupMsgId": "1035858656102727681",
+  "signedUpOn": "2022-10-29T10:12:28.696Z",
+  "confirmedOn": "2022-10-29T10:50:15.261Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035858654219485204/20221029_061205.jpg",
+  "discordName": "Spreadkingbob",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635d1c794e2a28cdde27b5cf"
+  },
+  "discordId": "212261108541554689",
+  "battleTag": "Knave#21409",
+  "region": "EU",
+  "signupMsgId": "1035892931938234418",
+  "signedUpOn": "2022-10-29T12:28:40.572Z",
+  "confirmedOn": "2022-10-29T12:31:21.333Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "MASTER",
+  "supportRank": "MASTER",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1035892929446817822/unknown.png",
+  "discordName": "CHaSeD_knave",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635d86204e2a28cdde27b5d0"
+  },
+  "discordId": "741014214461620286",
+  "battleTag": "Draco#13390",
+  "region": "NA",
+  "signupMsgId": "1036006373760192593",
+  "signedUpOn": "2022-10-29T19:59:27.178Z",
+  "confirmedOn": "2022-10-29T20:11:40.913Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036006371260375042/overwatchsvbranks.png",
+  "discordName": "natdrac",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635d8ef64e2a28cdde27b5d1"
+  },
+  "discordId": "269952175268954115",
+  "battleTag": "intrepidape#2834",
+  "region": "EU",
+  "signupMsgId": "1036015865667264572",
+  "signedUpOn": "2022-10-29T20:37:10.238Z",
+  "confirmedOn": "2022-10-30T10:30:42.779Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036015863322648626/Screenshot_1.png",
+  "discordName": "intrepidmonkey",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635dbb5a4e2a28cdde27b5d2"
+  },
+  "discordId": "286580542093393921",
+  "battleTag": "Nyp3r#2574",
+  "region": "EU",
+  "signupMsgId": "1036063527737233469",
+  "signedUpOn": "2022-10-29T23:46:33.850Z",
+  "confirmedOn": "2022-10-30T10:31:04.958Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036063525614923837/Skrmbillede_27.png"
+},{
+  "_id": {
+    "$oid": "635de6984e2a28cdde27b5d3"
+  },
+  "discordId": "159793379662626816",
+  "battleTag": "Valkoor#11272",
+  "region": "NA",
+  "signupMsgId": "1036109957772345465",
+  "signedUpOn": "2022-10-30T02:51:03.635Z",
+  "confirmedOn": "2022-10-30T10:31:28.458Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036109955717152828/d99aa80465a3ae6cc9da5e2805f60e33.jpg",
+  "discordName": "Valkoor",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635f40754e2a28cdde27b5d6"
+  },
+  "discordId": "561678715545976835",
+  "battleTag": "ShattxSwords#1511",
+  "region": "NA",
+  "signupMsgId": "1036481326448119919",
+  "signedUpOn": "2022-10-31T03:26:44.754Z",
+  "confirmedOn": "2022-10-31T09:49:49.668Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036481324149653534/ScreenShot_22-10-30_22-24-15-000.jpg",
+  "discordName": "ShattxSwords (B5 support)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635f67294e2a28cdde27b5d7"
+  },
+  "discordId": "150468944115793920",
+  "battleTag": "Praze#1590",
+  "region": "NA",
+  "signupMsgId": "1036522881460478024",
+  "signedUpOn": "2022-10-31T06:11:52.267Z",
+  "confirmedOn": "2022-10-31T09:50:08.977Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "SILVER",
+  "damageRank": "SILVER",
+  "supportRank": "GOLD",
+  "gamesPlayed": 6,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036522879036174367/RankedGauntlet_Praze_Silver3Silver5Gold5.png",
+  "discordName": "Praze",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "635fe79f4e2a28cdde27b5d8"
+  },
+  "discordId": "255090754337112065",
+  "battleTag": "Holden#11382",
+  "region": "NA",
+  "signupMsgId": "1036660816759509102",
+  "signedUpOn": "2022-10-31T15:19:58.578Z",
+  "confirmedOn": "2022-10-31T15:35:20.655Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036660814410686515/holdenprofile.png",
+  "discordName": "Frosty",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63600d504e2a28cdde27b5d9"
+  },
+  "discordId": "977906397280870418",
+  "battleTag": "RUFFRYDER#21280",
+  "region": "EU",
+  "signupMsgId": "1036701287418433627",
+  "signedUpOn": "2022-10-31T18:00:47.594Z",
+  "confirmedOn": "2022-11-02T13:58:18.981Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "BRONZE",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1036701285354831952/20221031_175910.jpg",
+  "discordName": "Scalves1874",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6361f7714e2a28cdde27b5da"
+  },
+  "discordId": "217817419530502145",
+  "battleTag": "Velxus#1678",
+  "region": "NA",
+  "signupMsgId": "1037227558741213224",
+  "signedUpOn": "2022-11-02T04:52:00.453Z",
+  "confirmedOn": "2022-11-02T09:58:38.487Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1037227556350459984/unknown.png",
+  "discordName": "Smellxus",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6362bc444e2a28cdde27b5db"
+  },
+  "discordId": "509179683695362063",
+  "battleTag": "Bmin#11696",
+  "region": "NA",
+  "signupMsgId": "1037438896822296666",
+  "signedUpOn": "2022-11-02T18:51:47.353Z",
+  "confirmedOn": "2022-11-02T19:50:37.037Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1037438894532214895/B1D3FE1B-6E8D-4578-957E-F45EF7D8227C.png",
+  "discordName": "Comedyman [🛡3815]",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6362c3294e2a28cdde27b5dc"
+  },
+  "discordId": "237056382464032769",
+  "battleTag": "Lypreila#1849",
+  "region": "NA",
+  "signupMsgId": "1037446300456734750",
+  "signedUpOn": "2022-11-02T19:21:12.485Z",
+  "confirmedOn": "2022-11-02T19:23:40.860Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 4,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1037446298003054592/unknown.png",
+  "discordName": "Lypreila (2.0/1.8/2.1)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636361124e2a28cdde27b5dd"
+  },
+  "discordId": "326606614000041984",
+  "battleTag": "WildKat037#1261",
+  "region": "NA",
+  "signupMsgId": "1037615857255317596",
+  "signedUpOn": "2022-11-03T06:34:58.037Z",
+  "confirmedOn": "2022-11-03T10:15:13.491Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 3,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1046315869212520448/image.png",
+  "discordName": "WildKat037",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6363ebf64e2a28cdde27b5de"
+  },
+  "discordId": "190488883924828169",
+  "battleTag": "Feeniks#21541",
+  "region": "EU",
+  "signupMsgId": "1037764988401631262",
+  "signedUpOn": "2022-11-03T16:27:33.640Z",
+  "confirmedOn": "2022-11-03T16:28:16.072Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "MASTER",
+  "damageRank": "MASTER",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1037764985973112915/PXL_20221027_193357633.jpg",
+  "discordName": "Feeniks",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63642b094e2a28cdde27b5df"
+  },
+  "discordId": "252923570626232331",
+  "battleTag": "DeeFly#1308",
+  "region": "EU",
+  "signupMsgId": "1037832716168745080",
+  "signedUpOn": "2022-11-03T20:56:41.135Z",
+  "confirmedOn": "2022-11-03T21:12:25.401Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "MASTER",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 4,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1037832713597624360/Career_profile.png",
+  "discordName": "DeeFly",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6365a0c114280e92515b4051"
+  },
+  "discordId": "394192310268592141",
+  "battleTag": "Xross#21644",
+  "region": "EU",
+  "signupMsgId": "1038233990181699644",
+  "signedUpOn": "2022-11-04T23:31:12.277Z",
+  "confirmedOn": "2022-11-04T23:36:25.231Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "GRANDMASTER",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 5,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038233987564437565/ScreenShot_22-11-05_00-50-12-000.jpg",
+  "discordName": "Xross",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6365cbe7bbb278b53100bf2c"
+  },
+  "discordId": "301499673754206208",
+  "battleTag": "depression#12263",
+  "region": "NA",
+  "signupMsgId": "1038280321516437548",
+  "signedUpOn": "2022-11-05T02:35:18.472Z",
+  "confirmedOn": "2022-11-05T09:08:46.399Z",
+  "confirmedBy": "CHaSeD_knave",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "SILVER",
+  "gamesPlayed": 7,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038280318521712680/ow2.png",
+  "discordName": "depression (2.4, 2.6, 2.4)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63668cb8bbb278b53100bf2d"
+  },
+  "discordId": "227265383185383424",
+  "battleTag": "reseespecees#1229",
+  "region": "NA",
+  "signupMsgId": "1038487356757528656",
+  "signedUpOn": "2022-11-05T16:17:59.342Z",
+  "confirmedOn": "2022-11-05T16:23:03.560Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038487353104269483/profile_clip.PNG",
+  "discordName": "ReseesPecees",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366ac49bbb278b53100bf2e"
+  },
+  "discordId": "309776468756529152",
+  "battleTag": "Chubchilla#1531",
+  "region": "NA",
+  "signupMsgId": "1038521250319966238",
+  "signedUpOn": "2022-11-05T18:32:40.456Z",
+  "confirmedOn": "2022-11-05T18:33:35.985Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038521247698518118/Screenshot_58.png",
+  "discordName": "Chubchilla",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366b38fbbb278b53100bf2f"
+  },
+  "discordId": "273949554259263489",
+  "battleTag": "Crowbar#11587",
+  "region": "NA",
+  "signupMsgId": "1038529061808513124",
+  "signedUpOn": "2022-11-05T19:03:42.944Z",
+  "confirmedOn": "2022-11-05T19:40:32.979Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "MASTER",
+  "damageRank": "PLATINUM",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038529059480686703/S1_Career_Profile.png",
+  "discordName": "Crowbar",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366bba1bbb278b53100bf30"
+  },
+  "discordId": "225064450019819523",
+  "battleTag": "OWGrandma#1957",
+  "region": "NA",
+  "signupMsgId": "1038537725210529792",
+  "signedUpOn": "2022-11-05T19:38:08.487Z",
+  "confirmedOn": "2022-11-05T19:40:55.964Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 8,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038537723117572227/unknown.png",
+  "discordName": "OWGrandma",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366c1f4bbb278b53100bf31"
+  },
+  "discordId": "386529055387811851",
+  "battleTag": "hazchem#2933",
+  "region": "EU",
+  "signupMsgId": "1038544516619178074",
+  "signedUpOn": "2022-11-05T20:05:07.559Z",
+  "confirmedOn": "2022-11-05T20:23:01.647Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "DIAMOND",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038544513574125598/image.png",
+  "discordName": "Hazchem",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366c512bbb278b53100bf32"
+  },
+  "discordId": "321466772039401482",
+  "battleTag": "fropy#11888",
+  "region": "EU",
+  "signupMsgId": "1038547864193871882",
+  "signedUpOn": "2022-11-05T20:18:25.494Z",
+  "confirmedOn": "2022-11-05T20:22:42.495Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "BRONZE",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038547860720980038/ow-profile.png",
+  "discordName": "fropy",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366c8c5bbb278b53100bf33"
+  },
+  "discordId": "303641820221669377",
+  "battleTag": "OhGee#11680",
+  "region": "NA",
+  "signupMsgId": "1038551834119381173",
+  "signedUpOn": "2022-11-05T20:34:12.005Z",
+  "confirmedOn": "2022-11-05T21:09:43.780Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "SILVER",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038551830633922590/SVB_career_profile_SS.JPG"
+},{
+  "_id": {
+    "$oid": "6366d840bbb278b53100bf35"
+  },
+  "discordId": "345992530183061525",
+  "battleTag": "Evates#1189",
+  "region": "NA",
+  "signupMsgId": "1038568457203105883",
+  "signedUpOn": "2022-11-05T21:40:15.510Z",
+  "confirmedOn": "2022-11-05T21:42:01.704Z",
+  "confirmedBy": "CHaSeD_knave",
+  "tankRank": "-",
+  "damageRank": "GOLD",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038568455219204177/9971A498-AA6D-4229-BAC1-E1BEBFC128EE.jpg",
+  "discordName": "Evates",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366def5bbb278b53100bf36"
+  },
+  "discordId": "330569729460928522",
+  "battleTag": "uwuminati#1291",
+  "region": "NA",
+  "signupMsgId": "1038575660941180948",
+  "signedUpOn": "2022-11-05T22:08:53.024Z",
+  "confirmedOn": "2022-11-06T11:04:01.767Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038575658634326079/9F5D21E2-41CD-4166-B9BD-6A7AB00A8884.png",
+  "discordName": "uwuminati",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6366f905bbb278b53100bf37"
+  },
+  "discordId": "282934289182621696",
+  "battleTag": "Elizabeth#12519",
+  "region": "NA",
+  "signupMsgId": "1038603644624453632",
+  "signedUpOn": "2022-11-06T00:00:04.845Z",
+  "confirmedOn": "2022-11-06T11:03:35.128Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "BRONZE",
+  "damageRank": "-",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038603642376294450/ScreenShot_22-11-05_15-28-19-000.jpg",
+  "discordName": "elizabethh",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63672bc4bbb278b53100bf38"
+  },
+  "discordId": "494983625037578254",
+  "battleTag": "alumina#11543",
+  "region": "NA",
+  "signupMsgId": "1038658132781576313",
+  "signedUpOn": "2022-11-06T03:36:35.878Z",
+  "confirmedOn": "2022-11-06T16:25:55.572Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "BRONZE",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038658130684432466/IMG_20221105_233506.jpg"
+},{
+  "_id": {
+    "$oid": "636760afbbb278b53100bf39"
+  },
+  "discordId": "269593350816923649",
+  "battleTag": "Claireeon#1353",
+  "region": "NA",
+  "signupMsgId": "1038714951054921819",
+  "signedUpOn": "2022-11-06T07:22:22.335Z",
+  "confirmedOn": "2022-11-06T11:04:25.954Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038714948638998578/ScreenShot_22-11-05_23-51-57-000.jpg",
+  "discordName": "Claireeon (_,P4,P3)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63676860bbb278b53100bf3a"
+  },
+  "discordId": "483195126554820608",
+  "battleTag": "Xiaolang#11778",
+  "region": "NA",
+  "signupMsgId": "1038723209094246420",
+  "signedUpOn": "2022-11-06T07:55:11.043Z",
+  "confirmedOn": "2022-11-06T11:04:57.816Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038723206007242762/Screenshot_2022-11-05_21-07-23.jpg",
+  "discordName": "Xiaolang",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636783fd1bc656361939ecd0"
+  },
+  "discordId": "218429074039635968",
+  "battleTag": "RubŶ#2925",
+  "region": "EU",
+  "signupMsgId": "1038752860025917460",
+  "signedUpOn": "2022-11-06T09:53:00.507Z",
+  "confirmedOn": "2022-11-06T11:05:49.540Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038752857442242660/2022-11-06.png"
+},{
+  "_id": {
+    "$oid": "6367ad8b1bc656361939ecd1"
+  },
+  "discordId": "291654909751853066",
+  "battleTag": "Thunder#25729",
+  "region": "EU",
+  "signupMsgId": "1038797479434522766",
+  "signedUpOn": "2022-11-06T12:50:18.600Z",
+  "confirmedOn": "2022-11-06T12:52:30.012Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038797476896968764/Screenshot_2022-11-06_144814.png",
+  "discordName": "ThunderArtist",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367d0e11bc656361939ecd2"
+  },
+  "discordId": "175930528330022914",
+  "battleTag": "HappyButa#2310",
+  "region": "EU",
+  "signupMsgId": "1038835421662167201",
+  "signedUpOn": "2022-11-06T15:21:04.746Z",
+  "confirmedOn": "2022-11-06T16:24:00.341Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 5,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1046461219730628680/image.png",
+  "discordName": "HappyPorcupine",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367dba81bc656361939ecd3"
+  },
+  "discordId": "186924289512046592",
+  "battleTag": "Ovoen#2431",
+  "region": "EU",
+  "signupMsgId": "1038846994908725278",
+  "signedUpOn": "2022-11-06T16:07:03.950Z",
+  "confirmedOn": "2022-11-06T16:24:25.737Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "MASTER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038846991997882468/Overwatch_2_Screenshot_2022.11.06_-_16.06.18.07.png",
+  "discordName": "Neovo [⊘-31?-37*]",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367defb1bc656361939ecd4"
+  },
+  "discordId": "462876935714766868",
+  "battleTag": "kireina#11903",
+  "region": "NA",
+  "signupMsgId": "1038850564441776128",
+  "signedUpOn": "2022-11-06T16:21:14.961Z",
+  "confirmedOn": "2022-11-06T16:24:53.736Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038850561266696263/IMG_20221105_210829.png",
+  "discordName": "Rose",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367f37c2b07e584413cbbdf"
+  },
+  "discordId": "179753842718670848",
+  "battleTag": "AzulBurb#1936",
+  "region": "NA",
+  "signupMsgId": "1038872579785629777",
+  "signedUpOn": "2022-11-06T17:48:43.965Z",
+  "confirmedOn": "2022-11-06T17:49:27.656Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "SILVER",
+  "supportRank": "-",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038872577331970188/5c5ea51a7bd38d1106b1216a0101a810_1.png",
+  "discordName": "JCKing",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367f45979229c4dd6ca7040"
+  },
+  "discordId": "157292050180603904",
+  "battleTag": "twopointoh#1738",
+  "region": "NA",
+  "signupMsgId": "1038873506823286804",
+  "signedUpOn": "2022-11-06T17:52:25.094Z",
+  "confirmedOn": "2022-11-06T17:58:03.359Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "BRONZE",
+  "damageRank": "-",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038873504474476684/Overwatch_Screenshot_2022.11.06_-_11.51.12.99.png",
+  "discordName": "2pnt0/Batgirl",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367f72579229c4dd6ca7041"
+  },
+  "discordId": "836382046141677648",
+  "battleTag": "AiRosie#1823",
+  "region": "NA",
+  "signupMsgId": "1038876510456647681",
+  "signedUpOn": "2022-11-06T18:04:20.965Z",
+  "confirmedOn": "2022-11-06T18:05:07.116Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038876507533230200/owcareerprofile.png",
+  "discordName": "Ice Cream",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367f77f79229c4dd6ca7042"
+  },
+  "discordId": "324110098131845130",
+  "battleTag": "sbf#1443",
+  "region": "NA",
+  "signupMsgId": "1038876885280620625",
+  "signedUpOn": "2022-11-06T18:05:50.480Z",
+  "confirmedOn": "2022-11-06T18:07:03.206Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038876882923421716/Screenshot_1.png",
+  "discordName": "sbf",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367f78079229c4dd6ca7043"
+  },
+  "discordId": "236188900110893057",
+  "battleTag": "ajayyy11#1276",
+  "region": "NA",
+  "signupMsgId": "1038876889332318258",
+  "signedUpOn": "2022-11-06T18:05:51.448Z",
+  "confirmedOn": "2022-11-06T18:07:46.225Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "BRONZE",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038876886580854876/F848036B-E9A3-4930-898E-2892AABCAC4C.jpg",
+  "discordName": "ajayyy11",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6367fc8f79229c4dd6ca7044"
+  },
+  "discordId": "228173361673404426",
+  "battleTag": "NRG#21712",
+  "region": "EU",
+  "signupMsgId": "1038882320633045102",
+  "signedUpOn": "2022-11-06T18:27:26.440Z",
+  "confirmedOn": "2022-11-06T18:31:47.257Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "GRANDMASTER",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038882318640750662/Untitled.png",
+  "discordName": "NRG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368000979229c4dd6ca7046"
+  },
+  "discordId": "735678601420210176",
+  "battleTag": "burritopants#11391",
+  "region": "NA",
+  "signupMsgId": "1038886057116188692",
+  "signedUpOn": "2022-11-06T18:42:17.177Z",
+  "confirmedOn": "2022-11-06T18:42:55.141Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "-",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 4,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038886054339543092/image.png",
+  "discordName": "burritopants",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636800fc79229c4dd6ca7047"
+  },
+  "discordId": "698338027369529434",
+  "battleTag": "Roguko#2651",
+  "region": "EU",
+  "signupMsgId": "1038887074755002469",
+  "signedUpOn": "2022-11-06T18:46:19.901Z",
+  "confirmedOn": "2022-11-06T18:47:03.422Z",
+  "confirmedBy": "CHaSeD_knave",
+  "tankRank": "SILVER",
+  "damageRank": "GOLD",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038887072544604253/bangerino.PNG",
+  "discordName": "Roguko",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636809a779229c4dd6ca7049"
+  },
+  "discordId": "617087595750621184",
+  "battleTag": "JiantJragon#1412",
+  "region": "NA",
+  "signupMsgId": "1038896380296564857",
+  "signedUpOn": "2022-11-06T19:23:18.496Z",
+  "confirmedOn": "2022-11-06T19:28:19.382Z",
+  "confirmedBy": "CHaSeD_knave",
+  "tankRank": "SILVER",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038896378094559232/image.png",
+  "discordName": "JiantJragon84",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63680db279229c4dd6ca704a"
+  },
+  "discordId": "320019237097832448",
+  "battleTag": "Eery#1814",
+  "region": "NA",
+  "signupMsgId": "1038900720776265878",
+  "signedUpOn": "2022-11-06T19:40:33.403Z",
+  "confirmedOn": "2022-11-06T19:41:39.762Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038900718846869535/image.png",
+  "discordName": "Eery",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63680e7079229c4dd6ca704c"
+  },
+  "discordId": "470276114145607683",
+  "battleTag": "CyberWolf#11609",
+  "region": "NA",
+  "signupMsgId": "1038901518293811240",
+  "signedUpOn": "2022-11-06T19:43:43.503Z",
+  "confirmedOn": "2022-11-06T19:44:22.262Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "SILVER",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 5,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038901515773018132/Screenshot_2022-11-06_144325.jpg",
+  "discordName": "CyberWolf",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63680f1679229c4dd6ca704d"
+  },
+  "discordId": "219165971112394753",
+  "battleTag": "SleepyEels#1850",
+  "region": "NA",
+  "signupMsgId": "1038902216154681415",
+  "signedUpOn": "2022-11-06T19:46:29.800Z",
+  "confirmedOn": "2022-11-06T19:48:06.882Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "GOLD",
+  "supportRank": "-",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038902213805867148/unknown.png",
+  "discordName": "Eels",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63680fb179229c4dd6ca704e"
+  },
+  "discordId": "513153950166548502",
+  "battleTag": "ginger#11404",
+  "region": "NA",
+  "signupMsgId": "1038902867664306176",
+  "signedUpOn": "2022-11-06T19:49:05.216Z",
+  "confirmedOn": "2022-11-06T19:51:01.950Z",
+  "confirmedBy": "CHaSeD_knave",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 6,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038902865651048518/Career_Profile.JPG",
+  "discordName": "ginger",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368198179229c4dd6ca7051"
+  },
+  "discordId": "1012145653192867911",
+  "battleTag": "CarsonNoC#1161",
+  "region": "NA",
+  "signupMsgId": "1038913402501869669",
+  "signedUpOn": "2022-11-06T20:30:56.913Z",
+  "confirmedOn": "2022-11-06T20:31:59.696Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "MASTER",
+  "damageRank": "PLATINUM",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038913400211783711/image.png",
+  "discordName": "CarsonMTM",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63681f6179229c4dd6ca7052"
+  },
+  "discordId": "248319472903913472",
+  "battleTag": "greatblack#11612",
+  "region": "NA",
+  "signupMsgId": "1038919712198893610",
+  "signedUpOn": "2022-11-06T20:56:01.156Z",
+  "confirmedOn": "2022-11-06T21:00:13.800Z",
+  "confirmedBy": "CHaSeD_knave",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038919709426458715/owrank.png",
+  "discordName": "GreatBlack",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63681f7c79229c4dd6ca7053"
+  },
+  "discordId": "296817330355437568",
+  "battleTag": "DragonsBane#11112",
+  "region": "NA",
+  "signupMsgId": "1038919825692569660",
+  "signedUpOn": "2022-11-06T20:56:28.277Z",
+  "confirmedOn": "2022-11-06T20:59:35.011Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "MASTER",
+  "supportRank": "-",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038919823159218268/SVBGauntlet.png",
+  "discordName": "Chompy (DPS 3.9k)",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368234309d9c62d972a81be"
+  },
+  "discordId": "209939908893212682",
+  "battleTag": "PandaJukes#2387",
+  "region": "EU",
+  "signupMsgId": "1038923880691142676",
+  "signedUpOn": "2022-11-06T21:12:34.894Z",
+  "confirmedOn": "2022-11-06T21:13:10.654Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "BRONZE",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038923877503488101/image.png",
+  "discordName": "PandaJukes",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368235909d9c62d972a81bf"
+  },
+  "discordId": "425019242249977898",
+  "battleTag": "Spoops#11120",
+  "region": "NA",
+  "signupMsgId": "1038923972131168316",
+  "signedUpOn": "2022-11-06T21:12:56.674Z",
+  "confirmedOn": "2022-11-06T21:13:46.276Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "SILVER",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038923968998023238/image_2022-11-06_161247605.png",
+  "discordName": "Mmm",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368263509d9c62d972a81c0"
+  },
+  "discordId": "764583852667699220",
+  "battleTag": "poissonguppy#1195",
+  "region": "NA",
+  "signupMsgId": "1038927040503631984",
+  "signedUpOn": "2022-11-06T21:25:08.295Z",
+  "confirmedOn": "2022-11-06T21:29:44.966Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "-",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 3,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038927037596966983/Screenshot_2022-11-06_142454.png",
+  "discordName": "mulberrylion",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63682b6009d9c62d972a81c2"
+  },
+  "discordId": "415964659451953152",
+  "battleTag": "Ted#21846",
+  "region": "EU",
+  "signupMsgId": "1038932589928517733",
+  "signedUpOn": "2022-11-06T21:47:11.577Z",
+  "confirmedOn": "2022-11-06T21:50:36.381Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038932587772645477/image.png",
+  "discordName": "Ted",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63682b9f09d9c62d972a81c3"
+  },
+  "discordId": "770680512116293652",
+  "battleTag": "Possum#11308",
+  "region": "NA",
+  "signupMsgId": "1038932854471655475",
+  "signedUpOn": "2022-11-06T21:48:14.604Z",
+  "confirmedOn": "2022-11-06T21:51:08.911Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038932852189958154/career.png",
+  "discordName": "Kel !",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63682bc609d9c62d972a81c4"
+  },
+  "discordId": "384736736091308032",
+  "battleTag": "Bigfoot#22460",
+  "region": "EU",
+  "signupMsgId": "1038933017709793290",
+  "signedUpOn": "2022-11-06T21:48:53.503Z",
+  "confirmedOn": "2022-11-06T21:52:10.969Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038933015272894505/owprofile.PNG",
+  "discordName": "Bob Bigfoot",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63682ef609d9c62d972a81c5"
+  },
+  "discordId": "254993346811002890",
+  "battleTag": "Geazu#3801",
+  "region": "NA",
+  "signupMsgId": "1038936439053881385",
+  "signedUpOn": "2022-11-06T22:02:29.247Z",
+  "confirmedOn": "2022-11-06T22:04:33.971Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "DIAMOND",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038936436872859698/Untitled.png"
+},{
+  "_id": {
+    "$oid": "63682f4d09d9c62d972a81c6"
+  },
+  "discordId": "224320046690729985",
+  "battleTag": "tooepik4u#1287",
+  "region": "NA",
+  "signupMsgId": "1038936806542028880",
+  "signedUpOn": "2022-11-06T22:03:56.844Z",
+  "confirmedOn": "2022-11-06T22:05:29.188Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "MASTER",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038936804180639796/Overwatch_11_6_2022_2_03_26_PM.png",
+  "discordName": "TooEpik",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368333109d9c62d972a81c7"
+  },
+  "discordId": "338858496944766977",
+  "battleTag": "Arcturus#11840",
+  "region": "NA",
+  "signupMsgId": "1038940984391770142",
+  "signedUpOn": "2022-11-06T22:20:33.015Z",
+  "confirmedOn": "2022-11-06T22:21:11.117Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038940982282039367/Screenshot_44.png",
+  "discordName": "Tanmantv",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636836eb09d9c62d972a81c9"
+  },
+  "discordId": "219897333406498817",
+  "battleTag": "looijmansje#2335",
+  "region": "EU",
+  "signupMsgId": "1038944984872779866",
+  "signedUpOn": "2022-11-06T22:36:26.546Z",
+  "confirmedOn": "2022-11-06T22:40:05.915Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038944981869670541/image.png",
+  "discordName": "looijmansje",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368375009d9c62d972a81ca"
+  },
+  "discordId": "274540746642685952",
+  "battleTag": "fårikål#21288",
+  "region": "EU",
+  "signupMsgId": "1038945405372735571",
+  "signedUpOn": "2022-11-06T22:38:07.005Z",
+  "confirmedOn": "2022-11-06T22:40:33.118Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "SILVER",
+  "damageRank": "GOLD",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038945402994556938/YEs.PNG",
+  "discordName": "Fårikål",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368376909d9c62d972a81cb"
+  },
+  "discordId": "227692236148572160",
+  "battleTag": "Drew #1933",
+  "region": "NA",
+  "signupMsgId": "1038945511866110013",
+  "signedUpOn": "2022-11-06T22:38:32.317Z",
+  "confirmedOn": "2022-11-06T22:40:57.111Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 2,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038945509257269388/drew_careerprofile.PNG",
+  "discordName": "Jru",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6368385d09d9c62d972a81cc"
+  },
+  "discordId": "141245562673430529",
+  "battleTag": "Gozjirra#1460",
+  "region": "NA",
+  "signupMsgId": "1038946535444074516",
+  "signedUpOn": "2022-11-06T22:42:36.362Z",
+  "confirmedOn": "2022-11-13T19:18:41.463Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "DIAMOND",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038946533011357798/63d47dbd01f392ed873dfe8ed7c61c1f.png",
+  "discordName": "Gozjirra",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63683f9f09d9c62d972a81ce"
+  },
+  "discordId": "381909177783681025",
+  "battleTag": "Juniela#2586",
+  "region": "EU",
+  "signupMsgId": "1038954331329789962",
+  "signedUpOn": "2022-11-06T23:13:35.132Z",
+  "confirmedOn": "2022-11-06T23:14:29.213Z",
+  "confirmedBy": "CHaSeD_knave",
+  "tankRank": "PLATINUM",
+  "damageRank": "-",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1038954329287163974/Untitled.jpg",
+  "discordName": "Juniela",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63696ded09d9c62d972a81cf"
+  },
+  "discordId": "263764460265537537",
+  "battleTag": "KoalaVx#2376",
+  "region": "EU",
+  "signupMsgId": "1039278928587653200",
+  "signedUpOn": "2022-11-07T20:43:24.844Z",
+  "confirmedOn": "2022-11-07T20:50:05.109Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 4,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1039278925098008638/image.png",
+  "discordName": "Koala",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636d01104e06631fefa56546"
+  },
+  "discordId": "327366423401725962",
+  "battleTag": "jbtastic#2892",
+  "region": "EU",
+  "signupMsgId": "1040261546808459324",
+  "signedUpOn": "2022-11-10T13:47:59.476Z",
+  "confirmedOn": "2022-11-10T16:04:08.437Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1040261544447066122/IMG_20221110_144740_746.jpg",
+  "discordName": "jbtastic",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636d4f104e06631fefa56547"
+  },
+  "discordId": "193377134079770625",
+  "battleTag": "bame#1784",
+  "region": "NA",
+  "signupMsgId": "1040345299685752832",
+  "signedUpOn": "2022-11-10T19:20:47.676Z",
+  "confirmedOn": "2022-11-13T11:51:36.127Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "SILVER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 7,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1040345296909119519/bame.PNG",
+  "discordName": "bame",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636ec9c24e06631fefa56548"
+  },
+  "discordId": "198254614766682112",
+  "battleTag": "Techtress#1242",
+  "region": "NA",
+  "signupMsgId": "1040751920110903326",
+  "signedUpOn": "2022-11-11T22:16:33.634Z",
+  "confirmedOn": "2022-11-12T17:45:48.706Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "DIAMOND",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1040751917585940541/image.png",
+  "discordName": "Techtress",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636fc7894e06631fefa56549"
+  },
+  "discordId": "611863571953090570",
+  "battleTag": "ȄvżęǹƁŕųŧȕş#2320",
+  "region": "EU",
+  "signupMsgId": "1041024409860833341",
+  "signedUpOn": "2022-11-12T16:19:20.262Z",
+  "confirmedOn": "2022-11-13T13:43:18.798Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1041024407507849246/Screenshot_2022-11-12_171906.jpg",
+  "discordName": "EvzenBrutus",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636fcd3d4e06631fefa5654a"
+  },
+  "discordId": "341609143221878786",
+  "battleTag": "Remy2003#2884",
+  "region": "EU",
+  "signupMsgId": "1041030532907143188",
+  "signedUpOn": "2022-11-12T16:43:39.752Z",
+  "confirmedOn": "2022-11-13T13:41:42.786Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "-",
+  "gamesPlayed": 4,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1041030529505566751/Overwatch_2_Screenshot_2022.11.12_-_17.31.51.33.png",
+  "discordName": "Remy2003[15?-22?-⊘]",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636fd0284e06631fefa5654b"
+  },
+  "discordId": "196230080001867776",
+  "battleTag": "Duncley#2965",
+  "region": "EU",
+  "signupMsgId": "1041033666568138792",
+  "signedUpOn": "2022-11-12T16:56:07.196Z",
+  "confirmedOn": "2022-11-12T17:46:22.266Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1041033664131256401/careerprofile.PNG",
+  "discordName": "Duncley",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "636ffee24f06f4fcc6e924f3"
+  },
+  "discordId": "663721694019584047",
+  "battleTag": "Absurd#11926",
+  "region": "NA",
+  "signupMsgId": "1041083841097511013",
+  "signedUpOn": "2022-11-12T20:15:29.826Z",
+  "confirmedOn": "2022-11-13T13:40:26.247Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "MASTER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 4,
+  "screenshot": "https://media.discordapp.net/ephemeral-attachments/1031196938391011426/1041083839046504508/Screenshot_958.png",
+  "discordName": "Absurd",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63711619c43b51b71ada8afe"
+  },
+  "discordId": "383729498962657281",
+  "discordName": "Barbeque/",
+  "battleTag": "Barbeque#11730",
+  "region": "NA",
+  "signupMsgId": "1041383639121932298",
+  "signedUpOn": "2022-11-13T16:06:47.039Z",
+  "confirmedOn": "2022-11-13T16:20:46.599Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041383646956900473/Screenshot_565.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637124c2c43b51b71ada8aff"
+  },
+  "discordId": "350228899180838914",
+  "discordName": "Shaf",
+  "battleTag": "Shaf#11394",
+  "region": "NA",
+  "signupMsgId": "1041399379631816744",
+  "signedUpOn": "2022-11-13T17:09:19.686Z",
+  "confirmedOn": "2022-11-13T17:10:30.658Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 4,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041399386653081741/vlcsnap-2022-11-13-11h03m46s897.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63712d8ac43b51b71ada8b00"
+  },
+  "discordId": "223961151053103104",
+  "discordName": "Artifice",
+  "battleTag": "wRen#12154",
+  "region": "NA",
+  "signupMsgId": "1041408806787235880",
+  "signedUpOn": "2022-11-13T17:46:47.565Z",
+  "confirmedOn": "2022-11-13T17:47:31.380Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 7,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041408814236303380/s1.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371311fc43b51b71ada8b02"
+  },
+  "discordId": "406978920278392834",
+  "discordName": "Pam",
+  "battleTag": "TheFinalPam#1633",
+  "region": "NA",
+  "signupMsgId": "1041412660127858788",
+  "signedUpOn": "2022-11-13T18:02:06.286Z",
+  "confirmedOn": "2022-11-13T18:04:11.776Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "SILVER",
+  "damageRank": "BRONZE",
+  "supportRank": "GOLD",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041412664779362394/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713131c43b51b71ada8b03"
+  },
+  "discordId": "387686666447355926",
+  "discordName": "zombi3pinup",
+  "battleTag": "Zombi3pinup#1965",
+  "region": "NA",
+  "signupMsgId": "1041412730655088680",
+  "signedUpOn": "2022-11-13T18:02:23.119Z",
+  "confirmedOn": "2022-11-13T18:06:42.780Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "BRONZE",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041412739207282718/Screenshot_42.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713154c43b51b71ada8b04"
+  },
+  "discordId": "412940970083090442",
+  "discordName": "MrFoxik0202",
+  "battleTag": "MrFoxik0202#2154",
+  "region": "EU",
+  "signupMsgId": "1041412871650803873",
+  "signedUpOn": "2022-11-13T18:02:56.746Z",
+  "confirmedOn": "2022-11-13T18:07:30.062Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "BRONZE",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041412883239669770/Screenshot_2022-11-13_190234.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713189c43b51b71ada8b05"
+  },
+  "discordId": "342508538347782145",
+  "discordName": "",
+  "battleTag": "Catsrule2003#1552",
+  "region": "NA",
+  "signupMsgId": "1041413096100593664",
+  "signedUpOn": "2022-11-13T18:03:50.309Z",
+  "confirmedOn": "2022-11-13T18:21:54.307Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041413105500033074/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371318fc43b51b71ada8b06"
+  },
+  "discordId": "172505039640723456",
+  "discordName": "Crank3d",
+  "battleTag": "MomsHouse#11747",
+  "region": "NA",
+  "signupMsgId": "1041413124961603595",
+  "signedUpOn": "2022-11-13T18:03:57.166Z",
+  "confirmedOn": "2022-11-13T18:22:33.056Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "MASTER",
+  "damageRank": "MASTER",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1047987251939917884/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637131d8c43b51b71ada8b07"
+  },
+  "discordId": "574675410470830121",
+  "discordName": "Harry_iq",
+  "battleTag": "FunkyPants#2146163",
+  "region": "EU",
+  "signupMsgId": "1041413431636525086",
+  "signedUpOn": "2022-11-13T18:05:10.212Z",
+  "confirmedOn": "2022-11-13T18:09:12.568Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "BRONZE",
+  "damageRank": "BRONZE",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041413439089823775/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637131e2c43b51b71ada8b08"
+  },
+  "discordId": "292747846594199553",
+  "discordName": "LightsAurora",
+  "battleTag": "LightsAurora#1777",
+  "region": "NA",
+  "signupMsgId": "1041413469410431036",
+  "signedUpOn": "2022-11-13T18:05:18.989Z",
+  "confirmedOn": "2022-11-13T18:11:03.623Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "BRONZE",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041413478738571374/11-13_12.01.17.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637131ebc43b51b71ada8b09"
+  },
+  "discordId": "255956028401778688",
+  "discordName": "Cooper",
+  "battleTag": "corndoggg#1999",
+  "region": "NA",
+  "signupMsgId": "1041413506190282872",
+  "signedUpOn": "2022-11-13T18:05:27.704Z",
+  "confirmedOn": "2022-11-13T18:23:24.184Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "SILVER",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041413516999016448/Screenshot_1.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713218c43b51b71ada8b0a"
+  },
+  "discordId": "665915330031386625",
+  "discordName": "Miles4466",
+  "battleTag": "Miles4466#1523",
+  "region": "NA",
+  "signupMsgId": "1041413695139479732",
+  "signedUpOn": "2022-11-13T18:06:12.975Z",
+  "confirmedOn": "2022-11-13T18:24:18.258Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 6,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041413706380234852/Screenshot_20221113_120302.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713218c43b51b71ada8b0b"
+  },
+  "discordId": "636652760648908800",
+  "discordName": "heliotrop",
+  "battleTag": "Heliotrop#21573",
+  "region": "EU",
+  "signupMsgId": "1041413696670400594",
+  "signedUpOn": "2022-11-13T18:06:13.481Z",
+  "confirmedOn": "2022-11-13T18:12:13.273Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "BRONZE",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041413706506059806/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713272c43b51b71ada8b0c"
+  },
+  "discordId": "245667175208058880",
+  "discordName": "syren",
+  "battleTag": "syren#11628",
+  "region": "NA",
+  "signupMsgId": "1041414078410797148",
+  "signedUpOn": "2022-11-13T18:07:44.318Z",
+  "confirmedOn": "2022-11-13T18:09:13.866Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041414086342234163/sccareerpf.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637132adc43b51b71ada8b0d"
+  },
+  "discordId": "313685510616907787",
+  "discordName": "Terence",
+  "battleTag": "Yamato#22962",
+  "region": "EU",
+  "signupMsgId": "1041414323890835546",
+  "signedUpOn": "2022-11-13T18:08:43.075Z",
+  "confirmedOn": "2022-11-13T18:25:49.904Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "DIAMOND",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041414332703068201/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637132f9c43b51b71ada8b0e"
+  },
+  "discordId": "438562272722419742",
+  "discordName": "xdKhazz",
+  "battleTag": "xdKhazz#1173",
+  "region": "NA",
+  "signupMsgId": "1041414640594341898",
+  "signedUpOn": "2022-11-13T18:09:58.184Z",
+  "confirmedOn": "2022-11-13T18:27:30.097Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "PLATINUM",
+  "damageRank": "SILVER",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041414651298197534/Captura_de_pantalla_60.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713334c43b51b71ada8b0f"
+  },
+  "discordId": "343346305705181187",
+  "discordName": "Beako",
+  "battleTag": "BeakoBia#1553",
+  "region": "NA",
+  "signupMsgId": "1041414888523837471",
+  "signedUpOn": "2022-11-13T18:10:57.728Z",
+  "confirmedOn": "2022-11-13T18:27:53.915Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "SILVER",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041414896874696804/Overwatch_13_11_2022_15_06_49.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637133c6c43b51b71ada8b10"
+  },
+  "discordId": "466436386585575446",
+  "discordName": "Sn00py/IJKL {S.I. L.V.E.R.}",
+  "battleTag": "Sn 00py#11926",
+  "region": "NA",
+  "signupMsgId": "1041415502922252369",
+  "signedUpOn": "2022-11-13T18:13:23.800Z",
+  "confirmedOn": "2022-11-13T18:28:25.693Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "SILVER",
+  "damageRank": "BRONZE",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041415508848820354/OW2_Snoopy.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713425c43b51b71ada8b11"
+  },
+  "discordId": "251405850134970368",
+  "discordName": "",
+  "battleTag": "Oldschoollol#2405",
+  "region": "EU",
+  "signupMsgId": "1041415904929529906",
+  "signedUpOn": "2022-11-13T18:15:00.000Z",
+  "confirmedOn": "2022-11-13T18:29:28.684Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "PLATINUM",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041415910407274637/Screenshot_2022-11-13_191128.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713440c43b51b71ada8b12"
+  },
+  "discordId": "477470757320916992",
+  "discordName": "KaraHaji",
+  "battleTag": "Rajeah#2870",
+  "region": "EU",
+  "signupMsgId": "1041416008788869122",
+  "signedUpOn": "2022-11-13T18:15:24.731Z",
+  "confirmedOn": "2022-11-13T18:29:44.488Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041416020184797224/Zrzut_ekranu_233.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371384fc43b51b71ada8b13"
+  },
+  "discordId": "373898852677451776",
+  "discordName": "Zak",
+  "battleTag": "Zakyboy#21355",
+  "region": "EU",
+  "signupMsgId": "1041420366238720120",
+  "signedUpOn": "2022-11-13T18:32:43.658Z",
+  "confirmedOn": "2022-11-13T18:33:25.282Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "DIAMOND",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1046126055292944494/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637139dcc43b51b71ada8b14"
+  },
+  "discordId": "95610646845992960",
+  "discordName": "DJTHED",
+  "battleTag": "DJTHED#1894",
+  "region": "NA",
+  "signupMsgId": "1041422036343459970",
+  "signedUpOn": "2022-11-13T18:39:21.809Z",
+  "confirmedOn": "2022-11-13T18:40:37.018Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 3,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041422044358774825/Untitled.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713a16c43b51b71ada8b16"
+  },
+  "discordId": "326157666235711498",
+  "discordName": "ThiccyDicky",
+  "battleTag": "Ballin#11862",
+  "region": "NA",
+  "signupMsgId": "1041422275410407475",
+  "signedUpOn": "2022-11-13T18:40:18.906Z",
+  "confirmedOn": "2022-11-13T18:40:58.679Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041422286869250168/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713a6bc43b51b71ada8b17"
+  },
+  "discordId": "239775531149557760",
+  "discordName": "Ajpeterson88",
+  "battleTag": "AndrewMD#1365",
+  "region": "NA",
+  "signupMsgId": "1041422634300223569",
+  "signedUpOn": "2022-11-13T18:41:44.322Z",
+  "confirmedOn": "2022-11-13T18:42:38.253Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "GOLD",
+  "damageRank": "BRONZE",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041422643422826606/AndrewMD1365.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713ab3c43b51b71ada8b18"
+  },
+  "discordId": "153561020059615232",
+  "discordName": "",
+  "battleTag": "Beryllium#11261",
+  "region": "NA",
+  "signupMsgId": "1041422930900439093",
+  "signedUpOn": "2022-11-13T18:42:55.108Z",
+  "confirmedOn": "2022-11-13T18:43:22.206Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041422944708079667/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713b46c43b51b71ada8b19"
+  },
+  "discordId": "543362435289972747",
+  "discordName": "𝓈𝓀𝓎",
+  "battleTag": "whiteneko#21974",
+  "region": "EU",
+  "signupMsgId": "1041423553335132240",
+  "signedUpOn": "2022-11-13T18:45:23.404Z",
+  "confirmedOn": "2022-11-13T18:48:28.367Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041423561883144272/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713bf4c43b51b71ada8b1a"
+  },
+  "discordId": "306229093622480899",
+  "discordName": "-Thomas-",
+  "battleTag": "Elodin#11899",
+  "region": "NA",
+  "signupMsgId": "1041424285853552723",
+  "signedUpOn": "2022-11-13T18:48:18.180Z",
+  "confirmedOn": "2022-11-13T18:48:48.861Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041424295009734767/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713e41c43b51b71ada8b1b"
+  },
+  "discordId": "377455470572601368",
+  "discordName": "JJuna",
+  "battleTag": "JJuna#31570",
+  "region": "NA",
+  "signupMsgId": "1041426756323782656",
+  "signedUpOn": "2022-11-13T18:58:07.183Z",
+  "confirmedOn": "2022-11-13T18:59:17.816Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041426763433136238/profile.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713efac43b51b71ada8b1c"
+  },
+  "discordId": "253692642804760576",
+  "discordName": "SeanConnery",
+  "battleTag": "Azrael#1637",
+  "region": "NA",
+  "signupMsgId": "1041427528155418625",
+  "signedUpOn": "2022-11-13T19:01:11.104Z",
+  "confirmedOn": "2022-11-13T19:02:12.824Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 3,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041427538964135996/carreer-profile.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63713fcbc43b51b71ada8b1d"
+  },
+  "discordId": "481470271824330752",
+  "discordName": "bilirbatuhan",
+  "battleTag": "libor#21585",
+  "region": "EU",
+  "signupMsgId": "1041428395319377920",
+  "signedUpOn": "2022-11-13T19:04:37.875Z",
+  "confirmedOn": "2022-11-13T19:17:55.045Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "GOLD",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041428416118915142/C866E126-F2DB-430F-BEFB-C809954A7D7A.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371483dc43b51b71ada8b1f"
+  },
+  "discordId": "427145348197384202",
+  "discordName": "charlie charlie",
+  "battleTag": "skrimshaw#11964",
+  "region": "NA",
+  "signupMsgId": "1041437468592967761",
+  "signedUpOn": "2022-11-13T19:40:41.001Z",
+  "confirmedOn": "2022-11-13T19:43:02.027Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041437481490448464/Screenshot_1.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63714994c43b51b71ada8b20"
+  },
+  "discordId": "162658141140549632",
+  "discordName": "Hamoos",
+  "battleTag": "Hamoos#2519",
+  "region": "EU",
+  "signupMsgId": "1041438916093419560",
+  "signedUpOn": "2022-11-13T19:46:26.044Z",
+  "confirmedOn": "2022-11-13T19:56:44.063Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041438922472960041/Screenshot_2022-11-13_224516.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63714bdcc43b51b71ada8b21"
+  },
+  "discordId": "172583035940634624",
+  "discordName": "HardCase",
+  "battleTag": "HardCase#21567",
+  "region": "EU",
+  "signupMsgId": "1041441363599818852",
+  "signedUpOn": "2022-11-13T19:56:09.579Z",
+  "confirmedOn": "2022-11-13T19:57:24.736Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "DIAMOND",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041441371925524480/Screenshot_231.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637152ebc43b51b71ada8b23"
+  },
+  "discordId": "272109617750736898",
+  "discordName": "",
+  "battleTag": "Paddington#11961",
+  "region": "NA",
+  "signupMsgId": "1041448944179363942",
+  "signedUpOn": "2022-11-13T20:26:17.104Z",
+  "confirmedOn": "2022-11-13T20:28:17.744Z",
+  "confirmedBy": "Feeniks",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041448952601518190/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637156d8c43b51b71ada8b25"
+  },
+  "discordId": "348259860455882753",
+  "discordName": "",
+  "battleTag": "POPPY#11604",
+  "region": "NA",
+  "signupMsgId": "1041453158804762664",
+  "signedUpOn": "2022-11-13T20:43:01.716Z",
+  "confirmedOn": "2022-11-13T20:44:27.403Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "DIAMOND",
+  "damageRank": "MASTER",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041453165704392785/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637157ef0b3b6e99472bee22"
+  },
+  "discordId": "188375885139673089",
+  "discordName": "Corodim",
+  "battleTag": "Corodim#1328",
+  "region": "NA",
+  "signupMsgId": "1041454332945629214",
+  "signedUpOn": "2022-11-13T20:47:41.956Z",
+  "confirmedOn": "2022-11-13T20:49:04.955Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "GOLD",
+  "damageRank": "SILVER",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041454339199336458/career.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371598e15152e89136d1e1f"
+  },
+  "discordId": "443965754921189377",
+  "discordName": "Seiynn",
+  "battleTag": "XCII#11687",
+  "region": "NA",
+  "signupMsgId": "1041456067776876564",
+  "signedUpOn": "2022-11-13T20:54:35.631Z",
+  "confirmedOn": "2022-11-13T20:55:02.511Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "MASTER",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 3,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041456077805461615/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63715a5315152e89136d1e20"
+  },
+  "discordId": "890748800568811530",
+  "discordName": "Hades4135",
+  "battleTag": "Hades#18415",
+  "region": "NA",
+  "signupMsgId": "1041456890376372254",
+  "signedUpOn": "2022-11-13T20:57:51.659Z",
+  "confirmedOn": "2022-11-13T20:58:49.008Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "GOLD",
+  "damageRank": "BRONZE",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041456904129495050/Screenshot_2022-11-13_145648.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63715b0c15152e89136d1e21"
+  },
+  "discordId": "560958875566866454",
+  "discordName": "JustinW",
+  "battleTag": "RPGSPORTǃ#1565",
+  "region": "NA",
+  "signupMsgId": "1041457672307884112",
+  "signedUpOn": "2022-11-13T21:00:58.123Z",
+  "confirmedOn": "2022-11-13T21:05:01.939Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "PLATINUM",
+  "damageRank": "SILVER",
+  "supportRank": "GOLD",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041457678972629103/ScreenShot_22-11-13_14-59-32-000.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371600d15152e89136d1e24"
+  },
+  "discordId": "253617758477090818",
+  "discordName": "herswoliness",
+  "battleTag": "doughuggem#11206",
+  "region": "NA",
+  "signupMsgId": "1041463049262989435",
+  "signedUpOn": "2022-11-13T21:22:19.988Z",
+  "confirmedOn": "2022-11-13T21:22:48.369Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041463054187114526/Untitled-1.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371614015152e89136d1e25"
+  },
+  "discordId": "224238664597766144",
+  "discordName": "juterr",
+  "battleTag": "C0c0thunder#1543",
+  "region": "NA",
+  "signupMsgId": "1041464335488258058",
+  "signedUpOn": "2022-11-13T21:27:26.675Z",
+  "confirmedOn": "2022-11-13T21:29:30.748Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041464342111064064/Screenshot_2022-10-16_162155.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63716d5cd390977a17c776b3"
+  },
+  "discordId": "168226608560209922",
+  "discordName": "HustleMan",
+  "battleTag": "MossyNissan#1392",
+  "region": "NA",
+  "signupMsgId": "1041477331925073961",
+  "signedUpOn": "2022-11-13T22:19:05.315Z",
+  "confirmedOn": "2022-11-13T22:23:03.396Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041477342469570590/Screenshot_2022-11-13_141831.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63717054d390977a17c776b5"
+  },
+  "discordId": "238093652965064704",
+  "discordName": "KnightSkye",
+  "battleTag": "KnightSkye#11554",
+  "region": "NA",
+  "signupMsgId": "1041480520237850734",
+  "signedUpOn": "2022-11-13T22:31:45.384Z",
+  "confirmedOn": "2022-11-13T22:32:20.724Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "DIAMOND",
+  "damageRank": "GRANDMASTER",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041480529469513871/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63717e14d390977a17c776b9"
+  },
+  "discordId": "474341429712388097",
+  "discordName": "Rapierman",
+  "battleTag": "Rapierman#1720",
+  "region": "NA",
+  "signupMsgId": "1041495283642679477",
+  "signedUpOn": "2022-11-13T23:30:25.204Z",
+  "confirmedOn": "2022-11-13T23:35:03.315Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "BRONZE",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041495292580745287/Rapierman-OW2-Status.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63718103c5d19e9ed4c2350d"
+  },
+  "discordId": "298301046323806220",
+  "discordName": "Maelstrom",
+  "battleTag": "Maelstrom#12875",
+  "region": "NA",
+  "signupMsgId": "1041498438015143998",
+  "signedUpOn": "2022-11-13T23:42:57.258Z",
+  "confirmedOn": "2022-11-13T23:43:38.183Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041498445745242122/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6371829fc5d19e9ed4c2350e"
+  },
+  "discordId": "219963758250950656",
+  "discordName": "D1chile",
+  "battleTag": "D1Chile#1865",
+  "region": "NA",
+  "signupMsgId": "1041500165820915742",
+  "signedUpOn": "2022-11-13T23:49:49.160Z",
+  "confirmedOn": "2022-11-13T23:50:54.457Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "BRONZE",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041500172070441010/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637183d9c5d19e9ed4c2350f"
+  },
+  "discordId": "238841871558901760",
+  "discordName": "kinsale42",
+  "battleTag": "Kinsale42#1265",
+  "region": "NA",
+  "signupMsgId": "1041501483553783838",
+  "signedUpOn": "2022-11-13T23:55:03.482Z",
+  "confirmedOn": "2022-11-14T00:00:51.972Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 4,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996526374166628/1045891429647515658/ScreenShot_22-11-25_18-37-40-000.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63718f56c5d19e9ed4c23510"
+  },
+  "discordId": "826597686534602783",
+  "discordName": "Gos",
+  "battleTag": "OwO#14606",
+  "region": "NA",
+  "signupMsgId": "1041513817542250577",
+  "signedUpOn": "2022-11-14T00:44:04.061Z",
+  "confirmedOn": "2022-11-17T23:53:55.405Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041513825712746576/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63727716c5d19e9ed4c23511"
+  },
+  "discordId": "222467823983656971",
+  "discordName": "𝓣𝓸𝓷𝔂",
+  "battleTag": "McTony#21652",
+  "region": "EU",
+  "signupMsgId": "1041762654777245696",
+  "signedUpOn": "2022-11-14T17:12:51.289Z",
+  "confirmedOn": "2022-11-17T23:59:58.456Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "DIAMOND",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1041762662368936067/main.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637a63da584837c2f2dd684c"
+  },
+  "discordId": "857560227750215700",
+  "discordName": "Amanda ♡",
+  "battleTag": "Horcrux#21298",
+  "region": "EU",
+  "signupMsgId": "1043941023115649087",
+  "signedUpOn": "2022-11-20T17:28:55.049Z",
+  "confirmedOn": "2022-11-24T20:06:01.793Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1043941033664319588/main.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637aad34584837c2f2dd684d"
+  },
+  "discordId": "815603120142680074",
+  "discordName": "erykthefatone",
+  "battleTag": "erykthefat1#2724",
+  "region": "EU",
+  "signupMsgId": "1044019783416434718",
+  "signedUpOn": "2022-11-20T22:41:53.024Z",
+  "confirmedOn": "2022-11-24T20:12:44.446Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1044019797198917676/Overwatch_2_Screenshot_2022.11.20_-_22.39.59.34.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637e91fa584837c2f2dd684e"
+  },
+  "discordId": "235583226444382208",
+  "discordName": "dryice345",
+  "battleTag": "dryice345#1377",
+  "region": "NA",
+  "signupMsgId": "1045090061789712455",
+  "signedUpOn": "2022-11-23T21:34:47.273Z",
+  "confirmedOn": "2022-11-24T20:14:26.884Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1045090073588285461/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637ecb5c584837c2f2dd684f"
+  },
+  "discordId": "826677405540286474",
+  "discordName": "BallinDani",
+  "battleTag": "BallinDani#2102",
+  "region": "NA",
+  "signupMsgId": "1045151675792498698",
+  "signedUpOn": "2022-11-24T01:39:37.101Z",
+  "confirmedOn": "2022-11-24T20:16:15.813Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1045151685800108112/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "637f6c28584837c2f2dd6850"
+  },
+  "discordId": "323575447545970719",
+  "discordName": "Ninu",
+  "battleTag": "NINUCHAN#2232",
+  "region": "EU",
+  "signupMsgId": "1045324334782238810",
+  "signedUpOn": "2022-11-24T13:05:42.258Z",
+  "confirmedOn": "2022-11-24T20:17:50.258Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1045324344034861116/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63834dab587bdba0eaffbf3d"
+  },
+  "discordId": "277481707135827968",
+  "discordName": "jesse.",
+  "battleTag": "je5se#2902",
+  "region": "EU",
+  "signupMsgId": "1046391106843201586",
+  "signedUpOn": "2022-11-27T11:44:40.468Z",
+  "confirmedOn": "2022-11-27T16:34:56.669Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "GRANDMASTER",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046391116670451773/careerprofile.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383780b587bdba0eaffbf3e"
+  },
+  "discordId": "269383819847532544",
+  "discordName": "Dr. Zoidberg [np]",
+  "battleTag": "DrZoidbergNP#1961",
+  "region": "EU",
+  "signupMsgId": "1046436607269552158",
+  "signedUpOn": "2022-11-27T14:45:28.663Z",
+  "confirmedOn": "2022-11-27T16:35:29.116Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "SILVER",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046436614857039912/ScreenShot_22-11-27_15-43-58-000.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63838658587bdba0eaffbf3f"
+  },
+  "discordId": "252758517730115585",
+  "discordName": "fuzz",
+  "battleTag": "FUZZ#21316",
+  "region": "NA",
+  "signupMsgId": "1046451966626234540",
+  "signedUpOn": "2022-11-27T15:46:30.618Z",
+  "confirmedOn": "2022-11-27T16:36:22.490Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "MASTER",
+  "supportRank": "MASTER",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046451974201151528/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63838a05587bdba0eaffbf40"
+  },
+  "discordId": "239522467264069632",
+  "discordName": "onetap",
+  "battleTag": "ONETAPMAN#11142",
+  "region": "NA",
+  "signupMsgId": "1046455910635143189",
+  "signedUpOn": "2022-11-27T16:02:10.969Z",
+  "confirmedOn": "2022-11-27T16:37:07.581Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "GRANDMASTER",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046455917933240381/Capture.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63838a3b587bdba0eaffbf41"
+  },
+  "discordId": "284865604127555584",
+  "discordName": "drBeejay",
+  "battleTag": "drBeejay#5448",
+  "region": "NA",
+  "signupMsgId": "1046456135944769646",
+  "signedUpOn": "2022-11-27T16:03:04.642Z",
+  "confirmedOn": "2022-11-27T16:37:33.254Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046456143737794601/drBeejay5448.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63838f3f587bdba0eaffbf42"
+  },
+  "discordId": "326402695651000320",
+  "discordName": "Sezzas",
+  "battleTag": "Sezzas#2369",
+  "region": "EU",
+  "signupMsgId": "1046461520189587547",
+  "signedUpOn": "2022-11-27T16:24:28.460Z",
+  "confirmedOn": "2022-11-27T16:37:57.035Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046461529576448050/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63838fee587bdba0eaffbf43"
+  },
+  "discordId": "316637808687185921",
+  "discordName": "Blahaj",
+  "battleTag": "BLAHAJ #2625",
+  "region": "EU",
+  "signupMsgId": "1046462258122870894",
+  "signedUpOn": "2022-11-27T16:27:24.387Z",
+  "confirmedOn": "2022-11-27T16:38:46.809Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "BRONZE",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046462265953624064/OW2careerprofile.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383ad99587bdba0eaffbf46"
+  },
+  "discordId": "464917674485481472",
+  "discordName": "DMilks",
+  "battleTag": "DMILKS#1305",
+  "region": "NA",
+  "signupMsgId": "1046494111944933386",
+  "signedUpOn": "2022-11-27T18:33:58.949Z",
+  "confirmedOn": "2022-11-27T18:36:00.083Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046494120954318989/Screenshot_158.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383b89f587bdba0eaffbf48"
+  },
+  "discordId": "366293989827018762",
+  "discordName": "salmannoises",
+  "battleTag": "DapperSolem#2950",
+  "region": "EU",
+  "signupMsgId": "1046505945049600090",
+  "signedUpOn": "2022-11-27T19:20:59.935Z",
+  "confirmedOn": "2022-11-27T19:27:11.027Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "SILVER",
+  "damageRank": "GOLD",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046505955464056962/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383b962587bdba0eaffbf49"
+  },
+  "discordId": "260275179341479938",
+  "discordName": "Gamesjames",
+  "battleTag": "whis#11628",
+  "region": "NA",
+  "signupMsgId": "1046506766453719121",
+  "signedUpOn": "2022-11-27T19:24:15.909Z",
+  "confirmedOn": "2022-11-27T19:27:54.148Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "BRONZE",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046506774628417588/Capture.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383ba53587bdba0eaffbf4a"
+  },
+  "discordId": "378549851186528257",
+  "discordName": "gami",
+  "battleTag": "gami#21732",
+  "region": "EU",
+  "signupMsgId": "1046507775011868815",
+  "signedUpOn": "2022-11-27T19:28:16.349Z",
+  "confirmedOn": "2022-11-27T19:35:10.725Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "PLATINUM",
+  "damageRank": "GOLD",
+  "supportRank": "-",
+  "gamesPlayed": 5,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046507784436449392/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383bac8587bdba0eaffbf4b"
+  },
+  "discordId": "533527890655051777",
+  "discordName": "Caffeinated_Bradley",
+  "battleTag": "Caffeinated#11346",
+  "region": "NA",
+  "signupMsgId": "1046508269142810655",
+  "signedUpOn": "2022-11-27T19:30:14.211Z",
+  "confirmedOn": "2022-11-27T19:34:41.267Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046508275761422547/career_profile.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383bdf0587bdba0eaffbf4c"
+  },
+  "discordId": "728872141071712307",
+  "discordName": "sum_moh_rhon",
+  "battleTag": "Jamis#11361",
+  "region": "NA",
+  "signupMsgId": "1046511661986627604",
+  "signedUpOn": "2022-11-27T19:43:43.147Z",
+  "confirmedOn": "2022-11-27T19:57:43.639Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "GOLD",
+  "damageRank": "-",
+  "supportRank": "GOLD",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046511667523096626/ScreenShot_22-11-27_14-40-48-000.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383c48e587bdba0eaffbf4e"
+  },
+  "discordId": "651206365473144832",
+  "discordName": "clampdace",
+  "battleTag": "toastee#11955",
+  "region": "NA",
+  "signupMsgId": "1046518761773092987",
+  "signedUpOn": "2022-11-27T20:11:55.799Z",
+  "confirmedOn": "2022-11-27T20:35:50.431Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046518768752406548/toastee_career_profile.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383c8c4587bdba0eaffbf4f"
+  },
+  "discordId": "150644723600719874",
+  "discordName": "geezer",
+  "battleTag": "Reisair#2511",
+  "region": "EU",
+  "signupMsgId": "1046523282918223954",
+  "signedUpOn": "2022-11-27T20:29:53.774Z",
+  "confirmedOn": "2022-11-27T20:36:33.088Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "BRONZE",
+  "damageRank": "SILVER",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046523294112825424/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383cbfb587bdba0eaffbf51"
+  },
+  "discordId": "820345327713255444",
+  "discordName": "Heroes",
+  "battleTag": "heroes#11696",
+  "region": "NA",
+  "signupMsgId": "1046526736382300260",
+  "signedUpOn": "2022-11-27T20:43:37.049Z",
+  "confirmedOn": "2022-11-27T20:45:48.870Z",
+  "confirmedBy": "Flo0010",
+  "tankRank": "DIAMOND",
+  "damageRank": "DIAMOND",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046526746025013248/Capture.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383da53587bdba0eaffbf54"
+  },
+  "discordId": "331339907937337344",
+  "discordName": "osaan_melkeen_pelaa",
+  "battleTag": "BOX#22983",
+  "region": "EU",
+  "signupMsgId": "1046542141385609317",
+  "signedUpOn": "2022-11-27T21:44:49.884Z",
+  "confirmedOn": "2022-11-27T21:45:55.915Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 5,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046542147672870952/asdasdads.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383dbc5587bdba0eaffbf55"
+  },
+  "discordId": "262659916110495744",
+  "discordName": "Carbon",
+  "battleTag": "Carbonatrix#1408",
+  "region": "NA",
+  "signupMsgId": "1046543689243172905",
+  "signedUpOn": "2022-11-27T21:50:59.079Z",
+  "confirmedOn": "2022-11-27T21:55:36.152Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "PLATINUM",
+  "supportRank": "MASTER",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046543697178792047/Screenshot_2022-11-27_144750.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383e268587bdba0eaffbf57"
+  },
+  "discordId": "306017968536551426",
+  "discordName": "1_Samuel",
+  "battleTag": "Samuel#22974",
+  "region": "EU",
+  "signupMsgId": "1046550816397471784",
+  "signedUpOn": "2022-11-27T22:19:18.262Z",
+  "confirmedOn": "2022-11-27T22:19:53.855Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046550825167757325/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6383e9ee587bdba0eaffbf58"
+  },
+  "discordId": "252278796349210624",
+  "discordName": "Wackygonz",
+  "battleTag": "Wacky#11888",
+  "region": "NA",
+  "signupMsgId": "1046558894484373526",
+  "signedUpOn": "2022-11-27T22:51:24.286Z",
+  "confirmedOn": "2022-11-27T22:52:33.742Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GRANDMASTER",
+  "damageRank": "DIAMOND",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046558902285778966/Screenshot_2022-11-27_140624.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63850309587bdba0eaffbf59"
+  },
+  "discordId": "117771984041017347",
+  "discordName": "Lily! ⍨",
+  "battleTag": "Tentacular#11107",
+  "region": "NA",
+  "signupMsgId": "1046860728809820251",
+  "signedUpOn": "2022-11-28T18:50:47.179Z",
+  "confirmedOn": "2022-12-04T18:36:29.580Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "GOLD",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1046860736225357864/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638ce816587bdba0eaffbf5b"
+  },
+  "discordId": "453391920258088980",
+  "discordName": "ChefBilly77",
+  "battleTag": "Chefbilly77#1885",
+  "region": "NA",
+  "signupMsgId": "1049030815473999893",
+  "signedUpOn": "2022-12-04T18:33:56.147Z",
+  "confirmedOn": "2022-12-04T18:38:37.095Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "SILVER",
+  "damageRank": "BRONZE",
+  "supportRank": "SILVER",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049030821601890404/S1_OW2_ranks.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638ce9f4587bdba0eaffbf5c"
+  },
+  "discordId": "141935788697976832",
+  "discordName": "SuperJoshi94",
+  "battleTag": "SuperJoshi94#2645",
+  "region": "EU",
+  "signupMsgId": "1049032814965833858",
+  "signedUpOn": "2022-12-04T18:41:52.901Z",
+  "confirmedOn": "2022-12-04T18:42:35.456Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049032827318055044/Joshi_SR.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638cebed587bdba0eaffbf5f"
+  },
+  "discordId": "525008501358198786",
+  "discordName": "Munched",
+  "battleTag": "Chomped#11288",
+  "region": "NA",
+  "signupMsgId": "1049034935933083798",
+  "signedUpOn": "2022-12-04T18:50:18.536Z",
+  "confirmedOn": "2022-12-04T18:51:05.572Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "-",
+  "supportRank": "-",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049034945009549412/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638cee57587bdba0eaffbf60"
+  },
+  "discordId": "98161099278417920",
+  "discordName": "Princess Hyrule",
+  "battleTag": "Zelda#11811",
+  "region": "NA",
+  "signupMsgId": "1049037534094700614",
+  "signedUpOn": "2022-12-04T19:00:38.012Z",
+  "confirmedOn": "2022-12-04T19:01:43.553Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049037538989461595/ScreenShot_22-12-04_12-59-13-000.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638cf4bb587bdba0eaffbf62"
+  },
+  "discordId": "168551544881545217",
+  "discordName": "stickman",
+  "battleTag": "stickman#11913",
+  "region": "NA",
+  "signupMsgId": "1049044390863179797",
+  "signedUpOn": "2022-12-04T19:27:52.681Z",
+  "confirmedOn": "2022-12-04T19:34:48.374Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "PLATINUM",
+  "damageRank": "MASTER",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049044399356653588/tr.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638cf4c8587bdba0eaffbf63"
+  },
+  "discordId": "225052119168843777",
+  "discordName": "Mine",
+  "battleTag": "Mine#12198",
+  "region": "NA",
+  "signupMsgId": "1049044449650544740",
+  "signedUpOn": "2022-12-04T19:28:06.817Z",
+  "confirmedOn": "2022-12-04T19:33:30.560Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "GRANDMASTER",
+  "gamesPlayed": 2,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049044456441122876/ScreenShot_22-12-04_11-27-51-000.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638cf4ec587bdba0eaffbf64"
+  },
+  "discordId": "230485505534459914",
+  "discordName": "sweatyspgtti",
+  "battleTag": "SweatySpgtti#1323",
+  "region": "NA",
+  "signupMsgId": "1049044591648714753",
+  "signedUpOn": "2022-12-04T19:28:40.653Z",
+  "confirmedOn": "2022-12-04T19:33:10.019Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "-",
+  "damageRank": "-",
+  "supportRank": "MASTER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049044606827909120/rank_verification_jpg.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638d0320587bdba0eaffbf66"
+  },
+  "discordId": "857509252675272725",
+  "discordName": "Kringle",
+  "battleTag": "Kringles#11122",
+  "region": "NA",
+  "signupMsgId": "1049059848450490458",
+  "signedUpOn": "2022-12-04T20:29:18.175Z",
+  "confirmedOn": "2022-12-04T20:34:26.509Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "DIAMOND",
+  "damageRank": "PLATINUM",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049059857346613339/asdasdasd.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638d0e4c587bdba0eaffbf68"
+  },
+  "discordId": "292896012912164864",
+  "discordName": "Lucas Bjur",
+  "battleTag": "Bjurson#1472",
+  "region": "NA",
+  "signupMsgId": "1049071842620616794",
+  "signedUpOn": "2022-12-04T21:16:57.771Z",
+  "confirmedOn": "2022-12-04T21:19:31.651Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "GOLD",
+  "damageRank": "SILVER",
+  "supportRank": "BRONZE",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049071850933731459/Screenshot_18.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638d151b587bdba0eaffbf6a"
+  },
+  "discordId": "208878664060895232",
+  "discordName": "Faded",
+  "battleTag": "shy#22676",
+  "region": "EU",
+  "signupMsgId": "1049079150675230823",
+  "signedUpOn": "2022-12-04T21:46:00.170Z",
+  "confirmedOn": "2022-12-04T21:47:00.551Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "-",
+  "damageRank": "PLATINUM",
+  "supportRank": "-",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049079160829661336/Plat_1_0412.2022.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638d164e587bdba0eaffbf6b"
+  },
+  "discordId": "222044101183275008",
+  "discordName": "0mistar",
+  "battleTag": "Omistar#11542",
+  "region": "NA",
+  "signupMsgId": "1049080440172056746",
+  "signedUpOn": "2022-12-04T21:51:07.600Z",
+  "confirmedOn": "2022-12-04T21:51:38.277Z",
+  "confirmedBy": "Fluffinity",
+  "tankRank": "PLATINUM",
+  "damageRank": "MASTER",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049080449525350540/season_1_ow2_profile.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "638e6dcd587bdba0eaffbf6e"
+  },
+  "discordId": "389161137591287809",
+  "discordName": "Mad Scientist",
+  "battleTag": "MadScientist#12132",
+  "region": "NA",
+  "signupMsgId": "1049449261739298866",
+  "signedUpOn": "2022-12-05T22:16:41.419Z",
+  "confirmedOn": "2022-12-11T17:47:39.828Z",
+  "confirmedBy": "lypreila",
+  "tankRank": "GOLD",
+  "damageRank": "BRONZE",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1049449274242506762/image.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "639620f918aacb352199ee38"
+  },
+  "discordId": "195133981623189505",
+  "discordName": "TheRaggebus",
+  "battleTag": "Ragge#2367",
+  "region": "EU",
+  "signupMsgId": "1051565796947660890",
+  "signedUpOn": "2022-12-11T18:27:02.864Z",
+  "confirmedOn": "2022-12-11T19:27:11.563Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "PLATINUM",
+  "damageRank": "MASTER",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1051565805487267861/raggerank1.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "6396293118aacb352199ee3a"
+  },
+  "discordId": "710755772086091846",
+  "discordName": "BrettOW",
+  "battleTag": "BRETT#12593",
+  "region": "NA",
+  "signupMsgId": "1051574604814094366",
+  "signedUpOn": "2022-12-11T19:02:02.726Z",
+  "confirmedOn": "2022-12-11T22:00:01.518Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "-",
+  "supportRank": "SILVER",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1051574630529388554/3526C84F-42C4-4816-8055-C9566AAE7651.jpg",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "639639f118aacb352199ee3d"
+  },
+  "discordId": "278343564872646656",
+  "discordName": "BlackLightning",
+  "battleTag": "blklightning#11874",
+  "region": "NA",
+  "signupMsgId": "1051592605407911959",
+  "signedUpOn": "2022-12-11T20:13:34.485Z",
+  "confirmedOn": "2022-12-11T20:14:04.487Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "DIAMOND",
+  "supportRank": "PLATINUM",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1051592614643777618/Overwatch_12_11_2022_3_10_13_PM.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63963aa918aacb352199ee3e"
+  },
+  "discordId": "299338148289183744",
+  "discordName": "AK",
+  "battleTag": "CCtree#11899",
+  "region": "NA",
+  "signupMsgId": "1051593377784799303",
+  "signedUpOn": "2022-12-11T20:16:38.635Z",
+  "confirmedOn": "2022-12-11T20:23:38.899Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "GOLD",
+  "damageRank": "GOLD",
+  "supportRank": "DIAMOND",
+  "gamesPlayed": 1,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1051593386412490762/Capture.PNG",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63964e6d18aacb352199ee42"
+  },
+  "discordId": "486701737739026434",
+  "discordName": "Wojtek",
+  "battleTag": "Wojtek#11691",
+  "region": "NA",
+  "signupMsgId": "1051614602754011168",
+  "signedUpOn": "2022-12-11T21:40:59.077Z",
+  "confirmedOn": "2022-12-11T21:58:59.833Z",
+  "confirmedBy": "Dogers",
+  "tankRank": "DIAMOND",
+  "damageRank": "GOLD",
+  "supportRank": "GOLD",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1051614611998248960/Thing.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63aaa0ee18aacb352199ee45"
+  },
+  "discordId": "739661811141312602",
+  "discordName": "general poeple",
+  "battleTag": "indoslayer#1366",
+  "region": "NA",
+  "signupMsgId": "1057200748556976188",
+  "signedUpOn": "2022-12-27T07:38:20.016Z",
+  "confirmedOn": "",
+  "confirmedBy": "",
+  "tankRank": "",
+  "damageRank": "",
+  "supportRank": "",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1057200755234308156/Screenshot_2022-12-27_143727.png",
+  "playing": false
+},{
+  "_id": {
+    "$oid": "63ad2e9818aacb352199ee46"
+  },
+  "discordId": "259335497480929291",
+  "discordName": "CraawL",
+  "battleTag": "CraawL#21303",
+  "region": "EU",
+  "signupMsgId": "1057902612386693210",
+  "signedUpOn": "2022-12-29T06:07:17.310Z",
+  "confirmedOn": "",
+  "confirmedBy": "",
+  "tankRank": "",
+  "damageRank": "",
+  "supportRank": "",
+  "gamesPlayed": 0,
+  "screenshot": "https://cdn.discordapp.com/attachments/1023996484884103188/1057902623560319056/ow_profile.png",
+  "playing": false
+}]
