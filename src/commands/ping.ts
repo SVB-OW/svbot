@@ -53,7 +53,7 @@ module.exports = new Command({
 		if (!pingRank2)
 			pingMsgText = `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby on the ${lobby.region} servers. Please react with 👍`
 		else
-			pingMsgText = `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby and ${lobby.rank2} for their enemies on the ${lobby.region} servers. Please react with 👍`
+			pingMsgText = `${lobby.streamer} has chosen <@&${roleByName.id}> for their lobby and <@&${lobby.rank2}> for their enemies on the ${lobby.region} servers. Please react with 👍`
 
 		const pingMsg = await pingsChannel.send(pingMsgText)
 
