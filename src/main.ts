@@ -50,9 +50,17 @@ client.on('ready', async () => {
 
 client.on('messageCreate', async msg => {
 	if (msg.author.bot) return
+	let signupCmd, cmdList, chanList, chanId;
 	if (msg.content.toLowerCase().startsWith('/')) {
-		msg.reply(
-			"Hi! I am SVBot. You probably wanted to use a slash command, but discord is funny and didn't pick it up. Try again using the popup that opens above the message box. If you still have issues, please send a message in #help",
+		// lookup the signup command
+		cmdList = await client.application!.commands.fetch()
+		signupCmd = cmdList?.findKey(cmd => cmd.name === "signup")
+
+		// lookup the help channel
+		chanList = await msg.guild!.channels.fetch()
+		chanId = chanList?.findKey(channel => channel!.name === "help")
+		await msg.reply(
+			"Hi! I am SVBot. You probably wanted to use a slash command, but discord is funny and didn't pick it up. Try again using the popup that opens above the message box or click here to be prompted: </signup:" + signupCmd + ">. If you still have issues, please send a message in <#" + chanId + ">"
 		)
 	}
 })
