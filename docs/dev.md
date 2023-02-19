@@ -24,6 +24,13 @@ However you run this, you need to setup a `.env` file with the following vars:
     1. `npm run-script dev`
 
 
+### Running via Docker
+
+1. Build the container using `docker build -f Dockerfile.dev -t svbot`
+2. Run the container and pass in the env file
+   1. `docker run --env-file ./.env localhost/svbot:latest`
+
+
 ## Updating Slash Commands
 
 Once the bot is running for the first time, you'll notice the slash commands aren't available. To fix this, run `node deploy.mjs` which will load the env file, then remove and reregister the slash commands to the bot. It might take a minute or two for Discord to notice!
