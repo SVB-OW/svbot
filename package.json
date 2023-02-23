@@ -18,7 +18,7 @@
 		"dotenv": "^16.0.2",
 		"mongodb": "^4.10.0",
 		"sendmail": "^1.6.1",
-		"typescript": "^4.2.3"
+		"typescript": "^4.9.5"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^5.38.1",
