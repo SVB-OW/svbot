@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     volumes:
@@ -15,9 +15,9 @@ services:
     network_mode: service:db
 
     # Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-    # user: root
+    user: root
 
-    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally. 
+    # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   db:
@@ -27,10 +27,10 @@ services:
       - mongodb-data:/data/db
 
     # Uncomment to change startup options
-    # environment:
-    #  MONGO_INITDB_ROOT_USERNAME: root
-    #  MONGO_INITDB_ROOT_PASSWORD: example
-    #  MONGO_INITDB_DATABASE: your-database-here
+    environment:
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: svbot
 
     # Add "forwardPorts": ["27017"] to **devcontainer.json** to forward MongoDB locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
