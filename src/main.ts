@@ -3,6 +3,7 @@ import { ActivityType, ChannelType, GatewayIntentBits } from 'discord.js'
 import { ClientError, CommandClient } from './types'
 import { dbLive, discordToken, isProd, mongoUri, prodErrorEmail } from './config'
 import type { Db } from 'mongodb'
+import Fuse from 'fuse.js'
 import type { ICommandInteraction } from './types'
 import type { Interaction } from 'discord.js'
 import { MongoClient } from 'mongodb'
@@ -50,11 +51,37 @@ client.on('ready', async () => {
 
 client.on('messageCreate', async msg => {
 	if (msg.author.bot) return
-	if (msg.content.toLowerCase().startsWith('/')) {
+	if (!msg.content.toLowerCase().startsWith('/')) return
+	const cmdString = msg.content.split(' ')[0].substring(1)
+
+	const fuse = new Fuse([...client.commands.values()], { keys: ['name'], threshold: 0.4 })
+	const searchResult = fuse.search(cmdString)[0]
+	console.log('fuse', fuse.search(cmdString)[0])
+
+	if (!searchResult) return
+
+	const cmd = (await client.application!.commands.fetch()).find(c => c.name === searchResult.item.name)
+	const allowedChannel = msg.guild?.channels.cache.find(
+		c => c.name.toLowerCase() === searchResult.item.allowedChannels[0],
+	)
+	const helpChannel = msg.guild?.channels.cache.find(c => c.name.toLowerCase() === 'help')
+
+	if (allowedChannel && msg.channel.id !== allowedChannel.id) {
 		msg.reply(
-			"Hi! I am SVBot. You probably wanted to use a slash command, but discord is funny and didn't pick it up. Try again using the popup that opens above the message box. If you still have issues, please send a message in #help",
+			`Hi! I am SVBot. You probably wanted to use a slash command, but discord is funny and didn't pick it up. Go to <#${
+				allowedChannel.id
+			}> and try again using the popup that opens above the message box. If you still have issues, please send a message in <#${
+				helpChannel?.id || 'help'
+			}>.`,
 		)
+		return
 	}
+
+	msg.reply(
+		`Hi! I am SVBot. You probably wanted to use a slash command, but discord is funny and didn't pick it up. Try again using the popup that opens above the message box or click here: </${
+			cmd?.name
+		}:${cmd?.id}>. If you still have issues, please send a message in <#${helpChannel?.id || 'help'}>.`,
+	)
 })
 
 client.on('interactionCreate', async (ia: Interaction) => {
