@@ -1,11 +1,20 @@
-import type { ICommandInteraction, Rank } from './types'
-import type { Role, TextChannel } from 'discord.js'
+import type { Role, TextChannel, VoiceChannel } from 'discord.js'
 import { ClientError } from './types'
+import type { ICommandInteraction } from './types'
 
-export function getSignupChannel(ia: ICommandInteraction) {
-	const signupChannel = ia.guild.channels.cache.find(c => c.name === 'signup') as TextChannel
-	if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
-	return signupChannel
+export function getChannel(
+	ia: ICommandInteraction,
+	channelName: 'bot-commands' | 'matchmaker' | 'signup' | 'player-pings',
+): TextChannel {
+	const channel = ia.guild.channels.cache.find(channel => channel.name === channelName) as TextChannel
+	if (!channel) throw new ClientError(ia, channelName + ' channel does not exist')
+	return channel
+}
+
+export function getVoiceChannel(ia: ICommandInteraction, channelName: 'waiting lobby'): VoiceChannel {
+	const channel = ia.guild.channels.cache.find(channel => channel.name.toLowerCase() === channelName) as VoiceChannel
+	if (!channel) throw new ClientError(ia, channelName + ' channel does not exist')
+	return channel
 }
 
 export function getRole(
@@ -24,22 +33,4 @@ export function getRole(
 	const role = ia.guild.roles.cache.find(role => role.name.toUpperCase() === roleName) as Role
 	if (!role) throw new ClientError(ia, roleName + ' role does not exist')
 	return role
-}
-
-export function getRankRoles(ia: ICommandInteraction): Record<string, Role> {
-	const o = {
-		BRONZE: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET BRONZE') as Role,
-		SILVER: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET SILVER') as Role,
-		GOLD: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET GOLD') as Role,
-		PLATINUM: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET PLATINUM') as Role,
-		DIAMOND: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET DIAMOND') as Role,
-		MASTER: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET MASTER') as Role,
-		GRANDMASTER: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET GRANDMASTER') as Role,
-	}
-
-	Object.keys(o).forEach(v => {
-		if (!o[v as keyof typeof o]) throw new ClientError(ia, `Role Gauntlet ${v} not found`)
-	})
-
-	return o
 }

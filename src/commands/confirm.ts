@@ -1,5 +1,5 @@
 import { ClientError, Command, Rank } from '../types'
-import { getRankRoles, getSignupChannel } from '../validations'
+import { getChannel, getRole } from '../validations'
 import { PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
 import { rankResolver } from '../helpers'
@@ -20,8 +20,9 @@ module.exports = new Command({
 		const damageRank = ia.options.getString('damage_rank', true)
 		const supportRank = ia.options.getString('support_rank', true)
 
-		getSignupChannel(ia)
-		getRankRoles(ia)
+		// Validating roles and channels exist
+		getChannel(ia, 'signup')
+		getRole(ia, 'GAUNTLET BRONZE')
 
 		const foundSignup = await mongoSignups.findOne({ discordId })
 		if (!foundSignup) throw new ClientError(ia, 'MsgId was not found in DB')
@@ -44,13 +45,15 @@ module.exports = new Command({
 		const member = await ia.guild.members.fetch(foundSignup.discordId)
 		await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET') as Role)
 
-		if (foundSignup.tankRank !== '-') await member.roles.add(getRankRoles(ia)[foundSignup.tankRank])
+		if (foundSignup.tankRank !== '-') await member.roles.add(getRole(ia, ('GAUNTLET ' + foundSignup.tankRank) as any))
 
-		if (foundSignup.damageRank !== '-') await member.roles.add(getRankRoles(ia)[foundSignup.damageRank])
+		if (foundSignup.damageRank !== '-')
+			await member.roles.add(getRole(ia, ('GAUNTLET ' + foundSignup.damageRank) as any))
 
-		if (foundSignup.supportRank !== '-') await member.roles.add(getRankRoles(ia)[foundSignup.supportRank])
+		if (foundSignup.supportRank !== '-')
+			await member.roles.add(getRole(ia, ('GAUNTLET ' + foundSignup.supportRank) as any))
 
-		const oldMsg = (await getSignupChannel(ia).messages.fetch()).get(foundSignup.signupMsgId)
+		const oldMsg = (await getChannel(ia, 'signup').messages.fetch()).get(foundSignup.signupMsgId)
 		if (oldMsg) {
 			oldMsg.edit({ content: 'Signup has been received and accepted by an event moderator' })
 			oldMsg.react('👍')

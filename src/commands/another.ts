@@ -1,5 +1,5 @@
 import { ClientError, Command, Rank, Region, type Signup } from '../types'
-import type { Role, TextChannel, VoiceChannel } from 'discord.js'
+import { getChannel, getRole, getVoiceChannel } from '../validations'
 import { PermissionFlagsBits } from 'discord.js'
 import { sortPlayers } from '../helpers'
 
@@ -24,17 +24,12 @@ module.exports = new Command({
 		//#region Validations
 		if ((await mongoLobbies.countDocuments()) === 0) throw new ClientError(ia, 'No ping has occurred yet')
 
-		const ingameRole = ia.guild.roles.cache.find(r => r.name.toLowerCase() === 'ingame') as Role
-		if (!ingameRole) throw new ClientError(ia, 'Ingame role does not exist')
-		const hostRole = ia.guild.roles.cache.find(r => r.name.toLowerCase() === 'lobby host') as Role
-		if (!hostRole) throw new ClientError(ia, 'Lobby Host role does not exist')
+		const ingameRole = getRole(ia, 'INGAME')
+		const hostRole = getRole(ia, 'LOBBY HOST')
 
-		const mmChannel = ia.guild.channels.cache.find(c => c.name === 'matchmaker') as TextChannel
-		if (!mmChannel) throw new ClientError(ia, 'Channel matchmaker does not exist')
-		const pingsChannel = ia.guild.channels.cache.find(c => c.name === 'player-pings') as TextChannel
-		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
-		const lobbyChannel = ia.guild.channels.cache.find(c => c.name.toLowerCase() === 'waiting lobby') as VoiceChannel
-		if (!lobbyChannel) throw new ClientError(ia, 'Waiting Lobby channel does not exist')
+		const mmChannel = getChannel(ia, 'matchmaker')
+		const pingsChannel = getChannel(ia, 'player-pings')
+		const lobbyChannel = getVoiceChannel(ia, 'waiting lobby')
 		//#endregion
 
 		const additionalRole = ia.options.getString('role', true).toLowerCase()

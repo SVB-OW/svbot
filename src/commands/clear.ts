@@ -12,13 +12,12 @@ module.exports = new Command({
 		if (!lobby) throw new ClientError(ia, 'No lobby was announced yet')
 
 		const role = getRole(ia, 'INGAME')
-		if (!role) throw new ClientError(ia, 'Ingame role does not exist')
 
 		lobby.pingCleared = true
 		mongoLobbies.updateOne({ _id: lobby._id }, { $set: lobby })
 		mongoSignups.updateMany({ playing: true }, { $set: { playing: false } })
 
-		const ingamePlayers = getRole(ia, 'INGAME').members
+		const ingamePlayers = role.members
 		ingamePlayers?.forEach(value => value.roles.remove(role))
 		ia.reply('Ingame role cleared')
 	},
