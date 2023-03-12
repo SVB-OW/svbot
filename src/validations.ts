@@ -8,6 +8,24 @@ export function getSignupChannel(ia: ICommandInteraction) {
 	return signupChannel
 }
 
+export function getRole(
+	ia: ICommandInteraction,
+	roleName:
+		| 'INGAME'
+		| 'LOBBY HOST'
+		| 'GAUNTLET BRONZE'
+		| 'GAUNTLET SILVER'
+		| 'GAUNTLET GOLD'
+		| 'GAUNTLET PLATINUM'
+		| 'GAUNTLET DIAMOND'
+		| 'GAUNTLET MASTER'
+		| 'GAUNTLET GRANDMASTER',
+): Role {
+	const role = ia.guild.roles.cache.find(role => role.name.toUpperCase() === roleName) as Role
+	if (!role) throw new ClientError(ia, roleName + ' role does not exist')
+	return role
+}
+
 export function getRankRoles(ia: ICommandInteraction): Record<string, Role> {
 	const o = {
 		BRONZE: ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET BRONZE') as Role,
