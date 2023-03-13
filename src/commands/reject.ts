@@ -1,6 +1,7 @@
 import { ClientError, Command } from '../types'
-import type { Role, TextChannel } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
+import type { Role } from 'discord.js'
+import { getChannel } from '../validations'
 import { rankResolver } from '../helpers'
 
 module.exports = new Command({
@@ -12,8 +13,7 @@ module.exports = new Command({
 	async execute({ ia, mongoSignups }) {
 		const discordId = ia.options.getString('discord_id', true)
 
-		const signupChannel = ia.guild.channels.cache.find(c => c.name === 'signup') as TextChannel
-		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
+		const signupChannel = getChannel(ia, 'signup')
 
 		const foundSignup = await mongoSignups.findOne({ discordId })
 		if (!foundSignup) throw new ClientError(ia, `Signup for ${discordId} was not found`)
