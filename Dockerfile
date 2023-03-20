@@ -14,7 +14,7 @@ WORKDIR /svbot
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN yarn install
 
 # Build it
 RUN yarn build
