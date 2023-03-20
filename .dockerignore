@@ -1,7 +1,15 @@
-node_modules
-npm-debug.log
 .git
 .github
 .vscode
 .idea
 __mocks__
+docs
+Dockerfile
+Dockerfile.dev
+.dockerignore
+.devcontainer
+.env*
+node_modules
+npm-debug.log
+Makefile
+*.yml

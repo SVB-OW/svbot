@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  svbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: base
+    volumes:
+      - ./src:/home/node/app/src
+      - ./nodemon.json:/home/node/app/nodemon.json
+    container_name: svbot
+    command: yarn dev
+    env_file:
+      - .env

@@ -26,9 +26,11 @@ However you run this, you need to setup a `.env` file with the following vars:
 
 ### Running via Docker
 
-1. Build the container using `docker build -f Dockerfile.dev -t svbot`
-2. Run the container and pass in the env file
-   1. `docker run --env-file ./.env localhost/svbot:latest`
+* If you have Make installed, you can run `make dockerup` which will build and launch the dev version. `make dockerdown` or CTRL+C will stop again.
+* If no Make is available, run `docker-compose up` which will build and then run the dev version
+* Final alternative is to build yourself:
+   1. Build: `docker build . -t svbot`
+   1. Run: `docker run --env-file ./.env svbot`
 
 
 ## Updating Slash Commands

@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+  svbot:
+    build:
+      target: production
+    command: yarn start
+    env_file:
+      - .env.prod
