@@ -1,4 +1,4 @@
-import { ClientError, Command, Rank, Region, type Signup } from '../types'
+import { ClientError, Command, Rank, type Signup } from '../types'
 import { getChannel, getRole, getVoiceChannel } from '../validations'
 import { PermissionFlagsBits } from 'discord.js'
 import { sortPlayers } from '../helpers'

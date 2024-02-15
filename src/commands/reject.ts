@@ -12,7 +12,6 @@ module.exports = new Command({
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
 		const discordId = ia.options.getString('discord_id', true)
-
 		const signupChannel = getChannel(ia, 'signup')
 
 		const foundSignup = await mongoSignups.findOne({ discordId })
