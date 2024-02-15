@@ -1,11 +1,10 @@
 import { ClientError, Command, Lobby } from '../types'
 import { PermissionFlagsBits } from 'discord.js'
 import { Rank } from '../types'
-import type { Region } from '../types'
-import type { TextChannel } from 'discord.js'
+import { Region } from '../types'
 import type { WithId } from 'mongodb'
+import { getChannel } from '../validations'
 import { rankResolver } from '../helpers'
-import { regionRegex } from '../config'
 
 module.exports = new Command({
 	name: 'ping',
@@ -15,10 +14,7 @@ module.exports = new Command({
 		{
 			name: 'region',
 			required: true,
-			choices: {
-				EU: 'EU',
-				NA: 'NA',
-			},
+			choices: Region,
 		},
 		{ name: 'rank1', required: true, choices: Rank },
 		{ name: 'rank2', choices: Rank },
@@ -27,16 +23,12 @@ module.exports = new Command({
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoLobbies }) {
 		// Validate
-		const pingsChannel = ia.guild.channels.cache.find(c => c.name === 'player-pings') as TextChannel
-		if (!pingsChannel) throw new ClientError(ia, 'Channel player-pings does not exist')
+		const pingsChannel = getChannel(ia, 'player-pings')
 
 		const pingStreamer = ia.options.getString('streamer', true)
 		const pingRegion = ia.options.getString('region', true)
 		const pingRank1 = ia.options.getString('rank1', true)
 		const pingRank2 = ia.options.getString('rank2')
-
-		// Checks Region
-		if (!regionRegex.test(pingRegion)) throw new ClientError(ia, 'Region is invalid ' + pingRegion)
 
 		const lobby = new Lobby() as WithId<Lobby>
 		lobby.streamer = pingStreamer
