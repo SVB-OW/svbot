@@ -60,10 +60,10 @@ module.exports = new Command({
 			{ name: 'Gold', value: goldPlayers.toString(), inline: true },
 			{ name: 'Platinum', value: platinumPlayers.toString(), inline: true },
 
-			{ name: 'Diamond', value: diamondPlayers.toString().toString(), inline: true },
-			{ name: 'Master', value: masterPlayers.toString().toString(), inline: true },
-			{ name: 'Grandmaster', value: grandmasterPlayers.toString().toString(), inline: true },
-			{ name: 'Champion', value: championPlayers.toString().toString(), inline: true },
+			{ name: 'Diamond', value: diamondPlayers.toString(), inline: true },
+			{ name: 'Master', value: masterPlayers.toString(), inline: true },
+			{ name: 'Grandmaster', value: grandmasterPlayers.toString(), inline: true },
+			{ name: 'Champion', value: championPlayers.toString(), inline: true },
 		])
 
 		await ia.reply({ embeds: [embed] })
