@@ -50,8 +50,8 @@ client.on('ready', async () => {
 })
 
 client.on('messageCreate', async msg => {
-	if (msg.author.bot) return
 	if (!msg.content.toLowerCase().startsWith('/')) return
+	if (msg.author.bot || !client.application) return
 	const cmdString = msg.content.split(' ')[0].substring(1)
 
 	const fuse = new Fuse([...client.commands.values()], { keys: ['name'], threshold: 0.4 })
@@ -60,7 +60,7 @@ client.on('messageCreate', async msg => {
 
 	if (!searchResult) return
 
-	const cmd = (await client.application!.commands.fetch()).find(c => c.name === searchResult.item.name)
+	const cmd = (await client.application.commands.fetch()).find(c => c.name === searchResult.item.name)
 	const allowedChannel = msg.guild?.channels.cache.find(
 		c => c.name.toLowerCase() === searchResult.item.allowedChannels[0],
 	)

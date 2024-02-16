@@ -1,6 +1,5 @@
-import { ClientError, Command, Signup } from '../types'
-import { btagRegex, regionRegex } from '../config'
-import type { Region } from '../types'
+import { ClientError, Command, type Region, Signup } from '../types'
+import { btagRegex } from '../config'
 
 module.exports = new Command({
 	name: 'signup',
@@ -25,10 +24,7 @@ module.exports = new Command({
 		if (!btagRegex.test(btag))
 			throw new ClientError(ia, 'Battle Tag invalid. Format should be "/signup Krusher99#1234 EU"')
 
-		// Checks the command contains a region (caseinsensitive)
 		const region = ia.options.getString('region', true)
-		if (!regionRegex.test(region))
-			throw new ClientError(ia, 'Region invalid. Format should be "/signup Krusher99#1234 EU"')
 
 		// Checks the command has exactly one attachment
 		const img = ia.options.getAttachment('profile_screenshot', true)

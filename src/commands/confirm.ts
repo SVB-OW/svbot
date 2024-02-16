@@ -1,7 +1,7 @@
 import { ClientError, Command, Rank } from '../types'
-import type { Role, TextChannel } from 'discord.js'
-import { DiscordjsTypeError } from 'discord.js'
+import { getChannel, getRole } from '../validations'
 import { PermissionFlagsBits } from 'discord.js'
+import type { Role } from 'discord.js'
 import { rankResolver } from '../helpers'
 
 module.exports = new Command({
@@ -20,8 +20,9 @@ module.exports = new Command({
 		const damageRank = ia.options.getString('damage_rank', true)
 		const supportRank = ia.options.getString('support_rank', true)
 
-		const signupChannel = ia.guild.channels.cache.find(c => c.name === 'signup') as TextChannel
-		if (!signupChannel) throw new ClientError(ia, 'Signup channel does not exist')
+		// Validating roles and channels exist
+		getChannel(ia, 'signup')
+		getRole(ia, 'GAUNTLET BRONZE')
 
 		const foundSignup = await mongoSignups.findOne({ discordId })
 		if (!foundSignup) throw new ClientError(ia, 'MsgId was not found in DB')
@@ -42,30 +43,17 @@ module.exports = new Command({
 
 		// Assign rank roles on confirm
 		const member = await ia.guild.members.fetch(foundSignup.discordId)
-		try {
-			await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET') as Role)
+		await member.roles.add(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET') as Role)
 
-			if (foundSignup.tankRank !== '-')
-				await member.roles.add(
-					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.tankRank) as Role,
-				)
+		if (foundSignup.tankRank !== '-') await member.roles.add(getRole(ia, ('GAUNTLET ' + foundSignup.tankRank) as any))
 
-			if (foundSignup.damageRank !== '-')
-				await member.roles.add(
-					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.damageRank) as Role,
-				)
+		if (foundSignup.damageRank !== '-')
+			await member.roles.add(getRole(ia, ('GAUNTLET ' + foundSignup.damageRank) as any))
 
-			if (foundSignup.supportRank !== '-')
-				await member.roles.add(
-					ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET ' + foundSignup.supportRank) as Role,
-				)
-		} catch (e) {
-			if (e instanceof DiscordjsTypeError) throw new ClientError(ia, 'Role does not exist')
-			else throw e // let others bubble up
-		}
+		if (foundSignup.supportRank !== '-')
+			await member.roles.add(getRole(ia, ('GAUNTLET ' + foundSignup.supportRank) as any))
 
-		await signupChannel.messages.fetch(foundSignup.signupMsgId)
-		const oldMsg = signupChannel.messages.cache.get(foundSignup.signupMsgId)
+		const oldMsg = (await getChannel(ia, 'signup').messages.fetch()).get(foundSignup.signupMsgId)
 		if (oldMsg) {
 			oldMsg.edit({ content: 'Signup has been received and accepted by an event moderator' })
 			oldMsg.react('👍')

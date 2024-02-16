@@ -52,13 +52,13 @@ module.exports = new Command({
 			{ name: 'Confirmed', value: confirmedPlayers.toString(), inline: true },
 			{ name: 'Unconfirmed', value: unconfirmedPlayers.toString(), inline: true },
 
-			{ name: 'EU Players', value: euPlayers.toString().toString(), inline: true },
-			{ name: 'NA Players', value: naPlayers.toString().toString(), inline: true },
-			{ name: 'Bronze', value: bronzePlayers.toString().toString(), inline: true },
+			{ name: 'EU Players', value: euPlayers.toString(), inline: true },
+			{ name: 'NA Players', value: naPlayers.toString(), inline: true },
+			{ name: 'Bronze', value: bronzePlayers.toString(), inline: true },
 
-			{ name: 'Silver', value: silverPlayers.toString().toString(), inline: true },
-			{ name: 'Gold', value: goldPlayers.toString().toString(), inline: true },
-			{ name: 'Platinum', value: platinumPlayers.toString().toString(), inline: true },
+			{ name: 'Silver', value: silverPlayers.toString(), inline: true },
+			{ name: 'Gold', value: goldPlayers.toString(), inline: true },
+			{ name: 'Platinum', value: platinumPlayers.toString(), inline: true },
 
 			{ name: 'Diamond', value: diamondPlayers.toString().toString(), inline: true },
 			{ name: 'Master', value: masterPlayers.toString().toString(), inline: true },
