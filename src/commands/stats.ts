@@ -40,6 +40,9 @@ module.exports = new Command({
 		const grandmasterPlayers = await mongoSignups.countDocuments({
 			$or: [{ tankRank: 'GRANDMASTER' }, { damageRank: 'GRANDMASTER' }, { supportRank: 'GRANDMASTER' }],
 		})
+		const championPlayers = await mongoSignups.countDocuments({
+			$or: [{ tankRank: 'CHAMPION' }, { damageRank: 'CHAMPION' }, { supportRank: 'CHAMPION' }],
+		})
 
 		const embed = new EmbedBuilder().setTitle('Event Stats').setTimestamp()
 		if (ia.guild.iconURL()) embed.setThumbnail(ia.guild.iconURL() as string)
@@ -60,6 +63,7 @@ module.exports = new Command({
 			{ name: 'Diamond', value: diamondPlayers.toString(), inline: true },
 			{ name: 'Master', value: masterPlayers.toString(), inline: true },
 			{ name: 'Grandmaster', value: grandmasterPlayers.toString(), inline: true },
+			{ name: 'Champion', value: championPlayers.toString(), inline: true },
 		])
 
 		await ia.reply({ embeds: [embed] })

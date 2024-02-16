@@ -6,5 +6,6 @@ export enum Rank {
 	DIAMOND = 'DIAMOND',
 	MASTER = 'MASTER',
 	GRANDMASTER = 'GRANDMASTER',
+	CHAMPION = 'CHAMPION',
 	'-' = '-',
 }

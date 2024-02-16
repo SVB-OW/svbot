@@ -21,6 +21,7 @@ The possible ranks are
 | Diamond     | D, Dia  |
 | Master      | M       |
 | Grandmaster | GM      |
+| CHAMPION    | C       |
 
 ## Requirements
 
