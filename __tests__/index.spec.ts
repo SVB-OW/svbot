@@ -3,20 +3,25 @@ import { Client, Collection, GatewayIntentBits } from 'discord.js'
 import { dbLive, mongoUri } from '../src/config'
 import type { Db } from 'mongodb'
 import { MongoClient } from 'mongodb'
+import { MongoMemoryServer } from 'mongodb-memory-server'
 const SignupCommand = require('../src/commands/signup')
 
-const dbClient = new MongoClient(mongoUri)
-
 describe('Mock Signup', () => {
+	let mongod: MongoMemoryServer
 	let connection: MongoClient
 	let mongoDb: Db
 
 	beforeAll(async () => {
+		mongod = await MongoMemoryServer.create()
+		const dbClient = new MongoClient(mongod.getUri())
 		connection = await dbClient.connect()
 		mongoDb = dbClient.db(dbLive)
 	})
 	afterAll(async () => {
-		// await connection.close()
+		setTimeout(async () => {
+			await connection.close()
+			await mongod.stop()
+		}, 100)
 	})
 
 	// fake an interaction and define the caches
@@ -88,7 +93,7 @@ describe('Mock Signup', () => {
 			},
 		}
 		await SignupCommand.execute({ ia: ia as any, mongoSignups: mongoDb.collection('signups') })
-		expect(ia.editReply).toHaveBeenCalled()
+		expect(ia.editReply).toHaveReturned()
 	})
 })
 
