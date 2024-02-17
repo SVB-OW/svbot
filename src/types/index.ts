@@ -11,7 +11,6 @@ export * from './discord/ICommandOptions'
 
 // discord.js extended types
 export * from './discord/CommandsClient'
-export * from './discord/ICommandInteraction'
 
 // enums
 export * from './enums/Rank'
