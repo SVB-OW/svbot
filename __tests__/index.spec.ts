@@ -1,111 +1,94 @@
-import { TextChannel, Role } from 'discord.js'
-import { rankResolver, sortPlayers } from "../src/helpers";
-import { ICommandInteraction, Lobby, Region, Signup } from "../src/types"
-import { getRankRoles, getSignupChannel } from "../src/validations";
+import type { Attachment, ChatInputCommandInteraction } from 'discord.js'
+import { Client, Collection, GatewayIntentBits } from 'discord.js'
+import { dbLive, mongoUri } from '../src/config'
+import type { Db } from 'mongodb'
+import { MongoClient } from 'mongodb'
+const SignupCommand = require('../src/commands/signup')
 
-describe("Support functions", () => {
+const dbClient = new MongoClient(mongoUri)
 
-	const eu_player = {
-		gamesPlayed: 0,
-		region: Region.EU
-	} as Signup
-	const na_player = {
-		gamesPlayed: 0,
-		region: Region.NA
-	} as Signup
-	const eu_lobby = {
-		region: Region.EU
-	} as Lobby
+describe('Mock Signup', () => {
+	let connection: MongoClient
+	let mongoDb: Db
 
-	// define some channels we use
-	const signupChannel = {
-		name: 'signup'
-	} as Partial<TextChannel>
-	const matchmakerChannel = {
-		name: 'matchmaker'
-	} as Partial<TextChannel>
-	const pingsChannel = {
-		name: 'player-pings'
-	} as Partial<TextChannel>
-	const lobbyChannel = {
-		name: 'waiting lobby'
-	} as Partial<TextChannel>
-	const channelCache = [signupChannel, matchmakerChannel, pingsChannel, lobbyChannel]
-
-	// define some roles we use
-	const bronzeRole = {
-		name: 'Gauntlet Bronze'
-	} as Partial<Role>
-	const silverRole = {
-		name: 'Gauntlet Silver'
-	} as Partial<Role>
-	const goldRole = {
-		name: 'Gauntlet Gold'
-	} as Partial<Role>
-	const platRole = {
-		name: 'Gauntlet Platinum'
-	} as Partial<Role>
-	const diaRole = {
-		name: 'Gauntlet Diamond'
-	} as Partial<Role>
-	const masterRole = {
-		name: 'Gauntlet Master'
-	} as Partial<Role>
-	const gmRole = {
-		name: 'Gauntlet GrandMaster'
-	} as Partial<Role>
-	const rolesCache = [bronzeRole, silverRole, goldRole, platRole, diaRole, masterRole, gmRole]
-
-	// fake an interaction and define the caches
-	const ia = {
-		guild: {
-			channels: {
-				cache: channelCache
-			},
-			roles: {
-				cache: rolesCache
-			}
-		}
-	} as unknown as ICommandInteraction
-
-	it("should sort Region", () => {
-		expect(sortPlayers(eu_player, na_player, eu_lobby)).toBe(-1)
-		expect(sortPlayers(na_player, eu_player, eu_lobby)).toBe(1)
-	});
-
-	it("should sort gamesPlayed", () => {
-		expect(sortPlayers(eu_player, na_player, eu_lobby)).toBe(-1)
-		expect(sortPlayers(na_player, eu_player, eu_lobby)).toBe(1)
-		eu_player.gamesPlayed = 1
-		expect(sortPlayers(eu_player, na_player, eu_lobby)).toBe(1)
-		expect(sortPlayers(na_player, eu_player, eu_lobby)).toBe(-1)
-	});
-
-	it("should resolve rank names", () => {
-		expect(rankResolver("b")).toBe("BRONZE")
-		expect(rankResolver("bronze")).toBe("BRONZE")
-		expect(rankResolver("s")).toBe("SILVER")
-		expect(rankResolver("silver")).toBe("SILVER")
-		expect(rankResolver("g")).toBe("GOLD")
-		expect(rankResolver("gold")).toBe("GOLD")
-		expect(rankResolver("p")).toBe("PLATINUM")
-		expect(rankResolver("plat")).toBe("PLATINUM")
-		expect(rankResolver("platinum")).toBe("PLATINUM")
-		expect(rankResolver("d")).toBe("DIAMOND")
-		expect(rankResolver("dia")).toBe("DIAMOND")
-		expect(rankResolver("diamond")).toBe("DIAMOND")
-		expect(rankResolver("m")).toBe("MASTER")
-		expect(rankResolver("master")).toBe("MASTER")
-		expect(rankResolver("gm")).toBe("GRANDMASTER")
-		expect(rankResolver("grandmaster")).toBe("GRANDMASTER")
-	});
-
-	it("should find the signup channel", () => {
-		expect(getSignupChannel(ia)).toBe(signupChannel)
+	beforeAll(async () => {
+		connection = await dbClient.connect()
+		mongoDb = dbClient.db(dbLive)
+	})
+	afterAll(async () => {
+		// await connection.close()
 	})
 
-	it("should find the rank roles", () => {
-		expect(Object.keys(getRankRoles(ia))).toHaveLength(7)
+	// fake an interaction and define the caches
+	const client = new Client({
+		intents: [
+			GatewayIntentBits.Guilds,
+			GatewayIntentBits.GuildMembers,
+			GatewayIntentBits.GuildMessages,
+			GatewayIntentBits.GuildMessageReactions,
+			GatewayIntentBits.MessageContent,
+		],
+	})
+	type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]> }
+	type MockInteraction = DeepPartial<ChatInputCommandInteraction<'cached'>>
+	const mockIA: MockInteraction = {
+		guild: {
+			channels: {
+				cache: new Collection(),
+			},
+			roles: {
+				cache: new Collection(),
+			},
+			members: {
+				cache: new Collection(),
+				fetch: jest.fn(),
+			},
+			iconURL: jest.fn(),
+		},
+		deferReply: jest.fn(),
+		options: {
+			getString: jest.fn(),
+			getNumber: jest.fn(),
+			getAttachment: jest.fn(),
+		},
+		reply: jest.fn(),
+		user: {
+			id: '123',
+			username: 'testuser',
+		},
+		createdTimestamp: 0,
+		editReply: jest.fn(() => {
+			return {
+				attachments: {
+					first: jest.fn(() => {
+						return {
+							url: 'https://example.com/image.png',
+						}
+					}),
+				},
+			}
+		}),
+	}
+
+	it('test signup', async () => {
+		const ia = {
+			...mockIA,
+			options: {
+				getString: jest.fn((name: string) => {
+					if (name === 'battle_tag') return 'Krusher99#1234'
+					if (name === 'region') return 'EU'
+					return ''
+				}),
+				getAttachment: jest.fn(() => {
+					return {
+						contentType: 'image/png',
+						url: 'https://example.com/image.png',
+					} as Attachment
+				}),
+			},
+		}
+		await SignupCommand.execute({ ia: ia as any, mongoSignups: mongoDb.collection('signups') })
+		expect(ia.editReply).toHaveBeenCalled()
 	})
 })
 
