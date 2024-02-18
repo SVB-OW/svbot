@@ -3,7 +3,7 @@ import { getChannel, getRole } from '../validations'
 import { PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'confirm',
 	description: 'Confirms a signup entry',
 	props: [

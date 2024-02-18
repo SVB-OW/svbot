@@ -1,7 +1,7 @@
 import { Command } from '../types'
 import { PermissionFlagsBits } from 'discord.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'env',
 	description: 'Outputs the content of the NODE_ENV variable',
 	allowedPermissions: PermissionFlagsBits.Administrator,

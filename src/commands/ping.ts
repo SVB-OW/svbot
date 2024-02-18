@@ -5,7 +5,7 @@ import { Region } from '../types'
 import type { WithId } from 'mongodb'
 import { getChannel } from '../validations'
 
-module.exports = new Command({
+export default new Command({
 	name: 'ping',
 	description: 'Ping rank role with streamer and region in #player-pings',
 	props: [

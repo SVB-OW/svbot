@@ -1,15 +1,14 @@
 {
 	"compilerOptions": {
-		"target": "ES2022",
-		"module": "CommonJS",
-		"moduleResolution": "Node",
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
 		"strict": true,
-		"esModuleInterop": true,
+		// "esModuleInterop": true,
 		"outDir": "./out",
 		"forceConsistentCasingInFileNames": true,
 		"types": ["@types/node"],
 		"skipLibCheck": true
 	},
-	"include": ["./src", "deploy.mjs"],
-	"exclude": ["node_modules"]
+	"include": ["./src", "deploy.mjs"]
 }

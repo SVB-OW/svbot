@@ -2,7 +2,7 @@ import { Command } from '../types'
 import { EmbedBuilder } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'getunconfirmed',
 	description: 'Gets X unconfirmed users',
 	props: [{ name: 'count', type: 'number' }],

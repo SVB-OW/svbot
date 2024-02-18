@@ -2,7 +2,7 @@ import { ClientError, Command } from '../types'
 import { PermissionFlagsBits } from 'discord.js'
 import { getRole } from '../validations'
 
-module.exports = new Command({
+export default new Command({
 	name: 'clear',
 	description: 'Kicks all players with @Ingame from voice lobbies and removes their role',
 	allowedChannels: ['bot-commands'],

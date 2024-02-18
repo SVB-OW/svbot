@@ -14,7 +14,7 @@ function findPlayers(mongoSignups: Collection<Signup>, rank: string, region: str
 		})
 }
 
-module.exports = new Command({
+export default new Command({
 	name: 'stats',
 	description: 'Display some stats for the event',
 	allowedChannels: ['bot-commands'],

@@ -1,7 +1,7 @@
 import { ClientError, Command } from '../types'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'countup',
 	description: 'Increments the games played count of a player',
 	props: [{ name: 'discord_id', required: true }],

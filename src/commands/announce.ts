@@ -4,7 +4,7 @@ import { PermissionFlagsBits } from 'discord.js'
 import type { Signup } from '../types'
 import { sortPlayers } from '../helpers'
 
-module.exports = new Command({
+export default new Command({
 	name: 'announce',
 	description: 'Post player list in #matchmaker',
 	props: [

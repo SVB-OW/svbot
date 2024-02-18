@@ -3,7 +3,7 @@ import { getChannel, getRole, getVoiceChannel } from '../validations'
 import { PermissionFlagsBits } from 'discord.js'
 import { sortPlayers } from '../helpers'
 
-module.exports = new Command({
+export default new Command({
 	name: 'another',
 	description: 'Get another player for chosen role pinged',
 	props: [
