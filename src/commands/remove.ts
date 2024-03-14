@@ -5,7 +5,7 @@ import { getChannel } from '../validations'
 import { rankResolver } from '../helpers'
 
 module.exports = new Command({
-	name: 'reject',
+	name: 'remove',
 	description: 'Removes a players signup from the database',
 	props: [{ name: 'discord_id', required: true }],
 	allowedChannels: ['bot-commands'],
