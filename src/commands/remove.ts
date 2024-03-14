@@ -20,7 +20,9 @@ module.exports = new Command({
 		// Delete signup
 		await mongoSignups.deleteOne({ discordId })
 
-		const member = await ia.guild.members.fetch(foundSignup.discordId)
+		const member = await ia.guild.members.fetch(foundSignup.discordId).catch(_ => {
+			throw new ClientError(ia, `User with id ${discordId} not found`)
+		})
 
 		// Remove roles
 		await member.roles.remove(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET') as Role)
