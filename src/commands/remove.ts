@@ -1,6 +1,6 @@
 import { ClientError, Command } from '../types'
 import { PermissionFlagsBits } from 'discord.js'
-import type { Role } from 'discord.js'
+import type { GuildMember, Role } from 'discord.js'
 import { getChannel } from '../validations'
 import { rankResolver } from '../helpers'
 
@@ -20,9 +20,12 @@ module.exports = new Command({
 		// Delete signup
 		await mongoSignups.deleteOne({ discordId })
 
-		const member = await ia.guild.members.fetch(foundSignup.discordId).catch(_ => {
-			throw new ClientError(ia, `User with id ${discordId} not found`)
-		})
+		await ia.guild.members.fetch(foundSignup.discordId)
+		const member = (() => {
+			const member = ia.guild.members.cache.get(foundSignup.discordId)
+			if (!member) throw new ClientError(ia, `Member with ID ${discordId} was not found`)
+			return member as GuildMember
+		})()
 
 		// Remove roles
 		await member.roles.remove(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET') as Role)
