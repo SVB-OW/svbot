@@ -4,7 +4,6 @@ import { ClientError, CommandClient } from './types'
 import { dbLive, discordToken, isProd, mongoUri, prodErrorEmail } from './config'
 import type { Db } from 'mongodb'
 import Fuse from 'fuse.js'
-import type { ICommandInteraction } from './types'
 import type { Interaction } from 'discord.js'
 import { MongoClient } from 'mongodb'
 import { join } from 'path'
@@ -87,7 +86,7 @@ client.on('messageCreate', async msg => {
 client.on('interactionCreate', async (ia: Interaction) => {
 	try {
 		// Exit without error
-		if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText)) return
+		if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText) || !ia.inCachedGuild()) return
 
 		// Find command
 		const cmd = client.commands.get(ia.commandName)
@@ -99,7 +98,7 @@ client.on('interactionCreate', async (ia: Interaction) => {
 
 		// Execution
 		await cmd.execute({
-			ia: ia as ICommandInteraction,
+			ia: ia,
 			mongoSignups: mongoDb.collection('signups'),
 			mongoLobbies: mongoDb.collection('lobbies'),
 			mongoContestants: mongoDb.collection('contestants'),
