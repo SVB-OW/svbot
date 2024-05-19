@@ -4,18 +4,13 @@ import { Rank } from '../types'
 import { Region } from '../types'
 import type { WithId } from 'mongodb'
 import { getChannel } from '../validations'
-import { rankResolver } from '../helpers'
 
 module.exports = new Command({
 	name: 'ping',
 	description: 'Ping rank role with streamer and region in #player-pings',
 	props: [
 		{ name: 'streamer', required: true },
-		{
-			name: 'region',
-			required: true,
-			choices: Region,
-		},
+		{ name: 'region', required: true, choices: Region },
 		{ name: 'rank1', required: true, choices: Rank },
 		{ name: 'rank2', choices: Rank },
 	],
@@ -33,8 +28,8 @@ module.exports = new Command({
 		const lobby = new Lobby() as WithId<Lobby>
 		lobby.streamer = pingStreamer
 		lobby.region = pingRegion.toUpperCase() as Region
-		lobby.rank = rankResolver(pingRank1) as Rank
-		lobby.rank2 = rankResolver(pingRank2 || lobby.rank) as Rank
+		lobby.rank = pingRank1 as Rank
+		lobby.rank2 = (pingRank2 as Rank | null) || lobby.rank
 
 		const roleByName = ia.guild.roles.cache.find(item => item.name.toUpperCase() === 'GAUNTLET ' + lobby.rank)
 		const role2ByName = ia.guild.roles.cache.find(item => item.name.toUpperCase() === 'GAUNTLET ' + lobby.rank2)

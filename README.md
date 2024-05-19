@@ -33,13 +33,6 @@ Names are case-insensitive
 
 ### Low priority
 
-- [ ] remove rankResolver where possible and replace it with choice: Rank
 - [ ] automated testing and client mocking
 - [ ] another \<role> should skip, if given user already has @ingame role
 - [ ] rework matchmaker in announce?
-- [ ] add argument options to Command.props for things like EU|NA
-- [ ] add Command.props.devOnly for removing command from prod env
-
-### Streamer section
-
-- [ ] leaderboard: shows streamers points

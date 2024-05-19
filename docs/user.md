@@ -12,16 +12,14 @@ The SVBot needs each player to have a rank in each role of Overwatch. The roles 
 
 The possible ranks are:
 
-| Full name   | Short   |
-| ----------- | ------- |
-| Bronze      | B       |
-| Silver      | S       |
-| Gold        | G       |
-| Platinum    | P, Plat |
-| Diamond     | D, Dia  |
-| Master      | M       |
-| Grandmaster | GM      |
-| CHAMPION    | C       |
+- Bronze
+- Silver
+- Gold
+- Platinum
+- Diamond
+- Master 
+- Grandmaster
+- Champion
 
 ## Requirements
 
@@ -36,6 +34,7 @@ In order to use the bot your Discord server needs the following things. All name
 
 ### Text channels
 
+- "bot-commands"
 - "matchmaker"
 - "player-pings"
 - "signup"
@@ -69,7 +68,7 @@ In order to accept a signup the `/confirm` command must be used. It takes the Di
 
 If the signup is not valid you can use the `/reject` command instead. It will delete the signup.
 
-### Changing ranks of a confirmed user
+### Changing ranks or other properties of a confirmed user
 
 If the ranks of a player have to be updated moderators can use the `/update` command. The first argument describes the property you want to update. Currently this can be one of the following:
 
@@ -78,6 +77,8 @@ If the ranks of a player have to be updated moderators can use the `/update` com
 - supportRank
 
 For the second argument put in the [new rank](#ranks).
+
+This can be used for any property. Check `/log` for the properties of a player.
 
 ### Retrieving information about players
 
