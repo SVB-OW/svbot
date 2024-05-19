@@ -1,14 +1,17 @@
-import { Collection } from 'mongodb'
-import { Command, Rank, Region, Signup } from '../types'
+import { Command, Rank, Region } from '../types'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
+import type { Collection } from 'mongodb'
+import type { Signup } from '../types'
 
 function findPlayers(mongoSignups: Collection<Signup>, rank: string, region: string | null): Promise<number> {
-	if(region == null) {
-		return mongoSignups.countDocuments({tankRank: rank, damageRank: rank, supportRank: rank}) 
-	}
-	else {
-		return mongoSignups.countDocuments({tankRank: rank, damageRank: rank, supportRank: rank, region: region})
-	}
+	if (region)
+		return mongoSignups.countDocuments({
+			$and: [{ region: region }, { $or: [{ tankRank: rank }, { damageRank: rank }, { supportRank: rank }] }],
+		})
+	else
+		return mongoSignups.countDocuments({
+			$or: [{ tankRank: rank }, { damageRank: rank }, { supportRank: rank }],
+		})
 }
 
 module.exports = new Command({
@@ -16,9 +19,7 @@ module.exports = new Command({
 	description: 'Display some stats for the event',
 	allowedChannels: ['bot-commands'],
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
-	props : [
-		{name: 'region', required: false, choices: Region}
-	],
+	props: [{ name: 'region', required: false, choices: Region }],
 	async execute({ ia, mongoSignups }) {
 		// Get the stats!
 		const totalPlayers = await mongoSignups.countDocuments()
