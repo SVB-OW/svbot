@@ -92,7 +92,7 @@ client.on('interactionCreate', async (ia: Interaction) => {
 
 		// Execution
 		await cmd.execute({
-			ia: ia,
+			ia: ia as ICommandInteraction,
 			mongoSignups: mongoDb.collection('signups'),
 			mongoLobbies: mongoDb.collection('lobbies'),
 			mongoContestants: mongoDb.collection('contestants'),
@@ -136,7 +136,6 @@ async function errorHandler(err: any) {
 		throw err
 	}
 }
-
 // #endregion
 
 client.login(discordToken)

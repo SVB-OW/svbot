@@ -1,8 +1,9 @@
-import type { ChatInputCommandInteraction, Role, TextChannel, VoiceChannel } from 'discord.js'
+import type { Role, TextChannel, VoiceChannel } from 'discord.js'
 import { ClientError } from './types/index.js'
+import type { ICommandInteraction } from './types/index.js'
 
 export function getChannel(
-	ia: ChatInputCommandInteraction<'cached'>,
+	ia: ICommandInteraction,
 	channelName: 'bot-commands' | 'matchmaker' | 'signup' | 'player-pings',
 ): TextChannel {
 	const channel = ia.guild.channels.cache.find(channel => channel.name === channelName) as TextChannel
@@ -10,14 +11,14 @@ export function getChannel(
 	return channel
 }
 
-export function getVoiceChannel(ia: ChatInputCommandInteraction<'cached'>, channelName: 'waiting lobby'): VoiceChannel {
+export function getVoiceChannel(ia: ICommandInteraction, channelName: 'waiting lobby'): VoiceChannel {
 	const channel = ia.guild.channels.cache.find(channel => channel.name.toLowerCase() === channelName) as VoiceChannel
 	if (!channel) throw new ClientError(ia, channelName + ' channel does not exist')
 	return channel
 }
 
 export function getRole(
-	ia: ChatInputCommandInteraction<'cached'>,
+	ia: ICommandInteraction,
 	roleName:
 		| 'INGAME'
 		| 'LOBBY HOST'

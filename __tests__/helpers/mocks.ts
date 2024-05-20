@@ -1,5 +1,6 @@
-import { type ChatInputCommandInteraction, Collection } from 'discord.js'
+import { Collection } from 'discord.js'
 import type { Db } from 'mongodb'
+import type { ICommandInteraction } from '../../src/types/index.js'
 import { MongoClient } from 'mongodb'
 import { MongoMemoryServer } from 'mongodb-memory-server'
 import { vi } from 'vitest'
@@ -27,7 +28,7 @@ export async function closeDb() {
 
 // fake interaction
 type DeepPartial<T> = { [P in keyof T]?: DeepPartial<T[P]> }
-export type MockInteraction = DeepPartial<ChatInputCommandInteraction<'cached'>>
+export type MockInteraction = DeepPartial<ICommandInteraction>
 export const baseMockIA: MockInteraction = {
 	createdTimestamp: 0,
 	deferReply: vi.fn(),

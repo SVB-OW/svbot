@@ -1,9 +1,8 @@
-import type { Contestant, Lobby, Signup } from '../index.js'
-import type { ChatInputCommandInteraction } from 'discord.js'
+import type { Contestant, ICommandInteraction, Lobby, Signup } from '../index.js'
 import type { Collection } from 'mongodb'
 
 export type ICommandOptions = {
-	ia: ChatInputCommandInteraction<'cached'>
+	ia: ICommandInteraction
 	mongoSignups: Collection<Signup>
 	mongoLobbies: Collection<Lobby>
 	mongoContestants: Collection<Contestant>
