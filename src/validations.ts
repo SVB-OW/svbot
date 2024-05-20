@@ -22,6 +22,7 @@ export function getRole(
 	roleName:
 		| 'INGAME'
 		| 'LOBBY HOST'
+		| 'GAUNTLET'
 		| 'GAUNTLET BRONZE'
 		| 'GAUNTLET SILVER'
 		| 'GAUNTLET GOLD'

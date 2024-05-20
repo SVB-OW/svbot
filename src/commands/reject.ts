@@ -2,7 +2,6 @@ import { ClientError, Command } from '../types'
 import { PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
 import { getChannel } from '../validations'
-import { rankResolver } from '../helpers'
 
 module.exports = new Command({
 	name: 'reject',
@@ -23,10 +22,9 @@ module.exports = new Command({
 		const member = await ia.guild.members.fetch(foundSignup.discordId)
 
 		// Remove roles
-		await member.roles.remove(ia.guild.roles.cache.find(r => r.name.toUpperCase() === 'GAUNTLET') as Role)
 		await member.roles.set(
 			Array.from(member.roles.cache.values())
-				.filter(r => !rankResolver(r.name.toUpperCase().replace('GAUNTLET ', '')))
+				.filter(r => !r.name.match(/GAUNTLET/gi))
 				.map(r => r.id),
 		)
 
