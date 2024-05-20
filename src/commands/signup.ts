@@ -47,6 +47,6 @@ export default new Command({
 			signedUpOn: new Date(ia.createdTimestamp).toISOString(),
 		})
 
-		mongoSignups.insertOne(signup)
+		await mongoSignups.insertOne(signup)
 	},
 })
