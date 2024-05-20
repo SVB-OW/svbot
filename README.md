@@ -7,6 +7,10 @@ Add to server via this link:
 
 Github Actions: [https://github.com/SVB-OW/SVBot/actions]
 
+## Developer documentation
+
+[Setup](docs/dev.md)
+
 ## Requirements
 
 Names are case-insensitive

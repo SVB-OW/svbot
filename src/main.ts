@@ -91,11 +91,11 @@ client.on('interactionCreate', async (ia: Interaction) => {
 
 		// Find command
 		const cmd = client.commands.get(ia.commandName)
-		if (!cmd) throw new ClientError(ia, 'Command not found')
+		if (!cmd) throw new ClientError(ia as ICommandInteraction, 'Command not found')
 
 		// Channel validation
 		if (cmd.allowedChannels.length > 0 && !cmd.allowedChannels.includes(ia.channel.name))
-			throw new ClientError(ia, 'This command is not permitted in this channel')
+			throw new ClientError(ia as ICommandInteraction, 'This command is not permitted in this channel')
 
 		// Execution
 		await cmd.execute({

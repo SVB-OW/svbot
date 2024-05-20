@@ -17,6 +17,9 @@ module.exports = new Command({
 		const foundSignup = await mongoSignups.findOne({ discordId })
 		if (!foundSignup) throw new ClientError(ia, `Signup for ${discordId} was not found`)
 
+		// Delete signup
+		await mongoSignups.deleteOne({ discordId })
+
 		const member = await ia.guild.members.fetch(foundSignup.discordId)
 
 		// Remove roles
@@ -26,9 +29,6 @@ module.exports = new Command({
 				.filter(r => !rankResolver(r.name.toUpperCase().replace('GAUNTLET ', '')))
 				.map(r => r.id),
 		)
-
-		// Delete signup
-		await mongoSignups.deleteOne({ discordId })
 
 		// Delete message
 		await signupChannel.messages.fetch(foundSignup.signupMsgId)

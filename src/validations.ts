@@ -29,6 +29,7 @@ export function getRole(
 		| 'GAUNTLET DIAMOND'
 		| 'GAUNTLET MASTER'
 		| 'GAUNTLET GRANDMASTER',
+		| 'GAUNTLET CHAMPION',
 ): Role {
 	const role = ia.guild.roles.cache.find(role => role.name.toUpperCase() === roleName) as Role
 	if (!role) throw new ClientError(ia, roleName + ' role does not exist')
