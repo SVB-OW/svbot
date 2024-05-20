@@ -11,7 +11,9 @@
 		"lint": "eslint src/",
 		"lint-fix": "eslint src/ --fix",
 		"format": "prettier --check \"src/**/*.{ts,js}\"",
-		"format-fix": "prettier --write \"src/**/*.{ts,js}\""
+		"format-fix": "prettier --write \"src/**/*.{ts,js}\"",
+		"test": "vitest run",
+		"test:watch": "vitest watch"
 	},
 	"dependencies": {
 		"@discordjs/rest": "^2.2.0",
@@ -23,9 +25,14 @@
 		"typescript": "^5.3.3"
 	},
 	"devDependencies": {
+		"@types/node": "^18.11.7",
 		"@typescript-eslint/eslint-plugin": "^5.53.0",
 		"@typescript-eslint/parser": "^5.53.0",
 		"eslint": "^8.34.0",
-		"prettier": "^3.2.5"
+		"mongodb-memory-server": "^9.1.6",
+		"prettier": "^3.2.5",
+		"ts-jest": "^29.0.3",
+		"ts-node": "^10.9.1",
+		"vitest": "^1.6.0"
 	}
 }

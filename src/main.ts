@@ -2,7 +2,6 @@
 import { ActivityType, ChannelType, GatewayIntentBits } from 'discord.js'
 import { ClientError, CommandClient } from './types/index.js'
 import { dbLive, discordToken, isProd, mongoUri, prodErrorEmail, sendGridApiKey } from './config.js'
-import type { Db } from 'mongodb'
 import Fuse from 'fuse.js'
 import type { ICommandInteraction } from './types/index.js'
 import type { Interaction } from 'discord.js'
@@ -81,7 +80,7 @@ client.on('messageCreate', async msg => {
 client.on('interactionCreate', async (ia: Interaction) => {
 	try {
 		// Exit without error
-		if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText)) return
+		if (!ia.isChatInputCommand() || !(ia.channel?.type === ChannelType.GuildText) || !ia.inCachedGuild()) return
 
 		// Find command
 		const cmd = client.commands.get(ia.commandName)
@@ -137,7 +136,6 @@ async function errorHandler(err: any) {
 		throw err
 	}
 }
-
 // #endregion
 
 client.login(discordToken)
