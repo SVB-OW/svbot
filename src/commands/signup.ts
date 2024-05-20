@@ -1,7 +1,7 @@
-import { ClientError, Command, Region, Signup } from '../types'
-import { btagRegex } from '../config'
+import { ClientError, Command, Region, Signup } from '../types/index.js'
+import { btagRegex } from '../config.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'signup',
 	description: 'Sign up with btag, region and profile screenshot',
 	props: [

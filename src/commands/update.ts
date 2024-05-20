@@ -1,8 +1,8 @@
-import { ClientError, Command, Rank, Signup } from '../types'
+import { ClientError, Command, Rank, Signup } from '../types/index.js'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'update',
 	description: 'Updates a property of a user',
 	props: [

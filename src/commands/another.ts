@@ -1,9 +1,9 @@
-import { ClientError, Command, Rank, type Signup } from '../types'
-import { getChannel, getRole, getVoiceChannel } from '../validations'
+import { ClientError, Command, Rank, type Signup } from '../types/index.js'
+import { getChannel, getRole, getVoiceChannel } from '../validations.js'
 import { PermissionFlagsBits } from 'discord.js'
-import { sortPlayers } from '../helpers'
+import { sortPlayers } from '../helpers.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'another',
 	description: 'Get another player for chosen role pinged',
 	props: [

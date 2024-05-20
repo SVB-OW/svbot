@@ -1,7 +1,7 @@
-import { ClientError, Command } from '../types'
+import { ClientError, Command } from '../types/index.js'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 
-module.exports = new Command({
+export default new Command({
 	name: 'log',
 	description: 'Logs the first db entry or optionally a specific entry by signupId',
 	props: [{ name: 'discord_id', required: true }],

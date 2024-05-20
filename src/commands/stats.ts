@@ -1,9 +1,9 @@
-import { Command, Rank, Region } from '../types'
+import { Command, Rank, Region } from '../types/index.js'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 import type { Collection } from 'mongodb'
-import type { Signup } from '../types'
+import type { Signup } from '../types/index.js'
 
-function findPlayers(mongoSignups: Collection<Signup>, rank: string, region: string | null): Promise<number> {
+function findPlayers(mongoSignups: Collection<Signup>, rank: Rank, region: Region | null): Promise<number> {
 	if (region)
 		return mongoSignups.countDocuments({
 			$and: [{ region: region }, { $or: [{ tankRank: rank }, { damageRank: rank }, { supportRank: rank }] }],
@@ -14,7 +14,7 @@ function findPlayers(mongoSignups: Collection<Signup>, rank: string, region: str
 		})
 }
 
-module.exports = new Command({
+export default new Command({
 	name: 'stats',
 	description: 'Display some stats for the event',
 	allowedChannels: ['bot-commands'],
@@ -30,7 +30,7 @@ module.exports = new Command({
 			confirmedBy: '',
 		})
 
-		const region = ia.options.getString('region', false)
+		const region = ia.options.getString('region', false) as Region | null
 
 		const euPlayers = await mongoSignups.countDocuments({ region: Region.EU })
 		const naPlayers = await mongoSignups.countDocuments({ region: Region.NA })

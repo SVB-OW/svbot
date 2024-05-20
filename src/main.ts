@@ -1,16 +1,16 @@
 //#region Preparation
 import { ActivityType, ChannelType, GatewayIntentBits } from 'discord.js'
-import { ClientError, CommandClient } from './types'
-import { dbLive, discordToken, isProd, mongoUri, prodErrorEmail } from './config'
+import { ClientError, CommandClient } from './types/index.js'
+import { dbLive, discordToken, isProd, mongoUri, prodErrorEmail, sendGridApiKey } from './config.js'
 import type { Db } from 'mongodb'
 import Fuse from 'fuse.js'
-import type { ICommandInteraction } from './types'
+import type { ICommandInteraction } from './types/index.js'
 import type { Interaction } from 'discord.js'
 import { MongoClient } from 'mongodb'
 import { join } from 'path'
 import { readdirSync } from 'fs'
+import sgMail from '@sendgrid/mail'
 
-const sendmail = require('sendmail')({ silent: true })
 const client = new CommandClient({
 	intents: [
 		GatewayIntentBits.Guilds,
@@ -21,24 +21,18 @@ const client = new CommandClient({
 	],
 })
 
-// Init mongodb and inMemory db
-const dbClient = new MongoClient(mongoUri)
-
 // Init db
-let mongoDb: Db
-	// Ugly async await block
-;(async () => {
-	await dbClient.connect()
-	mongoDb = dbClient.db(dbLive)
-})()
+const dbClient = new MongoClient(mongoUri)
+await dbClient.connect()
+const mongoDb = dbClient.db(dbLive)
 //#endregion
 
 //#region Dynamic commands
 // Import all files from ./commands and map to client.commands
 const commandFiles = readdirSync(join(process.cwd(), '/out/commands')).filter((file: string) => file.endsWith('.js'))
 for (const file of commandFiles) {
-	const command = require(join(process.cwd(), '/out/commands', file))
-	client.commands.set(command.name, command)
+	const command = await import(join(process.cwd(), '/out/commands', file))
+	client.commands.set(command.default.name, command.default)
 }
 //#endregion
 
@@ -111,7 +105,7 @@ client.on('interactionCreate', async (ia: Interaction) => {
 })
 
 // #region Global Error Handler
-function errorHandler(err: any) {
+async function errorHandler(err: any) {
 	// Send client errors back to channel
 	if (err instanceof ClientError) {
 		// Handle known errors
@@ -124,16 +118,19 @@ function errorHandler(err: any) {
 				content: `\`\`\`diff\n- Error: ${err.message.substring(0, 200)}\n\`\`\``,
 				ephemeral: true,
 			})
-	} else if (err instanceof Error && isProd) {
+	} else if (err instanceof Error && isProd && sendGridApiKey && prodErrorEmail) {
 		// Handle unknown errors in prod
+		sgMail.setApiKey(sendGridApiKey)
 		const html = `<h1>Name: ${err.name}</h1><h3>Message: ${err.message}</h3></div><pre>${err.stack}</pre>`
 
-		sendmail({
-			from: 'svbot@svb.net',
+		await sgMail.send({
+			from: prodErrorEmail,
 			to: prodErrorEmail,
 			subject: 'Error in SVBot Production',
 			html,
 		})
+
+		console.error(new Date().toISOString(), err.name, err.message, err.stack, { prodErrorEmail, sendGridApiKey })
 	} else {
 		// Handle unknown errors in dev
 		errorHandler(new ClientError(err.ia, 'An unknown error occurred'))
