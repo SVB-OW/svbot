@@ -1,6 +1,6 @@
 import type { Role, TextChannel, VoiceChannel } from 'discord.js'
-import { ClientError } from './types'
-import type { ICommandInteraction } from './types'
+import { ClientError } from './types/index.js'
+import type { ICommandInteraction } from './types/index.js'
 
 export function getChannel(
 	ia: ICommandInteraction,

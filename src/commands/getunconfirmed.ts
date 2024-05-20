@@ -1,4 +1,4 @@
-import { Command } from '../types'
+import { Command } from '../types/index.js'
 import { EmbedBuilder } from 'discord.js'
 import { PermissionFlagsBits } from 'discord.js'
 

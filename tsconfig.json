@@ -2,9 +2,10 @@
 	"compilerOptions": {
 		"target": "ESNext",
 		"module": "ESNext",
-		"moduleResolution": "Bundler",
+		"moduleResolution": "Node",
 		"strict": true,
 		// "esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"outDir": "./out",
 		"forceConsistentCasingInFileNames": true,
 		"types": ["@types/node"],

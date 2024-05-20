@@ -1,8 +1,8 @@
-import { ClientError, Command, Lobby, Rank } from '../types'
-import { getChannel, getRole, getVoiceChannel } from '../validations'
+import { ClientError, Command, Lobby, Rank } from '../types/index.js'
+import { getChannel, getRole, getVoiceChannel } from '../validations.js'
 import { PermissionFlagsBits } from 'discord.js'
-import type { Signup } from '../types'
-import { sortPlayers } from '../helpers'
+import type { Signup } from '../types/index.js'
+import { sortPlayers } from '../helpers.js'
 
 export default new Command({
 	name: 'announce',

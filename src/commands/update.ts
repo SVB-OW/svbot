@@ -1,4 +1,4 @@
-import { ClientError, Command, Rank, Signup } from '../types'
+import { ClientError, Command, Rank, Signup } from '../types/index.js'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
 

@@ -10,10 +10,12 @@ jobs:
     name: Deploy
     env:
       CI: true
-      NODE_ENV: production
+      DISCORD_BOT_ID: ${{ secrets.DISCORD_BOT_ID }}
       DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
       MONGO_URI: ${{ secrets.MONGO_URI }}
+      NODE_ENV: production
       PROD_ERROR_EMAIL: ${{ secrets.PROD_ERROR_EMAIL }}
+      SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3

@@ -1,5 +1,5 @@
-import { ClientError, Command, Region, Signup } from '../types'
-import { btagRegex } from '../config'
+import { ClientError, Command, Region, Signup } from '../types/index.js'
+import { btagRegex } from '../config.js'
 
 export default new Command({
 	name: 'signup',

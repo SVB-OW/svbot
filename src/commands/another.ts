@@ -1,7 +1,7 @@
-import { ClientError, Command, Rank, type Signup } from '../types'
-import { getChannel, getRole, getVoiceChannel } from '../validations'
+import { ClientError, Command, Rank, type Signup } from '../types/index.js'
+import { getChannel, getRole, getVoiceChannel } from '../validations.js'
 import { PermissionFlagsBits } from 'discord.js'
-import { sortPlayers } from '../helpers'
+import { sortPlayers } from '../helpers.js'
 
 export default new Command({
 	name: 'another',

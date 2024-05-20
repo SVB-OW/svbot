@@ -1,4 +1,4 @@
-import type { Contestant, ICommandInteraction, Lobby, Signup } from '..'
+import type { Contestant, ICommandInteraction, Lobby, Signup } from '../index.js'
 import type { Collection } from 'mongodb'
 
 export type ICommandOptions = {

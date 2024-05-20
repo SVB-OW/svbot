@@ -1,5 +1,5 @@
-import { Rank, Region } from '..'
-import type { Signup } from '..'
+import { Rank, Region } from '../index.js'
+import type { Signup } from '../index.js'
 
 export class Lobby {
 	_id?: string

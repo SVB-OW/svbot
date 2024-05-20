@@ -1,5 +1,5 @@
-import { ClientError, Command, Rank } from '../types'
-import { getChannel, getRole } from '../validations'
+import { ClientError, Command, Rank } from '../types/index.js'
+import { getChannel, getRole } from '../validations.js'
 import { PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
 

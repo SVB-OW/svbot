@@ -1,4 +1,4 @@
-import type { Rank, Region, Signup } from './types'
+import type { Rank, Region, Signup } from './types/index.js'
 
 export function sortPlayers(a: Signup, b: Signup, region: Region, rank: Rank) {
 	if (a.gamesPlayed > b.gamesPlayed) return 1

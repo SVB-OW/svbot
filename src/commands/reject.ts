@@ -1,7 +1,6 @@
-import { ClientError, Command } from '../types'
+import { ClientError, Command } from '../types/index.js'
 import { PermissionFlagsBits } from 'discord.js'
-import type { Role } from 'discord.js'
-import { getChannel } from '../validations'
+import { getChannel } from '../validations.js'
 
 export default new Command({
 	name: 'reject',

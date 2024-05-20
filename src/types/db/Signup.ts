@@ -1,4 +1,4 @@
-import { Region } from '..'
+import { Region } from '../index.js'
 
 export class Signup {
 	_id?: string

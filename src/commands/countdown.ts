@@ -1,4 +1,4 @@
-import { ClientError, Command } from '../types'
+import { ClientError, Command } from '../types/index.js'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 
 export default new Command({

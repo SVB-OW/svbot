@@ -1,9 +1,7 @@
-import { ClientError, Command, Lobby } from '../types'
+import { ClientError, Command, Lobby, Rank, Region } from '../types/index.js'
 import { PermissionFlagsBits } from 'discord.js'
-import { Rank } from '../types'
-import { Region } from '../types'
 import type { WithId } from 'mongodb'
-import { getChannel } from '../validations'
+import { getChannel } from '../validations.js'
 
 export default new Command({
 	name: 'ping',
