@@ -1,4 +1,4 @@
-import type { CommandProperty, ICommandOptions } from '..'
+import type { CommandProperty, ICommandOptions } from '../index.js'
 import { PermissionFlagsBits } from 'discord.js'
 
 // bot command files

@@ -3,15 +3,18 @@
 ## Setup
 
 Before you run the application, you need to setup a `.env` file with the following vars:
-1. DISCORD_TOKEN
-    1. This is the Discord token you can get from https://discord.com/developers/applications
-1. MONGO_URI
-    - This should be a MongoDB URI for database access
 1. DISCORD_BOT_ID
-    - This is the bots ID also from the developer page above
+    - This is the application ID you can get from https://discord.com/developers/applications. It's only used for the deploy script.
+1. **DISCORD_TOKEN**
+    - This is the Discord token you can get from https://discord.com/developers/applications
+1. **MONGO_URI**
+    - This should be a MongoDB URI for database access
+1. NODE_ENV
+    - This should be set to `development` or `production`. Decides what DB is used.
 1. PROD_ERROR_EMAIL
     - This is the email address it will use to send errors to when run in production mode
 
+Required variables are in **bold**.
 
 ### Running
 
@@ -30,7 +33,6 @@ Before you run the application, you need to setup a `.env` file with the followi
 1. You can use the following commands to fix code issues
     - `yarn lint-fix`
     - `yarn format-fix`
-
 
 ## Updating Slash Commands
 

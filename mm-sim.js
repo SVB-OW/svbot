@@ -1,4 +1,3 @@
-// const players = require('./assets/signups_20230129.json')
 const players = [
 	{ name: 'A', tankRank: 'BRONZE', damageRank: 'BRONZE', supportRank: 'SILVER', gamesPlayed: 5 },
 	{ name: 'B', tankRank: 'BRONZE', damageRank: 'SILVER', supportRank: 'SILVER', gamesPlayed: 5 },
