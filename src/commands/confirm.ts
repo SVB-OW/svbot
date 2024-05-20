@@ -2,7 +2,6 @@ import { ClientError, Command, Rank } from '../types'
 import { getChannel, getRole } from '../validations'
 import { PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
-import { rankResolver } from '../helpers'
 
 module.exports = new Command({
 	name: 'confirm',
@@ -27,15 +26,9 @@ module.exports = new Command({
 		const foundSignup = await mongoSignups.findOne({ discordId })
 		if (!foundSignup) throw new ClientError(ia, 'MsgId was not found in DB')
 
-		if (!rankResolver(tankRank)) throw new ClientError(ia, 'Tank rank is invalid')
-
-		if (!rankResolver(damageRank)) throw new ClientError(ia, 'Damage rank is invalid')
-
-		if (!rankResolver(supportRank)) throw new ClientError(ia, 'Support rank is invalid')
-
-		foundSignup.tankRank = rankResolver(tankRank) as string
-		foundSignup.damageRank = rankResolver(damageRank) as string
-		foundSignup.supportRank = rankResolver(supportRank) as string
+		foundSignup.tankRank = tankRank
+		foundSignup.damageRank = damageRank
+		foundSignup.supportRank = supportRank
 		foundSignup.confirmedBy = ia.user.username
 		foundSignup.confirmedOn = new Date(ia.createdTimestamp).toISOString()
 

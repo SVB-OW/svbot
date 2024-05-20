@@ -1,4 +1,4 @@
-import { ClientError, Command, type Region, Signup } from '../types'
+import { ClientError, Command, Region, Signup } from '../types'
 import { btagRegex } from '../config'
 
 module.exports = new Command({
@@ -6,14 +6,7 @@ module.exports = new Command({
 	description: 'Sign up with btag, region and profile screenshot',
 	props: [
 		{ name: 'battle_tag', required: true },
-		{
-			name: 'region',
-			required: true,
-			choices: {
-				EU: 'EU',
-				NA: 'NA',
-			},
-		},
+		{ name: 'region', required: true, choices: Region },
 		{ name: 'profile_screenshot', required: true, type: 'attachment' },
 	],
 	allowedChannels: ['signup'],

@@ -1,7 +1,6 @@
-import { ClientError, Command, Signup } from '../types'
+import { ClientError, Command, Rank, Signup } from '../types'
 import { EmbedBuilder, PermissionFlagsBits } from 'discord.js'
 import type { Role } from 'discord.js'
-import { rankResolver } from '../helpers'
 
 module.exports = new Command({
 	name: 'update',
@@ -20,7 +19,7 @@ module.exports = new Command({
 	allowedPermissions: PermissionFlagsBits.ManageEvents,
 	async execute({ ia, mongoSignups }) {
 		const propVal = ia.options.getString('property', true)
-		let newVal = ia.options.getString('value', true)
+		const newVal = ia.options.getString('value', true)
 		const discordId = ia.options.getString('discord_id', true)
 
 		if (!new Signup().hasOwnProperty(propVal)) throw new ClientError(ia, 'Property does not exist')
@@ -28,8 +27,7 @@ module.exports = new Command({
 		let updateRoles = false
 		// Check if the property to update is a rank role property
 		if (['tankRank', 'damageRank', 'supportRank'].includes(propVal)) {
-			if (!rankResolver(newVal)) throw new ClientError(ia, 'Invalid rank')
-			newVal = rankResolver(newVal) as string
+			if (!Object.values(Rank).includes(newVal as Rank)) throw new ClientError(ia, 'Invalid rank')
 			updateRoles = true
 		}
 
@@ -47,7 +45,7 @@ module.exports = new Command({
 			// Remove all rank roles
 			await member.roles.set(
 				Array.from(member.roles.cache.values())
-					.filter(r => !rankResolver(r.name.toUpperCase().replace('GAUNTLET ', '')))
+					.filter(r => !r.name.match(/GAUNTLET \w+/gi))
 					.map(r => r.id),
 			)
 
