@@ -1,6 +1,6 @@
 services:
   app:
-    image: bitnami/minideb:bookworm
+    image: docker.io/library/node:22-alpine
     volumes:
       - ../..:/workspaces:cached
 
