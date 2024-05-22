@@ -14,7 +14,8 @@
 				"mongodb.mongodb-vscode",
 				"mikestead.dotenv",
 				"dbaeumer.vscode-eslint",
-				"swellaby.node-pack"
+				"swellaby.node-pack",
+				"esbenp.prettier-vscode"
 			]
 		}
 	},
