@@ -1,8 +1,6 @@
 services:
   app:
-    build:
-      # dockerfile: Dockerfile
-      context: .
+    image: bitnami/minideb:bookworm
     volumes:
       - ../..:/workspaces:cached
 

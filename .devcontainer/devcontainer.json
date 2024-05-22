@@ -21,8 +21,12 @@
 	},
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/node:1": {
 			"version": "22"
+		},
+		"ghcr.io/devcontainers/features/nix:1": {
+			
 		}
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -35,5 +39,11 @@
 	// "remoteUser": "root"
 	"containerEnv": {
 		"HOME": "/home/node"
+	},
+	"shutdownAction": "stopCompose",
+	"portsAttributes": {
+		"27017": {
+			"label": "mongodb"
+		}
 	}
 }
