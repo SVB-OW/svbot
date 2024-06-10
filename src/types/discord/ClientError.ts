@@ -1,4 +1,4 @@
-import type { ICommandInteraction } from '..'
+import type { ICommandInteraction } from '../index.js'
 
 export class ClientError extends Error {
 	ia: ICommandInteraction

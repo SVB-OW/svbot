@@ -6,8 +6,9 @@ import Fuse from 'fuse.js'
 import type { ICommandInteraction } from './types/index.js'
 import type { Interaction } from 'discord.js'
 import { MongoClient } from 'mongodb'
-import { join } from 'path'
-import { readdirSync } from 'fs'
+import { join } from 'node:path'
+import { pathToFileURL } from 'node:url'
+import { readdirSync } from 'node:fs'
 import sgMail from '@sendgrid/mail'
 
 const client = new CommandClient({
@@ -30,7 +31,7 @@ const mongoDb = dbClient.db(dbLive)
 // Import all files from ./commands and map to client.commands
 const commandFiles = readdirSync(join(process.cwd(), '/out/commands')).filter((file: string) => file.endsWith('.js'))
 for (const file of commandFiles) {
-	const command = await import(join(process.cwd(), '/out/commands', file))
+	const command = await import(pathToFileURL(join(process.cwd(), '/out/commands', file)).href)
 	client.commands.set(command.default.name, command.default)
 }
 //#endregion
